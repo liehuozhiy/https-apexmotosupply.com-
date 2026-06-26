@@ -13,11 +13,26 @@ const modalClose = document.querySelector("[data-spec-modal-close]");
 const hero = document.querySelector("[data-hero]");
 const heroVideo = document.querySelector("[data-hero-video]");
 const heroPlay = document.querySelector("[data-hero-play]");
-const assetVersion = "20260626-display-fix";
+const assetVersion = "20260626-lang-fix";
 
-let currentLang = localStorage.getItem("apex-lang") || "en";
+function readSavedLang() {
+  try {
+    return localStorage.getItem("apex-lang");
+  } catch (error) {
+    return null;
+  }
+}
 
-year.textContent = new Date().getFullYear();
+function saveLang(lang) {
+  try {
+    localStorage.setItem("apex-lang", lang);
+  } catch (error) {}
+}
+
+let currentLang = readSavedLang() || "en";
+if (!data.i18n[currentLang]) currentLang = "en";
+
+if (year) year.textContent = new Date().getFullYear();
 
 function text(key) {
   return data.i18n[currentLang][key] || data.i18n.en[key] || key;
@@ -61,9 +76,13 @@ function applyStaticText() {
     node.textContent = text(node.dataset.i18n);
   });
 
-  document.querySelector("[data-model-count]").textContent = data.products.length;
-  langButton.textContent = text("lang");
-  langButton.setAttribute("aria-label", currentLang === "zh" ? "Switch to English" : "Switch to Chinese");
+  const modelCount = document.querySelector("[data-model-count]");
+  if (modelCount) modelCount.textContent = data.products.length;
+
+  if (langButton) {
+    langButton.textContent = text("lang");
+    langButton.setAttribute("aria-label", currentLang === "zh" ? "Switch to English" : "Switch to Chinese");
+  }
 }
 
 function specRows(product) {
@@ -122,9 +141,9 @@ function renderFeatured() {
 
 function render(activeCategory = "all") {
   applyStaticText();
-  renderFilters(activeCategory);
-  renderFeatured();
-  renderProducts(activeCategory);
+  if (filters) renderFilters(activeCategory);
+  if (featured) renderFeatured();
+  if (productGrid) renderProducts(activeCategory);
 }
 
 function unmuteHeroVideo() {
@@ -251,63 +270,75 @@ if (heroPlay) {
   });
 }
 
-filters.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (!button) return;
+if (filters) {
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
 
-  render(button.dataset.category);
-});
+    render(button.dataset.category);
+  });
+}
 
-productGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-open-specs]");
-  if (!button) return;
+if (productGrid) {
+  productGrid.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-open-specs]");
+    if (!button) return;
 
-  const product = data.products.find((item) => item.slug === button.dataset.openSpecs);
-  if (product) openSpecModal(product);
-});
+    const product = data.products.find((item) => item.slug === button.dataset.openSpecs);
+    if (product) openSpecModal(product);
+  });
+}
 
-langButton.addEventListener("click", () => {
-  const active = filters.querySelector(".is-active")?.dataset.category || "all";
-  currentLang = currentLang === "zh" ? "en" : "zh";
-  localStorage.setItem("apex-lang", currentLang);
-  render(active);
-});
+if (langButton) {
+  langButton.addEventListener("click", () => {
+    const active = filters?.querySelector(".is-active")?.dataset.category || "all";
+    currentLang = currentLang === "zh" ? "en" : "zh";
+    saveLang(currentLang);
+    render(active);
+  });
+}
 
-modalClose.addEventListener("click", closeSpecModal);
+if (modalClose) modalClose.addEventListener("click", closeSpecModal);
 
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) closeSpecModal();
-});
+if (modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeSpecModal();
+  });
+}
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !modal.hidden) closeSpecModal();
+  if (event.key === "Escape" && modal && !modal.hidden) closeSpecModal();
 });
 
-menuButton.addEventListener("click", () => {
-  const expanded = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!expanded));
-  nav.classList.toggle("is-open", !expanded);
-});
+if (menuButton && nav) {
+  menuButton.addEventListener("click", () => {
+    const expanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!expanded));
+    nav.classList.toggle("is-open", !expanded);
+  });
 
-nav.addEventListener("click", (event) => {
-  if (event.target.closest("a")) {
-    menuButton.setAttribute("aria-expanded", "false");
-    nav.classList.remove("is-open");
-  }
-});
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      menuButton.setAttribute("aria-expanded", "false");
+      nav.classList.remove("is-open");
+    }
+  });
+}
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const fields = new FormData(form);
-  const subject = encodeURIComponent(`Product inquiry - ${fields.get("model")}`);
-  const body = encodeURIComponent([
-    `Name: ${fields.get("name")}`,
-    `Email: ${fields.get("email")}`,
-    `Target model: ${fields.get("model")}`,
-    `Quantity: ${fields.get("quantity")}`,
-    "",
-    fields.get("message")
-  ].join("\n"));
+if (form) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const fields = new FormData(form);
+    const subject = encodeURIComponent(`Product inquiry - ${fields.get("model")}`);
+    const body = encodeURIComponent([
+      `Name: ${fields.get("name")}`,
+      `Email: ${fields.get("email")}`,
+      `Target model: ${fields.get("model")}`,
+      `Quantity: ${fields.get("quantity")}`,
+      "",
+      fields.get("message")
+    ].join("\n"));
 
-  window.location.href = `mailto:${data.company.email}?subject=${subject}&body=${body}`;
-});
+    window.location.href = `mailto:${data.company.email}?subject=${subject}&body=${body}`;
+  });
+}
