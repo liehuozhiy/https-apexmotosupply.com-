@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apex Moto Supply | H&T Off-road Motorcycle Collection</title>
+    <meta name="description" content="Apex Moto Supply presents H&T gasoline and electric off-road motorcycle models with product photos and parameters from the 2026 catalog.">
+    <meta property="og:title" content="Apex Moto Supply">
+    <meta property="og:description" content="H&T gasoline and electric off-road motorcycle collection.">
+    <meta property="og:image" content="assets/img/hero-product.jpg">
+    <meta property="og:type" content="website">
+    <link rel="preload" href="assets/video/hero-intro.mp4" as="video" type="video/mp4">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260626-hero-copy">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Apex Moto Supply home">
+        <span class="brand-mark">APX</span>
+        <span data-company-name>Apex Moto Supply</span>
+      </a>
+      <div class="header-actions">
+        <nav class="nav" data-nav>
+          <a href="#collection" data-i18n="navCollection">Collection</a>
+          <a href="#products" data-i18n="navProducts">Products</a>
+          <a href="#inquiry" data-i18n="navInquiry">Inquiry</a>
+        </nav>
+        <button class="lang-toggle" type="button" data-lang-toggle>中文</button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-menu-button><span></span></button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero is-video-playing" data-hero>
+        <video class="hero-video" src="assets/video/hero-intro.mp4" poster="assets/img/hero-action-bg-f29r.jpg" autoplay muted playsinline preload="auto" data-hero-video></video>
+        <button class="hero-video-play" type="button" data-hero-play hidden aria-label="Replay video"></button>
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="heroEyebrow"></p>
+          <h1 data-i18n="heroTitle">H&T Off-road Motorcycle Collection</h1>
+          <p data-i18n="heroText">Built for importers, dealers, and fleet buyers: real off-road motorcycle models, clear specifications, and fast wholesale quotation support.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#products" data-i18n="heroPrimary">View products</a>
+            <a class="button ghost" href="#inquiry" data-i18n="heroSecondary">Request quote</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="collection" id="collection">
+        <div>
+          <p class="eyebrow" data-i18n="collectionEyebrow">Collection</p>
+          <h2 data-i18n="collectionTitle">Real models, real parameters, stronger presentation.</h2>
+        </div>
+        <div class="collection-stats">
+          <div><strong data-model-count>26</strong><span data-i18n="statModels">confirmed models</span></div>
+          <div><strong>3</strong><span data-i18n="statCategories">product categories</span></div>
+          <div><strong>2026</strong><span data-i18n="statSource">catalog source</span></div>
+        </div>
+      </section>
+
+      <section class="featured">
+        <div data-featured-products></div>
+      </section>
+
+      <section class="section" id="products">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow" data-i18n="productsEyebrow">Products</p>
+            <h2 data-i18n="productsTitle">Browse by power type.</h2>
+          </div>
+          <div class="filters" data-filters aria-label="Product filters"></div>
+        </div>
+        <div class="product-grid" data-product-grid></div>
+      </section>
+
+      <section class="inquiry-section" id="inquiry">
+        <div class="inquiry-copy">
+          <p class="eyebrow" data-i18n="inquiryEyebrow">Wholesale inquiry</p>
+          <h2 data-i18n="inquiryTitle">Send the target model and quantity.</h2>
+          <p data-i18n="inquiryText">Send us your target model, quantity, destination, and color preference. We will reply with product details and quotation.</p>
+          <div class="contact-links">
+            <a data-company-email href="mailto:sijunhe567@gmail.com">sijunhe567@gmail.com</a>
+            <a data-company-whatsapp href="https://wa.me/8618384234234">WhatsApp +8618384234234</a>
+          </div>
+        </div>
+        <form class="inquiry-form" data-inquiry-form>
+          <label><span data-i18n="name">Name</span><input name="name" autocomplete="name" required></label>
+          <label><span data-i18n="email">Email</span><input name="email" type="email" autocomplete="email" required></label>
+          <label><span data-i18n="model">Model</span><input name="model" placeholder="S300 / F29R / ES11" required></label>
+          <label><span data-i18n="quantity">Quantity</span><input name="quantity" placeholder="Example: 24 units"></label>
+          <label class="full"><span data-i18n="message">Message</span><textarea name="message" placeholder="Destination, packing preference, color, and timeline"></textarea></label>
+          <button class="button primary" type="submit" data-i18n="submit">Create email inquiry</button>
+        </form>
+      </section>
+    </main>
+
+    <div class="spec-modal" data-spec-modal hidden role="dialog" aria-modal="true" aria-label="Product parameters">
+      <div class="spec-modal-panel">
+        <button class="spec-modal-close" type="button" data-spec-modal-close aria-label="Close">×</button>
+        <div data-spec-modal-body></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>© <span data-year></span> <span data-company-name>Apex Moto Supply</span></span>
+      <span data-i18n="footer">Product data updated from the supplied H&T parameter sheet.</span>
+    </footer>
+
+    <script src="assets/js/site-data.js?v=20260626-hero-copy"></script>
+    <script src="assets/js/main.js?v=20260626-hero-copy"></script>
+    <script src="assets/js/analytics-config.js?v=20260626-analytics"></script>
+    <script src="assets/js/analytics.js?v=20260626-analytics"></script>
+  </body>
+</html>
+
