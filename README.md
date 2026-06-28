@@ -32,11 +32,11 @@ This static site has been updated from the supplied `2026H&T产品参数（英�
 
 ## Inquiry Form
 
-The inquiry form opens a pre-filled email to `sijunhe567@gmail.com`. The contact area also lists WhatsApp `+8618384234234`.
+The inquiry form generates an Excel report in the browser and also posts the same inquiry fields to `/api/inquiries` for backend management. The contact area also lists WhatsApp `+8618384234234`.
 
 ## Analytics
 
-The site includes a Cloudflare Pages Function at `functions/api/analytics.js` and an `admin.html` dashboard.
+The site includes a Cloudflare Worker backend and an `admin.html` dashboard for analytics and inquiry management.
 
 Cloudflare setup:
 
@@ -45,7 +45,7 @@ Cloudflare setup:
 3. In Cloudflare Pages, bind the D1 database to this project with variable name `DB`.
 4. Add an environment variable named `ADMIN_KEY`.
 5. Deploy the site.
-6. Open `/admin.html`, keep endpoint as `/api/analytics`, enter `ADMIN_KEY`, then load data.
+6. Open `/admin` or `/admin.html`, keep endpoint as `/api/analytics`, enter `ADMIN_KEY`, then load analytics or inquiries.
 
 ## Notes
 

@@ -340,6 +340,41 @@ function downloadBlob(blob, filename) {
   window.setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
 
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function validateInquiry(fields) {
+  const name = String(fields.name || "").trim();
+  const email = String(fields.email || "").trim();
+  const message = String(fields.message || "").trim();
+
+  if (!name || !email || !message || message.length < 5) return false;
+  return isValidEmail(email);
+}
+
+async function saveInquiry(fields = {}) {
+  try {
+    const response = await fetch("/api/inquiries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: fields.name || "",
+        email: fields.email || "",
+        model: fields.model || "",
+        quantity: fields.quantity || "",
+        message: fields.message || "",
+        sourceUrl: window.location.href
+      })
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return true;
+  } catch (error) {
+    console.error("Inquiry save failed", error);
+    return false;
+  }
+}
+
 async function createInquirySheet(fields = {}) {
   try {
     if (!window.JSZip) {
@@ -495,8 +530,14 @@ if (quickInquiry) {
 }
 
 if (form) {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    createInquirySheet(readInquiryFields(form));
+    const fields = readInquiryFields(form);
+    if (!validateInquiry(fields)) {
+      alert(currentLang === "zh" ? "\u8bf7\u586b\u5199\u59d3\u540d\u3001\u6709\u6548\u90ae\u7bb1\u548c\u9700\u6c42\u8bf4\u660e\u3002" : "Please enter name, a valid email, and message.");
+      return;
+    }
+    await saveInquiry(fields);
+    createInquirySheet(fields);
   });
 }
