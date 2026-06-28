@@ -96,7 +96,11 @@ async function handleAnalytics(request, env) {
     return json({ ok: true });
   }
 
-  const adminKey = env.ADMIN_KEY || "ht2026admin";
+  const adminKey = env.ADMIN_KEY || "";
+  if (!adminKey) {
+    return json({ error: "ADMIN_KEY is missing" }, 500);
+  }
+
   const inputKey = request.headers.get("x-admin-key") || new URL(request.url).searchParams.get("key") || "";
   if (inputKey !== adminKey) {
     return json({ error: "Unauthorized" }, 401);

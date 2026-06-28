@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,9 +89,7 @@
         margin-bottom: 18px;
       }
 
-      .stat {
-        padding: 18px;
-      }
+      .stat { padding: 18px; }
 
       .stat span {
         display: block;
@@ -142,40 +140,40 @@
     <main>
       <div class="top">
         <div>
-          <p class="muted">后台数据</p>
-          <h1>网站访问统计</h1>
+          <p class="muted">Admin data</p>
+          <h1>Website analytics</h1>
         </div>
         <div class="panel">
-          <label>接口地址
+          <label>Endpoint
             <input data-endpoint value="/api/analytics">
           </label>
-          <label>管理 Key
-            <input data-key type="password" placeholder="CloudBase 云函�?ADMIN_KEY">
+          <label>Admin key
+            <input data-key type="password" placeholder="Cloudflare ADMIN_KEY">
           </label>
-          <button type="button" data-load>查看数据</button>
-          <p class="status" data-status>输入管理 Key 后加载数据�?/p>
+          <button type="button" data-load>Load data</button>
+          <p class="status" data-status>Enter the admin key to load analytics.</p>
         </div>
       </div>
 
       <section class="stats">
-        <div class="stat"><span>总访问量</span><strong data-total>0</strong></div>
-        <div class="stat"><span>今日访问</span><strong data-today>0</strong></div>
-        <div class="stat"><span>独立 IP</span><strong data-ips>0</strong></div>
-        <div class="stat"><span>国家/地区</span><strong data-countries>0</strong></div>
+        <div class="stat"><span>Total visits</span><strong data-total>0</strong></div>
+        <div class="stat"><span>Today</span><strong data-today>0</strong></div>
+        <div class="stat"><span>Unique IPs</span><strong data-ips>0</strong></div>
+        <div class="stat"><span>Countries</span><strong data-countries>0</strong></div>
       </section>
 
       <table>
         <thead>
           <tr>
-            <th>时间</th>
+            <th>Time</th>
             <th>IP</th>
-            <th>国家/地区</th>
-            <th>页面</th>
-            <th>设备</th>
+            <th>Country</th>
+            <th>Page</th>
+            <th>Device</th>
           </tr>
         </thead>
         <tbody data-rows>
-          <tr><td colspan="5" class="muted">暂无数据</td></tr>
+          <tr><td colspan="5" class="muted">No data yet</td></tr>
         </tbody>
       </table>
     </main>
@@ -208,23 +206,23 @@
             <td>${visit.path || "-"}</td>
             <td>${visit.userAgent || "-"}</td>
           </tr>
-        `).join("") || '<tr><td colspan="5" class="muted">暂无数据</td></tr>';
+        `).join("") || '<tr><td colspan="5" class="muted">No data yet</td></tr>';
       }
 
       document.querySelector("[data-load]").addEventListener("click", async () => {
         const endpoint = endpointInput.value.trim();
         const key = keyInput.value.trim();
         localStorage.setItem("apex-admin-key", key);
-        statusNode.textContent = "正在加载...";
+        statusNode.textContent = "Loading...";
 
         try {
           const response = await fetch(endpoint, { headers: { "x-admin-key": key } });
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const data = await response.json();
           render(data);
-          statusNode.textContent = "已更新�?;
+          statusNode.textContent = "Updated.";
         } catch (error) {
-          statusNode.textContent = "加载失败，请检查接口地址、管�?Key 和云函数部署�?;
+          statusNode.textContent = "Load failed. Check the endpoint, admin key, and Cloudflare deployment.";
         }
       });
     </script>
