@@ -150,10 +150,10 @@
             <input data-endpoint value="/api/analytics">
           </label>
           <label>管理 Key
-            <input data-key type="password" placeholder="CloudBase 云函数 ADMIN_KEY">
+            <input data-key type="password" placeholder="CloudBase 云函�?ADMIN_KEY">
           </label>
           <button type="button" data-load>查看数据</button>
-          <p class="status" data-status>输入管理 Key 后加载数据。</p>
+          <p class="status" data-status>输入管理 Key 后加载数据�?/p>
         </div>
       </div>
 
@@ -222,9 +222,9 @@
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const data = await response.json();
           render(data);
-          statusNode.textContent = "已更新。";
+          statusNode.textContent = "已更新�?;
         } catch (error) {
-          statusNode.textContent = "加载失败，请检查接口地址、管理 Key 和云函数部署。";
+          statusNode.textContent = "加载失败，请检查接口地址、管�?Key 和云函数部署�?;
         }
       });
     </script>

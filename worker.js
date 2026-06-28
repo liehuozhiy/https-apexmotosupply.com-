@@ -13,6 +13,57 @@ function todayPrefix() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function decodeXml(text) {
+  return String(text || "")
+    .replace(/<!\[CDATA\[(.*?)\]\]>/gs, "$1")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
+function stripTags(text) {
+  return decodeXml(text).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function tagValue(item, tag) {
+  const match = item.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
+  return match ? decodeXml(match[1]).trim() : "";
+}
+
+async function handleNews(request) {
+  const url = new URL(request.url);
+  const lang = url.searchParams.get("lang") === "zh" ? "zh-CN" : "en-US";
+  const query = encodeURIComponent("motocross OR enduro OR off-road motorcycle racing");
+  const feedUrl = `https://news.google.com/rss/search?q=${query}&hl=${lang}&gl=US&ceid=US:${lang.startsWith("zh") ? "zh-Hans" : "en"}`;
+
+  try {
+    const response = await fetch(feedUrl, {
+      headers: {
+        "User-Agent": "ApexMotoSupply/1.0"
+      }
+    });
+    if (!response.ok) throw new Error("News feed failed");
+
+    const xml = await response.text();
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)].slice(0, 8).map((match) => {
+      const item = match[1];
+      const title = stripTags(tagValue(item, "title"));
+      const url = stripTags(tagValue(item, "link"));
+      const source = stripTags(tagValue(item, "source"));
+      const publishedAt = new Date(stripTags(tagValue(item, "pubDate")) || Date.now()).toISOString();
+      const summary = stripTags(tagValue(item, "description")).replace(title, "").slice(0, 180);
+
+      return { title, url, source, publishedAt, summary };
+    }).filter((item) => item.title && item.url);
+
+    return json({ items, updatedAt: new Date().toISOString() });
+  } catch (error) {
+    return json({ items: [], error: "News unavailable" }, 200);
+  }
+}
+
 async function handleAnalytics(request, env) {
   if (request.method === "OPTIONS") return json({ ok: true });
 
@@ -81,6 +132,10 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/api/analytics") {
       return handleAnalytics(request, env);
+    }
+
+    if (url.pathname === "/api/news") {
+      return handleNews(request);
     }
 
     return env.ASSETS.fetch(request);
