@@ -120,18 +120,17 @@ async function smtpCommand(writer, reader, decoder, command, expectedCodes) {
 function buildInquiryEmail(env, inquiry) {
   const to = env.REPORT_RECEIVER_EMAIL || "sijunhe567@gmail.com";
   const from = env.SMTP_USER;
-  const subject = `=?UTF-8?B?${base64Utf8(`Apex Moto Supply 询盘 - ${inquiry.name}`)}?=`;
+  const subject = `=?UTF-8?B?${base64Utf8(`Apex Moto Supply Inquiry - ${inquiry.name}`)}?=`;
   const body = [
-    "Apex Moto Supply 新询盘",
+    "Apex Moto Supply New Inquiry",
     "",
-    `姓名: ${inquiry.name}`,
-    `邮箱: ${inquiry.email}`,
-    `车型: ${inquiry.model || "-"}`,
-    `数量: ${inquiry.quantity || "-"}`,
-    `来源: ${inquiry.sourceUrl || "-"}`,
-    `提交时间: ${inquiry.createdAt}`,
+    `Name: ${inquiry.name}`,
+    `Email: ${inquiry.email}`,
+    `Model: ${inquiry.model || "-"}`,
+    `Quantity: ${inquiry.quantity || "-"}`,
+    `Submitted at: ${inquiry.createdAt}`,
     "",
-    "留言:",
+    "Requirements:",
     inquiry.message || "-"
   ].join("\r\n");
 
@@ -258,8 +257,8 @@ async function handleAnalytics(request, env) {
       new Date().toISOString(),
       ip,
       country,
-      String(body.path || "/").slice(0, 300),
-      String(body.title || "").slice(0, 200),
+      "/",
+      "Apex Moto Supply",
       String(body.referrer || request.headers.get("Referer") || "").slice(0, 500),
       String(request.headers.get("User-Agent") || "").slice(0, 500),
       String(body.language || "").slice(0, 80),

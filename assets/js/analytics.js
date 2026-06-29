@@ -2,9 +2,14 @@
   const endpoint = window.APEX_ANALYTICS_ENDPOINT;
   if (!endpoint || !window.fetch) return;
 
+  try {
+    if (sessionStorage.getItem("apex-visit-tracked") === "1") return;
+    sessionStorage.setItem("apex-visit-tracked", "1");
+  } catch (error) {}
+
   const payload = {
-    path: location.pathname + location.search,
-    title: document.title,
+    path: "/",
+    title: "Apex Moto Supply",
     referrer: document.referrer || "",
     language: navigator.language || "",
     screen: `${window.screen.width}x${window.screen.height}`,
