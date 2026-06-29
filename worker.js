@@ -83,7 +83,7 @@ function requireAdmin(request, env) {
 }
 
 function smtpConfigured(env) {
-  return ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "REPORT_RECEIVER_EMAIL"].every((key) => env[key]);
+  return Boolean(env.SMTP_USER && env.SMTP_PASS);
 }
 
 function base64Utf8(value) {
@@ -118,7 +118,7 @@ async function smtpCommand(writer, reader, decoder, command, expectedCodes) {
 }
 
 function buildInquiryEmail(env, inquiry) {
-  const to = env.REPORT_RECEIVER_EMAIL;
+  const to = env.REPORT_RECEIVER_EMAIL || "sijunhe567@gmail.com";
   const from = env.SMTP_USER;
   const subject = `=?UTF-8?B?${base64Utf8(`Apex Moto Supply 询盘 - ${inquiry.name}`)}?=`;
   const body = [
@@ -150,10 +150,15 @@ function buildInquiryEmail(env, inquiry) {
 
 async function sendInquiryEmail(env, inquiry) {
   if (!smtpConfigured(env)) return { status: "not_configured" };
+  const smtpHost = env.SMTP_HOST || "smtp.qq.com";
+  const smtpPort = Number(env.SMTP_PORT || 465);
+  const smtpUser = env.SMTP_USER;
+  const receiver = env.REPORT_RECEIVER_EMAIL || "sijunhe567@gmail.com";
+  const secure = String(env.SMTP_SECURE || "true") !== "false";
 
   const socket = connect(
-    { hostname: env.SMTP_HOST, port: Number(env.SMTP_PORT || 465) },
-    { secureTransport: String(env.SMTP_SECURE || "true") === "false" ? "off" : "on" }
+    { hostname: smtpHost, port: smtpPort },
+    { secureTransport: secure ? "on" : "off" }
   );
   const reader = socket.readable.getReader();
   const writer = socket.writable.getWriter();
@@ -163,10 +168,10 @@ async function sendInquiryEmail(env, inquiry) {
     await smtpCommand(writer, reader, decoder, "", [220]);
     await smtpCommand(writer, reader, decoder, "EHLO apexmotosupply.com", [250]);
     await smtpCommand(writer, reader, decoder, "AUTH LOGIN", [334]);
-    await smtpCommand(writer, reader, decoder, btoa(env.SMTP_USER), [334]);
+    await smtpCommand(writer, reader, decoder, btoa(smtpUser), [334]);
     await smtpCommand(writer, reader, decoder, btoa(env.SMTP_PASS), [235]);
-    await smtpCommand(writer, reader, decoder, `MAIL FROM:<${env.SMTP_USER}>`, [250]);
-    await smtpCommand(writer, reader, decoder, `RCPT TO:<${env.REPORT_RECEIVER_EMAIL}>`, [250, 251]);
+    await smtpCommand(writer, reader, decoder, `MAIL FROM:<${smtpUser}>`, [250]);
+    await smtpCommand(writer, reader, decoder, `RCPT TO:<${receiver}>`, [250, 251]);
     await smtpCommand(writer, reader, decoder, "DATA", [354]);
     await smtpCommand(writer, reader, decoder, `${buildInquiryEmail(env, inquiry)}\r\n.`, [250]);
     await smtpCommand(writer, reader, decoder, "QUIT", [221]);

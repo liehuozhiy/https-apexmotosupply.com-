@@ -541,7 +541,7 @@ if (form) {
     if (inquiryResult.ok) {
       const mailSent = inquiryResult.emailStatus === "sent";
       alert(currentLang === "zh"
-        ? `询盘已提交，表单已下载。${mailSent ? "邮件已发送成功。" : "邮件发送状态请在后台查看。"}`
+        ? (mailSent ? "询盘表单已提交并下载，邮件已发送成功，请等待回复。" : "询盘表单已提交并下载，但邮件未发送成功，请检查后台 SMTP 配置。")
         : `Inquiry submitted and the form was downloaded. ${mailSent ? "Email sent successfully." : "Check the admin page for email status."}`);
     } else {
       alert(currentLang === "zh"
