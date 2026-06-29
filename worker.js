@@ -83,7 +83,7 @@ function requireAdmin(request, env) {
 }
 
 function smtpConfigured(env) {
-  return Boolean(env.SMTP_USER && env.SMTP_PASS);
+  return Boolean(String(env.SMTP_USER || "").trim() && String(env.SMTP_PASS || "").trim());
 }
 
 function base64Utf8(value) {
@@ -135,9 +135,11 @@ function buildInquiryEmail(env, inquiry) {
   ].join("\r\n");
 
   return [
-    `From: ${from}`,
+    `From: Apex Moto Supply <${from}>`,
     `To: ${to}`,
     `Subject: ${subject}`,
+    `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <${Date.now()}.${Math.random().toString(36).slice(2)}@apexmotosupply.com>`,
     "MIME-Version: 1.0",
     "Content-Type: text/plain; charset=utf-8",
     "Content-Transfer-Encoding: 8bit",
@@ -148,10 +150,10 @@ function buildInquiryEmail(env, inquiry) {
 }
 
 async function sendInquiryEmail(env, inquiry) {
-  if (!smtpConfigured(env)) return { status: "not_configured" };
-  const smtpHost = env.SMTP_HOST || "smtp.qq.com";
+  if (!smtpConfigured(env)) return { status: "not_configured", error: smtpStatus(env).missing.join(", ") };
+  const smtpHost = String(env.SMTP_HOST || "smtp.qq.com").trim();
   const smtpPort = Number(env.SMTP_PORT || 465);
-  const smtpUser = env.SMTP_USER;
+  const smtpUser = String(env.SMTP_USER || "").trim();
   const receiver = env.REPORT_RECEIVER_EMAIL || "sijunhe567@gmail.com";
   const secure = String(env.SMTP_SECURE || "true") !== "false";
 
@@ -168,7 +170,7 @@ async function sendInquiryEmail(env, inquiry) {
     await smtpCommand(writer, reader, decoder, "EHLO apexmotosupply.com", [250]);
     await smtpCommand(writer, reader, decoder, "AUTH LOGIN", [334]);
     await smtpCommand(writer, reader, decoder, btoa(smtpUser), [334]);
-    await smtpCommand(writer, reader, decoder, btoa(env.SMTP_PASS), [235]);
+    await smtpCommand(writer, reader, decoder, btoa(String(env.SMTP_PASS || "").trim()), [235]);
     await smtpCommand(writer, reader, decoder, `MAIL FROM:<${smtpUser}>`, [250]);
     await smtpCommand(writer, reader, decoder, `RCPT TO:<${receiver}>`, [250, 251]);
     await smtpCommand(writer, reader, decoder, "DATA", [354]);
@@ -183,6 +185,21 @@ async function sendInquiryEmail(env, inquiry) {
     try { reader.releaseLock(); } catch (error) {}
     try { socket.close(); } catch (error) {}
   }
+}
+
+function smtpStatus(env) {
+  const required = ["SMTP_USER", "SMTP_PASS"];
+  const missing = required.filter((key) => !String(env[key] || "").trim());
+  return {
+    configured: missing.length === 0,
+    missing,
+    host: String(env.SMTP_HOST || "smtp.qq.com").trim(),
+    port: String(env.SMTP_PORT || "465").trim(),
+    secure: String(env.SMTP_SECURE || "true").trim(),
+    userConfigured: Boolean(String(env.SMTP_USER || "").trim()),
+    passConfigured: Boolean(String(env.SMTP_PASS || "").trim()),
+    receiver: String(env.REPORT_RECEIVER_EMAIL || "sijunhe567@gmail.com").trim()
+  };
 }
 
 function decodeXml(text) {
@@ -453,6 +470,12 @@ export default {
 
     if (url.pathname === "/api/inquiries" || url.pathname.startsWith("/api/inquiries/")) {
       return handleInquiries(request, env);
+    }
+
+    if (url.pathname === "/api/smtp-status") {
+      const auth = requireAdmin(request, env);
+      if (auth.error) return auth.error;
+      return json(smtpStatus(env));
     }
 
     if (url.pathname === "/api/news") {

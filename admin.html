@@ -60,6 +60,7 @@
           <label>&#x7ba1;&#x7406; Key<input data-key type="password" placeholder="Cloudflare ADMIN_KEY"></label>
           <button type="button" data-load>&#x52a0;&#x8f7d;&#x6570;&#x636e;</button>
           <p class="status" data-status>&#x8f93;&#x5165;&#x7ba1;&#x7406; Key &#x540e;&#x52a0;&#x8f7d;&#x7edf;&#x8ba1;&#x6216;&#x8be2;&#x76d8;&#x3002;</p>
+          <p class="status" data-smtp-status></p>
         </div>
       </div>
       <section class="stats">
@@ -73,8 +74,8 @@
         <div class="country-tags" data-country-tags></div>
       </div>
       <table>
-        <thead><tr><th>&#x65f6;&#x95f4;</th><th>IP</th><th>&#x56fd;&#x5bb6;/&#x5730;&#x533a;</th></tr></thead>
-        <tbody data-rows><tr><td colspan="3" class="muted">&#x6682;&#x65e0;&#x6570;&#x636e;</td></tr></tbody>
+        <thead><tr><th>&#x65f6;&#x95f4;</th><th>IP</th><th>&#x56fd;&#x5bb6;/&#x5730;&#x533a;</th><th>&#x64cd;&#x4f5c;&#x7cfb;&#x7edf;</th><th>&#x8bbe;&#x5907;</th></tr></thead>
+        <tbody data-rows><tr><td colspan="5" class="muted">&#x6682;&#x65e0;&#x6570;&#x636e;</td></tr></tbody>
       </table>
       <div class="pager">
         <button type="button" data-visits-prev>&#x4e0a;&#x4e00;&#x9875;</button>
@@ -103,6 +104,7 @@
       const endpointInput = document.querySelector("[data-endpoint]");
       const keyInput = document.querySelector("[data-key]");
       const statusNode = document.querySelector("[data-status]");
+      const smtpStatusNode = document.querySelector("[data-smtp-status]");
       const rows = document.querySelector("[data-rows]");
       const inquiryRows = document.querySelector("[data-inquiry-rows]");
       const inquiryDetail = document.querySelector("[data-inquiry-detail]");
@@ -158,6 +160,26 @@
         try { return regionNames ? regionNames.of(code) || code : code; }
         catch (error) { return code; }
       }
+      function deviceInfo(userAgent) {
+        const ua = String(userAgent || "");
+        const os = /Windows NT 10/i.test(ua) ? "Windows 10/11"
+          : /Windows NT 6\.3/i.test(ua) ? "Windows 8.1"
+          : /Windows NT 6\.2/i.test(ua) ? "Windows 8"
+          : /Windows NT 6\.1/i.test(ua) ? "Windows 7"
+          : /Android/i.test(ua) ? "Android"
+          : /iPhone|iPad|iPod/i.test(ua) ? "iOS"
+          : /Mac OS X/i.test(ua) ? "macOS"
+          : /Linux/i.test(ua) ? "Linux"
+          : "\u672a\u77e5";
+        const device = /iPad/i.test(ua) ? "iPad"
+          : /iPhone/i.test(ua) ? "iPhone"
+          : /Android.+Mobile/i.test(ua) ? "Android \u624b\u673a"
+          : /Android/i.test(ua) ? "Android \u5e73\u677f"
+          : /Mobile/i.test(ua) ? "\u624b\u673a"
+          : /Tablet/i.test(ua) ? "\u5e73\u677f"
+          : "\u7535\u8111";
+        return { os, device };
+      }
       function makeCell(value, className) {
         const td = document.createElement("td");
         if (className) td.className = className;
@@ -196,13 +218,14 @@
         rows.textContent = "";
         (data.visits || []).forEach((visit) => {
           const tr = document.createElement("tr");
-          tr.append(makeCell(visit.createdAt ? new Date(visit.createdAt).toLocaleString() : "-"), makeCell(visit.ip), makeCell(countryName(visit.country)));
+          const info = deviceInfo(visit.userAgent);
+          tr.append(makeCell(visit.createdAt ? new Date(visit.createdAt).toLocaleString() : "-"), makeCell(visit.ip), makeCell(countryName(visit.country)), makeCell(info.os), makeCell(info.device));
           rows.appendChild(tr);
         });
         if (!rows.children.length) {
           const tr = document.createElement("tr");
           const td = makeCell(labels.noData, "muted");
-          td.colSpan = 3;
+          td.colSpan = 5;
           tr.appendChild(td);
           rows.appendChild(tr);
         }
@@ -219,6 +242,17 @@
         if (!response.ok) throw new Error(await errorText(response));
         renderAnalytics(await response.json());
         statusNode.textContent = labels.updated;
+        await loadSmtpStatus();
+      }
+      async function loadSmtpStatus() {
+        const key = keyInput.value.trim();
+        if (!key) return;
+        const response = await fetch("/api/smtp-status", { headers: { "x-admin-key": key } });
+        if (!response.ok) return;
+        const data = await response.json();
+        smtpStatusNode.textContent = data.configured
+          ? `SMTP \u5df2\u914d\u7f6e\uff1a${data.host}:${data.port}\uff0c\u6536\u4ef6\u4eba ${data.receiver}`
+          : `SMTP \u672a\u914d\u7f6e\uff0c\u7f3a\u5c11\uff1a${(data.missing || []).join(", ")}`;
       }
       function renderInquiries(inquiries) {
         inquiryRows.textContent = "";
@@ -311,6 +345,7 @@
       document.querySelector("[data-inquiries-prev]").addEventListener("click", async () => { if (inquiriesPage <= 1) return; inquiriesPage -= 1; try { await loadInquiries(); } catch (error) { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; } });
       document.querySelector("[data-inquiries-next]").addEventListener("click", async () => { if (!inquiriesHasNext) return; inquiriesPage += 1; try { await loadInquiries(); } catch (error) { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; } });
       if (keyInput.value.trim()) {
+        loadSmtpStatus().catch(() => {});
         loadInquiries().catch((error) => { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; });
       }
     </script>

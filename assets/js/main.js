@@ -541,11 +541,11 @@ if (form) {
     if (inquiryResult.ok) {
       const mailSent = inquiryResult.emailStatus === "sent";
       alert(currentLang === "zh"
-        ? (mailSent ? "询盘表单已提交并下载，邮件已发送成功，请等待回复。" : "询盘表单已提交并下载，但邮件未发送成功，请检查后台 SMTP 配置。")
+        ? (mailSent ? "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u90ae\u4ef6\u5df2\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u7b49\u5f85\u56de\u590d\u3002" : "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u4f46\u90ae\u4ef6\u672a\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u68c0\u67e5\u540e\u53f0 SMTP \u914d\u7f6e\u3002")
         : `Inquiry submitted and the form was downloaded. ${mailSent ? "Email sent successfully." : "Check the admin page for email status."}`);
     } else {
       alert(currentLang === "zh"
-        ? "表单已下载，但后台保存失败，请稍后重试或直接联系邮箱。"
+        ? "\u8868\u5355\u5df2\u4e0b\u8f7d\uff0c\u4f46\u540e\u53f0\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u6216\u76f4\u63a5\u8054\u7cfb\u90ae\u7bb1\u3002"
         : "The form was downloaded, but backend saving failed. Please try again later or contact us by email.");
     }
   });
