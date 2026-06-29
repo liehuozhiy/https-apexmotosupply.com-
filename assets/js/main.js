@@ -367,10 +367,10 @@ async function saveInquiry(fields = {}) {
       })
     });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return true;
+    return await response.json();
   } catch (error) {
     console.error("Inquiry save failed", error);
-    return false;
+    return { ok: false, error: error.message };
   }
 }
 
@@ -536,7 +536,17 @@ if (form) {
       alert(currentLang === "zh" ? "\u8bf7\u586b\u5199\u59d3\u540d\u548c\u6709\u6548\u90ae\u7bb1\u3002" : "Please enter name and a valid email.");
       return;
     }
-    await saveInquiry(fields);
-    createInquirySheet(fields);
+    const inquiryResult = await saveInquiry(fields);
+    await createInquirySheet(fields);
+    if (inquiryResult.ok) {
+      const mailSent = inquiryResult.emailStatus === "sent";
+      alert(currentLang === "zh"
+        ? `询盘已提交，表单已下载。${mailSent ? "邮件已发送成功。" : "邮件发送状态请在后台查看。"}`
+        : `Inquiry submitted and the form was downloaded. ${mailSent ? "Email sent successfully." : "Check the admin page for email status."}`);
+    } else {
+      alert(currentLang === "zh"
+        ? "表单已下载，但后台保存失败，请稍后重试或直接联系邮箱。"
+        : "The form was downloaded, but backend saving failed. Please try again later or contact us by email.");
+    }
   });
 }

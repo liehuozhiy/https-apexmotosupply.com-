@@ -1,3 +1,5 @@
+import { connect } from "cloudflare:sockets";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS",
@@ -33,6 +35,44 @@ function requestIp(request) {
   return request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
 }
 
+async function ensureSchema(env) {
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS site_visits (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      created_at TEXT NOT NULL,
+      ip TEXT,
+      country TEXT,
+      path TEXT,
+      title TEXT,
+      referrer TEXT,
+      user_agent TEXT,
+      language TEXT,
+      screen TEXT,
+      timezone TEXT
+    )
+  `).run();
+  await env.DB.prepare(`
+    CREATE TABLE IF NOT EXISTS inquiries (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      model TEXT,
+      quantity TEXT,
+      message TEXT NOT NULL,
+      source_url TEXT,
+      status TEXT NOT NULL DEFAULT 'unread',
+      ip TEXT,
+      user_agent TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    )
+  `).run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_site_visits_created_at ON site_visits (created_at)").run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_site_visits_country ON site_visits (country)").run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON inquiries (created_at)").run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_inquiries_status ON inquiries (status)").run();
+}
+
 function requireAdmin(request, env) {
   const adminKey = env.ADMIN_KEY || "ht2026admin";
 
@@ -40,6 +80,105 @@ function requireAdmin(request, env) {
   if (inputKey !== adminKey) return { error: json({ error: "Unauthorized" }, 401) };
 
   return { ok: true };
+}
+
+function smtpConfigured(env) {
+  return ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "REPORT_RECEIVER_EMAIL"].every((key) => env[key]);
+}
+
+function base64Utf8(value) {
+  const bytes = new TextEncoder().encode(String(value || ""));
+  let binary = "";
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+
+async function readSmtpResponse(reader, decoder) {
+  let response = "";
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    response += decoder.decode(value);
+    const lines = response.split(/\r?\n/).filter(Boolean);
+    const last = lines[lines.length - 1] || "";
+    if (/^\d{3}\s/.test(last)) return { code: Number(last.slice(0, 3)), text: response };
+  }
+  return { code: 0, text: response };
+}
+
+async function smtpCommand(writer, reader, decoder, command, expectedCodes) {
+  if (command) await writer.write(new TextEncoder().encode(`${command}\r\n`));
+  const response = await readSmtpResponse(reader, decoder);
+  if (!expectedCodes.includes(response.code)) {
+    throw new Error(`SMTP ${response.code}: ${response.text.slice(0, 160)}`);
+  }
+  return response;
+}
+
+function buildInquiryEmail(env, inquiry) {
+  const to = env.REPORT_RECEIVER_EMAIL;
+  const from = env.SMTP_USER;
+  const subject = `=?UTF-8?B?${base64Utf8(`Apex Moto Supply 询盘 - ${inquiry.name}`)}?=`;
+  const body = [
+    "Apex Moto Supply 新询盘",
+    "",
+    `姓名: ${inquiry.name}`,
+    `邮箱: ${inquiry.email}`,
+    `车型: ${inquiry.model || "-"}`,
+    `数量: ${inquiry.quantity || "-"}`,
+    `来源: ${inquiry.sourceUrl || "-"}`,
+    `提交时间: ${inquiry.createdAt}`,
+    "",
+    "留言:",
+    inquiry.message || "-"
+  ].join("\r\n");
+
+  return [
+    `From: ${from}`,
+    `To: ${to}`,
+    `Subject: ${subject}`,
+    "MIME-Version: 1.0",
+    "Content-Type: text/plain; charset=utf-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    body,
+    ""
+  ].join("\r\n");
+}
+
+async function sendInquiryEmail(env, inquiry) {
+  if (!smtpConfigured(env)) return { status: "not_configured" };
+
+  const socket = connect(
+    { hostname: env.SMTP_HOST, port: Number(env.SMTP_PORT || 465) },
+    { secureTransport: String(env.SMTP_SECURE || "true") === "false" ? "off" : "on" }
+  );
+  const reader = socket.readable.getReader();
+  const writer = socket.writable.getWriter();
+  const decoder = new TextDecoder();
+
+  try {
+    await smtpCommand(writer, reader, decoder, "", [220]);
+    await smtpCommand(writer, reader, decoder, "EHLO apexmotosupply.com", [250]);
+    await smtpCommand(writer, reader, decoder, "AUTH LOGIN", [334]);
+    await smtpCommand(writer, reader, decoder, btoa(env.SMTP_USER), [334]);
+    await smtpCommand(writer, reader, decoder, btoa(env.SMTP_PASS), [235]);
+    await smtpCommand(writer, reader, decoder, `MAIL FROM:<${env.SMTP_USER}>`, [250]);
+    await smtpCommand(writer, reader, decoder, `RCPT TO:<${env.REPORT_RECEIVER_EMAIL}>`, [250, 251]);
+    await smtpCommand(writer, reader, decoder, "DATA", [354]);
+    await smtpCommand(writer, reader, decoder, `${buildInquiryEmail(env, inquiry)}\r\n.`, [250]);
+    await smtpCommand(writer, reader, decoder, "QUIT", [221]);
+    return { status: "sent" };
+  } catch (error) {
+    console.error("Inquiry email failed", error);
+    return { status: "failed", error: error.message };
+  } finally {
+    try { writer.releaseLock(); } catch (error) {}
+    try { reader.releaseLock(); } catch (error) {}
+    try { socket.close(); } catch (error) {}
+  }
 }
 
 function decodeXml(text) {
@@ -99,6 +238,7 @@ async function handleAnalytics(request, env) {
   if (!env.DB) {
     return json({ error: "D1 binding DB is missing" }, 500);
   }
+  await ensureSchema(env);
 
   if (request.method === "POST") {
     const body = await request.json().catch(() => ({}));
@@ -132,16 +272,30 @@ async function handleAnalytics(request, env) {
     return json({ error: "Unauthorized" }, 401);
   }
 
+  const url = new URL(request.url);
+  const country = cleanText(url.searchParams.get("country"), 80);
+  const page = Math.max(1, Number(url.searchParams.get("page") || 1));
+  const limit = 20;
+  const offset = (page - 1) * limit;
+  const where = country ? "WHERE country = ?" : "";
+
   const total = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits").first();
+  const filteredTotal = country
+    ? await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE country = ?").bind(country).first()
+    : await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits").first();
   const today = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE created_at >= ?").bind(todayPrefix()).first();
   const uniqueIps = await env.DB.prepare("SELECT COUNT(DISTINCT ip) AS count FROM site_visits WHERE ip != ''").first();
   const countryRows = await env.DB.prepare("SELECT country, COUNT(*) AS count FROM site_visits GROUP BY country ORDER BY count DESC").all();
-  const visits = await env.DB.prepare(`
+  const visitsQuery = env.DB.prepare(`
     SELECT created_at AS createdAt, ip, country, path, user_agent AS userAgent
     FROM site_visits
+    ${where}
     ORDER BY created_at DESC
-    LIMIT 200
-  `).all();
+    LIMIT ? OFFSET ?
+  `);
+  const visits = country
+    ? await visitsQuery.bind(country, limit, offset).all()
+    : await visitsQuery.bind(limit, offset).all();
 
   const countries = {};
   (countryRows.results || []).forEach((row) => {
@@ -153,13 +307,18 @@ async function handleAnalytics(request, env) {
     today: today?.count || 0,
     uniqueIps: uniqueIps?.count || 0,
     countries,
-    visits: visits.results || []
+    visits: visits.results || [],
+    page,
+    pageSize: limit,
+    filteredTotal: filteredTotal?.count || 0,
+    selectedCountry: country
   });
 }
 
 async function handleInquiries(request, env) {
   if (request.method === "OPTIONS") return json({ ok: true });
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  await ensureSchema(env);
 
   const url = new URL(request.url);
   const idMatch = url.pathname.match(/^\/api\/inquiries\/(\d+)$/);
@@ -190,6 +349,15 @@ async function handleInquiries(request, env) {
     if ((recent?.count || 0) >= 5) return json({ error: "Too many submissions. Please try later." }, 429);
 
     const createdAt = nowIso();
+    const inquiry = {
+      name,
+      email,
+      model,
+      quantity,
+      message,
+      sourceUrl,
+      createdAt
+    };
     const result = await env.DB.prepare(`
       INSERT INTO inquiries
         (name, email, model, quantity, message, source_url, status, ip, user_agent, created_at, updated_at)
@@ -206,27 +374,35 @@ async function handleInquiries(request, env) {
       createdAt,
       createdAt
     ).run();
+    const emailResult = await sendInquiryEmail(env, inquiry);
 
-    return json({ ok: true, id: result.meta?.last_row_id });
+    return json({ ok: true, id: result.meta?.last_row_id, emailStatus: emailResult.status, emailError: emailResult.error || "" });
   }
 
   const auth = requireAdmin(request, env);
   if (auth.error) return auth.error;
 
   if (request.method === "GET" && !idMatch) {
+    const page = Math.max(1, Number(url.searchParams.get("page") || 1));
+    const limit = 20;
+    const offset = (page - 1) * limit;
+    const total = await env.DB.prepare("SELECT COUNT(*) AS count FROM inquiries").first();
     const rows = await env.DB.prepare(`
       SELECT id, name, email, model, quantity, message, source_url AS sourceUrl,
              status, created_at AS createdAt, updated_at AS updatedAt
       FROM inquiries
       ORDER BY created_at DESC
-      LIMIT 300
-    `).all();
+      LIMIT ? OFFSET ?
+    `).bind(limit, offset).all();
 
     return json({
       inquiries: (rows.results || []).map((row) => ({
         ...row,
         summary: cleanText(row.message, 120)
-      }))
+      })),
+      page,
+      pageSize: limit,
+      total: total?.count || 0
     });
   }
 

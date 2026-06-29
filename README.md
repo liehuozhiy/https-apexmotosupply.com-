@@ -34,6 +34,15 @@ This static site has been updated from the supplied `2026H&T产品参数（英�
 
 The inquiry form generates an Excel report in the browser and also posts the same inquiry fields to `/api/inquiries` for backend management. The contact area also lists WhatsApp `+8618384234234`.
 
+When SMTP environment variables are configured, each saved inquiry also sends an email notification to `REPORT_RECEIVER_EMAIL`. SMTP credentials must be configured in Cloudflare environment variables, not committed to the repository:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `SMTP_SECURE`
+- `REPORT_RECEIVER_EMAIL`
+
 ## Analytics
 
 The site includes a Cloudflare Worker backend and an `admin.html` dashboard for analytics and inquiry management.

@@ -1,140 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>网站后台 | Apex Moto Supply</title>
+    <title>???? | Apex Moto Supply</title>
     <style>
-      :root {
-        --ink: #101316;
-        --muted: #65707b;
-        --line: #dde1e6;
-        --soft: #f5f7f9;
-        --accent: #d72b1f;
-      }
-
+      :root { --ink: #101316; --muted: #65707b; --line: #dde1e6; --soft: #f5f7f9; --accent: #d72b1f; }
       * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        color: var(--ink);
-        background: var(--soft);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      main {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 40px 22px 70px;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: clamp(34px, 5vw, 56px);
-        line-height: 1;
-      }
-
-      .top {
-        display: grid;
-        grid-template-columns: 1fr minmax(320px, 460px);
-        gap: 22px;
-        align-items: end;
-        margin-bottom: 24px;
-      }
-
-      .panel,
-      .stat,
-      table {
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: 0 14px 42px rgba(16, 19, 22, 0.06);
-      }
-
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { max-width: 1180px; margin: 0 auto; padding: 40px 22px 70px; }
+      h1 { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1; }
+      .top { display: grid; grid-template-columns: 1fr minmax(320px, 460px); gap: 22px; align-items: end; margin-bottom: 24px; }
+      .panel, .stat, table { background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 14px 42px rgba(16, 19, 22, 0.06); }
       .panel { padding: 18px; }
-
-      label {
-        display: grid;
-        gap: 6px;
-        margin-bottom: 12px;
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      input {
-        width: 100%;
-        height: 42px;
-        padding: 0 12px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        font: inherit;
-      }
-
-      button {
-        width: 100%;
-        min-height: 44px;
-        border: 0;
-        border-radius: 6px;
-        color: #fff;
-        background: var(--accent);
-        cursor: pointer;
-        font: inherit;
-        font-weight: 900;
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-        margin-bottom: 18px;
-      }
-
+      label { display: grid; gap: 6px; margin-bottom: 12px; font-size: 13px; font-weight: 800; }
+      input, select { width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; }
+      button { min-height: 40px; border: 0; border-radius: 6px; color: #fff; background: var(--accent); cursor: pointer; font: inherit; font-weight: 900; }
+      .panel button, .section-head button { width: 100%; min-height: 44px; }
+      .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
       .stat { padding: 18px; }
-
-      .stat span {
-        display: block;
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .stat strong {
-        display: block;
-        margin-top: 8px;
-        font-size: 34px;
-        line-height: 1;
-      }
-
-      table {
-        width: 100%;
-        overflow: hidden;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 12px 14px;
-        border-bottom: 1px solid var(--line);
-        text-align: left;
-        font-size: 13px;
-      }
-
-      th {
-        background: #f0f2f5;
-        color: var(--muted);
-        font-size: 12px;
-        text-transform: uppercase;
-      }
-
+      .stat span { display: block; color: var(--muted); font-size: 13px; }
+      .stat strong { display: block; margin-top: 8px; font-size: 34px; line-height: 1; }
+      table { width: 100%; overflow: hidden; border-collapse: collapse; }
+      th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; font-size: 13px; vertical-align: top; }
+      th { background: #f0f2f5; color: var(--muted); font-size: 12px; text-transform: uppercase; }
       tr:last-child td { border-bottom: 0; }
-
       .muted { color: var(--muted); }
       .status { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
-      .admin-section { margin-top: 28px; }
+      .toolbar { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: 14px; align-items: end; margin: 16px 0; }
+      .pager { display: flex; gap: 8px; align-items: center; margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+      .pager button, .actions button { width: auto; min-height: 34px; padding: 0 10px; font-size: 12px; }
+      .admin-section { margin-top: 34px; }
       .section-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 14px; }
       .section-head h2 { margin: 0; font-size: 26px; }
       .section-head button { width: auto; padding: 0 18px; }
       .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-      .actions button { width: auto; min-height: 34px; padding: 0 10px; font-size: 12px; }
       .detail { margin-top: 16px; padding: 18px; }
       .detail h3 { margin: 0 0 10px; }
       .detail dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 14px; margin: 0; }
@@ -142,78 +42,61 @@
       .detail dd { margin: 0; word-break: break-word; }
       .detail pre { white-space: pre-wrap; margin: 0; font: inherit; }
       .pill { display: inline-flex; padding: 4px 8px; border-radius: 999px; background: #f0f2f5; font-size: 12px; font-weight: 900; }
-
-      @media (max-width: 820px) {
-        .top,
-        .stats { grid-template-columns: 1fr; }
-        .detail dl { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 820px) { .top, .stats, .toolbar { grid-template-columns: 1fr; } .detail dl { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
     <main>
       <div class="top">
         <div>
-          <p class="muted">后台数据</p>
-          <h1>网站访问统计</h1>
+          <p class="muted">????</p>
+          <h1>??????</h1>
         </div>
         <div class="panel">
-          <label>接口地址
-            <input data-endpoint value="/api/analytics">
-          </label>
-          <label>管理 Key
-            <input data-key type="password" placeholder="Cloudflare ADMIN_KEY">
-          </label>
-          <button type="button" data-load>加载数据</button>
-          <p class="status" data-status>输入管理 Key 后加载统计或询盘。</p>
+          <label>???? <input data-endpoint value="/api/analytics"></label>
+          <label>?? Key <input data-key type="password" placeholder="Cloudflare ADMIN_KEY"></label>
+          <button type="button" data-load>????</button>
+          <p class="status" data-status>???? Key ?????????</p>
         </div>
       </div>
 
       <section class="stats">
-        <div class="stat"><span>总访问量</span><strong data-total>0</strong></div>
-        <div class="stat"><span>今日访问</span><strong data-today>0</strong></div>
-        <div class="stat"><span>独立 IP</span><strong data-ips>0</strong></div>
-        <div class="stat"><span>国家/地区</span><strong data-countries>0</strong></div>
+        <div class="stat"><span>????</span><strong data-total>0</strong></div>
+        <div class="stat"><span>????</span><strong data-today>0</strong></div>
+        <div class="stat"><span>?? IP</span><strong data-ips>0</strong></div>
+        <div class="stat"><span>??/??</span><strong data-countries>0</strong></div>
       </section>
 
+      <div class="toolbar">
+        <label>???/????
+          <select data-country-filter><option value="">????/??</option></select>
+        </label>
+      </div>
+
       <table>
-        <thead>
-          <tr>
-            <th>时间</th>
-            <th>IP</th>
-            <th>国家/地区</th>
-            <th>页面</th>
-            <th>设备</th>
-          </tr>
-        </thead>
-        <tbody data-rows>
-          <tr><td colspan="5" class="muted">暂无数据</td></tr>
-        </tbody>
+        <thead><tr><th>??</th><th>IP</th><th>??/??</th><th>??</th><th>??</th></tr></thead>
+        <tbody data-rows><tr><td colspan="5" class="muted">????</td></tr></tbody>
       </table>
+      <div class="pager">
+        <button type="button" data-visits-prev>???</button>
+        <span data-visits-page>? 1 ?</span>
+        <button type="button" data-visits-next>???</button>
+      </div>
 
       <section class="admin-section">
         <div class="section-head">
-          <h2>询盘管理</h2>
-          <button type="button" data-load-inquiries>加载询盘</button>
+          <h2>????</h2>
+          <button type="button" data-load-inquiries>????</button>
         </div>
         <table>
-          <thead>
-            <tr>
-              <th>姓名</th>
-              <th>邮箱</th>
-              <th>车型</th>
-              <th>数量</th>
-              <th>摘要</th>
-              <th>来源</th>
-              <th>时间</th>
-              <th>状态</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody data-inquiry-rows>
-            <tr><td colspan="9" class="muted">暂无询盘</td></tr>
-          </tbody>
+          <thead><tr><th>??</th><th>??</th><th>??</th><th>??</th><th>??</th><th>??</th><th>??</th><th>??</th><th>??</th></tr></thead>
+          <tbody data-inquiry-rows><tr><td colspan="9" class="muted">????</td></tr></tbody>
         </table>
+        <div class="pager">
+          <button type="button" data-inquiries-prev>???</button>
+          <span data-inquiries-page>? 1 ?</span>
+          <button type="button" data-inquiries-next>???</button>
+        </div>
         <div class="panel detail" data-inquiry-detail hidden></div>
       </section>
     </main>
@@ -226,52 +109,24 @@
       const rows = document.querySelector("[data-rows]");
       const inquiryRows = document.querySelector("[data-inquiry-rows]");
       const inquiryDetail = document.querySelector("[data-inquiry-detail]");
+      const countryFilter = document.querySelector("[data-country-filter]");
+      const visitsPageNode = document.querySelector("[data-visits-page]");
+      const inquiriesPageNode = document.querySelector("[data-inquiries-page]");
+      let visitsPage = 1;
+      let visitsHasNext = false;
+      let inquiriesPage = 1;
+      let inquiriesHasNext = false;
 
       endpointInput.value = window.APEX_ANALYTICS_ENDPOINT || "/api/analytics";
       keyInput.value = localStorage.getItem("apex-admin-key") || "";
 
-      function setText(selector, value) {
-        document.querySelector(selector).textContent = value;
-      }
-
+      function setText(selector, value) { document.querySelector(selector).textContent = value; }
+      function adminHeaders() { return { "x-admin-key": keyInput.value.trim() }; }
       async function errorText(response) {
-        try {
-          const data = await response.json();
-          return data.error || `HTTP ${response.status}`;
-        } catch (error) {
-          return `HTTP ${response.status}`;
-        }
+        try { const data = await response.json(); return data.error || `HTTP ${response.status}`; }
+        catch (error) { return `HTTP ${response.status}`; }
       }
-
-      function statusText(status) {
-        return {
-          unread: "未读",
-          read: "已读",
-          handled: "已处理"
-        }[status] || status || "-";
-      }
-
-      function render(data) {
-        setText("[data-total]", data.total || 0);
-        setText("[data-today]", data.today || 0);
-        setText("[data-ips]", data.uniqueIps || 0);
-        setText("[data-countries]", Object.keys(data.countries || {}).length);
-
-        rows.innerHTML = (data.visits || []).map((visit) => `
-          <tr>
-            <td>${new Date(visit.createdAt).toLocaleString()}</td>
-            <td>${visit.ip || "-"}</td>
-            <td>${visit.country || "-"}</td>
-            <td>${visit.path || "-"}</td>
-            <td>${visit.userAgent || "-"}</td>
-          </tr>
-        `).join("") || '<tr><td colspan="5" class="muted">暂无数据</td></tr>';
-      }
-
-      function adminHeaders() {
-        return { "x-admin-key": keyInput.value.trim() };
-      }
-
+      function statusText(status) { return { unread: "??", read: "??", handled: "???" }[status] || status || "-"; }
       function makeCell(value, className) {
         const td = document.createElement("td");
         if (className) td.className = className;
@@ -279,18 +134,69 @@
         return td;
       }
 
+      function renderCountries(countries, selectedCountry) {
+        const current = selectedCountry || countryFilter.value || "";
+        countryFilter.textContent = "";
+        const allOption = document.createElement("option");
+        allOption.value = "";
+        allOption.textContent = "????/??";
+        countryFilter.appendChild(allOption);
+        Object.entries(countries).forEach(([country, count]) => {
+          const option = document.createElement("option");
+          option.value = country;
+          option.textContent = `${country} (${count})`;
+          countryFilter.appendChild(option);
+        });
+        countryFilter.value = current;
+      }
+
+      function renderAnalytics(data) {
+        setText("[data-total]", data.total || 0);
+        setText("[data-today]", data.today || 0);
+        setText("[data-ips]", data.uniqueIps || 0);
+        setText("[data-countries]", Object.keys(data.countries || {}).length);
+        renderCountries(data.countries || {}, data.selectedCountry || "");
+        visitsHasNext = (data.page || 1) * (data.pageSize || 20) < (data.filteredTotal || 0);
+        visitsPageNode.textContent = `? ${data.page || 1} ? / ? ${data.filteredTotal || 0} ?`;
+        rows.textContent = "";
+        (data.visits || []).forEach((visit) => {
+          const tr = document.createElement("tr");
+          tr.append(
+            makeCell(visit.createdAt ? new Date(visit.createdAt).toLocaleString() : "-"),
+            makeCell(visit.ip),
+            makeCell(visit.country),
+            makeCell(visit.path),
+            makeCell(visit.userAgent)
+          );
+          rows.appendChild(tr);
+        });
+        if (!rows.children.length) {
+          const tr = document.createElement("tr");
+          const td = makeCell("????", "muted");
+          td.colSpan = 5;
+          tr.appendChild(td);
+          rows.appendChild(tr);
+        }
+      }
+
+      async function loadAnalytics() {
+        const endpoint = endpointInput.value.trim();
+        const key = keyInput.value.trim();
+        const url = new URL(endpoint, location.origin);
+        url.searchParams.set("page", String(visitsPage));
+        if (countryFilter.value) url.searchParams.set("country", countryFilter.value);
+        localStorage.setItem("apex-admin-key", key);
+        statusNode.textContent = "????...";
+        const response = await fetch(url.pathname + url.search, { headers: { "x-admin-key": key } });
+        if (!response.ok) throw new Error(await errorText(response));
+        const data = await response.json();
+        renderAnalytics(data);
+        statusNode.textContent = "????";
+      }
+
       function renderInquiries(inquiries) {
         inquiryRows.textContent = "";
-        if (!inquiries.length) {
-          const row = document.createElement("tr");
-          const empty = makeCell("暂无询盘", "muted");
-          empty.colSpan = 9;
-          row.appendChild(empty);
-          inquiryRows.appendChild(row);
-          return;
-        }
-
-        inquiries.forEach((inquiry) => {
+        (inquiries || []).forEach((inquiry) => {
           const row = document.createElement("tr");
           row.append(
             makeCell(inquiry.name),
@@ -301,22 +207,15 @@
             makeCell(inquiry.sourceUrl),
             makeCell(inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : "-")
           );
-
           const statusCell = document.createElement("td");
           const pill = document.createElement("span");
           pill.className = "pill";
           pill.textContent = statusText(inquiry.status);
           statusCell.appendChild(pill);
           row.appendChild(statusCell);
-
           const actionCell = document.createElement("td");
           actionCell.className = "actions";
-          [
-            ["详情", () => loadInquiryDetail(inquiry.id)],
-            ["已读", () => updateInquiryStatus(inquiry.id, "read")],
-            ["已处理", () => updateInquiryStatus(inquiry.id, "handled")],
-            ["删除", () => deleteInquiry(inquiry.id)]
-          ].forEach(([label, handler]) => {
+          [["??", () => loadInquiryDetail(inquiry.id)], ["??", () => updateInquiryStatus(inquiry.id, "read")], ["???", () => updateInquiryStatus(inquiry.id, "handled")], ["??", () => deleteInquiry(inquiry.id)]].forEach(([label, handler]) => {
             const button = document.createElement("button");
             button.type = "button";
             button.textContent = label;
@@ -326,38 +225,37 @@
           row.appendChild(actionCell);
           inquiryRows.appendChild(row);
         });
+        if (!inquiryRows.children.length) {
+          const row = document.createElement("tr");
+          const empty = makeCell("????", "muted");
+          empty.colSpan = 9;
+          row.appendChild(empty);
+          inquiryRows.appendChild(row);
+        }
       }
 
       async function loadInquiries() {
-        statusNode.textContent = "正在加载询盘...";
-        const response = await fetch("/api/inquiries", { headers: adminHeaders() });
+        statusNode.textContent = "??????...";
+        const response = await fetch(`/api/inquiries?page=${inquiriesPage}`, { headers: adminHeaders() });
         if (!response.ok) throw new Error(await errorText(response));
         const data = await response.json();
         renderInquiries(data.inquiries || []);
-        statusNode.textContent = "询盘已更新。";
+        inquiriesHasNext = (data.page || 1) * (data.pageSize || 20) < (data.total || 0);
+        inquiriesPageNode.textContent = `? ${data.page || 1} ? / ? ${data.total || 0} ?`;
+        statusNode.textContent = "??????";
       }
 
       function renderInquiryDetail(inquiry) {
         inquiryDetail.hidden = false;
         inquiryDetail.textContent = "";
         const title = document.createElement("h3");
-        title.textContent = `询盘 #${inquiry.id}`;
+        title.textContent = `?? #${inquiry.id}`;
         const dl = document.createElement("dl");
-        [
-          ["姓名", inquiry.name],
-          ["邮箱", inquiry.email],
-          ["车型", inquiry.model],
-          ["数量", inquiry.quantity],
-          ["状态", statusText(inquiry.status)],
-          ["来源", inquiry.sourceUrl],
-          ["提交时间", inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : ""],
-          ["更新时间", inquiry.updatedAt ? new Date(inquiry.updatedAt).toLocaleString() : ""],
-          ["留言", inquiry.message]
-        ].forEach(([label, value]) => {
+        [["??", inquiry.name], ["??", inquiry.email], ["??", inquiry.model], ["??", inquiry.quantity], ["??", statusText(inquiry.status)], ["??", inquiry.sourceUrl], ["????", inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : ""], ["????", inquiry.updatedAt ? new Date(inquiry.updatedAt).toLocaleString() : ""], ["??", inquiry.message]].forEach(([label, value]) => {
           const dt = document.createElement("dt");
           const dd = document.createElement("dd");
           dt.textContent = label;
-          if (label === "留言") {
+          if (label === "??") {
             const pre = document.createElement("pre");
             pre.textContent = value || "-";
             dd.appendChild(pre);
@@ -375,51 +273,57 @@
         const data = await response.json();
         renderInquiryDetail(data.inquiry);
       }
-
       async function updateInquiryStatus(id, status) {
-        const response = await fetch(`/api/inquiries/${id}`, {
-          method: "PATCH",
-          headers: { ...adminHeaders(), "Content-Type": "application/json" },
-          body: JSON.stringify({ status })
-        });
+        const response = await fetch(`/api/inquiries/${id}`, { method: "PATCH", headers: { ...adminHeaders(), "Content-Type": "application/json" }, body: JSON.stringify({ status }) });
         if (!response.ok) throw new Error(await errorText(response));
         await loadInquiries();
       }
-
       async function deleteInquiry(id) {
-        if (!confirm(`删除询盘 #${id}？`)) return;
-        const response = await fetch(`/api/inquiries/${id}`, {
-          method: "DELETE",
-          headers: adminHeaders()
-        });
+        if (!confirm(`???? #${id}?`)) return;
+        const response = await fetch(`/api/inquiries/${id}`, { method: "DELETE", headers: adminHeaders() });
         if (!response.ok) throw new Error(await errorText(response));
         inquiryDetail.hidden = true;
         await loadInquiries();
       }
 
       document.querySelector("[data-load]").addEventListener("click", async () => {
-        const endpoint = endpointInput.value.trim();
-        const key = keyInput.value.trim();
-        localStorage.setItem("apex-admin-key", key);
-        statusNode.textContent = "正在加载...";
-
-        try {
-          const response = await fetch(endpoint, { headers: { "x-admin-key": key } });
-          if (!response.ok) throw new Error(await errorText(response));
-          const data = await response.json();
-          render(data);
-          statusNode.textContent = "已更新。";
-        } catch (error) {
-          statusNode.textContent = `加载失败：${error.message}`;
-        }
+        visitsPage = 1;
+        try { await loadAnalytics(); }
+        catch (error) { statusNode.textContent = `?????${error.message}`; }
       });
-
+      countryFilter.addEventListener("change", async () => {
+        visitsPage = 1;
+        try { await loadAnalytics(); }
+        catch (error) { statusNode.textContent = `?????${error.message}`; }
+      });
+      document.querySelector("[data-visits-prev]").addEventListener("click", async () => {
+        if (visitsPage <= 1) return;
+        visitsPage -= 1;
+        try { await loadAnalytics(); }
+        catch (error) { statusNode.textContent = `?????${error.message}`; }
+      });
+      document.querySelector("[data-visits-next]").addEventListener("click", async () => {
+        if (!visitsHasNext) return;
+        visitsPage += 1;
+        try { await loadAnalytics(); }
+        catch (error) { statusNode.textContent = `?????${error.message}`; }
+      });
       document.querySelector("[data-load-inquiries]").addEventListener("click", async () => {
-        try {
-          await loadInquiries();
-        } catch (error) {
-          statusNode.textContent = `询盘加载失败：${error.message}`;
-        }
+        inquiriesPage = 1;
+        try { await loadInquiries(); }
+        catch (error) { statusNode.textContent = `???????${error.message}`; }
+      });
+      document.querySelector("[data-inquiries-prev]").addEventListener("click", async () => {
+        if (inquiriesPage <= 1) return;
+        inquiriesPage -= 1;
+        try { await loadInquiries(); }
+        catch (error) { statusNode.textContent = `???????${error.message}`; }
+      });
+      document.querySelector("[data-inquiries-next]").addEventListener("click", async () => {
+        if (!inquiriesHasNext) return;
+        inquiriesPage += 1;
+        try { await loadInquiries(); }
+        catch (error) { statusNode.textContent = `???????${error.message}`; }
       });
     </script>
   </body>
