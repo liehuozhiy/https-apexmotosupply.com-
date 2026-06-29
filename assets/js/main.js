@@ -347,9 +347,8 @@ function isValidEmail(value) {
 function validateInquiry(fields) {
   const name = String(fields.name || "").trim();
   const email = String(fields.email || "").trim();
-  const message = String(fields.message || "").trim();
 
-  if (!name || !email || !message || message.length < 5) return false;
+  if (!name || !email) return false;
   return isValidEmail(email);
 }
 
@@ -534,7 +533,7 @@ if (form) {
     event.preventDefault();
     const fields = readInquiryFields(form);
     if (!validateInquiry(fields)) {
-      alert(currentLang === "zh" ? "\u8bf7\u586b\u5199\u59d3\u540d\u3001\u6709\u6548\u90ae\u7bb1\u548c\u9700\u6c42\u8bf4\u660e\u3002" : "Please enter name, a valid email, and message.");
+      alert(currentLang === "zh" ? "\u8bf7\u586b\u5199\u59d3\u540d\u548c\u6709\u6548\u90ae\u7bb1\u3002" : "Please enter name and a valid email.");
       return;
     }
     await saveInquiry(fields);

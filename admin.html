@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Website Analytics | Apex Moto Supply</title>
+    <title>网站后台 | Apex Moto Supply</title>
     <style>
       :root {
         --ink: #101316;
@@ -154,64 +154,64 @@
     <main>
       <div class="top">
         <div>
-          <p class="muted">Admin data</p>
-          <h1>Website analytics</h1>
+          <p class="muted">后台数据</p>
+          <h1>网站访问统计</h1>
         </div>
         <div class="panel">
-          <label>Endpoint
+          <label>接口地址
             <input data-endpoint value="/api/analytics">
           </label>
-          <label>Admin key
+          <label>管理 Key
             <input data-key type="password" placeholder="Cloudflare ADMIN_KEY">
           </label>
-          <button type="button" data-load>Load data</button>
-          <p class="status" data-status>Enter the admin key to load analytics.</p>
+          <button type="button" data-load>加载数据</button>
+          <p class="status" data-status>输入管理 Key 后加载统计或询盘。</p>
         </div>
       </div>
 
       <section class="stats">
-        <div class="stat"><span>Total visits</span><strong data-total>0</strong></div>
-        <div class="stat"><span>Today</span><strong data-today>0</strong></div>
-        <div class="stat"><span>Unique IPs</span><strong data-ips>0</strong></div>
-        <div class="stat"><span>Countries</span><strong data-countries>0</strong></div>
+        <div class="stat"><span>总访问量</span><strong data-total>0</strong></div>
+        <div class="stat"><span>今日访问</span><strong data-today>0</strong></div>
+        <div class="stat"><span>独立 IP</span><strong data-ips>0</strong></div>
+        <div class="stat"><span>国家/地区</span><strong data-countries>0</strong></div>
       </section>
 
       <table>
         <thead>
           <tr>
-            <th>Time</th>
+            <th>时间</th>
             <th>IP</th>
-            <th>Country</th>
-            <th>Page</th>
-            <th>Device</th>
+            <th>国家/地区</th>
+            <th>页面</th>
+            <th>设备</th>
           </tr>
         </thead>
         <tbody data-rows>
-          <tr><td colspan="5" class="muted">No data yet</td></tr>
+          <tr><td colspan="5" class="muted">暂无数据</td></tr>
         </tbody>
       </table>
 
       <section class="admin-section">
         <div class="section-head">
-          <h2>Inquiries</h2>
-          <button type="button" data-load-inquiries>Load inquiries</button>
+          <h2>询盘管理</h2>
+          <button type="button" data-load-inquiries>加载询盘</button>
         </div>
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Model</th>
-              <th>Quantity</th>
-              <th>Summary</th>
-              <th>Source</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th>姓名</th>
+              <th>邮箱</th>
+              <th>车型</th>
+              <th>数量</th>
+              <th>摘要</th>
+              <th>来源</th>
+              <th>时间</th>
+              <th>状态</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody data-inquiry-rows>
-            <tr><td colspan="9" class="muted">No inquiries yet</td></tr>
+            <tr><td colspan="9" class="muted">暂无询盘</td></tr>
           </tbody>
         </table>
         <div class="panel detail" data-inquiry-detail hidden></div>
@@ -234,6 +234,23 @@
         document.querySelector(selector).textContent = value;
       }
 
+      async function errorText(response) {
+        try {
+          const data = await response.json();
+          return data.error || `HTTP ${response.status}`;
+        } catch (error) {
+          return `HTTP ${response.status}`;
+        }
+      }
+
+      function statusText(status) {
+        return {
+          unread: "未读",
+          read: "已读",
+          handled: "已处理"
+        }[status] || status || "-";
+      }
+
       function render(data) {
         setText("[data-total]", data.total || 0);
         setText("[data-today]", data.today || 0);
@@ -248,7 +265,7 @@
             <td>${visit.path || "-"}</td>
             <td>${visit.userAgent || "-"}</td>
           </tr>
-        `).join("") || '<tr><td colspan="5" class="muted">No data yet</td></tr>';
+        `).join("") || '<tr><td colspan="5" class="muted">暂无数据</td></tr>';
       }
 
       function adminHeaders() {
@@ -266,7 +283,7 @@
         inquiryRows.textContent = "";
         if (!inquiries.length) {
           const row = document.createElement("tr");
-          const empty = makeCell("No inquiries yet", "muted");
+          const empty = makeCell("暂无询盘", "muted");
           empty.colSpan = 9;
           row.appendChild(empty);
           inquiryRows.appendChild(row);
@@ -288,17 +305,17 @@
           const statusCell = document.createElement("td");
           const pill = document.createElement("span");
           pill.className = "pill";
-          pill.textContent = inquiry.status || "unread";
+          pill.textContent = statusText(inquiry.status);
           statusCell.appendChild(pill);
           row.appendChild(statusCell);
 
           const actionCell = document.createElement("td");
           actionCell.className = "actions";
           [
-            ["Detail", () => loadInquiryDetail(inquiry.id)],
-            ["Read", () => updateInquiryStatus(inquiry.id, "read")],
-            ["Handled", () => updateInquiryStatus(inquiry.id, "handled")],
-            ["Delete", () => deleteInquiry(inquiry.id)]
+            ["详情", () => loadInquiryDetail(inquiry.id)],
+            ["已读", () => updateInquiryStatus(inquiry.id, "read")],
+            ["已处理", () => updateInquiryStatus(inquiry.id, "handled")],
+            ["删除", () => deleteInquiry(inquiry.id)]
           ].forEach(([label, handler]) => {
             const button = document.createElement("button");
             button.type = "button";
@@ -312,35 +329,35 @@
       }
 
       async function loadInquiries() {
-        statusNode.textContent = "Loading inquiries...";
+        statusNode.textContent = "正在加载询盘...";
         const response = await fetch("/api/inquiries", { headers: adminHeaders() });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) throw new Error(await errorText(response));
         const data = await response.json();
         renderInquiries(data.inquiries || []);
-        statusNode.textContent = "Inquiries updated.";
+        statusNode.textContent = "询盘已更新。";
       }
 
       function renderInquiryDetail(inquiry) {
         inquiryDetail.hidden = false;
         inquiryDetail.textContent = "";
         const title = document.createElement("h3");
-        title.textContent = `Inquiry #${inquiry.id}`;
+        title.textContent = `询盘 #${inquiry.id}`;
         const dl = document.createElement("dl");
         [
-          ["Name", inquiry.name],
-          ["Email", inquiry.email],
-          ["Model", inquiry.model],
-          ["Quantity", inquiry.quantity],
-          ["Status", inquiry.status],
-          ["Source", inquiry.sourceUrl],
-          ["Created", inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : ""],
-          ["Updated", inquiry.updatedAt ? new Date(inquiry.updatedAt).toLocaleString() : ""],
-          ["Message", inquiry.message]
+          ["姓名", inquiry.name],
+          ["邮箱", inquiry.email],
+          ["车型", inquiry.model],
+          ["数量", inquiry.quantity],
+          ["状态", statusText(inquiry.status)],
+          ["来源", inquiry.sourceUrl],
+          ["提交时间", inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : ""],
+          ["更新时间", inquiry.updatedAt ? new Date(inquiry.updatedAt).toLocaleString() : ""],
+          ["留言", inquiry.message]
         ].forEach(([label, value]) => {
           const dt = document.createElement("dt");
           const dd = document.createElement("dd");
           dt.textContent = label;
-          if (label === "Message") {
+          if (label === "留言") {
             const pre = document.createElement("pre");
             pre.textContent = value || "-";
             dd.appendChild(pre);
@@ -354,7 +371,7 @@
 
       async function loadInquiryDetail(id) {
         const response = await fetch(`/api/inquiries/${id}`, { headers: adminHeaders() });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) throw new Error(await errorText(response));
         const data = await response.json();
         renderInquiryDetail(data.inquiry);
       }
@@ -365,17 +382,17 @@
           headers: { ...adminHeaders(), "Content-Type": "application/json" },
           body: JSON.stringify({ status })
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) throw new Error(await errorText(response));
         await loadInquiries();
       }
 
       async function deleteInquiry(id) {
-        if (!confirm(`Delete inquiry #${id}?`)) return;
+        if (!confirm(`删除询盘 #${id}？`)) return;
         const response = await fetch(`/api/inquiries/${id}`, {
           method: "DELETE",
           headers: adminHeaders()
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) throw new Error(await errorText(response));
         inquiryDetail.hidden = true;
         await loadInquiries();
       }
@@ -384,16 +401,16 @@
         const endpoint = endpointInput.value.trim();
         const key = keyInput.value.trim();
         localStorage.setItem("apex-admin-key", key);
-        statusNode.textContent = "Loading...";
+        statusNode.textContent = "正在加载...";
 
         try {
           const response = await fetch(endpoint, { headers: { "x-admin-key": key } });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          if (!response.ok) throw new Error(await errorText(response));
           const data = await response.json();
           render(data);
-          statusNode.textContent = "Updated.";
+          statusNode.textContent = "已更新。";
         } catch (error) {
-          statusNode.textContent = "Load failed. Check the endpoint, admin key, and Cloudflare deployment.";
+          statusNode.textContent = `加载失败：${error.message}`;
         }
       });
 
@@ -401,7 +418,7 @@
         try {
           await loadInquiries();
         } catch (error) {
-          statusNode.textContent = "Inquiry load failed. Check the admin key and deployment.";
+          statusNode.textContent = `询盘加载失败：${error.message}`;
         }
       });
     </script>
