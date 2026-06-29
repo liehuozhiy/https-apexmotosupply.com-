@@ -471,6 +471,11 @@ async function handleInquiries(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.protocol === "http:") {
+      url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (url.pathname === "/admin") {
       return env.ASSETS.fetch(new Request(new URL("/admin.html", url), request));
     }
