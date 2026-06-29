@@ -160,24 +160,47 @@
         try { return regionNames ? regionNames.of(code) || code : code; }
         catch (error) { return code; }
       }
-      function deviceInfo(userAgent) {
+      function cleanModel(value) {
+        return String(value || "").replace(/\bBuild\/.*$/i, "").replace(/\bwv\b/i, "").replace(/\s+/g, " ").trim();
+      }
+      function parseHints(value) {
+        if (!value) return {};
+        if (typeof value === "object") return value;
+        try { return JSON.parse(value); }
+        catch (error) { return {}; }
+      }
+      function deviceInfo(userAgent, screen, clientHints) {
         const ua = String(userAgent || "");
-        const os = /Windows NT 10/i.test(ua) ? "Windows 10/11"
-          : /Windows NT 6\.3/i.test(ua) ? "Windows 8.1"
-          : /Windows NT 6\.2/i.test(ua) ? "Windows 8"
-          : /Windows NT 6\.1/i.test(ua) ? "Windows 7"
-          : /Android/i.test(ua) ? "Android"
+        const hints = parseHints(clientHints);
+        const android = ua.match(/Android\s+([\d.]+)/i);
+        const ios = ua.match(/OS\s+([\d_]+)\s+like Mac OS X/i);
+        const mac = ua.match(/Mac OS X\s+([\d_]+)/i);
+        const windows = ua.match(/Windows NT\s+([\d.]+)/i);
+        const windowsVersions = { "10.0": "Windows 10/11", "6.3": "Windows 8.1", "6.2": "Windows 8", "6.1": "Windows 7" };
+        const hintedPlatform = String(hints.platform || "").trim();
+        const hintedVersion = String(hints.platformVersion || "").trim();
+        const hintedModel = cleanModel(hints.model);
+        const os = hintedPlatform && hintedVersion ? `${hintedPlatform} ${hintedVersion}`
+          : hintedPlatform ? hintedPlatform
+          : android ? `Android ${android[1]}`
+          : ios ? `iOS ${ios[1].replace(/_/g, ".")}`
           : /iPhone|iPad|iPod/i.test(ua) ? "iOS"
-          : /Mac OS X/i.test(ua) ? "macOS"
+          : mac ? `macOS ${mac[1].replace(/_/g, ".")}`
+          : windows ? `${windowsVersions[windows[1]] || "Windows"} (NT ${windows[1]})`
           : /Linux/i.test(ua) ? "Linux"
           : "\u672a\u77e5";
-        const device = /iPad/i.test(ua) ? "iPad"
+        const androidModelMatch = ua.match(/Android\s+[\d.]+;\s*([^;)]+?)(?:\s+Build\/|;|\))/i);
+        const androidModel = cleanModel(androidModelMatch && androidModelMatch[1]);
+        const baseDevice = hintedModel || (/iPad/i.test(ua) ? "iPad"
           : /iPhone/i.test(ua) ? "iPhone"
-          : /Android.+Mobile/i.test(ua) ? "Android \u624b\u673a"
-          : /Android/i.test(ua) ? "Android \u5e73\u677f"
+          : /Android.+Mobile/i.test(ua) ? (androidModel || "Android \u624b\u673a")
+          : /Android/i.test(ua) ? (androidModel || "Android \u5e73\u677f")
           : /Mobile/i.test(ua) ? "\u624b\u673a"
           : /Tablet/i.test(ua) ? "\u5e73\u677f"
-          : "\u7535\u8111";
+          : /Macintosh/i.test(ua) ? "Mac"
+          : /Windows/i.test(ua) ? "Windows PC"
+          : "\u7535\u8111");
+        const device = screen ? `${baseDevice} (${screen})` : baseDevice;
         return { os, device };
       }
       function makeCell(value, className) {
@@ -218,7 +241,7 @@
         rows.textContent = "";
         (data.visits || []).forEach((visit) => {
           const tr = document.createElement("tr");
-          const info = deviceInfo(visit.userAgent);
+          const info = deviceInfo(visit.userAgent, visit.screen, visit.clientHints);
           tr.append(makeCell(visit.createdAt ? new Date(visit.createdAt).toLocaleString() : "-"), makeCell(visit.ip), makeCell(countryName(visit.country)), makeCell(info.os), makeCell(info.device));
           rows.appendChild(tr);
         });

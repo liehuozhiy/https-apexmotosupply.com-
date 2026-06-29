@@ -35,6 +35,12 @@ function requestIp(request) {
   return request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
 }
 
+async function ensureColumn(env, table, column, definition) {
+  try {
+    await env.DB.prepare(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`).run();
+  } catch (error) {}
+}
+
 async function ensureSchema(env) {
   await env.DB.prepare(`
     CREATE TABLE IF NOT EXISTS site_visits (
@@ -48,9 +54,11 @@ async function ensureSchema(env) {
       user_agent TEXT,
       language TEXT,
       screen TEXT,
-      timezone TEXT
+      timezone TEXT,
+      client_hints TEXT
     )
   `).run();
+  await ensureColumn(env, "site_visits", "client_hints", "TEXT");
   await env.DB.prepare(`
     CREATE TABLE IF NOT EXISTS inquiries (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -266,10 +274,12 @@ async function handleAnalytics(request, env) {
     const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
     const country = request.cf?.country || request.headers.get("CF-IPCountry") || "Unknown";
 
+    const clientHints = body.clientHints ? JSON.stringify(body.clientHints).slice(0, 500) : "";
+
     await env.DB.prepare(`
       INSERT INTO site_visits
-        (created_at, ip, country, path, title, referrer, user_agent, language, screen, timezone)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (created_at, ip, country, path, title, referrer, user_agent, language, screen, timezone, client_hints)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       new Date().toISOString(),
       ip,
@@ -280,7 +290,8 @@ async function handleAnalytics(request, env) {
       String(request.headers.get("User-Agent") || "").slice(0, 500),
       String(body.language || "").slice(0, 80),
       String(body.screen || "").slice(0, 80),
-      String(body.timezone || "").slice(0, 120)
+      String(body.timezone || "").slice(0, 120),
+      clientHints
     ).run();
 
     return json({ ok: true });
@@ -308,7 +319,7 @@ async function handleAnalytics(request, env) {
   const uniqueIps = await env.DB.prepare("SELECT COUNT(DISTINCT ip) AS count FROM site_visits WHERE ip != ''").first();
   const countryRows = await env.DB.prepare("SELECT country, COUNT(*) AS count FROM site_visits GROUP BY country ORDER BY count DESC").all();
   const visitsQuery = env.DB.prepare(`
-    SELECT created_at AS createdAt, ip, country, path, user_agent AS userAgent
+    SELECT created_at AS createdAt, ip, country, path, user_agent AS userAgent, screen, client_hints AS clientHints
     FROM site_visits
     ${where}
     ORDER BY created_at DESC

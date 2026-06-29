@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS site_visits (
   user_agent TEXT,
   language TEXT,
   screen TEXT,
-  timezone TEXT
+  timezone TEXT,
+  client_hints TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_site_visits_created_at ON site_visits (created_at);

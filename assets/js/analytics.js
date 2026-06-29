@@ -1,10 +1,17 @@
-(function () {
+(async function () {
   const endpoint = window.APEX_ANALYTICS_ENDPOINT;
   if (!endpoint || !window.fetch) return;
 
   try {
     if (sessionStorage.getItem("apex-visit-tracked") === "1") return;
     sessionStorage.setItem("apex-visit-tracked", "1");
+  } catch (error) {}
+
+  let clientHints = null;
+  try {
+    if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+      clientHints = await navigator.userAgentData.getHighEntropyValues(["model", "platform", "platformVersion", "mobile"]);
+    }
   } catch (error) {}
 
   const payload = {
@@ -14,6 +21,7 @@
     language: navigator.language || "",
     screen: `${window.screen.width}x${window.screen.height}`,
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+    clientHints,
     timestamp: new Date().toISOString()
   };
 
