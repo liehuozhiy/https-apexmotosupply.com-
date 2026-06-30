@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>&#x7f51;&#x7ad9;&#x540e;&#x53f0; | Apex Moto Supply</title>
+    <style>
+      :root { --ink: #101316; --muted: #65707b; --line: #dde1e6; --soft: #f5f7f9; --accent: #d72b1f; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { max-width: 1180px; margin: 0 auto; padding: 40px 22px 70px; }
+      h1 { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1; }
+      .top { display: grid; grid-template-columns: 1fr minmax(320px, 460px); gap: 22px; align-items: end; margin-bottom: 24px; }
+      .panel, .stat, table { background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 14px 42px rgba(16, 19, 22, 0.06); }
+      .panel { padding: 18px; }
+      label { display: grid; gap: 6px; margin-bottom: 12px; font-size: 13px; font-weight: 800; }
+      input { width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; font: inherit; }
+      button { min-height: 40px; border: 0; border-radius: 6px; color: #fff; background: var(--accent); cursor: pointer; font: inherit; font-weight: 900; }
+      .panel button, .section-head button { width: 100%; min-height: 44px; }
+      .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+      .stat { padding: 18px; }
+      .stat span { display: block; color: var(--muted); font-size: 13px; }
+      .stat strong { display: block; margin-top: 8px; font-size: 34px; line-height: 1; }
+      table { width: 100%; overflow: hidden; border-collapse: collapse; }
+      th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; font-size: 13px; vertical-align: top; }
+      th { background: #f0f2f5; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+      tr:last-child td { border-bottom: 0; }
+      .muted { color: var(--muted); }
+      .status { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+      .toolbar { margin: 16px 0; }
+      .country-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .country-tags button { width: auto; min-height: 32px; padding: 0 10px; color: var(--ink); background: #fff; border: 1px solid var(--line); font-size: 12px; }
+      .country-tags button.is-active { color: #fff; background: var(--accent); border-color: var(--accent); }
+      .pager { display: flex; gap: 8px; align-items: center; margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+      .pager button, .actions button { width: auto; min-height: 34px; padding: 0 10px; font-size: 12px; }
+      .admin-section { margin-top: 34px; }
+      .section-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 14px; }
+      .section-head h2 { margin: 0; font-size: 26px; }
+      .section-head button { width: auto; padding: 0 18px; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .detail { margin-top: 16px; padding: 18px; }
+      .detail h3 { margin: 0 0 10px; }
+      .detail dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 14px; margin: 0; }
+      .detail dt { color: var(--muted); font-weight: 800; }
+      .detail dd { margin: 0; word-break: break-word; }
+      .detail pre { white-space: pre-wrap; margin: 0; font: inherit; }
+      .pill { display: inline-flex; padding: 4px 8px; border-radius: 999px; background: #f0f2f5; font-size: 12px; font-weight: 900; }
+      @media (max-width: 820px) { .top, .stats { grid-template-columns: 1fr; } .detail dl { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="top">
+        <div>
+          <p class="muted">&#x540e;&#x53f0;&#x6570;&#x636e;</p>
+          <h1>&#x7f51;&#x7ad9;&#x8bbf;&#x95ee;&#x7edf;&#x8ba1;</h1>
+        </div>
+        <div class="panel">
+          <label>&#x63a5;&#x53e3;&#x5730;&#x5740;<input data-endpoint value="/api/analytics"></label>
+          <label>&#x7ba1;&#x7406; Key<input data-key type="password" placeholder="Cloudflare ADMIN_KEY"></label>
+          <button type="button" data-load>&#x52a0;&#x8f7d;&#x6570;&#x636e;</button>
+          <p class="status" data-status>&#x8f93;&#x5165;&#x7ba1;&#x7406; Key &#x540e;&#x52a0;&#x8f7d;&#x7edf;&#x8ba1;&#x6216;&#x8be2;&#x76d8;&#x3002;</p>
+          <p class="status" data-smtp-status></p>
+        </div>
+      </div>
+      <section class="stats">
+        <div class="stat"><span>&#x603b;&#x8bbf;&#x95ee;&#x91cf;</span><strong data-total>0</strong></div>
+        <div class="stat"><span>&#x4eca;&#x65e5;&#x8bbf;&#x95ee;</span><strong data-today>0</strong></div>
+        <div class="stat"><span>&#x72ec;&#x7acb; IP</span><strong data-ips>0</strong></div>
+        <div class="stat"><span>&#x56fd;&#x5bb6;/&#x5730;&#x533a;</span><strong data-countries>0</strong></div>
+      </section>
+      <div class="toolbar">
+        <strong>&#x6309;&#x56fd;&#x5bb6;/&#x5730;&#x533a;&#x7b5b;&#x9009;</strong>
+        <div class="country-tags" data-country-tags></div>
+      </div>
+      <table>
+        <thead><tr><th>&#x65f6;&#x95f4;</th><th>IP</th><th>&#x56fd;&#x5bb6;/&#x5730;&#x533a;</th><th>&#x64cd;&#x4f5c;&#x7cfb;&#x7edf;</th><th>&#x8bbe;&#x5907;</th></tr></thead>
+        <tbody data-rows><tr><td colspan="5" class="muted">&#x6682;&#x65e0;&#x6570;&#x636e;</td></tr></tbody>
+      </table>
+      <div class="pager">
+        <button type="button" data-visits-prev>&#x4e0a;&#x4e00;&#x9875;</button>
+        <span data-visits-page>&#x7b2c; 1 &#x9875;</span>
+        <button type="button" data-visits-next>&#x4e0b;&#x4e00;&#x9875;</button>
+      </div>
+      <section class="admin-section">
+        <div class="section-head">
+          <h2>&#x8be2;&#x76d8;&#x7ba1;&#x7406;</h2>
+          <button type="button" data-load-inquiries>&#x52a0;&#x8f7d;&#x8be2;&#x76d8;</button>
+        </div>
+        <table>
+          <thead><tr><th>&#x59d3;&#x540d;</th><th>&#x90ae;&#x7bb1;</th><th>&#x8f66;&#x578b;</th><th>&#x6570;&#x91cf;</th><th>&#x65f6;&#x95f4;</th><th>&#x72b6;&#x6001;</th><th>&#x64cd;&#x4f5c;</th></tr></thead>
+          <tbody data-inquiry-rows><tr><td colspan="7" class="muted">&#x6682;&#x65e0;&#x8be2;&#x76d8;</td></tr></tbody>
+        </table>
+        <div class="pager">
+          <button type="button" data-inquiries-prev>&#x4e0a;&#x4e00;&#x9875;</button>
+          <span data-inquiries-page>&#x7b2c; 1 &#x9875;</span>
+          <button type="button" data-inquiries-next>&#x4e0b;&#x4e00;&#x9875;</button>
+        </div>
+        <div class="panel detail" data-inquiry-detail hidden></div>
+      </section>
+    </main>
+    <script src="/admin/assets/js/analytics-config.js?v=20260626-analytics"></script>
+    <script>
+      const endpointInput = document.querySelector("[data-endpoint]");
+      const keyInput = document.querySelector("[data-key]");
+      const statusNode = document.querySelector("[data-status]");
+      const smtpStatusNode = document.querySelector("[data-smtp-status]");
+      const rows = document.querySelector("[data-rows]");
+      const inquiryRows = document.querySelector("[data-inquiry-rows]");
+      const inquiryDetail = document.querySelector("[data-inquiry-detail]");
+      const countryTags = document.querySelector("[data-country-tags]");
+      const visitsPageNode = document.querySelector("[data-visits-page]");
+      const inquiriesPageNode = document.querySelector("[data-inquiries-page]");
+      let visitsPage = 1;
+      let visitsHasNext = false;
+      let inquiriesPage = 1;
+      let inquiriesHasNext = false;
+      let selectedCountry = "";
+      endpointInput.value = window.APEX_ANALYTICS_ENDPOINT || "/api/analytics";
+      keyInput.value = localStorage.getItem("apex-admin-key") || "";
+      const labels = {
+        allCountries: "\u5168\u90e8\u56fd\u5bb6/\u5730\u533a",
+        noData: "\u6682\u65e0\u6570\u636e",
+        noInquiries: "\u6682\u65e0\u8be2\u76d8",
+        loading: "\u6b63\u5728\u52a0\u8f7d...",
+        loadingInquiries: "\u6b63\u5728\u52a0\u8f7d\u8be2\u76d8...",
+        updated: "\u5df2\u66f4\u65b0\u3002",
+        inquiriesUpdated: "\u8be2\u76d8\u5df2\u66f4\u65b0\u3002",
+        loadFailed: "\u52a0\u8f7d\u5931\u8d25",
+        inquiryLoadFailed: "\u8be2\u76d8\u52a0\u8f7d\u5931\u8d25",
+        page: "\u7b2c",
+        total: "\u5171",
+        row: "\u6761",
+        detail: "\u8be6\u60c5",
+        handled: "\u5df2\u5904\u7406",
+        delete: "\u5220\u9664",
+        confirmDelete: "\u5220\u9664\u8be2\u76d8",
+        inquiry: "\u8be2\u76d8",
+        name: "\u59d3\u540d",
+        email: "\u90ae\u7bb1",
+        model: "\u8f66\u578b",
+        quantity: "\u6570\u91cf",
+        status: "\u72b6\u6001",
+        created: "\u63d0\u4ea4\u65f6\u95f4",
+        message: "\u9700\u6c42\u8bf4\u660e"
+      };
+      function setText(selector, value) { document.querySelector(selector).textContent = value; }
+      function adminHeaders() { return { "x-admin-key": keyInput.value.trim() }; }
+      async function errorText(response) {
+        try { const data = await response.json(); return data.error || `HTTP ${response.status}`; }
+        catch (error) { return `HTTP ${response.status}`; }
+      }
+      function statusText(status) { return { unread: "\u672a\u8bfb", read: "\u5df2\u8bfb", handled: "\u5df2\u5904\u7406" }[status] || status || "-"; }
+      const regionNames = typeof Intl !== "undefined" && Intl.DisplayNames ? new Intl.DisplayNames(["zh-CN"], { type: "region" }) : null;
+      const countryFallbacks = { CN: "\u4e2d\u56fd", HK: "\u4e2d\u56fd\u9999\u6e2f", TW: "\u4e2d\u56fd\u53f0\u6e7e", MO: "\u4e2d\u56fd\u6fb3\u95e8", US: "\u7f8e\u56fd", GB: "\u82f1\u56fd", CA: "\u52a0\u62ff\u5927", AU: "\u6fb3\u5927\u5229\u4e9a", SG: "\u65b0\u52a0\u5761", JP: "\u65e5\u672c", KR: "\u97e9\u56fd", DE: "\u5fb7\u56fd", FR: "\u6cd5\u56fd", IT: "\u610f\u5927\u5229", ES: "\u897f\u73ed\u7259", RU: "\u4fc4\u7f57\u65af", IN: "\u5370\u5ea6", TH: "\u6cf0\u56fd", VN: "\u8d8a\u5357", MY: "\u9a6c\u6765\u897f\u4e9a", ID: "\u5370\u5ea6\u5c3c\u897f\u4e9a", PH: "\u83f2\u5f8b\u5bbe", BR: "\u5df4\u897f", MX: "\u58a8\u897f\u54e5", ZA: "\u5357\u975e" };
+      function countryName(country) {
+        const code = String(country || "").trim().toUpperCase();
+        if (!code || code === "XX" || code === "UNKNOWN") return "\u672a\u77e5";
+        if (countryFallbacks[code]) return countryFallbacks[code];
+        try { return regionNames ? regionNames.of(code) || code : code; }
+        catch (error) { return code; }
+      }
+      function cleanModel(value) {
+        return String(value || "").replace(/\bBuild\/.*$/i, "").replace(/\bwv\b/i, "").replace(/\s+/g, " ").trim();
+      }
+      function parseHints(value) {
+        if (!value) return {};
+        if (typeof value === "object") return value;
+        try { return JSON.parse(value); }
+        catch (error) { return {}; }
+      }
+      function deviceInfo(userAgent, screen, clientHints) {
+        const ua = String(userAgent || "");
+        const hints = parseHints(clientHints);
+        const android = ua.match(/Android\s+([\d.]+)/i);
+        const ios = ua.match(/OS\s+([\d_]+)\s+like Mac OS X/i);
+        const mac = ua.match(/Mac OS X\s+([\d_]+)/i);
+        const windows = ua.match(/Windows NT\s+([\d.]+)/i);
+        const windowsVersions = { "10.0": "Windows 10/11", "6.3": "Windows 8.1", "6.2": "Windows 8", "6.1": "Windows 7" };
+        const hintedPlatform = String(hints.platform || "").trim();
+        const hintedVersion = String(hints.platformVersion || "").trim();
+        const hintedModel = cleanModel(hints.model);
+        const os = hintedPlatform && hintedVersion ? `${hintedPlatform} ${hintedVersion}`
+          : hintedPlatform ? hintedPlatform
+          : android ? `Android ${android[1]}`
+          : ios ? `iOS ${ios[1].replace(/_/g, ".")}`
+          : /iPhone|iPad|iPod/i.test(ua) ? "iOS"
+          : mac ? `macOS ${mac[1].replace(/_/g, ".")}`
+          : windows ? `${windowsVersions[windows[1]] || "Windows"} (NT ${windows[1]})`
+          : /Linux/i.test(ua) ? "Linux"
+          : "\u672a\u77e5";
+        const androidModelMatch = ua.match(/Android\s+[\d.]+;\s*([^;)]+?)(?:\s+Build\/|;|\))/i);
+        const androidModel = cleanModel(androidModelMatch && androidModelMatch[1]);
+        const baseDevice = hintedModel || (/iPad/i.test(ua) ? "iPad"
+          : /iPhone/i.test(ua) ? "iPhone"
+          : /Android.+Mobile/i.test(ua) ? (androidModel || "Android \u624b\u673a")
+          : /Android/i.test(ua) ? (androidModel || "Android \u5e73\u677f")
+          : /Mobile/i.test(ua) ? "\u624b\u673a"
+          : /Tablet/i.test(ua) ? "\u5e73\u677f"
+          : /Macintosh/i.test(ua) ? "Mac"
+          : /Windows/i.test(ua) ? "Windows PC"
+          : "\u7535\u8111");
+        const device = screen ? `${baseDevice} (${screen})` : baseDevice;
+        return { os, device };
+      }
+      function makeCell(value, className) {
+        const td = document.createElement("td");
+        if (className) td.className = className;
+        td.textContent = value || "-";
+        return td;
+      }
+      function renderCountries(countries, activeCountry) {
+        selectedCountry = activeCountry || selectedCountry || "";
+        countryTags.textContent = "";
+        const makeTag = (country, text) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.dataset.country = country;
+          button.textContent = text;
+          if (country === selectedCountry) button.className = "is-active";
+          button.addEventListener("click", async () => {
+            selectedCountry = country;
+            visitsPage = 1;
+            try { await loadAnalytics(); } catch (error) { statusNode.textContent = `${labels.loadFailed}\uff1a${error.message}`; }
+          });
+          countryTags.appendChild(button);
+        };
+        makeTag("", labels.allCountries);
+        Object.entries(countries).forEach(([country, count]) => {
+          makeTag(country, `${countryName(country)} (${count})`);
+        });
+      }
+      function renderAnalytics(data) {
+        setText("[data-total]", data.total || 0);
+        setText("[data-today]", data.today || 0);
+        setText("[data-ips]", data.uniqueIps || 0);
+        setText("[data-countries]", Object.keys(data.countries || {}).length);
+        renderCountries(data.countries || {}, data.selectedCountry || "");
+        visitsHasNext = (data.page || 1) * (data.pageSize || 20) < (data.filteredTotal || 0);
+        visitsPageNode.textContent = `${labels.page} ${data.page || 1} \u9875 / ${labels.total} ${data.filteredTotal || 0} ${labels.row}`;
+        rows.textContent = "";
+        (data.visits || []).forEach((visit) => {
+          const tr = document.createElement("tr");
+          const info = deviceInfo(visit.userAgent, visit.screen, visit.clientHints);
+          tr.append(makeCell(visit.createdAt ? new Date(visit.createdAt).toLocaleString() : "-"), makeCell(visit.ip), makeCell(countryName(visit.country)), makeCell(info.os), makeCell(info.device));
+          rows.appendChild(tr);
+        });
+        if (!rows.children.length) {
+          const tr = document.createElement("tr");
+          const td = makeCell(labels.noData, "muted");
+          td.colSpan = 5;
+          tr.appendChild(td);
+          rows.appendChild(tr);
+        }
+      }
+      async function loadAnalytics() {
+        const endpoint = endpointInput.value.trim();
+        const key = keyInput.value.trim();
+        const url = new URL(endpoint, location.origin);
+        url.searchParams.set("page", String(visitsPage));
+        if (selectedCountry) url.searchParams.set("country", selectedCountry);
+        localStorage.setItem("apex-admin-key", key);
+        statusNode.textContent = labels.loading;
+        const response = await fetch(url.pathname + url.search, { headers: { "x-admin-key": key } });
+        if (!response.ok) throw new Error(await errorText(response));
+        renderAnalytics(await response.json());
+        statusNode.textContent = labels.updated;
+        await loadSmtpStatus();
+      }
+      async function loadSmtpStatus() {
+        const key = keyInput.value.trim();
+        if (!key) return;
+        const response = await fetch("/api/smtp-status", { headers: { "x-admin-key": key } });
+        if (!response.ok) return;
+        const data = await response.json();
+        smtpStatusNode.textContent = data.configured
+          ? `SMTP \u5df2\u914d\u7f6e\uff1a${data.host}:${data.port}\uff0c\u6536\u4ef6\u4eba ${data.receiver}`
+          : `SMTP \u672a\u914d\u7f6e\uff0c\u7f3a\u5c11\uff1a${(data.missing || []).join(", ")}`;
+      }
+      function renderInquiries(inquiries) {
+        inquiryRows.textContent = "";
+        (inquiries || []).forEach((inquiry) => {
+          const row = document.createElement("tr");
+          row.append(makeCell(inquiry.name), makeCell(inquiry.email), makeCell(inquiry.model), makeCell(inquiry.quantity), makeCell(inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : "-"));
+          const statusCell = document.createElement("td");
+          const pill = document.createElement("span");
+          pill.className = "pill";
+          pill.textContent = statusText(inquiry.status);
+          statusCell.appendChild(pill);
+          row.appendChild(statusCell);
+          const actionCell = document.createElement("td");
+          actionCell.className = "actions";
+          [[labels.detail, () => loadInquiryDetail(inquiry.id)], [labels.handled, () => updateInquiryStatus(inquiry.id, "handled")], [labels.delete, () => deleteInquiry(inquiry.id)]].forEach(([label, handler]) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = label;
+            button.addEventListener("click", handler);
+            actionCell.appendChild(button);
+          });
+          row.appendChild(actionCell);
+          inquiryRows.appendChild(row);
+        });
+        if (!inquiryRows.children.length) {
+          const row = document.createElement("tr");
+          const empty = makeCell(labels.noInquiries, "muted");
+          empty.colSpan = 7;
+          row.appendChild(empty);
+          inquiryRows.appendChild(row);
+        }
+      }
+      async function loadInquiries() {
+        statusNode.textContent = labels.loadingInquiries;
+        const response = await fetch(`/api/inquiries?page=${inquiriesPage}`, { headers: adminHeaders() });
+        if (!response.ok) throw new Error(await errorText(response));
+        const data = await response.json();
+        renderInquiries(data.inquiries || []);
+        inquiriesHasNext = (data.page || 1) * (data.pageSize || 20) < (data.total || 0);
+        inquiriesPageNode.textContent = `${labels.page} ${data.page || 1} \u9875 / ${labels.total} ${data.total || 0} ${labels.row}`;
+        statusNode.textContent = labels.inquiriesUpdated;
+      }
+      function renderInquiryDetail(inquiry) {
+        inquiryDetail.hidden = false;
+        inquiryDetail.textContent = "";
+        const title = document.createElement("h3");
+        title.textContent = `${labels.inquiry} #${inquiry.id}`;
+        const dl = document.createElement("dl");
+        [[labels.name, inquiry.name], [labels.email, inquiry.email], [labels.model, inquiry.model], [labels.quantity, inquiry.quantity], [labels.created, inquiry.createdAt ? new Date(inquiry.createdAt).toLocaleString() : ""], [labels.message, inquiry.message]].forEach(([label, value]) => {
+          const dt = document.createElement("dt");
+          const dd = document.createElement("dd");
+          dt.textContent = label;
+          if (label === labels.message) {
+            const pre = document.createElement("pre");
+            pre.textContent = value || "-";
+            dd.appendChild(pre);
+          } else {
+            dd.textContent = value || "-";
+          }
+          dl.append(dt, dd);
+        });
+        inquiryDetail.append(title, dl);
+      }
+      async function loadInquiryDetail(id) {
+        const response = await fetch(`/api/inquiries/${id}`, { headers: adminHeaders() });
+        if (!response.ok) throw new Error(await errorText(response));
+        const inquiry = (await response.json()).inquiry;
+        if (inquiry.status === "unread") {
+          await updateInquiryStatus(id, "read");
+          inquiry.status = "read";
+        }
+        renderInquiryDetail(inquiry);
+      }
+      async function updateInquiryStatus(id, status, refresh = true) {
+        const response = await fetch(`/api/inquiries/${id}`, { method: "PATCH", headers: { ...adminHeaders(), "Content-Type": "application/json" }, body: JSON.stringify({ status }) });
+        if (!response.ok) throw new Error(await errorText(response));
+        if (refresh) await loadInquiries();
+      }
+      async function deleteInquiry(id) {
+        if (!confirm(`${labels.confirmDelete} #${id}\uff1f`)) return;
+        const response = await fetch(`/api/inquiries/${id}`, { method: "DELETE", headers: adminHeaders() });
+        if (!response.ok) throw new Error(await errorText(response));
+        inquiryDetail.hidden = true;
+        await loadInquiries();
+      }
+      document.querySelector("[data-load]").addEventListener("click", async () => { visitsPage = 1; try { await loadAnalytics(); } catch (error) { statusNode.textContent = `${labels.loadFailed}\uff1a${error.message}`; } });
+      document.querySelector("[data-visits-prev]").addEventListener("click", async () => { if (visitsPage <= 1) return; visitsPage -= 1; try { await loadAnalytics(); } catch (error) { statusNode.textContent = `${labels.loadFailed}\uff1a${error.message}`; } });
+      document.querySelector("[data-visits-next]").addEventListener("click", async () => { if (!visitsHasNext) return; visitsPage += 1; try { await loadAnalytics(); } catch (error) { statusNode.textContent = `${labels.loadFailed}\uff1a${error.message}`; } });
+      document.querySelector("[data-load-inquiries]").addEventListener("click", async () => { inquiriesPage = 1; try { await loadInquiries(); } catch (error) { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; } });
+      document.querySelector("[data-inquiries-prev]").addEventListener("click", async () => { if (inquiriesPage <= 1) return; inquiriesPage -= 1; try { await loadInquiries(); } catch (error) { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; } });
+      document.querySelector("[data-inquiries-next]").addEventListener("click", async () => { if (!inquiriesHasNext) return; inquiriesPage += 1; try { await loadInquiries(); } catch (error) { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; } });
+      if (keyInput.value.trim()) {
+        loadSmtpStatus().catch(() => {});
+        loadInquiries().catch((error) => { statusNode.textContent = `${labels.inquiryLoadFailed}\uff1a${error.message}`; });
+      }
+    </script>
+  </body>
+</html>

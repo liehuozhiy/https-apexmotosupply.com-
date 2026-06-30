@@ -15,20 +15,28 @@ This static site has been updated from the supplied `2026H&T产品参数（英�
 
 ## Main Files
 
-- `index.html`: page structure and SEO metadata.
-- `assets/css/styles.css`: clean responsive catalog styling.
-- `assets/js/site-data.js`: bilingual product data, translated UI text, and company contact details.
-- `assets/js/main.js`: product rendering, category filters, mobile menu, and inquiry email behavior.
-- `assets/js/analytics-config.js`: analytics endpoint configuration.
-- `admin.html`: private analytics dashboard page for visit counts, IPs, and countries after the backend is deployed.
-- `assets/img/products/`: real product images extracted from the provided workbook.
+- `frontend/pages/`: public website pages and SEO metadata.
+- `frontend/assets/css/styles.css`: clean responsive catalog styling.
+- `frontend/assets/js/site-data.js`: bilingual product data, translated UI text, and company contact details.
+- `frontend/assets/js/main.js`: product rendering, category filters, mobile menu, and inquiry email behavior.
+- `frontend/assets/js/analytics-config.js`: public analytics endpoint configuration.
+- `admin/pages/admin.html`: private analytics and inquiry dashboard page.
+- `admin/assets/js/analytics-config.js`: admin analytics endpoint configuration.
+- `api/worker.js`: Cloudflare Worker entry, API routes, SMTP, D1, and static route mapping.
+- `api/cloudflare-d1-schema.sql`: D1 database schema.
+- `frontend/assets/img/products/`: real product images extracted from the provided workbook.
+
+## Planned Module Split
+
+The project is split into five maintenance modules: `frontend`, `admin`, `api`, `shared`, and `docs`. Cloudflare Worker uses `api/worker.js` as the entry point. Static assets are generated into `deploy/` by `node scripts/prepare-deploy.mjs`; do not maintain `deploy/` by hand. See `docs/project-split-plan.md` for the migration notes and route mapping.
 
 ## Daily Maintenance
 
-1. Edit product specs in `assets/js/site-data.js`.
-2. Replace a product image using the same filename in `assets/img/products/`; keep the 1400x950 centered canvas style for consistent previews.
+1. Edit product specs in `frontend/assets/js/site-data.js`.
+2. Replace a product image using the same filename in `frontend/assets/img/products/`; keep the 1400x950 centered canvas style for consistent previews.
 3. Open the local preview and check desktop/mobile widths.
-4. Upload the full folder to static hosting.
+4. Run `node scripts/prepare-deploy.mjs`.
+5. Deploy with Cloudflare Wrangler.
 
 ## Inquiry Form
 
@@ -50,14 +58,25 @@ The site includes a Cloudflare Worker backend and an `admin.html` dashboard for 
 Cloudflare setup:
 
 1. Create a D1 database.
-2. Run the SQL in `cloudflare-d1-schema.sql`.
+2. Run the SQL in `api/cloudflare-d1-schema.sql`.
 3. In Cloudflare Pages, bind the D1 database to this project with variable name `DB`.
 4. Add an environment variable named `ADMIN_KEY`.
-5. Deploy the site.
-6. Open `/admin` or `/admin.html`, keep endpoint as `/api/analytics`, enter `ADMIN_KEY`, then load analytics or inquiries.
+5. Run `node scripts/prepare-deploy.mjs`.
+6. Deploy the site.
+7. Open `/admin`, keep endpoint as `/api/analytics`, enter `ADMIN_KEY`, then load analytics or inquiries.
+
+## Cloudflare Routing
+
+- `/` and `/index.html` map to `deploy/frontend/pages/index.html`.
+- `/products.html`, `/news.html`, `/contact.html`, and `/inquiry.html` map to matching files in `deploy/frontend/pages/`.
+- `/assets/*` maps to `deploy/frontend/assets/*`.
+- `/admin` and `/admin/` map to `deploy/admin/pages/admin.html`.
+- `/admin/assets/*` maps to `deploy/admin/assets/*`.
+- `/robots.txt` and `/sitemap.xml` map to `deploy/frontend/public/`.
+- `/api/*` routes are handled by `api/worker.js` and keep their public paths unchanged.
 
 ## Notes
 
 - ER / ES / ETT data was taken from the embedded product-parameter images in the workbook.
-- Update `robots.txt` and `sitemap.xml` if the final production domain changes.
+- Update `frontend/public/robots.txt` and `frontend/public/sitemap.xml` if the final production domain changes.
 
