@@ -596,6 +596,13 @@ a {
   gap: 16px;
 }
 
+.blog-section-note {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+}
+
 .blog-card {
   display: flex;
   min-height: 250px;
