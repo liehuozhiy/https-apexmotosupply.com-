@@ -43,7 +43,11 @@ function specLabel(label) {
 }
 
 function productIntro(product) {
-  return isChineseLang() ? (product.introZh || product.intro) : product.intro;
+  if (currentLang === "zh-CN" || currentLang === "zh") return product.introZh || product.intro;
+  if (currentLang === "zh-TW") return product.introZhTW || product.introZh || product.intro;
+  if (currentLang === "ru") return product.introRu || product.intro;
+  if (currentLang === "ar") return product.introAr || product.intro;
+  return product.intro;
 }
 
 function productSeries(product) {

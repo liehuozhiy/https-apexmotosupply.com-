@@ -98,11 +98,20 @@
         node = switcher;
       }
 
-      node.innerHTML = supported.map((lang) => `
-        <button class="language-option${lang === currentLang ? " is-active" : ""}" type="button" data-lang-option="${lang}" aria-pressed="${lang === currentLang}">
-          ${labels[lang]}
+      const isOpen = node.classList.contains("is-open");
+      node.innerHTML = `
+        <button class="language-current" type="button" data-lang-menu-button aria-expanded="${isOpen}" aria-label="Select language">
+          <span>${labels[currentLang]}</span>
+          <span aria-hidden="true">&#9662;</span>
         </button>
-      `).join("");
+        <div class="language-menu" data-lang-menu>
+          ${supported.map((lang) => `
+            <button class="language-option${lang === currentLang ? " is-active" : ""}" type="button" data-lang-option="${lang}" aria-pressed="${lang === currentLang}">
+              ${labels[lang]}
+            </button>
+          `).join("")}
+        </div>
+      `;
     });
   }
 
@@ -126,9 +135,35 @@
   }
 
   document.addEventListener("click", (event) => {
+    const menuButton = event.target.closest("[data-lang-menu-button]");
+    if (menuButton) {
+      const switcher = menuButton.closest("[data-lang-toggle]");
+      const isOpen = switcher.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      return;
+    }
+
     const button = event.target.closest("[data-lang-option]");
-    if (!button) return;
+    if (!button) {
+      document.querySelectorAll("[data-lang-toggle].is-open").forEach((switcher) => {
+        switcher.classList.remove("is-open");
+        const currentButton = switcher.querySelector("[data-lang-menu-button]");
+        if (currentButton) currentButton.setAttribute("aria-expanded", "false");
+      });
+      return;
+    }
+    const switcher = button.closest("[data-lang-toggle]");
+    if (switcher) switcher.classList.remove("is-open");
     setLang(button.dataset.langOption);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    document.querySelectorAll("[data-lang-toggle].is-open").forEach((switcher) => {
+      switcher.classList.remove("is-open");
+      const currentButton = switcher.querySelector("[data-lang-menu-button]");
+      if (currentButton) currentButton.setAttribute("aria-expanded", "false");
+    });
   });
 
   window.APEX_I18N = {

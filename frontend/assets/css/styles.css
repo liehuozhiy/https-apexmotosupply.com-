@@ -52,6 +52,7 @@ a {
   background: rgba(255, 255, 255, 0);
   border-bottom: 1px solid rgba(255, 255, 255, 0);
   transition: color 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+  direction: ltr;
 }
 
 .site-header:hover,
@@ -129,7 +130,10 @@ a {
 
 .lang-toggle,
 .language-switcher {
-  justify-self: end;
+  justify-self: right;
+  margin-left: auto;
+  margin-right: 0;
+  direction: ltr;
 }
 
 .lang-toggle {
@@ -143,31 +147,77 @@ a {
 }
 
 .language-switcher {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  position: relative;
+  width: max-content;
+  min-width: 128px;
+}
+
+.language-current,
+.language-option {
+  border: 1px solid currentColor;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+}
+
+.language-current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  display: none;
+  min-width: 158px;
+  padding: 6px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.language-switcher.is-open .language-menu {
+  display: grid;
   gap: 4px;
-  max-width: 280px;
 }
 
 .language-option {
-  min-height: 30px;
-  padding: 4px 8px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  color: inherit;
+  width: 100%;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-color: transparent;
+  border-radius: 6px;
   background: transparent;
-  cursor: pointer;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.1;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: left;
 }
 
 .language-option.is-active {
   color: #fff;
   background: var(--accent);
   border-color: var(--accent);
+}
+
+.language-option:hover,
+.language-option:focus {
+  color: var(--ink);
+  background: var(--soft);
+  outline: 0;
 }
 
 .menu-button {
@@ -1336,6 +1386,16 @@ html[dir="rtl"] .nav {
   direction: rtl;
 }
 
+html[dir="rtl"] .language-menu {
+  right: 0;
+  left: auto;
+}
+
+html[dir="rtl"] .language-option {
+  direction: rtl;
+  text-align: right;
+}
+
 html[dir="rtl"] .hero-copy,
 html[dir="rtl"] .section-header,
 html[dir="rtl"] .product-content,
@@ -1407,13 +1467,24 @@ html[dir="rtl"] textarea {
   }
 
   .language-switcher {
-    max-width: min(52vw, 230px);
+    min-width: 108px;
+    max-width: 132px;
+  }
+
+  .language-current {
+    min-height: 34px;
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+
+  .language-menu {
+    min-width: 138px;
   }
 
   .language-option {
-    min-height: 28px;
-    padding: 3px 6px;
-    font-size: 11px;
+    min-height: 32px;
+    padding: 6px 8px;
+    font-size: 12px;
   }
 
   .menu-button {
