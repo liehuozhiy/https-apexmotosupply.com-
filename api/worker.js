@@ -519,6 +519,9 @@ export default {
       "/frontend/pages/news.html": "/news.html",
       "/frontend/pages/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
       "/frontend/pages/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
+      "/frontend/pages/news/importing-dirt-bikes-in-bulk-checklist.html": "/news/importing-dirt-bikes-in-bulk-checklist.html",
+      "/frontend/pages/news/oem-dirt-bikes-for-dealers.html": "/news/oem-dirt-bikes-for-dealers.html",
+      "/frontend/pages/news/dirt-bike-shipping-bulk-order-guide.html": "/news/dirt-bike-shipping-bulk-order-guide.html",
       "/frontend/pages/contact.html": "/contact.html",
       "/frontend/pages/inquiry.html": "/inquiry.html"
     };
@@ -548,6 +551,9 @@ export default {
       "/news.html": "/news.html",
       "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
       "/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
+      "/news/importing-dirt-bikes-in-bulk-checklist.html": "/news/importing-dirt-bikes-in-bulk-checklist.html",
+      "/news/oem-dirt-bikes-for-dealers.html": "/news/oem-dirt-bikes-for-dealers.html",
+      "/news/dirt-bike-shipping-bulk-order-guide.html": "/news/dirt-bike-shipping-bulk-order-guide.html",
       "/contact.html": "/contact.html",
       "/inquiry.html": "/inquiry.html",
       "/admin": "/admin/index.html",
