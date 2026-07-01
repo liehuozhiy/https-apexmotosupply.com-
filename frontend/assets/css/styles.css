@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --ink: #111315;
   --text: #30363d;
   --muted: #65707b;
@@ -44,7 +44,7 @@ a {
   left: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: 250px minmax(0, 1fr) 92px;
+  grid-template-columns: 250px minmax(0, 1fr) auto;
   align-items: center;
   min-height: 96px;
   padding: 0 7vw;
@@ -127,10 +127,12 @@ a {
   font: inherit;
 }
 
-.lang-toggle {
+.lang-toggle,
+.language-switcher {
   justify-self: end;
-  min-width: 58px;
-  min-height: 38px;
+}
+
+.lang-toggle {
   border: 1px solid currentColor;
   border-radius: 999px;
   color: inherit;
@@ -138,6 +140,34 @@ a {
   cursor: pointer;
   font: inherit;
   font-weight: 900;
+}
+
+.language-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+  max-width: 280px;
+}
+
+.language-option {
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.language-option.is-active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .menu-button {
@@ -1290,6 +1320,43 @@ a {
   font-size: 14px;
 }
 
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+html[dir="rtl"] .brand,
+html[dir="rtl"] .nav,
+html[dir="rtl"] .category-actions,
+html[dir="rtl"] .category-bottom-cta,
+html[dir="rtl"] .pagination {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-copy,
+html[dir="rtl"] .section-header,
+html[dir="rtl"] .product-content,
+html[dir="rtl"] .video-card,
+html[dir="rtl"] .blog-card,
+html[dir="rtl"] .category-hero,
+html[dir="rtl"] .category-panel,
+html[dir="rtl"] .category-link-card,
+html[dir="rtl"] .category-product-card,
+html[dir="rtl"] .category-faq-grid,
+html[dir="rtl"] .contact-section,
+html[dir="rtl"] .inquiry-form {
+  text-align: right;
+}
+
+html[dir="rtl"] input,
+html[dir="rtl"] textarea {
+  direction: rtl;
+  text-align: right;
+}
+
 @media (max-width: 1120px) {
   .collection,
   .inquiry-section {
@@ -1339,6 +1406,16 @@ a {
     gap: 10px;
   }
 
+  .language-switcher {
+    max-width: min(52vw, 230px);
+  }
+
+  .language-option {
+    min-height: 28px;
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+
   .menu-button {
     display: block;
   }
@@ -1357,6 +1434,11 @@ a {
     border: 1px solid var(--line);
     border-radius: 8px;
     box-shadow: var(--shadow);
+  }
+
+  html[dir="rtl"] .nav {
+    right: 5vw;
+    left: 5vw;
   }
 
   .nav.is-open {
