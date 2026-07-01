@@ -659,6 +659,202 @@ a {
   border-color: var(--accent);
 }
 
+.category-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 42px;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.72) 100%),
+    url("../img/hero-action-bg-f29r.jpg") center / cover no-repeat;
+}
+
+.electric-category-hero {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.72) 100%),
+    url("../img/products/f29.jpg") center / cover no-repeat;
+}
+
+.category-hero h1 {
+  max-width: 860px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(36px, 4.7vw, 70px);
+  line-height: 1.02;
+}
+
+.category-hero p {
+  max-width: 720px;
+  margin: 22px 0 0;
+  color: var(--text);
+  font-size: clamp(16px, 1.6vw, 20px);
+}
+
+.category-actions,
+.category-bottom-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.category-ghost {
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.category-panel {
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.category-panel span,
+.category-product-card span {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.category-panel strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--ink);
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.08;
+}
+
+.category-panel p {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.category-section {
+  min-height: auto;
+  background: #fff;
+}
+
+.category-section:nth-of-type(odd) {
+  background: var(--soft);
+}
+
+.category-link-grid,
+.category-product-grid,
+.category-faq-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.category-link-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.category-link-card,
+.category-faq-grid article {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.category-link-card span {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.category-link-card p,
+.category-faq-grid p,
+.category-product-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.category-product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.category-product-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 46px rgba(17, 19, 21, 0.08);
+}
+
+.category-product-card img {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: contain;
+  background: #f4f5f7;
+}
+
+.category-product-card div {
+  padding: 20px;
+}
+
+.category-product-card h2,
+.category-faq-grid h2 {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1.08;
+}
+
+.category-process ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: process-step;
+}
+
+.category-process li {
+  position: relative;
+  min-height: 132px;
+  padding: 52px 20px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.category-process li::before {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  color: var(--accent);
+  font-weight: 950;
+  counter-increment: process-step;
+  content: "0" counter(process-step);
+}
+
+.category-faq-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.category-model-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-model-list span {
+  padding: 10px 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 900;
+}
+
 .product-content {
   display: flex;
   flex: 1;
@@ -995,6 +1191,20 @@ a {
   .video-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .category-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .category-link-grid,
+  .category-product-grid,
+  .category-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-process ol {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1043,6 +1253,12 @@ a {
 
   .video-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-link-grid,
+  .category-product-grid,
+  .category-faq-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero {
