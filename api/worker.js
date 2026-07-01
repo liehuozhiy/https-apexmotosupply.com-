@@ -510,6 +510,7 @@ export default {
       "/frontend/pages/": "/",
       "/frontend/pages/index.html": "/",
       "/frontend/pages/products.html": "/products.html",
+      "/frontend/pages/videos.html": "/videos.html",
       "/frontend/pages/news.html": "/news.html",
       "/frontend/pages/contact.html": "/contact.html",
       "/frontend/pages/inquiry.html": "/inquiry.html"
@@ -531,6 +532,7 @@ export default {
       "/": "/index.html",
       "/index.html": "/index.html",
       "/products.html": "/products.html",
+      "/videos.html": "/videos.html",
       "/news.html": "/news.html",
       "/contact.html": "/contact.html",
       "/inquiry.html": "/inquiry.html",
