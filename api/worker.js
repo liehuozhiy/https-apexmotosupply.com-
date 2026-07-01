@@ -517,6 +517,8 @@ export default {
       "/frontend/pages/pit-bikes.html": "/pit-bikes.html",
       "/frontend/pages/videos.html": "/videos.html",
       "/frontend/pages/news.html": "/news.html",
+      "/frontend/pages/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
+      "/frontend/pages/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
       "/frontend/pages/contact.html": "/contact.html",
       "/frontend/pages/inquiry.html": "/inquiry.html"
     };
@@ -544,6 +546,8 @@ export default {
       "/pit-bikes.html": "/pit-bikes.html",
       "/videos.html": "/videos.html",
       "/news.html": "/news.html",
+      "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
+      "/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
       "/contact.html": "/contact.html",
       "/inquiry.html": "/inquiry.html",
       "/admin": "/admin/index.html",
