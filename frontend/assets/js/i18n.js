@@ -1,11 +1,13 @@
 ﻿(function () {
-  const supported = ["en", "zh-CN", "zh-TW", "ru", "ar"];
+  const supported = ["en", "zh-CN", "zh-TW", "ru", "ar", "es", "pt"];
   const labels = {
     en: "English",
     "zh-CN": "简体中文",
     "zh-TW": "繁體中文",
     ru: "Русский",
-    ar: "العربية"
+    ar: "العربية",
+    es: "Español",
+    pt: "Português"
   };
   const storageKey = "apex-lang";
 
@@ -18,6 +20,8 @@
     if (lower === "en") return "en";
     if (lower === "ru") return "ru";
     if (lower === "ar") return "ar";
+    if (lower === "es" || lower === "es-es" || lower === "es_mx" || lower === "es-mx") return "es";
+    if (lower === "pt" || lower === "pt-br" || lower === "pt_br" || lower === "pt-pt") return "pt";
     return supported.includes(clean) ? clean : null;
   }
 
@@ -72,6 +76,8 @@
     if (currentLang === "zh-TW") return "zh-TW";
     if (currentLang === "ru") return "ru-RU";
     if (currentLang === "ar") return "ar";
+    if (currentLang === "es") return "es-ES";
+    if (currentLang === "pt") return "pt-BR";
     return "en-US";
   }
 

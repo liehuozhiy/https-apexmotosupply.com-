@@ -200,6 +200,32 @@ const videos = [
   }
 ];
 
+const apexVideoExtraTranslations = {
+  1: ["Vista detallada de dirt bike", "Una vista cercana de la suspensión delantera, el cuadro, el motor, el escape y los detalles de la carrocería.", "Visão detalhada da dirt bike", "Uma visão próxima da suspensão dianteira, quadro, motor, escapamento e detalhes da carroceria."],
+  2: ["Ensamblaje e inspección en fábrica", "Vista del proceso de ensamblaje, inspección y manejo dentro del área de producción.", "Montagem e inspeção na fábrica", "Visão do processo de montagem, inspeção e manuseio dentro da área de produção."],
+  3: ["Exhibición de modelos en sala", "Varios modelos de dirt bike exhibidos en la sala, mostrando variedad de productos y calidad de presentación.", "Exposição de modelos no showroom", "Vários modelos de dirt bike exibidos no showroom, mostrando variedade de produtos e qualidade de apresentação."],
+  4: ["Exhibición de dirt bike eléctrica", "Vista más cercana del diseño, estructura y detalles exteriores clave de la dirt bike eléctrica.", "Exibição de dirt bike elétrica", "Vista mais próxima do design, estrutura e principais detalhes externos da dirt bike elétrica."],
+  5: ["Vista detallada de dirt bike blanca", "Vista detallada de la dirt bike blanca, incluyendo manillar, suspensión, reposapiés y áreas del tren motriz.", "Vista detalhada da dirt bike branca", "Vista detalhada da dirt bike branca, incluindo guidão, suspensão, pedaleiras e áreas do trem de força."],
+  6: ["Presentación de showroom de fábrica", "Presentación del personal dentro del showroom de fábrica, mostrando el área de productos y la línea de vehículos.", "Apresentação do showroom da fábrica", "Apresentação da equipe dentro do showroom da fábrica, mostrando a área de produtos e a linha de veículos."],
+  7: ["Área de almacén y envío", "Vista del almacén, área de almacenamiento y preparación de pallets para suministro mayorista y envío.", "Área de estoque e envio", "Vista do armazém, área de armazenamento e preparação de pallets para fornecimento atacadista e envio."],
+  8: ["Exhibición de motos en feria", "Modelos de dirt bike exhibidos en una feria, mostrando presentación del producto e interacción con clientes.", "Exibição de motos em feira", "Modelos de dirt bike exibidos em uma feira, mostrando apresentação do produto e interação com clientes."],
+  9: ["Vista de ensamblaje de dirt bike azul", "Vista cercana de la dirt bike azul durante el ensamblaje, incluyendo cuadro, ruedas, unidad de potencia y manejo en taller.", "Vista de montagem da dirt bike azul", "Vista próxima da dirt bike azul durante a montagem, incluindo quadro, rodas, unidade de potência e manuseio na oficina."],
+  10: ["Motos en fábrica y explicación en sitio", "Vista del piso de fábrica con exhibición de motos y explicación en sitio para entender el entorno de producción.", "Motos na fábrica e explicação no local", "Vista do chão de fábrica com exibição de motos e explicação no local para entender o ambiente de produção."],
+  11: ["Exhibición en sala y manejo en fábrica", "Varias dirt bikes exhibidas en la sala y el área de fábrica, mostrando presentación y manejo antes de la entrega.", "Exibição no showroom e manuseio na fábrica", "Várias dirt bikes exibidas no showroom e na área da fábrica, mostrando apresentação e manuseio antes da entrega."],
+  12: ["Área de producción de línea de ensamblaje", "Vista de la línea de ensamblaje, distribución de estaciones y entorno de producción de dirt bikes.", "Área de produção da linha de montagem", "Vista da linha de montagem, layout das estações e ambiente de produção de dirt bikes."],
+  13: ["Inspección de lote y detalles", "Varias dirt bikes mostradas juntas con inspección del personal y detalles cercanos antes de la entrega.", "Inspeção de lote e detalhes", "Várias dirt bikes mostradas juntas com inspeção da equipe e detalhes próximos antes da entrega."],
+  14: ["Exhibición de dirt bikes eléctricas rojas", "Modelos eléctricos rojos exhibidos en el showroom, mostrando la línea de productos y detalles exteriores.", "Exibição de dirt bikes elétricas vermelhas", "Modelos elétricos vermelhos exibidos no showroom, mostrando a linha de produtos e detalhes externos."]
+};
+
+videos.forEach((video) => {
+  const values = apexVideoExtraTranslations[video.id];
+  if (!values) return;
+  video.esTitle = values[0];
+  video.esDescription = values[1];
+  video.ptTitle = values[2];
+  video.ptDescription = values[3];
+});
+
 function videoLang() {
   return window.APEX_I18N ? window.APEX_I18N.getLang() : "en";
 }

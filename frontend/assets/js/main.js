@@ -47,6 +47,8 @@ function productIntro(product) {
   if (currentLang === "zh-TW") return product.introZhTW || product.introZh || product.intro;
   if (currentLang === "ru") return product.introRu || product.intro;
   if (currentLang === "ar") return product.introAr || product.intro;
+  if (currentLang === "es") return product.introEs || product.intro;
+  if (currentLang === "pt") return product.introPt || product.intro;
   return product.intro;
 }
 
