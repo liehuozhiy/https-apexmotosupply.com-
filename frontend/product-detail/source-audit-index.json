@@ -1,0 +1,5408 @@
+{
+  "generatedAtUtc": "2026-07-30T15:48:21Z",
+  "policy": "Excel authoritative model roster. Official model data wins where available; Excel fills official gaps; AI only when both lack images.",
+  "workbook": {
+    "path": "J:\\微信聊天存档\\xwechat_files\\wxid_pfd6tdg6bno721_fc81\\temp\\RWTemp\\2026-07\\8ffc9c1fc734a6ad93d90a836600b04d\\2026H&Q产品参数（英）.xlsx",
+    "bytes": 106139202,
+    "sha256": "3c11a2267a7c30b5978a8f6c5b2e9e6507498bd979e9fe714c73ec4d730128a6",
+    "sheets": [
+      "Babey",
+      "F4",
+      "ET",
+      "Time-F",
+      "SJ",
+      "S300",
+      "H300",
+      "Bumblebee",
+      "HS85CC",
+      "ER",
+      "ES",
+      "ETT"
+    ]
+  },
+  "counts": {
+    "excelModels": 26,
+    "existingProductJson": 27,
+    "excelModelsWithPage": 26,
+    "excelModelsMissingPage": 0,
+    "existingOutsideExcel": 1,
+    "excelEmbeddedImageRefs": 28
+  },
+  "sheets": {
+    "Babey": {
+      "dimensions": {
+        "rows": 23,
+        "columns": 3
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "Babey",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "Babey+",
+          "cell": "C1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 4041377,
+          "sha256": "286e29264707f53313ad80fa10242107e2a7684f05274d07ee4f9406691b317e"
+        },
+        {
+          "index": 2,
+          "anchor": "C1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 4270681,
+          "sha256": "de2b914d0f61c362adee2b228f6bca9bb452f8da770c54fe97ae34bf60e13a4f"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "F4": {
+      "dimensions": {
+        "rows": 24,
+        "columns": 3
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "F4",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "F4 +",
+          "cell": "C1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 3242101,
+          "sha256": "b108fece98d62f15095e1986b23162b2336015e0bad956f2893cfd4ddd45bdce"
+        },
+        {
+          "index": 2,
+          "anchor": "C1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 3365615,
+          "sha256": "7cb80fe2b765a04dfa068f44e53aff529ff7b5c6fe9d2c08df8bbf9152a521b7"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "ET": {
+      "dimensions": {
+        "rows": 29,
+        "columns": 3
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "ET 2022（Only accept bulk orders）",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "ET 2024",
+          "cell": "C1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B1",
+          "width": 4032,
+          "height": 3024,
+          "bytes": 6382635,
+          "sha256": "8a34f550f97b57238c9757670ff4024154c512996934df4d18d9a5a2e209990e"
+        },
+        {
+          "index": 2,
+          "anchor": "C1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 5934709,
+          "sha256": "e87a244ef6eae392c9f3175daf77a277393bb1794473d21a58cc010bf581f82b"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "Time-F": {
+      "dimensions": {
+        "rows": 28,
+        "columns": 6
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "F9",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "F29",
+          "cell": "C1"
+        },
+        {
+          "column": "D",
+          "header": "F29R",
+          "cell": "D1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B2",
+          "width": 4032,
+          "height": 3024,
+          "bytes": 6148169,
+          "sha256": "a095c4ad4ade4f0fcd2200ffec1bad5e5da321e971876b7e69eccc5bc3a0c9e6"
+        },
+        {
+          "index": 2,
+          "anchor": "C2",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 6445070,
+          "sha256": "c29f055e7873f7496f570177b551d47bc23f26216af05222d84a4c018af6be9c"
+        },
+        {
+          "index": 3,
+          "anchor": "D1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 6627209,
+          "sha256": "f5e9712920136ed851e822f7ef2541ef30bec4b0ac97a9b1bf29521860c9f11e"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "SJ": {
+      "dimensions": {
+        "rows": 24,
+        "columns": 4
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "SJ250",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "SJ300",
+          "cell": "C1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 6410928,
+          "sha256": "996be34d3d4d79ece52601d86d77ceac7efb37ef1d05e03d7e7d79db29178412"
+        },
+        {
+          "index": 2,
+          "anchor": "C1",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 1543404,
+          "sha256": "acd35ac99b700459fa35895ae309b3330a5a2095357e78ca2172f2dd106ba830"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "S300": {
+      "dimensions": {
+        "rows": 25,
+        "columns": 7
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "S300",
+          "cell": "B1"
+        },
+        {
+          "column": "C",
+          "header": "S300R",
+          "cell": "C1"
+        },
+        {
+          "column": "D",
+          "header": "SN300",
+          "cell": "D1"
+        },
+        {
+          "column": "E",
+          "header": "SY300",
+          "cell": "E1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 6245676,
+          "sha256": "b91072f07702ffe5cdad8e99d4b0229b882407498efe233ab7aa1287f0d5dd98"
+        },
+        {
+          "index": 2,
+          "anchor": "C1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 5919603,
+          "sha256": "8e4114e2e84b2e63859012d2b68c59f946b9bc636d01a70274271a2fc674f40b"
+        },
+        {
+          "index": 3,
+          "anchor": "D1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 5693520,
+          "sha256": "a04f75276fece701185c8282dc41eaeb45762534e7f494a0bede388dc4f66a7c"
+        },
+        {
+          "index": 4,
+          "anchor": "E1",
+          "width": 4096,
+          "height": 2732,
+          "bytes": 6448506,
+          "sha256": "3c78aa7e2b2f49722b599150fc1ef0d60e69a358343babe858224db027dbaad2"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "H300": {
+      "dimensions": {
+        "rows": 24,
+        "columns": 2
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "H300",
+          "cell": "B1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B2",
+          "width": 1706,
+          "height": 1279,
+          "bytes": 209384,
+          "sha256": "8b5cbb3374a8f6b2e21004b79dfed4adb7f1da07ce7966a4592050120846e930"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "Bumblebee": {
+      "dimensions": {
+        "rows": 21,
+        "columns": 2
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "Bumblebee",
+          "cell": "B1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B2",
+          "width": 1080,
+          "height": 1080,
+          "bytes": 435347,
+          "sha256": "6156d6704b8e5ad15fe7049acffb8172aafcbe13705004991f117959cd94ca34"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "HS85CC": {
+      "dimensions": {
+        "rows": 34,
+        "columns": 2
+      },
+      "headers": [
+        {
+          "column": "B",
+          "header": "HS85CC",
+          "cell": "B1"
+        }
+      ],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "B2",
+          "width": 9504,
+          "height": 6336,
+          "bytes": 9510270,
+          "sha256": "70697f891b0d642cc7eda56313d0d38719cbbe2a6f98bdd455b0c7fdcebc5371"
+        },
+        {
+          "index": 2,
+          "anchor": "B2",
+          "width": 9504,
+          "height": 6336,
+          "bytes": 5967161,
+          "sha256": "4c84f9ba40e74ae843f5f9a38d353f3da152b52b09f89e2fbb323ee50c920cd9"
+        },
+        {
+          "index": 3,
+          "anchor": "B2",
+          "width": 9504,
+          "height": 6336,
+          "bytes": 9558090,
+          "sha256": "6c35499749f228ffda7d777c5459681f17d3377c729004700db3f8910340904d"
+        }
+      ],
+      "unstructuredImageOnly": false
+    },
+    "ER": {
+      "dimensions": {
+        "rows": 40,
+        "columns": 17
+      },
+      "headers": [],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "A1",
+          "width": 784,
+          "height": 526,
+          "bytes": 175122,
+          "sha256": "4f0edfd56d3d3f79be1b2cff5e419f6811c811f639f7da0fffa5ff81ae9c82c3"
+        },
+        {
+          "index": 2,
+          "anchor": "I1",
+          "width": 723,
+          "height": 496,
+          "bytes": 196409,
+          "sha256": "8ddb804db3ce719b0945dd0282e4607f37b158bddca8eab9b4095b4a6726cd65"
+        },
+        {
+          "index": 3,
+          "anchor": "A19",
+          "width": 734,
+          "height": 500,
+          "bytes": 212147,
+          "sha256": "6f88df829df7fc12865336241ca8aea70f231a4ced7ec28e80cca3289193ce12"
+        }
+      ],
+      "unstructuredImageOnly": true
+    },
+    "ES": {
+      "dimensions": {
+        "rows": 26,
+        "columns": 11
+      },
+      "headers": [],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "A1",
+          "width": 795,
+          "height": 530,
+          "bytes": 260376,
+          "sha256": "fbc5679460e43b60cd35fd45f26c04b7de949d68b2629d72488b26af220b08f4"
+        }
+      ],
+      "unstructuredImageOnly": true
+    },
+    "ETT": {
+      "dimensions": {
+        "rows": 43,
+        "columns": 21
+      },
+      "headers": [],
+      "embeddedImages": [
+        {
+          "index": 1,
+          "anchor": "A1",
+          "width": 750,
+          "height": 505,
+          "bytes": 184952,
+          "sha256": "e7681d5cee18a3571bbfc679116f0f14d8873b6133ed8cfdedd4bf57f96fd007"
+        },
+        {
+          "index": 2,
+          "anchor": "L1",
+          "width": 750,
+          "height": 505,
+          "bytes": 193611,
+          "sha256": "7e108a1d79a094d5254064e2d5e91eb6ac7d60113f69c3a572d177ecfe02ee6d"
+        },
+        {
+          "index": 3,
+          "anchor": "A24",
+          "width": 741,
+          "height": 500,
+          "bytes": 224998,
+          "sha256": "6f4fb4026f9b296ebfe787bdea98d3dc6230842cab0578ff091b5187e48bdc96"
+        },
+        {
+          "index": 4,
+          "anchor": "L22",
+          "width": 736,
+          "height": 495,
+          "bytes": 225100,
+          "sha256": "600a40dfd9463bd5d723fe44765dd7f3bac49b183339fc1b4d78441b66860a45"
+        }
+      ],
+      "unstructuredImageOnly": true
+    }
+  },
+  "models": {
+    "babey": {
+      "excelModelName": "Babey",
+      "excel": {
+        "sheet": "Babey",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1300*560*770mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "900mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "210mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "580mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "21.1Kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "70Kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "16*2.40",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "16*2.40",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Power mode",
+            "value": "Hub drive",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Transmission mode",
+            "value": "Rear wheel drive",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Maximum power",
+            "value": "1000W",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Voltage",
+            "value": "36V",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Endurance",
+            "value": "30Km(speed per hour≤25Km/h)",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Top speed",
+            "value": "30Km/h",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Battery type",
+            "value": "Hub motor",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Gear setting",
+            "value": "5 Gear",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Battery capacity",
+            "value": "Ternary lithium battery 10Ah",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Colour",
+            "value": "Green /Black /Orange",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Charging Time",
+            "value": "3.5H",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 4041377,
+            "sha256": "286e29264707f53313ad80fa10242107e2a7684f05274d07ee4f9406691b317e"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "babey",
+        "url": "https://h5.cqxstx.com/?lang=en&id=babey",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/babey.json",
+        "page": "frontend/pages/babey.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "最大功率",
+            "value": "1000",
+            "unit": "W"
+          },
+          {
+            "label": "电压",
+            "value": "36",
+            "unit": "V"
+          },
+          {
+            "label": "最高速度",
+            "value": "30",
+            "unit": "km/h"
+          },
+          {
+            "label": "整备质量",
+            "value": "21.1",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/generated/babey-gallery-wide-v3/babey-angle-01-front-wide-dark-v3.png",
+          "../assets/img/generated/babey-gallery-wide-v3/babey-angle-02-left-front-three-quarter-wide-dark-v3.png",
+          "../assets/img/generated/babey-gallery-wide-v3/babey-angle-03-left-side-wide-dark-v3.png",
+          "../assets/img/generated/babey-gallery-wide-v3/babey-angle-04-left-rear-three-quarter-wide-dark-v3.png",
+          "../assets/img/generated/babey-gallery-wide-v3/babey-angle-05-rear-wide-dark-v3.png"
+        ],
+        "panelImage": "../assets/img/generated/babey-panel-v11/babey-panel-v11-left-front-red-curtain-v4.webp",
+        "highlights": [
+          "../assets/img/generated/babey-highlights-dark-v2/babey-highlight-battery-dark-industrial-v2.webp",
+          "../assets/img/generated/babey-highlights-dark-v2/babey-highlight-rear-hub-motor-dark-industrial-v2.webp",
+          "../assets/img/generated/babey-highlights-dark-v2/babey-highlight-suspension-dark-industrial-v2.webp",
+          "../assets/img/generated/babey-highlights-dark-v2/babey-highlight-aluminum-body-dark-industrial-v3.webp"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "babey-plus": {
+      "excelModelName": "Babey+",
+      "excel": {
+        "sheet": "Babey",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1300*560*770mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "900mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "210mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "580mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "21.1Kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "70Kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "16*2.40",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "16*2.40",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Power mode",
+            "value": "Hub drive",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Transmission mode",
+            "value": "Rear wheel drive",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Maximum power",
+            "value": "1500W",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Voltage",
+            "value": "48V",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Endurance",
+            "value": "35Km(speed per hour≤25Km/h)",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Top speed",
+            "value": "35Km/h",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Battery type",
+            "value": "Hub motor",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Gear setting",
+            "value": "5 Gear",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Battery capacity",
+            "value": "Ternary lithium battery 10Ah",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Colour",
+            "value": "Green /Black /Orange",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Charging Time",
+            "value": "3.5H",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 4270681,
+            "sha256": "de2b914d0f61c362adee2b228f6bca9bb452f8da770c54fe97ae34bf60e13a4f"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "babey",
+        "url": "https://h5.cqxstx.com/?lang=en&id=babey",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/babey-plus.json",
+        "page": "frontend/pages/babey-plus.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "最大功率",
+            "value": "1500",
+            "unit": "W"
+          },
+          {
+            "label": "电压",
+            "value": "48",
+            "unit": "V"
+          },
+          {
+            "label": "最高速度",
+            "value": "35",
+            "unit": "km/h"
+          },
+          {
+            "label": "整备质量",
+            "value": "21.1",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-01-front-dark-v2.png",
+          "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-02-left-front-dark-v2-sample.png",
+          "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-03-left-side-dark-v2.png",
+          "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-04-left-rear-dark-v2.png",
+          "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-05-rear-dark-v2.png"
+        ],
+        "panelImage": "../assets/img/panel-red-studio-v1/babey-plus-panel-red-v2.png",
+        "highlights": [
+          "../assets/img/babey-plus-highlights-v1/babey-plus-highlight-battery-v1.jpg",
+          "../assets/img/babey-plus-highlights-v1/babey-plus-highlight-motor-v1.jpg",
+          "../assets/img/babey-plus-highlights-v1/babey-plus-highlight-suspension-v1.jpg",
+          "../assets/img/babey-plus-highlights-v1/babey-plus-highlight-brake-v1.jpg"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "bumblebee": {
+      "excelModelName": "Bumblebee",
+      "excel": {
+        "sheet": "Bumblebee",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1910*800*960mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1270mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "250mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "830mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "71Kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "120Kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Frame",
+            "value": "Aluminium alloy",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Front tire",
+            "value": "70/100-19",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Rear tire",
+            "value": "80/100-19",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Front and rear brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Front shock absorber",
+            "value": "Length:745mm",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Rear shock absorber",
+            "value": "Length:265mm",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Top speed",
+            "value": "90KM",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Maximum climbing angle",
+            "value": "＞45°",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Maximum power",
+            "value": "15KW",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Mode",
+            "value": "ECO/Sport",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Battery capacity",
+            "value": "72V35Ah ",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B2",
+            "width": 1080,
+            "height": 1080,
+            "bytes": 435347,
+            "sha256": "6156d6704b8e5ad15fe7049acffb8172aafcbe13705004991f117959cd94ca34"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "babey",
+        "url": "https://h5.cqxstx.com/?lang=en&id=babey",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/bumblebee.json",
+        "page": "frontend/pages/bumblebee.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "15",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "35Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "90",
+            "unit": "km/h"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "71",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/bumblebee-detail/bumblebee-gallery-01-front-v2.png",
+          "../assets/img/bumblebee-detail/bumblebee-gallery-02-left-front-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-gallery-03-left-side-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-gallery-04-left-rear-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-gallery-05-rear-v2.png"
+        ],
+        "panelImage": "../assets/img/panel-red-studio-v1/bumblebee-panel-red-v2.png",
+        "highlights": [
+          "../assets/img/bumblebee-detail/bumblebee-highlight-01-drive-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-highlight-02-front-fork-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-highlight-03-wheel-v1.png",
+          "../assets/img/bumblebee-detail/bumblebee-highlight-04-brake-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "er3": {
+      "excelModelName": "ER3",
+      "excel": {
+        "sheet": "ER",
+        "column": null,
+        "headerCell": "A1",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "A1",
+            "width": 784,
+            "height": 526,
+            "bytes": 175122,
+            "sha256": "4f0edfd56d3d3f79be1b2cff5e419f6811c811f639f7da0fffa5ff81ae9c82c3"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/er3.json",
+        "page": "frontend/pages/er3.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "5600",
+            "unit": "W"
+          },
+          {
+            "label": "Battery",
+            "value": "60V",
+            "unit": "20Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "60",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "190",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/gallery-corrected-v1/er3/er3-angle-01-front-v2.png",
+          "../assets/img/gallery-corrected-v1/er3/er3-angle-02-left-front-v4.png",
+          "../assets/img/gallery-corrected-v1/er3/er3-angle-03-left-side-v2.png",
+          "../assets/img/gallery-corrected-v1/er3/er3-angle-04-left-rear-v2.png",
+          "../assets/img/gallery-corrected-v1/er3/er3-angle-05-rear-v2.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/er3-dark-studio-v12.webp",
+        "highlights": [
+          "../assets/img/er3-detail/er3-highlight-01-motor-battery-v1.png",
+          "../assets/img/er3-detail/er3-highlight-02-front-fork-v1.png",
+          "../assets/img/er3-detail/er3-highlight-03-wheel-assembly-v1.png",
+          "../assets/img/er3-detail/er3-highlight-04-brake-disc-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "er5": {
+      "excelModelName": "ER5",
+      "excel": {
+        "sheet": "ER",
+        "column": null,
+        "headerCell": "I1",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "I1",
+            "width": 723,
+            "height": 496,
+            "bytes": 196409,
+            "sha256": "8ddb804db3ce719b0945dd0282e4607f37b158bddca8eab9b4095b4a6726cd65"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/er5.json",
+        "page": "frontend/pages/er5.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "5600",
+            "unit": "W"
+          },
+          {
+            "label": "Battery",
+            "value": "60V",
+            "unit": "25Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "70",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "190",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/er5-01-front-v1.png",
+          "../assets/img/catalog-dark-studio/er5-02-left-front-v1.png",
+          "../assets/img/catalog-dark-studio/er5-03-left-side-v1.png",
+          "../assets/img/catalog-dark-studio/er5-04-left-rear-v1.png",
+          "../assets/img/catalog-dark-studio/er5-05-rear-v1.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/er5-v11-panel-16x9-v2.webp",
+        "highlights": [
+          "../assets/img/er5-detail/er5-detail-motor-battery-v1.png",
+          "../assets/img/er5-detail/er5-detail-front-fork-v1.png",
+          "../assets/img/er5-detail/er5-detail-wheel-assembly-v1.png",
+          "../assets/img/er5-detail/er5-detail-brake-disc-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "er7": {
+      "excelModelName": "ER7",
+      "excel": {
+        "sheet": "ER",
+        "column": null,
+        "headerCell": "A19",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 3,
+            "anchor": "A19",
+            "width": 734,
+            "height": 500,
+            "bytes": 212147,
+            "sha256": "6f88df829df7fc12865336241ca8aea70f231a4ced7ec28e80cca3289193ce12"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/er7.json",
+        "page": "frontend/pages/er7.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "10",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "40Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "80",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "300",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/er7-01-front-studio.png",
+          "../assets/img/catalog-dark-studio/er7-02-left-front-studio.png",
+          "../assets/img/catalog-dark-studio/er7-03-left-side-studio.png",
+          "../assets/img/catalog-dark-studio/er7-04-left-rear-studio.png",
+          "../assets/img/catalog-dark-studio/er7-05-rear-studio.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/er7-panel-left-front-v11-r4.webp",
+        "highlights": [
+          "../assets/img/er7-detail/er7-highlight-motor-battery.png",
+          "../assets/img/er7-detail/er7-highlight-front-fork.png",
+          "../assets/img/er7-detail/er7-highlight-wheel-assembly.png",
+          "../assets/img/er7-detail/er7-highlight-brake-disc.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "es11": {
+      "excelModelName": "ES11",
+      "excel": {
+        "sheet": "ES",
+        "column": null,
+        "headerCell": "A1",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "A1",
+            "width": 795,
+            "height": 530,
+            "bytes": 260376,
+            "sha256": "fbc5679460e43b60cd35fd45f26c04b7de949d68b2629d72488b26af220b08f4"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/es11.json",
+        "page": "frontend/pages/es11.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "35",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "96V",
+            "unit": "50Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "125",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "1200",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/es11-gallery-01-front-v1.png",
+          "../assets/img/catalog-dark-studio/es11-gallery-02-left-front-v1.png",
+          "../assets/img/catalog-dark-studio/es11-gallery-03-left-side-v1.png",
+          "../assets/img/catalog-dark-studio/es11-gallery-04-left-rear-v1.png",
+          "../assets/img/catalog-dark-studio/es11-gallery-05-rear-v1.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/es11-panel-v12-left-front-16x9.webp",
+        "highlights": [
+          "../assets/img/es11-detail/es11-detail-motor-battery-v1.png",
+          "../assets/img/es11-detail/es11-detail-front-fork-v1.png",
+          "../assets/img/es11-detail/es11-detail-wheel-assembly-v1.png",
+          "../assets/img/es11-detail/es11-detail-brake-disc-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et-2022": {
+      "excelModelName": "ET 2022（Only accept bulk orders）",
+      "excel": {
+        "sheet": "ET",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1970*820*1120mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1340mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "330mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "860mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "113kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Frame",
+            "value": "Iron/Aluminium alloy",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Front tire",
+            "value": "80/100-21",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Rear tire",
+            "value": "110/90-18",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Transmission mode",
+            "value": "Chain drive520/94L/42T  ",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Sprocket",
+            "value": "Alloy ",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Front and rear brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Front shock absorber",
+            "value": "Length:790mm",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Rear shock absorber",
+            "value": "Length:325mm",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Endurance",
+            "value": "100Km(speed per hour≤50Km/h)",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "9kw",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Mode",
+            "value": "ECO/Sport",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "4 Gear",
+            "labelCell": "A25",
+            "valueCell": "B25"
+          },
+          {
+            "row": 26,
+            "label": "Battery capacity",
+            "value": "80V34Ah ",
+            "labelCell": "A26",
+            "valueCell": "B26"
+          },
+          {
+            "row": 27,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A27",
+            "valueCell": "B27"
+          },
+          {
+            "row": 28,
+            "label": "Charging Time",
+            "value": "3.5H",
+            "labelCell": "A28",
+            "valueCell": "B28"
+          },
+          {
+            "row": 29,
+            "label": "IP Pating",
+            "value": "IP65",
+            "labelCell": "A29",
+            "valueCell": "B29"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B1",
+            "width": 4032,
+            "height": 3024,
+            "bytes": 6382635,
+            "sha256": "8a34f550f97b57238c9757670ff4024154c512996934df4d18d9a5a2e209990e"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "et",
+        "url": "https://h5.cqxstx.com/?lang=en&id=et",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et-2022.json",
+        "page": "frontend/pages/et-2022.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "最大功率",
+            "value": "9",
+            "unit": "kW"
+          },
+          {
+            "label": "电池",
+            "value": "80V",
+            "unit": "34Ah"
+          },
+          {
+            "label": "最高速度",
+            "value": "110",
+            "unit": "km/h"
+          },
+          {
+            "label": "整备质量",
+            "value": "113",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-01-front-dark-v2.png",
+          "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-02-left-front-dark-v2-sample.png",
+          "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-03-left-side-dark-v2.png",
+          "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-04-left-rear-dark-v3.png",
+          "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-05-rear-dark-v2.png"
+        ],
+        "panelImage": "../assets/img/et-2022-gallery-dark-v1/et-2022-panel-left-front-red-smoke-dark-v2.png",
+        "highlights": [
+          "../assets/img/et-2022-highlights-v1/et-2022-highlight-motor-v1.jpg",
+          "../assets/img/et-2022-highlights-v1/et-2022-highlight-fork-v1.jpg",
+          "../assets/img/et-2022-highlights-v1/et-2022-highlight-rear-wheel-v1.jpg",
+          "../assets/img/et-2022-highlights-v1/et-2022-highlight-front-brake-v1.jpg"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et-2024": {
+      "excelModelName": "ET 2024",
+      "excel": {
+        "sheet": "ET",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1970*820*1120mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1340mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "330mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "840mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "94kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Frame",
+            "value": "Iron/Aluminium alloy",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Front tire",
+            "value": "80/100-19",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Rear tire",
+            "value": "100/90-16",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Transmission mode",
+            "value": "Chain drive520/94L/42T  ",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Sprocket",
+            "value": "Alloy ",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Front and rear brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Front shock absorber",
+            "value": "Length:790mm",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Rear shock absorber",
+            "value": "Length:325mm",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Endurance",
+            "value": "100Km(speed per hour≤50Km/h)",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "9kw",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          },
+          {
+            "row": 24,
+            "label": "Mode",
+            "value": "ECO/Sport",
+            "labelCell": "A24",
+            "valueCell": "C24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "4 Gear",
+            "labelCell": "A25",
+            "valueCell": "C25"
+          },
+          {
+            "row": 26,
+            "label": "Battery capacity",
+            "value": "80V34Ah ",
+            "labelCell": "A26",
+            "valueCell": "C26"
+          },
+          {
+            "row": 27,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A27",
+            "valueCell": "C27"
+          },
+          {
+            "row": 28,
+            "label": "Charging Time",
+            "value": "3.5H",
+            "labelCell": "A28",
+            "valueCell": "C28"
+          },
+          {
+            "row": 29,
+            "label": "IP Pating",
+            "value": "IP65",
+            "labelCell": "A29",
+            "valueCell": "C29"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 5934709,
+            "sha256": "e87a244ef6eae392c9f3175daf77a277393bb1794473d21a58cc010bf581f82b"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "et",
+        "url": "https://h5.cqxstx.com/?lang=en&id=et",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et-2024.json",
+        "page": "frontend/pages/et-2024.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "最大功率",
+            "value": "9",
+            "unit": "kW"
+          },
+          {
+            "label": "电池",
+            "value": "80V",
+            "unit": "34Ah"
+          },
+          {
+            "label": "最高速度",
+            "value": "110",
+            "unit": "km/h"
+          },
+          {
+            "label": "整备质量",
+            "value": "94",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-01-front-dark-v2.png",
+          "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-02-left-front-dark-v2.png",
+          "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-03-left-side-dark-v2.png",
+          "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-04-left-rear-dark-v2.png",
+          "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-05-rear-dark-v2.png"
+        ],
+        "panelImage": "../assets/img/et-2024-detail/et-2024-panel-left-front-red-smoke-v2.png",
+        "highlights": [
+          "../assets/img/et-2024-highlights-v1/et-2024-highlight-motor-v1.jpg",
+          "../assets/img/et-2024-highlights-v1/et-2024-highlight-fork-v1.jpg",
+          "../assets/img/et-2024-highlights-v1/et-2024-highlight-rear-wheel-v1.jpg",
+          "../assets/img/et-2024-highlights-v1/et-2024-highlight-front-brake-v1.jpg"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et3": {
+      "excelModelName": "ET3",
+      "excel": {
+        "sheet": "ETT",
+        "column": null,
+        "headerCell": "A1",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "A1",
+            "width": 750,
+            "height": 505,
+            "bytes": 184952,
+            "sha256": "e7681d5cee18a3571bbfc679116f0f14d8873b6133ed8cfdedd4bf57f96fd007"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et3.json",
+        "page": "frontend/pages/et3.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "5600",
+            "unit": "W"
+          },
+          {
+            "label": "Battery",
+            "value": "60V",
+            "unit": "25Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "60",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "210",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/et3-angle-01-front.png",
+          "../assets/img/catalog-dark-studio/et3-angle-02-left-front.png",
+          "../assets/img/catalog-dark-studio/et3-angle-03-left-side.png",
+          "../assets/img/catalog-dark-studio/et3-angle-04-left-rear.png",
+          "../assets/img/catalog-dark-studio/et3-angle-05-rear.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/et3-panel-left-front-red.png",
+        "highlights": [
+          "../assets/img/et3-detail/et3-detail-motor-battery-v1.png",
+          "../assets/img/et3-detail/et3-detail-front-fork-v1.png",
+          "../assets/img/et3-detail/et3-detail-wheel-hub-v1.png",
+          "../assets/img/et3-detail/et3-detail-brake-disc-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et5": {
+      "excelModelName": "ET5",
+      "excel": {
+        "sheet": "ETT",
+        "column": null,
+        "headerCell": "L1",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "L1",
+            "width": 750,
+            "height": 505,
+            "bytes": 193611,
+            "sha256": "7e108a1d79a094d5254064e2d5e91eb6ac7d60113f69c3a572d177ecfe02ee6d"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et5.json",
+        "page": "frontend/pages/et5.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "5600",
+            "unit": "W"
+          },
+          {
+            "label": "Battery",
+            "value": "60V",
+            "unit": "25Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "70",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "210",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/et5-gallery-01-front-v1.png",
+          "../assets/img/catalog-dark-studio/et5-gallery-02-left-front-v1.png",
+          "../assets/img/catalog-dark-studio/et5-gallery-03-left-side-v1.png",
+          "../assets/img/catalog-dark-studio/et5-gallery-04-left-rear-v1.png",
+          "../assets/img/catalog-dark-studio/et5-gallery-05-rear-v1.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/et5-panel-left-front-v1.png",
+        "highlights": [
+          "../assets/img/et5-detail/et5-highlight-motor-v1.png",
+          "../assets/img/et5-detail/et5-highlight-fork-v1.png",
+          "../assets/img/et5-detail/et5-highlight-wheel-v1.png",
+          "../assets/img/et5-detail/et5-highlight-brake-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et7": {
+      "excelModelName": "ET7",
+      "excel": {
+        "sheet": "ETT",
+        "column": null,
+        "headerCell": "A24",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 3,
+            "anchor": "A24",
+            "width": 741,
+            "height": 500,
+            "bytes": 224998,
+            "sha256": "6f4fb4026f9b296ebfe787bdea98d3dc6230842cab0578ff091b5187e48bdc96"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et7.json",
+        "page": "frontend/pages/et7.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "13.5",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "40Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "95",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "510",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/et7-gallery-01-front-v1.png",
+          "../assets/img/catalog-dark-studio/et7-gallery-02-left-front-sample-v1.png",
+          "../assets/img/catalog-dark-studio/et7-gallery-03-left-side-v1.png",
+          "../assets/img/catalog-dark-studio/et7-gallery-04-left-rear-v2.png",
+          "../assets/img/catalog-dark-studio/et7-gallery-05-rear-v1.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/et7-panel-left-front-red-v1.png",
+        "highlights": [
+          "../assets/img/et7-detail/et7-highlight-01-motor-battery-v1.png",
+          "../assets/img/et7-detail/et7-highlight-02-front-fork-v1.png",
+          "../assets/img/et7-detail/et7-highlight-03-wheel-assembly-v1.png",
+          "../assets/img/et7-detail/et7-highlight-04-brake-disc-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "et9": {
+      "excelModelName": "ET9",
+      "excel": {
+        "sheet": "ETT",
+        "column": null,
+        "headerCell": "L22",
+        "fields": [],
+        "embeddedImageRefs": [
+          {
+            "index": 4,
+            "anchor": "L22",
+            "width": 736,
+            "height": 495,
+            "bytes": 225100,
+            "sha256": "600a40dfd9463bd5d723fe44765dd7f3bac49b183339fc1b4d78441b66860a45"
+          }
+        ],
+        "note": "Sheet stores model material as embedded images; no extractable cell-field table."
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/et9.json",
+        "page": "frontend/pages/et9.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Peak power",
+            "value": "27",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "50Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "120",
+            "unit": "km/h"
+          },
+          {
+            "label": "Maximum torque",
+            "value": "590",
+            "unit": "N·m"
+          }
+        ],
+        "gallery": [
+          "../assets/img/catalog-dark-studio/et9-01-front-dark-industrial-v1.png",
+          "../assets/img/catalog-dark-studio/et9-02-left-front-dark-industrial-v1.png",
+          "../assets/img/catalog-dark-studio/et9-03-left-side-dark-industrial-v1.png",
+          "../assets/img/catalog-dark-studio/et9-04-left-rear-dark-industrial-v1.png",
+          "../assets/img/catalog-dark-studio/et9-05-rear-dark-industrial-v1.png"
+        ],
+        "panelImage": "../assets/img/catalog-dark-studio/et9-panel-left-front-red-smoke-v1.png",
+        "highlights": [
+          "../assets/img/et9-detail/et9-highlight-01-motor-battery-dark-industrial-v1.png",
+          "../assets/img/et9-detail/et9-highlight-02-front-fork-dark-industrial-v1.png",
+          "../assets/img/et9-detail/et9-highlight-03-wheel-assembly-dark-industrial-v1.png",
+          "../assets/img/et9-detail/et9-highlight-04-brake-disc-dark-industrial-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "f29": {
+      "excelModelName": "F29",
+      "excel": {
+        "sheet": "Time-F",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2120*800*1235mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1440mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "340mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "910mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "120kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:838mm",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:509mm",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/108L/42T",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket",
+            "value": "Alloy",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "120Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "120Km/h",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Wheel torque",
+            "value": "580Nm",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "29Kw",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          },
+          {
+            "row": 24,
+            "label": "Mode",
+            "value": "ECO/Sport/Race",
+            "labelCell": "A24",
+            "valueCell": "C24"
+          },
+          {
+            "row": 25,
+            "label": "Battery capacity",
+            "value": "72V60Ah",
+            "labelCell": "A25",
+            "valueCell": "C25"
+          },
+          {
+            "row": 26,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A26",
+            "valueCell": "C26"
+          },
+          {
+            "row": 27,
+            "label": "Charging Time",
+            "value": "4.5-5H",
+            "labelCell": "A27",
+            "valueCell": "C27"
+          },
+          {
+            "row": 28,
+            "label": "IP Pating",
+            "value": "IP67",
+            "labelCell": "A28",
+            "valueCell": "C28"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C2",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 6445070,
+            "sha256": "c29f055e7873f7496f570177b551d47bc23f26216af05222d84a4c018af6be9c"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "f29",
+        "url": "https://h5.cqxstx.com/?lang=en&id=f29",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/f29.json",
+        "page": "frontend/pages/f29.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "29",
+            "unit": "kW"
+          },
+          {
+            "label": "Motor",
+            "value": "PMSM",
+            "unit": ""
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "60Ah"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "120",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/f29-detail/f29-angle-01-front-dark-industrial-wide-ai-v3.png",
+          "../assets/img/f29-detail/f29-angle-02-left-front-dark-industrial-wide-ai-v3.png",
+          "../assets/img/f29-detail/f29-angle-03-left-dark-industrial-wide-ai-v3.png",
+          "../assets/img/f29-detail/f29-angle-04-left-rear-dark-industrial-wide-ai-v4.png",
+          "../assets/img/f29-detail/f29-angle-05-rear-dark-industrial-wide-ai-v3.png"
+        ],
+        "panelImage": "../assets/img/f29-detail/f29-hero-panel-industrial-red-v11-candidate-v2-16x9-optimized.webp",
+        "highlights": [
+          "../assets/img/f29-detail/f29-highlight-04-electric-drive-f29-dark-industrial-ai-v3.png",
+          "../assets/img/f29-detail/f29-highlight-02-front-fork-f29-dark-industrial-ai-v3.png",
+          "../assets/img/f29-detail/f29-highlight-03-front-hub-f29-dark-industrial-ai-v3.png",
+          "../assets/img/f29-detail/f29-highlight-01-front-brake-disc-f29-dark-industrial-ai-v3.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "f29r": {
+      "excelModelName": "F29R",
+      "excel": {
+        "sheet": "Time-F",
+        "column": "D",
+        "headerCell": "D1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2120*800*1235mm",
+            "labelCell": "A3",
+            "valueCell": "D3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1440mm",
+            "labelCell": "A4",
+            "valueCell": "D4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "340mm",
+            "labelCell": "A5",
+            "valueCell": "D5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "910mm",
+            "labelCell": "A6",
+            "valueCell": "D6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "127kg",
+            "labelCell": "A7",
+            "valueCell": "D7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "D8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "D9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "D10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "D11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:838mm",
+            "labelCell": "A12",
+            "valueCell": "D12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:509mm",
+            "labelCell": "A13",
+            "valueCell": "D13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/108L/42T",
+            "labelCell": "A14",
+            "valueCell": "D14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket",
+            "value": "Alloy",
+            "labelCell": "A15",
+            "valueCell": "D15"
+          },
+          {
+            "row": 16,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A16",
+            "valueCell": "D16"
+          },
+          {
+            "row": 17,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A17",
+            "valueCell": "D17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "120Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "D18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "120Km/h",
+            "labelCell": "A19",
+            "valueCell": "D19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "D20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A21",
+            "valueCell": "D21"
+          },
+          {
+            "row": 22,
+            "label": "Wheel torque",
+            "value": "580Nm",
+            "labelCell": "A22",
+            "valueCell": "D22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "32Kw",
+            "labelCell": "A23",
+            "valueCell": "D23"
+          },
+          {
+            "row": 24,
+            "label": "Mode",
+            "value": "ECO/Sport/Race",
+            "labelCell": "A24",
+            "valueCell": "D24"
+          },
+          {
+            "row": 25,
+            "label": "Battery capacity",
+            "value": "96V55Ah",
+            "labelCell": "A25",
+            "valueCell": "D25"
+          },
+          {
+            "row": 26,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A26",
+            "valueCell": "D26"
+          },
+          {
+            "row": 27,
+            "label": "Charging Time",
+            "value": "4H",
+            "labelCell": "A27",
+            "valueCell": "D27"
+          },
+          {
+            "row": 28,
+            "label": "IP Pating",
+            "value": "IP67",
+            "labelCell": "A28",
+            "valueCell": "D28"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 3,
+            "anchor": "D1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 6627209,
+            "sha256": "f5e9712920136ed851e822f7ef2541ef30bec4b0ac97a9b1bf29521860c9f11e"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "f29",
+        "url": "https://h5.cqxstx.com/?lang=en&id=f29",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/f29r.json",
+        "page": "frontend/pages/f29r.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "32",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "96V",
+            "unit": "55Ah"
+          },
+          {
+            "label": "Top speed",
+            "value": "120",
+            "unit": "km/h"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "127",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/f29r-gallery/f29r-angle-01-front-dark-wide-ai-v3.png",
+          "../assets/img/f29r-gallery/f29r-angle-02-left-front-half-dark-wide-ai-v3.png",
+          "../assets/img/f29r-gallery/f29r-angle-03-left-dark-wide-ai-v3.png",
+          "../assets/img/f29r-gallery/f29r-angle-04-left-rear-half-dark-wide-ai-v3.png",
+          "../assets/img/f29r-gallery/f29r-angle-05-rear-dark-wide-ai-v3.png"
+        ],
+        "panelImage": "../assets/img/f29r-gallery/f29r-hero-panel-industrial-red-v11-candidate-v1.webp",
+        "highlights": [
+          "../assets/img/f29r-gallery/feature-01-battery-bay-dark-ai-v3.webp",
+          "../assets/img/f29r-gallery/feature-02-pro-offroad-suspension-dark-ai-v3.webp",
+          "../assets/img/f29r-gallery/feature-03-front-led-light-dark-ai-v3.webp",
+          "../assets/img/f29r-gallery/feature-04-gearless-motor-dark-ai-v3.webp"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "f4": {
+      "excelModelName": "F4",
+      "excel": {
+        "sheet": "F4",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1550*770*900mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1060mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "270mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "670mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "25Kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "100Kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "20*2.40",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "20*3.0",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Shock absorber front fork",
+            "value": "Stroke:90mm",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Rear shock absorber",
+            "value": "2000 pounds",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Transmission mode",
+            "value": "Rear wheel drive",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Maximum power",
+            "value": "2500W",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Voltage",
+            "value": "48V ",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Endurance",
+            "value": "50Km(speed per hour≤25Km/h)",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Top speed",
+            "value": "50Km",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Battery type",
+            "value": "Hub motor ",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Gear setting",
+            "value": "5 Gear",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Battery capacity",
+            "value": "Ternary lithium battery 15Ah",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Colour",
+            "value": "Green /Black /Orange",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Charging Time",
+            "value": "4H",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 3242101,
+            "sha256": "b108fece98d62f15095e1986b23162b2336015e0bad956f2893cfd4ddd45bdce"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "f4",
+        "url": "https://h5.cqxstx.com/?lang=en&id=f4",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/f4.json",
+        "page": "frontend/pages/f4.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "2500",
+            "unit": "W"
+          },
+          {
+            "label": "Motor type",
+            "value": "Hub",
+            "unit": "motor"
+          },
+          {
+            "label": "Battery",
+            "value": "48V",
+            "unit": "15Ah"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "25",
+            "unit": "Kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/f4-official/f4-angle-01-front-dark-industrial-panorama-v4.png",
+          "../assets/img/f4-official/f4-angle-02-left-front-half-dark-industrial-panorama-v3.png",
+          "../assets/img/f4-official/f4-angle-03-left-dark-industrial-panorama-v3.png",
+          "../assets/img/f4-official/f4-angle-04-left-rear-half-dark-industrial-panorama-v3.png",
+          "../assets/img/f4-official/f4-angle-05-rear-dark-industrial-panorama-v3.png"
+        ],
+        "panelImage": "../assets/img/f4-official/f4-panel-v11-left-front-red-curtain-v5-web.webp",
+        "highlights": [
+          "../assets/img/f4-official/f4-highlight-hub-motor-dark-industrial-v2.png",
+          "../assets/img/f4-official/f4-highlight-endurance-battery-dark-industrial-v1.png",
+          "../assets/img/f4-official/f4-highlight-frame-battery-dark-industrial-v2.png",
+          "../assets/img/f4-official/f4-highlight-rear-shock-dark-industrial-v2.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "f4-plus": {
+      "excelModelName": "F4 +",
+      "excel": {
+        "sheet": "F4",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "1550*770*900mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1060mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "270mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "670mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "25Kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "100Kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "20*2.40",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "20*3.0",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Shock absorber front fork",
+            "value": "Stroke:90mm",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Rear shock absorber",
+            "value": "2000 pounds",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Transmission mode",
+            "value": "Rear wheel drive",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Maximum power",
+            "value": "2500W",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Voltage",
+            "value": "48V ",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Endurance",
+            "value": "50Km(speed per hour≤25Km/h)",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Top speed",
+            "value": "50Km",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Battery type",
+            "value": "Hub motor ",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Gear setting",
+            "value": "5 Gear",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Battery capacity",
+            "value": "Ternary lithium battery 20Ah",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Colour",
+            "value": "Green /Black /Orange",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          },
+          {
+            "row": 24,
+            "label": "Charging Time",
+            "value": "4-4.5H",
+            "labelCell": "A24",
+            "valueCell": "C24"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 3365615,
+            "sha256": "7cb80fe2b765a04dfa068f44e53aff529ff7b5c6fe9d2c08df8bbf9152a521b7"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "f4",
+        "url": "https://h5.cqxstx.com/?lang=en&id=f4",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/f4-plus.json",
+        "page": "frontend/pages/f4-plus.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "2500",
+            "unit": "W"
+          },
+          {
+            "label": "Battery",
+            "value": "48V",
+            "unit": "20Ah"
+          },
+          {
+            "label": "Endurance",
+            "value": "50",
+            "unit": "km"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "25",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/f4-plus-detail/f4-plus-gallery-01-front-v2.png",
+          "../assets/img/f4-plus-detail/f4-plus-gallery-02-left-front-v2.png",
+          "../assets/img/f4-plus-detail/f4-plus-gallery-03-left-side-v2.png",
+          "../assets/img/f4-plus-detail/f4-plus-gallery-04-left-rear-v2.png",
+          "../assets/img/f4-plus-detail/f4-plus-gallery-05-rear-v2.png"
+        ],
+        "panelImage": "../assets/img/f4-plus-detail/f4-plus-panel-left-front-red-industrial-v3.png",
+        "highlights": [
+          "../assets/img/f4-plus-detail/f4-plus-highlight-01-drive-system-v3.png",
+          "../assets/img/f4-plus-detail/f4-plus-highlight-02-front-fork-v4.png",
+          "../assets/img/f4-plus-detail/f4-plus-highlight-03-frame-battery-v3.png",
+          "../assets/img/f4-plus-detail/f4-plus-highlight-04-brake-disc-v3.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "f9": {
+      "excelModelName": "F9",
+      "excel": {
+        "sheet": "Time-F",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2120*800*1235mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1440mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "340mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "910mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "118kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:838mm",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:509mm",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/108L/42T",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket",
+            "value": "Alloy",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "100Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "Permanent magnet synchronous motor",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Wheel torque",
+            "value": "580Nm",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "9Kw",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Mode",
+            "value": "ECO/Sport",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          },
+          {
+            "row": 25,
+            "label": "Battery capacity",
+            "value": "72V60Ah",
+            "labelCell": "A25",
+            "valueCell": "B25"
+          },
+          {
+            "row": 26,
+            "label": "Battery Temperature Condition",
+            "value": "0→45℃, Discharging: -20℃→60℃",
+            "labelCell": "A26",
+            "valueCell": "B26"
+          },
+          {
+            "row": 27,
+            "label": "Charging Time",
+            "value": "4.5-5H",
+            "labelCell": "A27",
+            "valueCell": "B27"
+          },
+          {
+            "row": 28,
+            "label": "IP Pating",
+            "value": "IP65",
+            "labelCell": "A28",
+            "valueCell": "B28"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B2",
+            "width": 4032,
+            "height": 3024,
+            "bytes": 6148169,
+            "sha256": "a095c4ad4ade4f0fcd2200ffec1bad5e5da321e971876b7e69eccc5bc3a0c9e6"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "f29",
+        "url": "https://h5.cqxstx.com/?lang=en&id=f29",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/f9.json",
+        "page": "frontend/pages/f9.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "9",
+            "unit": "kW"
+          },
+          {
+            "label": "Battery",
+            "value": "72V",
+            "unit": "60Ah"
+          },
+          {
+            "label": "Endurance",
+            "value": "100",
+            "unit": "km"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "118",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/f9-detail/f9-gallery-01-v2.png",
+          "../assets/img/f9-detail/f9-gallery-02-v2.png",
+          "../assets/img/f9-detail/f9-gallery-03-v2.png",
+          "../assets/img/f9-detail/f9-gallery-04-v2.png",
+          "../assets/img/f9-detail/f9-gallery-05-v2.png"
+        ],
+        "panelImage": "../assets/img/f9-detail/f9-panel-v2.png",
+        "highlights": [
+          "../assets/img/f9-detail/f9-highlight-01-v2.png",
+          "../assets/img/f9-detail/f9-highlight-02-v2.png",
+          "../assets/img/f9-detail/f9-highlight-03-v2.png",
+          "../assets/img/f9-detail/f9-highlight-04-v2.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "h300": {
+      "excelModelName": "H300",
+      "excel": {
+        "sheet": "H300",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2190*890*1260mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1485mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "300mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "915mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "120kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "80/100-21",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "120/100-18",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:940mm，Stroke:270mm",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "length：480mm",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Petrol tank",
+            "value": "11L",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Endurance",
+            "value": "220Km(speed per hour≤50Km/h)",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Top speed",
+            "value": "120Km/h",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Motor type",
+            "value": "Four-stroke",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Maximum power",
+            "value": "27N.m",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum power",
+            "value": "21Kw",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Mode",
+            "value": "2A Li-ion Battery",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Gear setting",
+            "value": "International 6 gear",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B2",
+            "width": 1706,
+            "height": 1279,
+            "bytes": 209384,
+            "sha256": "8b5cbb3374a8f6b2e21004b79dfed4adb7f1da07ce7966a4592050120846e930"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": null,
+        "url": null,
+        "status": "no official 7-series mapping in current category map"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/h300.json",
+        "page": "frontend/pages/h300.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Displacement class",
+            "value": "300",
+            "unit": "cc"
+          },
+          {
+            "label": "Engine",
+            "value": "4T",
+            "unit": ""
+          },
+          {
+            "label": "Fuel tank",
+            "value": "11",
+            "unit": "L"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "120",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/h300-detail/h300-gallery-01-front-dark-v1.png",
+          "../assets/img/h300-detail/h300-gallery-02-left-front-34-dark-v1.png",
+          "../assets/img/h300-detail/h300-gallery-03-left-side-dark-v1.png",
+          "../assets/img/h300-detail/h300-gallery-04-left-rear-34-dark-v1.png",
+          "../assets/img/h300-detail/h300-gallery-05-rear-dark-v1.png"
+        ],
+        "panelImage": "../assets/img/h300-detail/h300-panel-left-front-red-v1.png",
+        "highlights": [
+          "../assets/img/h300-detail/h300-highlight-01-engine-v1.png",
+          "../assets/img/h300-detail/h300-highlight-02-front-fork-brake-v1.png",
+          "../assets/img/h300-detail/h300-highlight-03-rear-wheel-drive-v1.png",
+          "../assets/img/h300-detail/h300-highlight-04-exhaust-rear-shock-v1.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-h300.md",
+        "status": "pending-human-confirmation",
+        "appliedContentUpdates": 0,
+        "summary": "H300 has no model-level official page. The 300 cc claim, torque label, battery label and image identity remain unresolved; source and durability wording also remains pending because the existing seven-language map is not reliably aligned."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": false,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "hs85": {
+      "excelModelName": "HS85CC",
+      "excel": {
+        "sheet": "HS85CC",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 4,
+            "label": "Displacement",
+            "value": "Displacement: 84.9 cc (Effective 85cc class)",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Engine Type",
+            "value": "Single-cylinder, 2-stroke, liquid-cooled",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Power Technology",
+            "value": "Upgraded cylinder head, spark plug & ignition system ",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Clutch",
+            "value": "Manual hydraulic actuated, wet multi-plate with diaphragm spring",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Starting System",
+            "value": "Kick start",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Fuel Type",
+            "value": "Pre-mix (95 Octane gasoline + imported Maxima 2T racing oil), Ratio 40:1",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Fuel System",
+            "value": "Carburetor",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Ignition System",
+            "value": "CDI",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Gearbox Type",
+            "value": "Constant mesh, two-stage, 6-speed",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Gear Pattern",
+            "value": "6-speed international pattern (1-down, 5-up)",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Net Weight",
+            "value": "13.7 kg (Includes engine oil, clutch master/slave cylinders & lines) ",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 16,
+            "label": "Frame Material",
+            "value": "New Chromium-Molybdenum steel frame",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Front Suspension",
+            "value": "Compression and rebound adjustable",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Rear Suspension",
+            "value": "High/Low-speed compression and rebound adjustable ",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Suspension Travel (F/R)",
+            "value": "250+92mm",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Swingarm",
+            "value": "One-piece",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 22,
+            "label": "Front Brake",
+            "value": "Front Brake: Single disc brake (220mm)",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Rear Brake",
+            "value": "Rear Brake: Single disc brake (210mm)",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Tire Size (F/R)",
+            "value": "19 inch / 16 inch",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          },
+          {
+            "row": 26,
+            "label": "Seat Height",
+            "value": "Seat Height: 850-890mm (Adjustable, min. 850mm)",
+            "labelCell": "A26",
+            "valueCell": "B26"
+          },
+          {
+            "row": 27,
+            "label": "Kerb Weight",
+            "value": "69KG",
+            "labelCell": "A27",
+            "valueCell": "B27"
+          },
+          {
+            "row": 28,
+            "label": "Wheelbase",
+            "value": "1290mm",
+            "labelCell": "A28",
+            "valueCell": "B28"
+          },
+          {
+            "row": 29,
+            "label": "Fuel Tank Capacity",
+            "value": "5 L",
+            "labelCell": "A29",
+            "valueCell": "B29"
+          },
+          {
+            "row": 30,
+            "label": "Engine Oil Capacity",
+            "value": "0.90 L",
+            "labelCell": "A30",
+            "valueCell": "B30"
+          },
+          {
+            "row": 32,
+            "label": "Purpose",
+            "value": "Off-road / Motocross (Junior/Youth competition class) ",
+            "labelCell": "A32",
+            "valueCell": "B32"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B2",
+            "width": 9504,
+            "height": 6336,
+            "bytes": 9510270,
+            "sha256": "70697f891b0d642cc7eda56313d0d38719cbbe2a6f98bdd455b0c7fdcebc5371"
+          },
+          {
+            "index": 2,
+            "anchor": "B2",
+            "width": 9504,
+            "height": 6336,
+            "bytes": 5967161,
+            "sha256": "4c84f9ba40e74ae843f5f9a38d353f3da152b52b09f89e2fbb323ee50c920cd9"
+          },
+          {
+            "index": 3,
+            "anchor": "B2",
+            "width": 9504,
+            "height": 6336,
+            "bytes": 9558090,
+            "sha256": "6c35499749f228ffda7d777c5459681f17d3377c729004700db3f8910340904d"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "hs85",
+        "url": "https://h5.cqxstx.com/?lang=en&id=hs85",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/hs85.json",
+        "page": "frontend/pages/hs85.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "排量",
+            "value": "84.9",
+            "unit": "cc"
+          },
+          {
+            "label": "二冲程",
+            "value": "2T",
+            "unit": ""
+          },
+          {
+            "label": "油箱容量",
+            "value": "5",
+            "unit": "L"
+          },
+          {
+            "label": "整备质量",
+            "value": "69",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/hs85-official-gallery/01-front-ai-dark-wide-v2.png",
+          "../assets/img/hs85-official-gallery/02-left-front-half-ai-dark-wide-v2.png",
+          "../assets/img/hs85-official-gallery/03-left-side-ai-dark-wide-v2.png",
+          "../assets/img/hs85-official-gallery/04-left-rear-half-ai-dark-wide-v2.png",
+          "../assets/img/hs85-official-gallery/05-rear-ai-dark-wide-v2.png"
+        ],
+        "panelImage": "../assets/img/hs85-panel-candidates/hs85-panel-sj300-v11-center-red-v7-web.webp",
+        "highlights": [
+          "../assets/img/hs85-official-highlights/01-two-stroke-engine-ai-dark-v1.png",
+          "../assets/img/hs85-official-highlights/02-off-road-suspension-ai-dark-v1.png",
+          "../assets/img/hs85-official-highlights/03-front-brake-disc-ai-dark-v1.png",
+          "../assets/img/hs85-official-highlights/04-alloy-footpeg-ai-dark-v1.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-hs85.md",
+        "status": "partially-updated-pending-assets",
+        "appliedContentUpdates": 2,
+        "summary": "Excel-backed Maxima 2T premix wording and Kerb Weight label were adopted with seven-language synchronization. The unsupported footpeg material/performance highlight and image provenance remain pending."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "s300": {
+      "excelModelName": "S300",
+      "excel": {
+        "sheet": "S300",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2200x820x1200mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1500mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "330mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "970mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "120Kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150Kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:950mm",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:480mm",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/110L/42T  ",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket ",
+            "value": "Alloy ",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Petrol tank",
+            "value": "11.4L",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "220Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "NC300 Four-stroke",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "27Nm",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "25KW",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "2A Li-ion Battery",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "International gear",
+            "labelCell": "A25",
+            "valueCell": "B25"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 6245676,
+            "sha256": "b91072f07702ffe5cdad8e99d4b0229b882407498efe233ab7aa1287f0d5dd98"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "s300",
+        "url": "https://h5.cqxstx.com/?lang=en&id=s300",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/s300.json",
+        "page": "frontend/pages/s300.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Engine class",
+            "value": "300",
+            "unit": "cc"
+          },
+          {
+            "label": "Four-stroke",
+            "value": "4T",
+            "unit": ""
+          },
+          {
+            "label": "Fuel tank",
+            "value": "11.4",
+            "unit": "L"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "120",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/products/s300-detail/s300-wide-angle-01-front-v1-dark.png",
+          "../assets/img/products/s300-detail/s300-wide-angle-02-left-front-v1-dark.png",
+          "../assets/img/products/s300-detail/s300-wide-angle-03-left-side-v1-dark.png",
+          "../assets/img/products/s300-detail/s300-wide-angle-04-left-rear-v1-dark.png",
+          "../assets/img/products/s300-detail/s300-wide-angle-05-rear-v1-dark.png"
+        ],
+        "panelImage": "../assets/img/products/s300-detail/s300-hero-panel-industrial-red-v2-v11-lighting.webp",
+        "highlights": [
+          "../assets/img/products/s300-detail/s300-highlight-01-power-system-v2-dark-ai.png",
+          "../assets/img/products/s300-detail/s300-highlight-02-front-fork-v2-dark-ai.png",
+          "../assets/img/products/s300-detail/s300-highlight-03-wheel-hub-v2-dark-ai.png",
+          "../assets/img/products/s300-detail/s300-highlight-04-front-disc-brake-v2-dark-ai.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-s300-image-source.md",
+        "status": "image-identity-pending",
+        "appliedContentUpdates": 0,
+        "summary": "No image path or asset was changed. All 11 currently referenced image assets remain Pending because configuration, model-level identity anchor and derivation chain are not closed."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "s300r": {
+      "excelModelName": "S300R",
+      "excel": {
+        "sheet": "S300",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2200*820*1200mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1470mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "280mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "940mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "110Kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150Kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:950mm",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:480mm",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/110L/42T  ",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket ",
+            "value": "Alloy ",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Petrol tank",
+            "value": "11.4L",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "220Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "XFH300 Two-stroke",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "38Nm",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "35KW",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "2A Li-ion Battery",
+            "labelCell": "A24",
+            "valueCell": "C24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "International gear",
+            "labelCell": "A25",
+            "valueCell": "C25"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 5919603,
+            "sha256": "8e4114e2e84b2e63859012d2b68c59f946b9bc636d01a70274271a2fc674f40b"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "s300",
+        "url": "https://h5.cqxstx.com/?lang=en&id=s300",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/s300r.json",
+        "page": "frontend/pages/s300r.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "35",
+            "unit": "kW"
+          },
+          {
+            "label": "Two-stroke",
+            "value": "2T",
+            "unit": ""
+          },
+          {
+            "label": "Fuel tank",
+            "value": "11.4",
+            "unit": "L"
+          },
+          {
+            "label": "Net weight",
+            "value": "110",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/products/s300r/s300r-front-dark-industrial-wide-v3.png",
+          "../assets/img/products/s300r/s300r-left-front-dark-industrial-wide-v3.png",
+          "../assets/img/products/s300r/s300r-left-side-dark-industrial-wide-v3.png",
+          "../assets/img/products/s300r/s300r-left-rear-dark-industrial-wide-v3.png",
+          "../assets/img/products/s300r/s300r-rear-dark-industrial-wide-v3.png"
+        ],
+        "panelImage": "../assets/img/products/s300r/s300r-panel-left-front-red-v2-master.webp",
+        "highlights": [
+          "../assets/img/products/s300r/s300r-engine-highlight-dark-v1.png",
+          "../assets/img/products/s300r/s300r-fork-highlight-dark-v1.png",
+          "../assets/img/products/s300r/s300r-headlight-highlight-dark-v1.png",
+          "../assets/img/products/s300r/s300r-footpeg-highlight-dark-v1.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-s300r.md",
+        "status": "partially-updated-image-identity-pending",
+        "appliedContentUpdates": 16,
+        "summary": "Direct Excel conflicts were corrected for wheelbase, ground clearance, seat height, kerb-weight terminology, transmission, lighting, endurance condition and XFH300 engine naming, including repeated public copy and seven-language keys. All 10 image assets and the headlight/footpeg structure conflicts remain Pending."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "sj250": {
+      "excelModelName": "SJ250",
+      "excel": {
+        "sheet": "SJ",
+        "column": "B",
+        "headerCell": "B1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2120*800*1235mm",
+            "labelCell": "A3",
+            "valueCell": "B3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1440mm",
+            "labelCell": "A4",
+            "valueCell": "B4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "340mm",
+            "labelCell": "A5",
+            "valueCell": "B5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "910mm",
+            "labelCell": "A6",
+            "valueCell": "B6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "105kg",
+            "labelCell": "A7",
+            "valueCell": "B7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "B8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "B9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "B10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "B11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:838mm",
+            "labelCell": "A12",
+            "valueCell": "B12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:509mm",
+            "labelCell": "A13",
+            "valueCell": "B13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/110L/42T",
+            "labelCell": "A14",
+            "valueCell": "B14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket",
+            "value": "Alloy",
+            "labelCell": "A15",
+            "valueCell": "B15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A16",
+            "valueCell": "B16"
+          },
+          {
+            "row": 17,
+            "label": "Fuel tank size",
+            "value": "5.3L",
+            "labelCell": "A17",
+            "valueCell": "B17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "100Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "B18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "110Km/h",
+            "labelCell": "A19",
+            "valueCell": "B19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "B20"
+          },
+          {
+            "row": 21,
+            "label": "Engine type",
+            "value": "MT250 Two-strokes",
+            "labelCell": "A21",
+            "valueCell": "B21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "30N.m",
+            "labelCell": "A22",
+            "valueCell": "B22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "25Kw",
+            "labelCell": "A23",
+            "valueCell": "B23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "2A Li-ion Battery",
+            "labelCell": "A24",
+            "valueCell": "B24"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 1,
+            "anchor": "B1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 6410928,
+            "sha256": "996be34d3d4d79ece52601d86d77ceac7efb37ef1d05e03d7e7d79db29178412"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "sj",
+        "url": "https://h5.cqxstx.com/?lang=en&id=sj",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/sj250.json",
+        "page": "frontend/pages/sj250.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "Maximum power",
+            "value": "25",
+            "unit": "kW"
+          },
+          {
+            "label": "Engine",
+            "value": "2T",
+            "unit": ""
+          },
+          {
+            "label": "Fuel tank",
+            "value": "5.3",
+            "unit": "L"
+          },
+          {
+            "label": "Kerb weight",
+            "value": "105",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/sj250-gallery/sj250-angle-01-front-dark-ultrawide-v4.png",
+          "../assets/img/sj250-gallery/sj250-angle-02-left-front-half-dark-ultrawide-v4.png",
+          "../assets/img/sj250-gallery/sj250-angle-03-left-dark-ultrawide-v4.png",
+          "../assets/img/sj250-gallery/sj250-angle-04-left-rear-half-dark-ultrawide-v4.png",
+          "../assets/img/sj250-gallery/sj250-angle-05-rear-dark-ultrawide-v4.png"
+        ],
+        "panelImage": "../assets/img/sj250-gallery/sj250-hero-panel-industrial-red-v11-v2.webp",
+        "highlights": [
+          "../assets/img/sj250-gallery/sj250-highlight-01-engine-power-dark-v4.png",
+          "../assets/img/sj250-gallery/sj250-highlight-02-front-fork-dark-v4.png",
+          "../assets/img/sj250-gallery/sj250-highlight-03-rear-drivetrain-dark-v4.png",
+          "../assets/img/sj250-gallery/sj250-highlight-04-fuel-tank-dark-v4.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-sj250.md",
+        "status": "partially-updated-image-identity-pending",
+        "appliedContentUpdates": 1,
+        "summary": "The Excel speed condition was restored to the 100 km endurance selling point with seven-language synchronization. Starter-battery meaning, unsupported extensions and all 10 image identity/source-chain decisions remain Pending."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "sj300": {
+      "excelModelName": "SJ300",
+      "excel": {
+        "sheet": "SJ",
+        "column": "C",
+        "headerCell": "C1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2120*800*1235mm",
+            "labelCell": "A3",
+            "valueCell": "C3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1440mm",
+            "labelCell": "A4",
+            "valueCell": "C4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "340mm",
+            "labelCell": "A5",
+            "valueCell": "C5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "910mm",
+            "labelCell": "A6",
+            "valueCell": "C6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "105kg",
+            "labelCell": "A7",
+            "valueCell": "C7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150kg",
+            "labelCell": "A8",
+            "valueCell": "C8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "90/90-21",
+            "labelCell": "A9",
+            "valueCell": "C9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "140/80-18",
+            "labelCell": "A10",
+            "valueCell": "C10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "C11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:838mm",
+            "labelCell": "A12",
+            "valueCell": "C12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:509mm",
+            "labelCell": "A13",
+            "valueCell": "C13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/110L/42T",
+            "labelCell": "A14",
+            "valueCell": "C14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket",
+            "value": "Alloy",
+            "labelCell": "A15",
+            "valueCell": "C15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "LED",
+            "labelCell": "A16",
+            "valueCell": "C16"
+          },
+          {
+            "row": 17,
+            "label": "Fuel tank size",
+            "value": "5.3L",
+            "labelCell": "A17",
+            "valueCell": "C17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "100Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "C18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "120Km/h",
+            "labelCell": "A19",
+            "valueCell": "C19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "C20"
+          },
+          {
+            "row": 21,
+            "label": "Engine type",
+            "value": "XFH300 Two-strokes",
+            "labelCell": "A21",
+            "valueCell": "C21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "38N.m",
+            "labelCell": "A22",
+            "valueCell": "C22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "35Kw",
+            "labelCell": "A23",
+            "valueCell": "C23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "2A Li-ion Battery",
+            "labelCell": "A24",
+            "valueCell": "C24"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 2,
+            "anchor": "C1",
+            "width": 1920,
+            "height": 1280,
+            "bytes": 1543404,
+            "sha256": "acd35ac99b700459fa35895ae309b3330a5a2095357e78ca2172f2dd106ba830"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "sj",
+        "url": "https://h5.cqxstx.com/?lang=en&id=sj",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/sj300.json",
+        "page": "frontend/pages/sj300.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "排量",
+            "value": "300",
+            "unit": "cc"
+          },
+          {
+            "label": "两冲程",
+            "value": "2T",
+            "unit": ""
+          },
+          {
+            "label": "油箱容量",
+            "value": "5.3",
+            "unit": "L"
+          },
+          {
+            "label": "整备质量",
+            "value": "105",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/sj300-dark-studio-gallery/01-front-v3-ultrawide.png",
+          "../assets/img/sj300-dark-studio-gallery/02-left-front-3q-v3-ultrawide.png",
+          "../assets/img/sj300-dark-studio-gallery/03-left-side-v3-ultrawide.png",
+          "../assets/img/sj300-dark-studio-gallery/04-left-rear-3q-v3-ultrawide.png",
+          "../assets/img/sj300-dark-studio-gallery/05-rear-v3-ultrawide.png"
+        ],
+        "panelImage": "../assets/img/sj300-hero-panel-industrial-red-v11-v9plus-red-16x9.webp",
+        "highlights": [
+          "../assets/img/sj300-official-highlights/01-xfh300-engine.jpg",
+          "../assets/img/sj300-official-highlights/02-off-road-suspension-official-v2.jpg",
+          "../assets/img/sj300-official-highlights/03-rear-wheel-assembly.jpg",
+          "../assets/img/sj300-official-highlights/04-instrument.jpg"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "sn300": {
+      "excelModelName": "SN300",
+      "excel": {
+        "sheet": "S300",
+        "column": "D",
+        "headerCell": "D1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2170x840x1280mm",
+            "labelCell": "A3",
+            "valueCell": "D3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1500mm",
+            "labelCell": "A4",
+            "valueCell": "D4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "330mm",
+            "labelCell": "A5",
+            "valueCell": "D5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "970mm",
+            "labelCell": "A6",
+            "valueCell": "D6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "119Kg",
+            "labelCell": "A7",
+            "valueCell": "D7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150Kg",
+            "labelCell": "A8",
+            "valueCell": "D8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "80/100-21",
+            "labelCell": "A9",
+            "valueCell": "D9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "110/100-18",
+            "labelCell": "A10",
+            "valueCell": "D10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "D11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:930mm",
+            "labelCell": "A12",
+            "valueCell": "D12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:480mm",
+            "labelCell": "A13",
+            "valueCell": "D13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive 520/118L/49T ",
+            "labelCell": "A14",
+            "valueCell": "D14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket ",
+            "value": "Steel",
+            "labelCell": "A15",
+            "valueCell": "D15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "No (can be added)",
+            "labelCell": "A16",
+            "valueCell": "D16"
+          },
+          {
+            "row": 17,
+            "label": "Petrol tank",
+            "value": "11.4L",
+            "labelCell": "A17",
+            "valueCell": "D17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "220Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "D18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "100Km/h",
+            "labelCell": "A19",
+            "valueCell": "D19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "D20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "NB300 Four-stroke",
+            "labelCell": "A21",
+            "valueCell": "D21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "24Nm",
+            "labelCell": "A22",
+            "valueCell": "D22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "19Kw",
+            "labelCell": "A23",
+            "valueCell": "D23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "10A12V",
+            "labelCell": "A24",
+            "valueCell": "D24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "International gear",
+            "labelCell": "A25",
+            "valueCell": "D25"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 3,
+            "anchor": "D1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 5693520,
+            "sha256": "a04f75276fece701185c8282dc41eaeb45762534e7f494a0bede388dc4f66a7c"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "s300",
+        "url": "https://h5.cqxstx.com/?lang=en&id=s300",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/sn300.json",
+        "page": "frontend/pages/sn300.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "最大功率",
+            "value": "19",
+            "unit": "kW"
+          },
+          {
+            "label": "四冲程",
+            "value": "4T",
+            "unit": ""
+          },
+          {
+            "label": "油箱容量",
+            "value": "11.4",
+            "unit": "L"
+          },
+          {
+            "label": "整备质量",
+            "value": "119",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/sn300/sn300-ai-angle-01-front-wide-dark-v3.png",
+          "../assets/img/sn300/sn300-ai-angle-02-left-front-half-wide-dark-v3.png",
+          "../assets/img/sn300/sn300-ai-angle-03-left-wide-dark-v3.png",
+          "../assets/img/sn300/sn300-ai-angle-04-left-rear-half-wide-dark-v4.png",
+          "../assets/img/sn300/sn300-ai-angle-05-rear-wide-dark-v3.png"
+        ],
+        "panelImage": "../assets/img/sn300/sn300-hero-panel-industrial-red-v11-v2.webp",
+        "highlights": [
+          "../assets/img/sn300/sn300-ai-highlight-01-nb300-engine-dark-v2.png",
+          "../assets/img/sn300/sn300-ai-highlight-02-powertrain-drive-dark-v2.png",
+          "../assets/img/sn300/sn300-ai-highlight-03-chassis-suspension-dark-v2.png",
+          "../assets/img/sn300/sn300-ai-highlight-04-21-18-wheel-brake-dark-v1.png"
+        ]
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    },
+    "sy300": {
+      "excelModelName": "SY300",
+      "excel": {
+        "sheet": "S300",
+        "column": "E",
+        "headerCell": "E1",
+        "fields": [
+          {
+            "row": 3,
+            "label": "Appearant size",
+            "value": "2200x820x1200mm",
+            "labelCell": "A3",
+            "valueCell": "E3"
+          },
+          {
+            "row": 4,
+            "label": "Wheelbase",
+            "value": "1500mm",
+            "labelCell": "A4",
+            "valueCell": "E4"
+          },
+          {
+            "row": 5,
+            "label": "Ground clearance",
+            "value": "330mm",
+            "labelCell": "A5",
+            "valueCell": "E5"
+          },
+          {
+            "row": 6,
+            "label": "Seat height",
+            "value": "970mm",
+            "labelCell": "A6",
+            "valueCell": "E6"
+          },
+          {
+            "row": 7,
+            "label": "Kerb Weight",
+            "value": "117Kg",
+            "labelCell": "A7",
+            "valueCell": "E7"
+          },
+          {
+            "row": 8,
+            "label": "Max load",
+            "value": "150Kg",
+            "labelCell": "A8",
+            "valueCell": "E8"
+          },
+          {
+            "row": 9,
+            "label": "Front tire",
+            "value": "80/100-21",
+            "labelCell": "A9",
+            "valueCell": "E9"
+          },
+          {
+            "row": 10,
+            "label": "Rear tire",
+            "value": "110/100-18",
+            "labelCell": "A10",
+            "valueCell": "E10"
+          },
+          {
+            "row": 11,
+            "label": "Brake modes",
+            "value": "Front and rear disc brakes",
+            "labelCell": "A11",
+            "valueCell": "E11"
+          },
+          {
+            "row": 12,
+            "label": "Front shock absorber",
+            "value": "Length:930mm",
+            "labelCell": "A12",
+            "valueCell": "E12"
+          },
+          {
+            "row": 13,
+            "label": "Rear shock absorber",
+            "value": "Length:480mm",
+            "labelCell": "A13",
+            "valueCell": "E13"
+          },
+          {
+            "row": 14,
+            "label": "Transmission mode",
+            "value": "Chain drive520/118L/49T ",
+            "labelCell": "A14",
+            "valueCell": "E14"
+          },
+          {
+            "row": 15,
+            "label": "Sprocket ",
+            "value": "Steel ",
+            "labelCell": "A15",
+            "valueCell": "E15"
+          },
+          {
+            "row": 16,
+            "label": "Light",
+            "value": "No (can be added)",
+            "labelCell": "A16",
+            "valueCell": "E16"
+          },
+          {
+            "row": 17,
+            "label": "Petrol tank",
+            "value": "11.4L",
+            "labelCell": "A17",
+            "valueCell": "E17"
+          },
+          {
+            "row": 18,
+            "label": "Endurance",
+            "value": "220Km(speed per hour≤50Km/h)",
+            "labelCell": "A18",
+            "valueCell": "E18"
+          },
+          {
+            "row": 19,
+            "label": "Top speed",
+            "value": "100Km/h",
+            "labelCell": "A19",
+            "valueCell": "E19"
+          },
+          {
+            "row": 20,
+            "label": "Maximum climbing angle",
+            "value": "＞70°",
+            "labelCell": "A20",
+            "valueCell": "E20"
+          },
+          {
+            "row": 21,
+            "label": "Motor type",
+            "value": "YBS300 Four-stroke",
+            "labelCell": "A21",
+            "valueCell": "E21"
+          },
+          {
+            "row": 22,
+            "label": "Maximum Torque",
+            "value": "25Nm",
+            "labelCell": "A22",
+            "valueCell": "E22"
+          },
+          {
+            "row": 23,
+            "label": "Maximum power",
+            "value": "21Kw",
+            "labelCell": "A23",
+            "valueCell": "E23"
+          },
+          {
+            "row": 24,
+            "label": "Starter Battery",
+            "value": "10A12V",
+            "labelCell": "A24",
+            "valueCell": "E24"
+          },
+          {
+            "row": 25,
+            "label": "Gear setting",
+            "value": "International gear",
+            "labelCell": "A25",
+            "valueCell": "E25"
+          }
+        ],
+        "embeddedImageRefs": [
+          {
+            "index": 4,
+            "anchor": "E1",
+            "width": 4096,
+            "height": 2732,
+            "bytes": 6448506,
+            "sha256": "3c78aa7e2b2f49722b599150fc1ef0d60e69a358343babe858224db027dbaad2"
+          }
+        ]
+      },
+      "official": {
+        "categoryId": "s300",
+        "url": "https://h5.cqxstx.com/?lang=en&id=s300",
+        "status": "mapped-category; model-level verification pending"
+      },
+      "currentSite": {
+        "json": "frontend/product-detail/data/sy300.json",
+        "page": "frontend/pages/sy300.html",
+        "model": null,
+        "displayName": null,
+        "stats": [
+          {
+            "label": "排量",
+            "value": "300",
+            "unit": "cc"
+          },
+          {
+            "label": "四冲程",
+            "value": "4T",
+            "unit": ""
+          },
+          {
+            "label": "油箱容量",
+            "value": "11.4",
+            "unit": "L"
+          },
+          {
+            "label": "整备质量",
+            "value": "117",
+            "unit": "kg"
+          }
+        ],
+        "gallery": [
+          "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-01-front-wide-v3.png",
+          "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-02-left-front-34-wide-v3.png",
+          "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-03-left-side-wide-v3.png",
+          "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-04-left-rear-34-wide-v3.png",
+          "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-05-rear-wide-v3.png"
+        ],
+        "panelImage": "../assets/img/generated/sy300-panel-candidates/sy300-panel-center-red-dark-v4-web.webp",
+        "highlights": [
+          "../assets/img/sy300-official-highlights/01-ybs300-engine-ai-v1.png",
+          "../assets/img/sy300-official-highlights/03-front-fork-dark-studio-v1.png",
+          "../assets/img/sy300-official-highlights/04-headlight-dark-studio-v1.png",
+          "../assets/img/sy300-official-highlights/04-alloy-footpeg-dark-studio-v1.png"
+        ]
+      },
+      "p1Decision": {
+        "reviewedAt": "2026-08-01",
+        "report": "docs/audits/p1-sy300.md",
+        "status": "partially-updated-pending-human-confirmation",
+        "appliedContentUpdates": 1,
+        "summary": "Lighting was reduced to the Excel-supported minimum of no standard lights with optional lighting. Battery, displacement, exact configuration and all image identity/source-chain questions remain Pending."
+      },
+      "coverage": {
+        "excelListed": true,
+        "officialMapped": true,
+        "existingJson": true,
+        "existingPage": true,
+        "status": "covered"
+      }
+    }
+  },
+  "existingOutsideExcel": [
+    {
+      "slug": "et",
+      "json": "frontend/product-detail/data/et.json",
+      "page": "frontend/pages/et.html",
+      "classification": "existing product page but not in Excel authoritative model list"
+    }
+  ]
+}
