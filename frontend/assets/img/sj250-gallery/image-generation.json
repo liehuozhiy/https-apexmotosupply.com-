@@ -1,0 +1,222 @@
+{
+  "model": "SJ250",
+  "generator": "built-in image_gen",
+  "references": [
+    {
+      "role": "official left-side identity reference",
+      "source": "C:/Users/Administrator/Documents/Codex/2026-06-24/http-apexmotosupply-com/outputs/apex-moto-static/frontend/assets/img/products/sj250.jpg",
+      "saved_as": "sj250-angle-03-left-official.jpg",
+      "reference_only": true,
+      "final_gallery": false
+    },
+    {
+      "role": "official left-front half-angle identity reference",
+      "source": "C:/Users/Administrator/Documents/Codex/2026-06-24/http-apexmotosupply-com/outputs/apex-moto-static/frontend/assets/img/products/3.4/sj250.png",
+      "saved_as": "sj250-angle-02-left-front-half-official.png",
+      "reference_only": true,
+      "final_gallery": false
+    }
+  ],
+  "deprecated_light_generated": [
+    {
+      "angle": "front",
+      "saved_as": "sj250-angle-01-front-ai.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_RnQO2RcM0ONYe9sUyO83QQn5.png",
+      "status": "deprecated after dark-industrial scene mandate; local file removed during 2026-07-24 project cleanup",
+      "final_gallery": false,
+      "prompt": "Use case: product-mockup. Asset type: SJ250 product-detail five-angle gallery image. Create a strict straight-on front studio view of the exact SJ250 shown in both official references, on the same clean light gray-white studio background with a subtle contact shadow. Center the identical red, black, white and silver motorcycle with the front wheel straight toward camera. Change only camera viewpoint; preserve identity, geometry, graphics, headlight mask, fender, fork, handlebar, knobby tires, wheel sizes, frame, engine, expansion chamber, exhaust, seat and all mechanical parts. No rider, stand, accessories, redesign, text or watermark; no three-quarter angle, side bias, mirroring, borrowed motorcycle, invented branding or cropped wheels."
+    },
+    {
+      "angle": "left-rear half",
+      "saved_as": "sj250-angle-04-left-rear-half-ai.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_eQdc3QGplALDe1IuBpWruREh.png",
+      "status": "deprecated after dark-industrial scene mandate; local file removed during 2026-07-24 project cleanup",
+      "final_gallery": false,
+      "prompt": "Use case: product-mockup. Asset type: SJ250 product-detail five-angle gallery image. Create a strict left-rear half-angle studio view of the exact SJ250 shown in both official references, on the same clean light gray-white studio background with a subtle contact shadow. Camera is on the motorcycle's left side behind the rear axle at a natural 45-degree angle; the front points right and recedes. Change only camera viewpoint; preserve identity, proportions, graphics, headlight mask, fenders, fork, handlebar, tires, wheel sizes, chain side, frame, MT250 engine, expansion chamber, left-side silencer, seat and mechanical parts. No rider, stand, accessories, redesign, text or watermark; no right-rear view, mirroring, borrowed motorcycle, invented branding or cropped wheels."
+    },
+    {
+      "angle": "rear",
+      "saved_as": "sj250-angle-05-rear-ai.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_ciHPzoSyL93t0QYatrv054FH.png",
+      "status": "deprecated after dark-industrial scene mandate; local file removed during 2026-07-24 project cleanup",
+      "final_gallery": false,
+      "prompt": "Use case: product-mockup. Asset type: SJ250 product-detail five-angle gallery image. Create a strict straight-on rear studio view of the exact SJ250 shown in both official references, on the same clean light gray-white studio background with a subtle contact shadow. Center the identical motorcycle with both wheels aligned and handlebars symmetric. Change only camera viewpoint; preserve identity, proportions, graphics, rear fender, left-side silencer, seat, frame, tires, wheel sizes, fork, handlebar and all mechanical parts. No rider, stand, added tail light, accessories, redesign, text or watermark; no three-quarter angle, side bias, mirroring, borrowed motorcycle, invented branding or cropped tire."
+    }
+  ],
+  "final_dark_gallery": [
+    {
+      "order": 1,
+      "angle": "front",
+      "saved_as": "sj250-angle-01-front-dark-v2.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_8icVQUqGytjpGW6tAmCQHG2z.png",
+      "final_gallery": true,
+      "prompt": "Strict straight-on front view of the exact official SJ250. Match the approved dark charcoal metal garage, steel panels, two vertical red lights, wet reflective floor, light fog, high front-left softbox, cool fill and rim lights. Preserve all SJ250 geometry, graphics, headlight, chassis, engine, expansion chamber, exhaust, wheels and tires; no redesign, mirroring, people, other vehicles, text or watermark."
+    },
+    {
+      "order": 2,
+      "angle": "left-front half",
+      "saved_as": "sj250-angle-02-left-front-half-dark-v2.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_MeKsplFyXVHsSRSPyOjMY23v.png",
+      "final_gallery": true,
+      "prompt": "Edit the official SJ250 left-front half-angle photo: change only the scene to a deep black/charcoal industrial metal studio with layered steel and brick, two restrained vertical red lights, wet reflective concrete, light floor fog and controlled high front-left lighting. Preserve exact motorcycle identity and every component; no redesign, extra branding, people, vehicles, text or watermark."
+    },
+    {
+      "order": 3,
+      "angle": "left side",
+      "saved_as": "sj250-angle-03-left-dark-v2.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_jpzatRlhGG1bQ2hvvvS28Mqm.png",
+      "final_gallery": true,
+      "prompt": "Edit the official SJ250 exact left-side photo to match the approved dark industrial scene: same steel panels, dark brick edges, two vertical red lights, wet reflective floor, low fog, camera height, focal length and lighting. Preserve exact SJ250 identity, frame, engine, exhaust, wheels, suspension, plastics and graphics; no redesign or extra subjects."
+    },
+    {
+      "order": 4,
+      "angle": "left-rear half",
+      "saved_as": "sj250-angle-04-left-rear-half-dark-v2.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_4B29FOzMry4bZ6NcK0qqBAD8.png",
+      "final_gallery": true,
+      "prompt": "Strict left-rear half-angle of the exact official SJ250, rear wheel closer and front receding right. Match the approved dark metal garage, red vertical lights, wet reflective floor, low fog, camera and lighting. Preserve all SJ250 identity details including chain side, MT250 engine, expansion chamber and left silencer; no redesign, mirroring or extra subjects."
+    },
+    {
+      "order": 5,
+      "angle": "rear",
+      "saved_as": "sj250-angle-05-rear-dark-v2.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_y0dco4TuedaB3d1Bbp9vhjqF.png",
+      "final_gallery": true,
+      "prompt": "Strict straight-on rear view of the exact official SJ250, wheels aligned and handlebars symmetric. Match the approved dark metal garage, vertical red lights, wet reflective floor, low fog and consistent lighting. Preserve rear fender, seat, subframe, chain, swingarm, tires and left silencer; do not add a tail light, accessories, people, vehicles, text or watermark."
+    }
+  ],
+  "final_ultrawide_gallery": [
+    {
+      "order": 1,
+      "angle": "front",
+      "saved_as": "sj250-angle-01-front-dark-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_c28PJHRW3iQNt16V62Hzdm70.png",
+      "dimensions": "1942x809",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-01-front-dark-v2.png",
+      "final_gallery": true,
+      "prompt": "Create a true approximately 2.4:1 ultrawide dark industrial studio photograph of the exact official SJ250 in a perfectly straight head-on front view. Naturally extend the black and charcoal metal studio horizontally with restrained red vertical lights, wet reflective floor and controlled mist. Preserve the complete SJ250, all geometry, graphics, frame, engine, expansion chamber, wheels, handlebar, fenders and tail with generous safe margin. No black bars, crop, stretch, mirroring, redesign, people, other vehicles, text or watermark."
+    },
+    {
+      "order": 2,
+      "angle": "left-front",
+      "saved_as": "sj250-angle-02-left-front-half-dark-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_yG5gx3KbFZlx6N9UHsUl2UAI.png",
+      "dimensions": "1942x809",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-02-left-front-half-dark-v2.png",
+      "final_gallery": true,
+      "prompt": "Create a true approximately 2.4:1 ultrawide dark industrial studio photograph of the exact official SJ250 in its official left-front three-quarter view. Naturally extend only the black and charcoal metal studio, red vertical lights, wet floor and restrained mist. Keep the complete motorcycle and all official components and graphics unchanged with safe margin. No black bars, crop, stretch, mirroring, redesign, other vehicle, text or watermark."
+    },
+    {
+      "order": 3,
+      "angle": "left-side",
+      "saved_as": "sj250-angle-03-left-dark-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_pbruL4R3VvygAiAZ3Kg50Oui.png",
+      "dimensions": "1942x809",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-03-left-dark-v2.png",
+      "final_gallery": true,
+      "prompt": "Create a true approximately 2.4:1 ultrawide dark industrial studio photograph of the exact official SJ250 in a geometrically true 90-degree left-side profile. Extend only the dark metal studio horizontally and preserve the full bike, wheel baseline, geometry, graphics and mechanical details. No rotation toward three-quarter, black bars, crop, stretch, mirroring, redesign, other vehicle, text or watermark."
+    },
+    {
+      "order": 4,
+      "angle": "left-rear",
+      "saved_as": "sj250-angle-04-left-rear-half-dark-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_u0bt8zN4usi4oMnssDjdHtlr.png",
+      "dimensions": "1942x809",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-04-left-rear-half-dark-v2.png",
+      "final_gallery": true,
+      "prompt": "Create a true approximately 2.4:1 ultrawide dark industrial studio photograph of the exact official SJ250 in a clear left-rear three-quarter view with the rear wheel closer. Extend only the dark metal studio and preserve both complete wheels, handlebar, fenders, tail, engine, expansion chamber, exhaust, frame and graphics. No black bars, crop, stretch, mirroring, redesign, other vehicle, text or watermark."
+    },
+    {
+      "order": 5,
+      "angle": "rear",
+      "saved_as": "sj250-angle-05-rear-dark-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_iZuvip3ETq4KufSK3JoHC1JK.png",
+      "dimensions": "1935x813",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-05-rear-dark-v2.png",
+      "final_gallery": true,
+      "prompt": "Create a true approximately 2.4:1 ultrawide dark industrial studio photograph of the exact official SJ250 in a perfectly straight rear view. Extend only the black and charcoal studio horizontally and preserve the complete rear silhouette, handlebar, seat, tail, exhaust orientation, swingarm, spokes, brakes and tire. No black bars, crop, stretch, mirroring, redesign, other vehicle, text or watermark."
+    }
+  ],
+  "final_panel_background": [
+    {
+      "saved_as": "sj250-hero-panel-red-ultrawide-v4.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_XnJS8t4yAPbnKsctoG4M5Dq9.png",
+      "dimensions": "1942x809",
+      "identity_references": [
+        "sj250-angle-02-left-front-half-official.png",
+        "sj250-angle-03-left-official.jpg"
+      ],
+      "camera_reference": "sj250-angle-02-left-front-half-dark-v2.png",
+      "style_reference": "sj300-hero-panel-red-v2.png (lighting and layout only; no SJ300 vehicle parts)",
+      "prompt": "Create an approximately 2.4:1 SJ250 specification-panel background with the exact complete official SJ250 in a left-front three-quarter view, slightly right of center. Keep the left side near-black for text and concentrate strong red smoke, rim light and wet-floor reflection around the motorcycle on the right. Preserve every SJ250 component and graphic. Do not borrow any SJ300 motorcycle part, wash the whole frame red, crop, stretch, mirror, add black bars, text or watermark."
+    }
+  ],
+  "deprecated_highlight_generated": [
+    {
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_I7s7qcVJUFV2e4mNFS8I8jms.png",
+      "status": "rejected: body-panel decal drift; not copied or referenced"
+    },
+    {
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_UKeJoyUYSY1OGvf4qBp07GVe.png",
+      "status": "rejected: filler-cap area entered frame; not copied or referenced"
+    }
+  ],
+  "final_highlight_cards": [
+    {
+      "order": 1,
+      "official_highlight": "MT250 two-stroke",
+      "copy_source": "official site-data highlight and engine-type specification",
+      "image_source": "AI supplement from both official SJ250 photos; dark gallery image used only for scene style",
+      "saved_as": "sj250-highlight-01-mt250-engine-dark-v3.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_LQ7RNz7scVWwzTKVZ7FwCK9F.png",
+      "prompt": "Tight left-side close-up of the exact SJ250 MT250 two-stroke engine, expansion chamber, lower frame and foot controls; preserve official geometry, colors and fasteners; match the dark metal studio, red lights, wet floor and fog; no invented parts, text, people or watermark."
+    },
+    {
+      "order": 2,
+      "official_highlight": "25Kw",
+      "copy_source": "official site-data highlight and maximum-power specification",
+      "image_source": "AI supplement from both official SJ250 photos; dark gallery image used only for scene style",
+      "saved_as": "sj250-highlight-02-25kw-power-unit-dark-v3.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_73i7Gi5DCy41BTnx2Q9a178D.png",
+      "prompt": "Corrected lower left-front crop of the exact SJ250 MT250 power unit and silver expansion chamber, below all graphic panels; preserve real engine, frame, swingarm and foot controls; dark metal studio with red reflections; no labels, invented hardware, text or watermark."
+    },
+    {
+      "order": 3,
+      "official_highlight": "30N.m",
+      "copy_source": "official site-data highlight and maximum-torque specification",
+      "image_source": "AI supplement from both official SJ250 photos; dark gallery image used only for scene style",
+      "saved_as": "sj250-highlight-03-30nm-drivetrain-dark-v3.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_Xd4Okg1nIC1P7yBaJhCT8zRR.png",
+      "prompt": "Tight left-rear close-up of the exact SJ250 chain, rear sprocket, brake disc and caliper, silver swingarm, orange axle block, black spoked rim and knobby tire; preserve official geometry and proportions; dark metal studio; no invented features, text or watermark."
+    },
+    {
+      "order": 4,
+      "official_highlight": "5.3L tank",
+      "copy_source": "official site-data highlight and fuel-tank specification",
+      "image_source": "AI supplement from both official SJ250 photos; dark gallery image used only for scene style",
+      "saved_as": "sj250-highlight-04-5-3l-tank-dark-v3.png",
+      "source_output": "C:/Users/Administrator/.codex/generated_images/019f8cae-a79c-7c50-b246-73e8108cf5a4/call_FiZGYikJoGYzqS7J15E52ChW.png",
+      "prompt": "Corrected tight crop of only the exact plain silver-gray tank body beneath the SJ250 seat, real mounting fasteners, silver frame spar and black tubular frame; exclude all graphics and filler-cap area; dark industrial lighting; no invented component, text or watermark."
+    }
+  ]
+}

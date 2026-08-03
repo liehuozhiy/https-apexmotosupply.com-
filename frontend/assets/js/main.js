@@ -20,11 +20,601 @@ const inquiryTemplateBase64 = "UEsDBBQABgAIAAAAIQBi7p1oXgEAAJAEAAATAAgCW0NvbnRlb
 const i18n = window.APEX_I18N || null;
 let currentLang = i18n ? i18n.getLang() : "en";
 
+// Gallery[0] is captured at build time from each product-detail data file.  The
+// menu never fetches model JSON at runtime, so it remains usable over HTTP and file://.
+const productWorldGroups = [
+  { name: "Babey", power: "electric", models: [["Babey", "babey.html", "../assets/img/generated/babey-gallery-wide-v3/babey-angle-01-front-wide-dark-v3.png"], ["Babey+", "babey-plus.html", "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-01-front-dark-v2.png"]] },
+  { name: "F4", power: "electric", models: [["F4", "f4.html", "../assets/img/f4-official/f4-angle-01-front-dark-industrial-panorama-v4.png"], ["F4+", "f4-plus.html", "../assets/img/f4-plus-detail/f4-plus-gallery-01-front-v2.png"]] },
+  { name: "ET", power: "electric", models: [["ET", "et.html", "../assets/img/et-gallery-dark-metal/et-angle-01-front-dark-metal-wide-v3.png"], ["ET 2022", "et-2022.html", "../assets/img/et-2022-gallery-dark-v1/et-2022-angle-01-front-dark-v2.png"], ["ET 2024", "et-2024.html", "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-01-front-dark-v2.png"]] },
+  { name: "Time-F", power: "electric", models: [["F9", "f9.html", "../assets/img/f9-detail/f9-gallery-01-v2.png"], ["F29", "f29.html", "../assets/img/f29-detail/f29-gallery-01-front-dark-industrial-official-identity-ai-v1.png"], ["F29R", "f29r.html", "../assets/img/f29r-gallery/f29r-angle-01-front-dark-wide-ai-v3.png"]] },
+  { name: "SJ", power: "fuel", models: [["SJ250", "sj250.html", "../assets/img/sj250-gallery/sj250-angle-01-front-dark-ultrawide-v4.png"], ["SJ300", "sj300.html", "../assets/img/sj300-dark-studio-gallery/01-front-v3-ultrawide.png"]] },
+  { name: "S300", power: "fuel", models: [["S300", "s300.html", "../assets/img/products/s300-detail/s300-wide-angle-01-front-v1-dark.png"], ["S300R", "s300r.html", "../assets/img/products/s300r/s300r-front-dark-industrial-wide-v3.png"], ["SN300", "sn300.html", "../assets/img/sn300/sn300-ai-angle-01-front-wide-dark-v3.png"], ["SY300", "sy300.html", "../assets/img/generated/sy300-gallery-wide-v3/sy300-angle-01-front-wide-v3.png"]] },
+  { name: "H300", power: "fuel", models: [["H300", "h300.html", "../assets/img/h300-detail/h300-gallery-01-front-dark-v1.png"]] },
+  { name: "Bumblebee", power: "electric", models: [["Bumblebee", "bumblebee.html", "../assets/img/bumblebee-detail/bumblebee-gallery-01-front-v2.png"]] },
+  { name: "HS85CC", power: "fuel", models: [["HS85CC", "hs85.html", "../assets/img/hs85-official-gallery/01-front-ai-dark-wide-v2.png"]] },
+  { name: "ER", power: "electric", models: [["ER3", "er3.html", "../assets/img/gallery-corrected-v1/er3/er3-angle-01-front-v2.png"], ["ER5", "er5.html", "../assets/img/catalog-dark-studio/er5-01-front-v1.png"], ["ER7", "er7.html", "../assets/img/catalog-dark-studio/er7-01-front-studio.png"]] },
+  { name: "ES", power: "electric", models: [["ES11", "es11.html", "../assets/img/catalog-dark-studio/es11-gallery-01-front-v1.png"]] },
+  { name: "ETT", power: "electric", models: [["ET3", "et3.html", "../assets/img/catalog-dark-studio/et3-angle-01-front.png"], ["ET5", "et5.html", "../assets/img/catalog-dark-studio/et5-gallery-01-front-v1.png"], ["ET7", "et7.html", "../assets/img/catalog-dark-studio/et7-gallery-01-front-v1.png"], ["ET9", "et9.html", "../assets/img/catalog-dark-studio/et9-01-front-dark-industrial-v1.png"]] }
+];
+
+// Only approved, text-free portrait plates are registered here.  Missing
+// entries deliberately show no preview rather than falling back to a gallery
+// image that has not passed the product-world visual gate.
+const productWorldPreviewAssets = {
+  "babey.html": "../assets/img/product-world-previews/babey-preview-headlight-v4.png",
+  "babey-plus.html": "../assets/img/product-world-previews/babey-plus-preview-headlight-v6.png",
+  "bumblebee.html": "../assets/img/product-world-previews/bumblebee-preview-headlight-v6.png",
+  "er3.html": "../assets/img/product-world-previews/er3-preview-headlight-v4.png",
+  "er5.html": "../assets/img/product-world-previews/er5-preview-headlight-v5.png",
+  "er7.html": "../assets/img/product-world-previews/er7-preview-headlight-v4.png",
+  "es11.html": "../assets/img/product-world-previews/es11-preview-headlight-v3.png",
+  "et.html": "../assets/img/product-world-previews/et-preview-headlight-v2.png",
+  "et-2022.html": "../assets/img/product-world-previews/et-2022-preview-headlight-v4.png",
+  "et-2024.html": "../assets/img/product-world-previews/et-2024-preview-headlight-v3.png",
+  "et3.html": "../assets/img/product-world-previews/et3-preview-headlight-v3.png",
+  "et5.html": "../assets/img/product-world-previews/et5-preview-headlight-v2.png",
+  "et7.html": "../assets/img/product-world-previews/et7-preview-headlight-v5.png",
+  "et9.html": "../assets/img/product-world-previews/et9-preview-headlight-v4.png",
+  "f4.html": "../assets/img/product-world-previews/f4-preview-headlight-centered-v6.png",
+  "f4-plus.html": "../assets/img/product-world-previews/f4-plus-preview-headlight-v3.png",
+  "f9.html": "../assets/img/product-world-previews/f9-preview-headlight-v3.png",
+  "f29.html": "../assets/img/product-world-previews/f29-preview-headlight-v6.png",
+  "f29r.html": "../assets/img/product-world-previews/f29r-preview-headlight-v2.png",
+  "h300.html": "../assets/img/product-world-previews/h300-preview-headlight-v5.png",
+  "hs85.html": "../assets/img/product-world-previews/hs85-preview-headlight-v4.png",
+  "s300.html": "../assets/img/product-world-previews/s300-preview-headlight-v5.png",
+  "s300r.html": "../assets/img/product-world-previews/s300r-preview-headlight-v3.png",
+  "sj250.html": "../assets/img/product-world-previews/sj250-preview-headlight-v3.png",
+  "sj300.html": "../assets/img/product-world-previews/sj300-preview-headlight-v4.png",
+  "sn300.html": "../assets/img/product-world-previews/sn300-preview-headlight-v7.png",
+  "sy300.html": "../assets/img/product-world-previews/sy300-preview-headlight-v3.png",
+};
+
+// Accents belong to each model and do not inherit the currently open page.
+const productWorldModelThemes = {
+  "babey-plus.html": { accent: "#9dff13", bright: "#d1ff74", rgb: "157,255,19" },
+  "babey.html": { accent: "#bac7d0", bright: "#f2f7fa", rgb: "186,199,208" },
+  "bumblebee.html": { accent: "#bfe9ff", bright: "#f4fbff", rgb: "124,207,255" },
+  "er3.html": { accent: "#e8ad2f", bright: "#ffe07a", rgb: "232,173,47" },
+  "er5.html": { accent: "#39c85a", bright: "#8aff9e", rgb: "57,200,90" },
+  "er7.html": { accent: "#9daa52", bright: "#d8df8b", rgb: "157,170,82" },
+  "es11.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "et.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "et-2022.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "et-2024.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "et3.html": { accent: "#e23a3a", bright: "#ff7777", rgb: "226,58,58" },
+  "et5.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "et7.html": { accent: "#bac7d0", bright: "#f2f7fa", rgb: "186,199,208" },
+  "et9.html": { accent: "#e23a3a", bright: "#ff7777", rgb: "226,58,58" },
+  "f29.html": { accent: "#f08b24", bright: "#ffc06a", rgb: "240,139,36" },
+  "f29r.html": { accent: "#e8ad2f", bright: "#ffe07a", rgb: "232,173,47" },
+  "f4-plus.html": { accent: "#9dff13", bright: "#d1ff74", rgb: "157,255,19" },
+  "f4.html": { accent: "#9dff13", bright: "#d1ff74", rgb: "157,255,19" },
+  "f9.html": { accent: "#f08b24", bright: "#ffc06a", rgb: "240,139,36" },
+  "h300.html": { accent: "#e8ad2f", bright: "#ffe07a", rgb: "232,173,47" },
+  "hs85.html": { accent: "#e8ad2f", bright: "#ffe07a", rgb: "232,173,47" },
+  "s300.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "s300r.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "sj250.html": { accent: "#e23a3a", bright: "#ff7777", rgb: "226,58,58" },
+  "sj300.html": { accent: "#e23a3a", bright: "#ff7777", rgb: "226,58,58" },
+  "sn300.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+  "sy300.html": { accent: "#28a9ff", bright: "#82d6ff", rgb: "40,169,255" },
+};
+
+function productWorldModelTheme(fileName) {
+  return productWorldModelThemes[fileName] || productWorldModelThemes["sj300.html"];
+}
+
+// Preview-card copy is kept separate from model names so each card can follow
+// the active site language without changing product identity or artwork.
+const productWorldPreviewSlogans = Object.freeze({
+  en: Object.freeze({
+    "babey.html": "Start with joy. Ride free.",
+    "babey-plus.html": "More power. More growing fun.",
+    "bumblebee.html": "Agile spirit. Boundless adventure.",
+    "er3.html": "Agile electric drive. Light off-road freedom.",
+    "er5.html": "Strong electric drive. Own the open trail.",
+    "er7.html": "High-energy off-road. Conquer every challenge.",
+    "es11.html": "Flagship electric drive. Ride beyond limits.",
+    "et.html": "Electric pioneer. Quietly master the trail.",
+    "et-2022.html": "Light electric off-road. Agile all the way.",
+    "et-2024.html": "Renewed electric drive. Race beyond limits.",
+    "et3.html": "Your electric start. Off-road freedom.",
+    "et5.html": "Advanced electric drive. Cross with confidence.",
+    "et7.html": "Powerful electric drive. A journey without limits.",
+    "et9.html": "Peak electric drive. Master the extreme.",
+    "f4.html": "Fearless performance. Break the rules.",
+    "f4-plus.html": "Lightweight upgrade. Full power ahead.",
+    "f9.html": "Light electric drive. Flow through the wild.",
+    "f29.html": "High-power electric drive. Push beyond boundaries.",
+    "f29r.html": "Race-grade electric drive. Unleash your edge.",
+    "h300.html": "Four-stroke power. Steady on every trail.",
+    "hs85.html": "Lightweight racing. A young rider's edge.",
+    "s300.html": "Steady four-stroke. Roam every trail.",
+    "s300r.html": "Two-stroke punch. Rule the track.",
+    "sj250.html": "Light two-stroke. Win with agility.",
+    "sj300.html": "Track-bred two-stroke. Full race spirit.",
+    "sn300.html": "Enduring four-stroke. Conquer the distance.",
+    "sy300.html": "Tough four-stroke. Cross without fear.",
+  }),
+  "zh-CN": Object.freeze({
+    "babey.html": "\u7ae5\u8da3\u542f\u7a0b \u81ea\u5728\u9a70\u9a8b",
+    "babey-plus.html": "\u8fdb\u9636\u52a8\u529b \u5feb\u4e50\u6210\u957f",
+    "bumblebee.html": "\u7075\u52a8\u8702\u9a70 \u91ce\u8da3\u65e0\u754c",
+    "er3.html": "\u654f\u6377\u7535\u9a71 \u8f7b\u8d8a\u5c71\u91ce",
+    "er5.html": "\u5f3a\u52b2\u7535\u9a71 \u7eb5\u6a2a\u65f7\u91ce",
+    "er7.html": "\u9ad8\u80fd\u8d8a\u91ce \u5f81\u670d\u9669\u5883",
+    "es11.html": "\u65d7\u8230\u7535\u9a71 \u6781\u5883\u9a70\u9a8b",
+    "et.html": "\u7535\u9a71\u5148\u950b \u9759\u9a6d\u5c71\u91ce",
+    "et-2022.html": "\u8f7b\u7535\u8d8a\u91ce \u7075\u654f\u968f\u884c",
+    "et-2024.html": "\u7115\u65b0\u7535\u9a71 \u75be\u9a70\u65e0\u754c",
+    "et3.html": "\u5165\u95e8\u7535\u9a71 \u81ea\u5728\u8d8a\u91ce",
+    "et5.html": "\u8fdb\u9636\u7535\u9a71 \u4ece\u5bb9\u8de8\u8d8a",
+    "et7.html": "\u5f3a\u608d\u7535\u9a71 \u65e0\u754c\u5f81\u9014",
+    "et9.html": "\u5dc5\u5cf0\u7535\u9a71 \u9a70\u9a8b\u6781\u5883",
+    "f4.html": "\u5f3a\u608d\u6027\u80fd \u6562\u4e8e\u98a0\u8986",
+    "f4-plus.html": "\u8f7b\u91cf\u8fdb\u9636 \u52a8\u529b\u5168\u5f00",
+    "f9.html": "\u8f7b\u76c8\u7535\u9a71 \u7545\u884c\u5c71\u91ce",
+    "f29.html": "\u9ad8\u80fd\u7535\u9a71 \u7a81\u7834\u8fb9\u754c",
+    "f29r.html": "\u8d5b\u7ea7\u7535\u9a71 \u950b\u8292\u5c3d\u663e",
+    "h300.html": "\u56db\u51b2\u52a8\u529b \u7a33\u9a6d\u5c71\u91ce",
+    "hs85.html": "\u8f7b\u91cf\u8d5b\u9a6d \u5c11\u5e74\u950b\u8292",
+    "s300.html": "\u7a33\u5065\u56db\u51b2 \u7eb5\u6a2a\u5c71\u91ce",
+    "s300r.html": "\u4e24\u51b2\u7206\u53d1 \u8d5b\u9053\u79f0\u96c4",
+    "sj250.html": "\u8f7b\u76c8\u4e24\u51b2 \u654f\u6377\u5236\u80dc",
+    "sj300.html": "\u8d5b\u9053\u4e24\u51b2 \u950b\u8292\u5168\u5f00",
+    "sn300.html": "\u8010\u4e45\u56db\u51b2 \u5f81\u670d\u957f\u9014",
+    "sy300.html": "\u5f3a\u97e7\u56db\u51b2 \u65e0\u754f\u7a7f\u8d8a",
+  }),
+  "zh-TW": Object.freeze({
+    "babey.html": "\u7ae5\u8da3\u555f\u7a0b \u81ea\u5728\u99b3\u9a01",
+    "babey-plus.html": "\u9032\u968e\u52d5\u529b \u5feb\u6a02\u6210\u9577",
+    "bumblebee.html": "\u9748\u52d5\u8702\u99b3 \u91ce\u8da3\u7121\u754c",
+    "er3.html": "\u654f\u6377\u96fb\u9a45 \u8f15\u8d8a\u5c71\u91ce",
+    "er5.html": "\u5f37\u52c1\u96fb\u9a45 \u7e31\u6a6b\u66e0\u91ce",
+    "er7.html": "\u9ad8\u80fd\u8d8a\u91ce \u5f81\u670d\u96aa\u5883",
+    "es11.html": "\u65d7\u8266\u96fb\u9a45 \u6975\u5883\u99b3\u9a01",
+    "et.html": "\u96fb\u9a45\u5148\u92d2 \u975c\u99ad\u5c71\u91ce",
+    "et-2022.html": "\u8f15\u96fb\u8d8a\u91ce \u9748\u654f\u96a8\u884c",
+    "et-2024.html": "\u7165\u65b0\u96fb\u9a45 \u75be\u99b3\u7121\u754c",
+    "et3.html": "\u5165\u9580\u96fb\u9a45 \u81ea\u5728\u8d8a\u91ce",
+    "et5.html": "\u9032\u968e\u96fb\u9a45 \u5f9e\u5bb9\u8de8\u8d8a",
+    "et7.html": "\u5f37\u608d\u96fb\u9a45 \u7121\u754c\u5f81\u9014",
+    "et9.html": "\u5dc5\u5cf0\u96fb\u9a45 \u99b3\u9a01\u6975\u5883",
+    "f4.html": "\u5f37\u608d\u6027\u80fd \u6562\u65bc\u985b\u8986",
+    "f4-plus.html": "\u8f15\u91cf\u9032\u968e \u52d5\u529b\u5168\u958b",
+    "f9.html": "\u8f15\u76c8\u96fb\u9a45 \u66a2\u884c\u5c71\u91ce",
+    "f29.html": "\u9ad8\u80fd\u96fb\u9a45 \u7a81\u7834\u908a\u754c",
+    "f29r.html": "\u8cfd\u7d1a\u96fb\u9a45 \u92d2\u8292\u76e1\u986f",
+    "h300.html": "\u56db\u885d\u52d5\u529b \u7a69\u99ad\u5c71\u91ce",
+    "hs85.html": "\u8f15\u91cf\u8cfd\u99ad \u5c11\u5e74\u92d2\u8292",
+    "s300.html": "\u7a69\u5065\u56db\u885d \u7e31\u6a6b\u5c71\u91ce",
+    "s300r.html": "\u5169\u885d\u7206\u767c \u8cfd\u9053\u7a31\u96c4",
+    "sj250.html": "\u8f15\u76c8\u5169\u885d \u654f\u6377\u5236\u52dd",
+    "sj300.html": "\u8cfd\u9053\u5169\u885d \u92d2\u8292\u5168\u958b",
+    "sn300.html": "\u8010\u4e45\u56db\u885d \u5f81\u670d\u9577\u9014",
+    "sy300.html": "\u5f37\u97cc\u56db\u885d \u7121\u754f\u7a7f\u8d8a",
+  }),
+  ru: Object.freeze({
+    "babey.html": "Радостный старт. Свободная езда.",
+    "babey-plus.html": "Больше мощности. Больше радости.",
+    "bumblebee.html": "Маневренный дух. Приключения без границ.",
+    "er3.html": "Маневренный электропривод. Легкость на трассе.",
+    "er5.html": "Мощный электропривод. Покоряй просторы.",
+    "er7.html": "Энергия бездорожья. Покоряй преграды.",
+    "es11.html": "Флагманский электропривод. За пределами.",
+    "et.html": "Пионер электротяги. Тишина на трассе.",
+    "et-2022.html": "Легкий электрокросс. Маневренность в пути.",
+    "et-2024.html": "Новый электропривод. Скорость без границ.",
+    "et3.html": "Первый электрокросс. Свобода на трассе.",
+    "et5.html": "Новый уровень. Уверенно вперед.",
+    "et7.html": "Мощный электропривод. Путь без границ.",
+    "et9.html": "Пик электротяги. Покоряй пределы.",
+    "f4.html": "Мощный характер. Ломай правила.",
+    "f4-plus.html": "Легче и мощнее. Полная тяга.",
+    "f9.html": "Легкий электропривод. Свобода в пути.",
+    "f29.html": "Высокая мощность. За границы.",
+    "f29r.html": "Гоночный электропривод. Яркий характер.",
+    "h300.html": "Четыре такта. Уверенно на трассе.",
+    "hs85.html": "Легкая гонка. Юный характер.",
+    "s300.html": "Надежные четыре такта. Везде уверенно.",
+    "s300r.html": "Взрыв двух тактов. Лидер трассы.",
+    "sj250.html": "Легкие два такта. Победа в маневре.",
+    "sj300.html": "Гоночные два такта. Полный накал.",
+    "sn300.html": "Ресурс четырех тактов. Дальние маршруты.",
+    "sy300.html": "Мощные четыре такта. Вперед без страха.",
+  }),
+  ar: Object.freeze({
+    "babey.html": "بداية مرحة. انطلاق بحرية.",
+    "babey-plus.html": "قوة أكبر. متعة تنمو.",
+    "bumblebee.html": "روح رشيقة. مغامرة بلا حدود.",
+    "er3.html": "دفع كهربائي رشيق. خفة على الطرق الوعرة.",
+    "er5.html": "دفع كهربائي قوي. سيطر على الدروب.",
+    "er7.html": "طاقة للطرق الوعرة. تغلب على التحديات.",
+    "es11.html": "دفع كهربائي رائد. انطلق أبعد.",
+    "et.html": "رائد كهربائي. هدوء يسيطر على الدروب.",
+    "et-2022.html": "قيادة كهربائية خفيفة. رشاقة طوال الطريق.",
+    "et-2024.html": "دفع كهربائي متجدد. سرعة بلا حدود.",
+    "et3.html": "بدايتك الكهربائية. حرية على الدروب.",
+    "et5.html": "دفع كهربائي متقدم. عبور بثقة.",
+    "et7.html": "دفع كهربائي قوي. رحلة بلا حدود.",
+    "et9.html": "قمة الدفع الكهربائي. سيطر على القمم.",
+    "f4.html": "أداء جريء. اكسر القواعد.",
+    "f4-plus.html": "ترقية خفيفة. قوة كاملة.",
+    "f9.html": "دفع كهربائي خفيف. انطلق في البرية.",
+    "f29.html": "طاقة كهربائية عالية. تجاوز الحدود.",
+    "f29r.html": "دفع كهربائي للسباق. أطلق قوتك.",
+    "h300.html": "قوة رباعية الأشواط. ثبات على كل درب.",
+    "hs85.html": "سباق خفيف. روح شابة.",
+    "s300.html": "أداء رباعي ثابت. انطلق في كل درب.",
+    "s300r.html": "اندفاع ثنائي الأشواط. سيطر على الحلبة.",
+    "sj250.html": "خفة ثنائية الأشواط. فوز بالرشاقة.",
+    "sj300.html": "ثنائي الأشواط للسباق. حماس كامل.",
+    "sn300.html": "تحمل رباعي الأشواط. للمسافات الطويلة.",
+    "sy300.html": "قوة رباعية الأشواط. اعبر بلا خوف.",
+  }),
+  es: Object.freeze({
+    "babey.html": "Empieza con alegría. Conduce con libertad.",
+    "babey-plus.html": "Más potencia. Más diversión al crecer.",
+    "bumblebee.html": "Espíritu ágil. Aventura sin límites.",
+    "er3.html": "Impulso eléctrico ágil. Ligereza todoterreno.",
+    "er5.html": "Impulso eléctrico potente. Domina el camino.",
+    "er7.html": "Energía todoterreno. Supera cada reto.",
+    "es11.html": "Impulso eléctrico insignia. Llega más lejos.",
+    "et.html": "Pionera eléctrica. Domina el camino en silencio.",
+    "et-2022.html": "Todoterreno eléctrico ligero. Agilidad total.",
+    "et-2024.html": "Impulso eléctrico renovado. Velocidad sin límites.",
+    "et3.html": "Tu inicio eléctrico. Libertad todoterreno.",
+    "et5.html": "Impulso eléctrico avanzado. Avanza con confianza.",
+    "et7.html": "Impulso eléctrico potente. Ruta sin límites.",
+    "et9.html": "Máximo impulso eléctrico. Domina lo extremo.",
+    "f4.html": "Rendimiento audaz. Rompe las reglas.",
+    "f4-plus.html": "Evolución ligera. Potencia total.",
+    "f9.html": "Impulso eléctrico ligero. Fluye por la naturaleza.",
+    "f29.html": "Alta potencia eléctrica. Supera los límites.",
+    "f29r.html": "Impulso eléctrico de competición. Libera tu carácter.",
+    "h300.html": "Potencia de cuatro tiempos. Firme en cada camino.",
+    "hs85.html": "Competición ligera. Espíritu joven.",
+    "s300.html": "Cuatro tiempos estable. Recorre cada camino.",
+    "s300r.html": "Explosión de dos tiempos. Domina la pista.",
+    "sj250.html": "Dos tiempos ligero. Vence con agilidad.",
+    "sj300.html": "Dos tiempos de competición. Pasión total.",
+    "sn300.html": "Cuatro tiempos duradero. Conquista la distancia.",
+    "sy300.html": "Cuatro tiempos resistente. Cruza sin miedo.",
+  }),
+  pt: Object.freeze({
+    "babey.html": "Comece com alegria. Pilote com liberdade.",
+    "babey-plus.html": "Mais potência. Mais diversão ao crescer.",
+    "bumblebee.html": "Espírito ágil. Aventura sem limites.",
+    "er3.html": "Propulsão elétrica ágil. Leveza fora de estrada.",
+    "er5.html": "Propulsão elétrica forte. Domine as trilhas.",
+    "er7.html": "Energia fora de estrada. Supere cada desafio.",
+    "es11.html": "Propulsão elétrica de ponta. Vá além.",
+    "et.html": "Pioneira elétrica. Domine a trilha em silêncio.",
+    "et-2022.html": "Off-road elétrico leve. Agilidade no caminho.",
+    "et-2024.html": "Propulsão elétrica renovada. Velocidade sem limites.",
+    "et3.html": "Seu início elétrico. Liberdade fora de estrada.",
+    "et5.html": "Propulsão elétrica avançada. Avance com confiança.",
+    "et7.html": "Propulsão elétrica forte. Jornada sem limites.",
+    "et9.html": "Propulsão elétrica máxima. Domine o extremo.",
+    "f4.html": "Desempenho ousado. Quebre as regras.",
+    "f4-plus.html": "Evolução leve. Potência total.",
+    "f9.html": "Propulsão elétrica leve. Flua pela natureza.",
+    "f29.html": "Alta potência elétrica. Supere os limites.",
+    "f29r.html": "Propulsão elétrica de competição. Revele sua força.",
+    "h300.html": "Potência de quatro tempos. Firme em cada trilha.",
+    "hs85.html": "Competição leve. Espírito jovem.",
+    "s300.html": "Quatro tempos estável. Domine cada trilha.",
+    "s300r.html": "Explosão de dois tempos. Domine a pista.",
+    "sj250.html": "Dois tempos leve. Vença com agilidade.",
+    "sj300.html": "Dois tempos de competição. Paixão total.",
+    "sn300.html": "Quatro tempos durável. Conquiste a distância.",
+    "sy300.html": "Quatro tempos resistente. Atravesse sem medo.",
+  }),
+});
+
+const productWorldPreviewFiles = productWorldGroups.flatMap((group) => group.models.map(([, fileName]) => fileName));
+const invalidProductWorldPreviewSlogans = Object.keys(productWorldPreviewSlogans).flatMap((language) =>
+  productWorldPreviewFiles
+    .filter((fileName) => !productWorldPreviewSlogans[language][fileName])
+    .map((fileName) => `${language}:${fileName}`)
+);
+if (invalidProductWorldPreviewSlogans.length) {
+  throw new Error(`Missing product-world preview slogans: ${invalidProductWorldPreviewSlogans.join(", ")}`);
+}
+
+const productWorldLabels = {
+  en: { world: "Product World", fuel: "Fuel", electric: "Electric", series: "Series", previewSeries: "Series", preview: "preview", offRoadMotorcycle: "off-road motorcycle" },
+  "zh-CN": { world: "\u4ea7\u54c1\u4e16\u754c", fuel: "\u71c3\u6cb9", electric: "\u7535\u52a8", series: "\u7cfb\u5217", previewSeries: "\u7cfb\u5217", preview: "\u9884\u89c8", offRoadMotorcycle: "\u8d8a\u91ce\u6469\u6258\u8f66" },
+  "zh-TW": { world: "\u7522\u54c1\u4e16\u754c", fuel: "\u71c3\u6cb9", electric: "\u96fb\u52d5", series: "\u7cfb\u5217", previewSeries: "\u7cfb\u5217", preview: "\u9810\u89bd", offRoadMotorcycle: "\u8d8a\u91ce\u6469\u6258\u8eca" },
+  ru: { world: "\u041c\u0438\u0440 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432", fuel: "\u0411\u0435\u043d\u0437\u0438\u043d\u043e\u0432\u044b\u0435", electric: "\u042d\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435", series: "\u0421\u0435\u0440\u0438\u0438", previewSeries: "\u0421\u0435\u0440\u0438\u044f", preview: "\u043f\u0440\u0435\u0434\u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440", offRoadMotorcycle: "\u0432\u043d\u0435\u0434\u043e\u0440\u043e\u0436\u043d\u044b\u0439 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b" },
+  ar: { world: "\u0639\u0627\u0644\u0645 \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a", fuel: "\u0628\u0646\u0632\u064a\u0646", electric: "\u0643\u0647\u0631\u0628\u0627\u0626\u064a", series: "\u0627\u0644\u0633\u0644\u0633\u0644\u0629", previewSeries: "\u0633\u0644\u0633\u0644\u0629", preview: "\u0645\u0639\u0627\u064a\u0646\u0629", offRoadMotorcycle: "\u062f\u0631\u0627\u062c\u0629 \u0646\u0627\u0631\u064a\u0629 \u0644\u0644\u0637\u0631\u0642 \u0627\u0644\u0648\u0639\u0631\u0629" },
+  es: { world: "Mundo de productos", fuel: "Gasolina", electric: "El\u00e9ctrico", series: "Series", previewSeries: "Serie", preview: "vista previa", offRoadMotorcycle: "motocicleta todoterreno" },
+  pt: { world: "Mundo dos produtos", fuel: "Gasolina", electric: "El\u00e9trico", series: "S\u00e9ries", previewSeries: "S\u00e9rie", preview: "pr\u00e9via", offRoadMotorcycle: "motocicleta off-road" }
+};
+
+function productWorldLanguage() {
+  const language = i18n ? i18n.getLang() : new URLSearchParams(window.location.search).get("lang");
+  return productWorldLabels[language] ? language : "en";
+}
+
+function productWorldLabel(key) {
+  return productWorldLabels[productWorldLanguage()][key] || productWorldLabels.en[key];
+}
+
+function productWorldSeriesTitle(series) {
+  const language = productWorldLanguage();
+  const label = productWorldLabel("previewSeries");
+  return ["ru", "ar", "es", "pt"].includes(language) ? `${label} ${series}` : `${series} ${label}`;
+}
+
+function productWorldPreviewSlogan(fileName) {
+  const language = productWorldLanguage();
+  return productWorldPreviewSlogans[language][fileName] || productWorldPreviewSlogans.en[fileName] || "";
+}
+
+function productWorldRelativeHref(fileName) {
+  const currentPath = window.location.pathname.replace(/\\/g, "/");
+  const isNewsDetail = /\/news\//.test(currentPath);
+  return isNewsDetail ? `../${fileName}` : fileName;
+}
+
+function productWorldModelHref(fileName) {
+  const relativePath = productWorldRelativeHref(fileName);
+  const lang = i18n ? i18n.getLang() : (new URLSearchParams(window.location.search).get("lang") || "en");
+  return `${relativePath}?lang=${encodeURIComponent(lang || "en")}`;
+}
+
+function productWorldPreviewHref(source) {
+  return productWorldRelativeHref(source);
+}
+
+function productWorldPreviewCard(fileName) {
+  return {
+    image: productWorldPreviewAssets[fileName] || "",
+  };
+}
+
+function productWorldModels(power) {
+  return productWorldGroups.flatMap((group) => group.power === power
+    ? group.models.map(([name, fileName, preview]) => ({ name, fileName, preview, series: group.name, power }))
+    : []);
+}
+
+function hideProductWorldPreview(menu) {
+  const preview = menu.querySelector("[data-product-world-preview]");
+  if (!preview) return;
+  preview.hidden = true;
+  preview.classList.remove("is-visible", "has-card");
+  preview.removeAttribute("data-product-world-preview-file");
+  preview.style.removeProperty("--product-model-accent");
+  preview.style.removeProperty("--product-model-bright");
+  preview.style.removeProperty("--product-model-rgb");
+  const image = preview.querySelector("img");
+  if (image) image.removeAttribute("src");
+}
+
+function showProductWorldPreview(menu, link) {
+  if (!window.matchMedia("(min-width: 901px)").matches) return;
+  const preview = menu.querySelector("[data-product-world-preview]");
+  const image = preview?.querySelector("img");
+  if (!preview || !image) return;
+  if (!link.dataset.productWorldPreviewSrc) {
+    hideProductWorldPreview(menu);
+    return;
+  }
+  image.src = productWorldPreviewHref(link.dataset.productWorldPreviewSrc);
+  image.alt = `${link.dataset.productWorldModel} ${productWorldLabel("preview")}`;
+  preview.dataset.productWorldPreviewFile = link.dataset.productWorldFile;
+  const theme = productWorldModelTheme(link.dataset.productWorldFile);
+  preview.style.setProperty("--product-model-accent", theme.accent);
+  preview.style.setProperty("--product-model-bright", theme.bright);
+  preview.style.setProperty("--product-model-rgb", theme.rgb);
+  const modelName = link.dataset.productWorldModel;
+  const modelTitle = preview.querySelector("[data-product-world-preview-model]");
+  modelTitle.textContent = modelName;
+  modelTitle.dataset.model = modelName;
+  preview.querySelector("[data-product-world-preview-series]").textContent = productWorldSeriesTitle(link.dataset.productWorldSeries);
+  preview.querySelector("[data-product-world-preview-slogan]").textContent = productWorldPreviewSlogan(link.dataset.productWorldFile);
+  preview.classList.add("has-card");
+  preview.hidden = false;
+  preview.classList.add("is-visible");
+}
+
+function closeProductWorldMenus(exceptMenu = null) {
+  document.querySelectorAll("[data-product-world-menu]").forEach((menu) => {
+    if (menu === exceptMenu) return;
+    menu.hidden = true;
+    menu.classList.remove("is-open");
+    hideProductWorldPreview(menu);
+    const trigger = document.getElementById(menu.getAttribute("aria-labelledby"));
+    if (trigger) trigger.setAttribute("aria-expanded", "false");
+  });
+}
+
+function setProductWorldPower(menu, power) {
+  menu.querySelectorAll("[data-product-world-power]").forEach((button) => {
+    const isActive = button.dataset.productWorldPower === power;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+  menu.querySelectorAll("[data-product-world-family]").forEach((family) => {
+    family.hidden = family.dataset.productWorldFamily !== power;
+  });
+  hideProductWorldPreview(menu);
+}
+
+function refreshProductWorldLinks() {
+  document.querySelectorAll("[data-product-world-menu] a[data-product-world-file]").forEach((link) => {
+    link.href = productWorldModelHref(link.dataset.productWorldFile);
+  });
+  document.querySelectorAll("[data-product-world-default]").forEach((link) => {
+    link.href = productWorldModelHref(link.dataset.productWorldDefault);
+  });
+}
+
+function refreshProductWorldLabels() {
+  document.querySelectorAll("[data-product-world-label]").forEach((node) => {
+    node.textContent = productWorldLabel(node.dataset.productWorldLabel);
+  });
+  document.querySelectorAll("[data-product-world-preview-series]").forEach((node) => {
+    const preview = node.closest("[data-product-world-preview]");
+    const menu = preview?.closest("[data-product-world-menu]");
+    const activeFile = preview?.dataset.productWorldPreviewFile;
+    const activeLink = Array.from(menu?.querySelectorAll("[data-product-world-file]") || [])
+      .find((link) => link.dataset.productWorldFile === activeFile);
+    if (!activeLink) return;
+    node.textContent = productWorldSeriesTitle(activeLink.dataset.productWorldSeries);
+    const image = preview.querySelector("img");
+    if (image) image.alt = `${activeLink.dataset.productWorldModel} ${productWorldLabel("preview")}`;
+    const slogan = preview.querySelector("[data-product-world-preview-slogan]");
+    if (slogan) slogan.textContent = productWorldPreviewSlogan(activeFile);
+  });
+}
+
+function productWorldGroupMarkup(group) {
+  const models = group.models.map(([model, fileName]) => {
+    const card = productWorldPreviewCard(fileName);
+    const theme = productWorldModelTheme(fileName);
+    return `<a href="${productWorldModelHref(fileName)}" style="--product-model-accent:${theme.accent};--product-model-bright:${theme.bright};--product-model-rgb:${theme.rgb}" data-product-world-file="${fileName}" data-product-world-model="${model}" data-product-world-series="${group.name}" data-product-world-preview-src="${card.image}">${model}<span aria-hidden="true">&#8599;</span></a>`;
+  }).join("");
+  return `<section class="product-world-menu__group" data-product-world-group="${group.name}"><span class="product-world-menu__group-status" aria-hidden="true"></span><h3><span class="product-world-menu__group-name">${group.name}</span><span class="product-world-menu__group-series" data-product-world-label="series">${productWorldLabel("series")}</span></h3><div>${models}</div></section>`;
+}
+
+function renderProductWorldCategoryPages() {
+  document.querySelectorAll("[data-product-world-category-grid]").forEach((grid) => {
+    const power = grid.dataset.productWorldCategoryGrid;
+    const models = productWorldModels(power);
+    grid.innerHTML = models.map((model) => `
+      <a class="category-product-card" href="${productWorldModelHref(model.fileName)}">
+        <img src="${productWorldPreviewHref(model.preview)}" alt="${model.name}" loading="lazy">
+        <div><span>${model.series} ${productWorldLabel("series")}</span><h2>${model.name}</h2><p>${productWorldLabel(power)} ${productWorldLabel("offRoadMotorcycle")}</p></div>
+      </a>
+    `).join("");
+  });
+}
+
+function createProductWorldMenu(productLink, index) {
+  const navElement = productLink.closest("[data-nav]");
+  if (!navElement || navElement.querySelector("[data-product-world-menu]")) return;
+
+  const trigger = document.createElement("a");
+  const menu = document.createElement("section");
+  const triggerId = `product-world-trigger-${index + 1}`;
+  const menuId = `product-world-menu-${index + 1}`;
+
+  trigger.id = triggerId;
+  trigger.className = `product-world-trigger${productLink.classList.contains("is-active") ? " is-active" : ""}`;
+  trigger.dataset.productWorldDefault = "sy300.html";
+  trigger.href = productWorldModelHref("sy300.html");
+  trigger.setAttribute("aria-expanded", "false");
+  trigger.setAttribute("aria-controls", menuId);
+  trigger.setAttribute("aria-haspopup", "true");
+  trigger.innerHTML = `<span data-i18n="navProducts">${productLink.textContent.trim()}</span><span class="product-world-trigger-icon" aria-hidden="true">+</span>`;
+
+  menu.id = menuId;
+  menu.className = "product-world-menu";
+  menu.hidden = true;
+  menu.setAttribute("data-product-world-menu", "");
+  menu.setAttribute("aria-labelledby", triggerId);
+  menu.innerHTML = `<div class="product-world-menu__header"><span class="product-world-menu__eyebrow">Apex Moto Supply</span><strong data-product-world-label="world">Product World</strong></div><div class="product-world-menu__categories" role="group" aria-label="Product power type"><button type="button" class="is-active" data-product-world-power="fuel" aria-pressed="true"><span data-product-world-label="fuel">Fuel</span></button><button type="button" data-product-world-power="electric" aria-pressed="false"><span data-product-world-label="electric">Electric</span></button></div><div class="product-world-menu__body"><div class="product-world-menu__groups">${["fuel", "electric"].map((power) => `<section class="product-world-menu__family" data-product-world-family="${power}"${power === "electric" ? " hidden" : ""}><h2 data-product-world-label="${power}">${productWorldLabel(power)}</h2><div class="product-world-menu__grid">${productWorldGroups.filter((group) => group.power === power).map(productWorldGroupMarkup).join("")}</div></section>`).join("")}</div><aside class="product-world-preview" data-product-world-preview hidden><img alt=""><div class="product-world-preview__copy"><span data-product-world-preview-series></span><strong data-product-world-preview-model></strong><p data-product-world-preview-slogan></p></div></aside></div>`;
+
+  productLink.replaceWith(trigger);
+  trigger.insertAdjacentElement("afterend", menu);
+
+  const close = ({ focus = false } = {}) => {
+    menu.hidden = true;
+    menu.classList.remove("is-open");
+    hideProductWorldPreview(menu);
+    trigger.setAttribute("aria-expanded", "false");
+    if (focus) trigger.focus();
+  };
+
+  const open = () => {
+    closeProductWorldMenus(menu);
+    const header = trigger.closest("header");
+    if (header) menu.style.setProperty("--product-world-top", `${Math.ceil(header.getBoundingClientRect().bottom)}px`);
+    menu.hidden = false;
+    menu.classList.add("is-open");
+    trigger.setAttribute("aria-expanded", "true");
+  };
+
+  trigger.addEventListener("pointerenter", open);
+
+  trigger.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowDown") return;
+    event.preventDefault();
+    open();
+    menu.querySelector("[data-product-world-power]")?.focus();
+  });
+
+  menu.addEventListener("click", (event) => {
+    const powerButton = event.target.closest("[data-product-world-power]");
+    if (powerButton) {
+      setProductWorldPower(menu, powerButton.dataset.productWorldPower);
+      return;
+    }
+    if (event.target.closest("a")) close();
+  });
+
+  const previewFromPointer = (event) => {
+    const link = event.target.closest("[data-product-world-file]");
+    if (link && menu.contains(link)) {
+      showProductWorldPreview(menu, link);
+      return;
+    }
+    hideProductWorldPreview(menu);
+  };
+
+  menu.addEventListener("pointerover", previewFromPointer);
+  menu.addEventListener("mousemove", previewFromPointer);
+
+  menu.addEventListener("focusin", (event) => {
+    const link = event.target.closest("[data-product-world-file]");
+    if (link) showProductWorldPreview(menu, link);
+  });
+
+  menu.addEventListener("pointerleave", () => hideProductWorldPreview(menu));
+  menu.addEventListener("focusout", (event) => {
+    if (!menu.contains(event.relatedTarget)) hideProductWorldPreview(menu);
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!menu.hidden && !menu.contains(event.target) && !trigger.contains(event.target)) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu.hidden) {
+      event.preventDefault();
+      close({ focus: true });
+    }
+  });
+}
+
+function enhanceProductWorldNavigation() {
+  document.querySelectorAll('a[data-i18n="navProducts"]').forEach(createProductWorldMenu);
+  refreshProductWorldLinks();
+  refreshProductWorldLabels();
+  renderProductWorldCategoryPages();
+}
+
 if (year) year.textContent = new Date().getFullYear();
 
 function syncCurrentLang() {
   currentLang = i18n ? i18n.getLang() : "en";
 }
+
+function syncContactInquiryLinks() {
+  const lang = i18n ? i18n.getLang() : currentLang;
+  const isNestedNewsPage = /(?:^|\/)news\/[^/]+\.html$/i.test(window.location.pathname);
+  const href = `${isNestedNewsPage ? "../inquiry.html" : "inquiry.html"}?lang=${encodeURIComponent(lang || "en")}`;
+  document.querySelectorAll('a[data-i18n="navContact"]').forEach((link) => {
+    link.setAttribute("href", href);
+  });
+}
+
+syncContactInquiryLinks();
+enhanceProductWorldNavigation();
 
 function text(key) {
   return i18n ? i18n.t(key) : ((data.i18n[currentLang] && data.i18n[currentLang][key]) || data.i18n.en[key] || key);
@@ -54,6 +644,24 @@ function productIntro(product) {
 
 function productSeries(product) {
   return isChineseLang() ? (product.seriesZh || product.series) : product.series;
+}
+
+function productDisplayModel(product) {
+  return product.displayModel || product.model;
+}
+
+function productDetailHref(product) {
+  const detailSlug = product.slug === "hs85cc" ? "hs85" : product.slug;
+  return `${detailSlug}.html`;
+}
+
+function allProductsInDisplayOrder() {
+  const pinnedSlugs = ["sy300", "f29r", "hs85cc"];
+  const pinnedProducts = pinnedSlugs
+    .map((slug) => data.products.find((product) => product.slug === slug))
+    .filter(Boolean);
+  const pinnedSet = new Set(pinnedSlugs);
+  return pinnedProducts.concat(data.products.filter((product) => !pinnedSet.has(product.slug)));
 }
 
 function imageSrc(product) {
@@ -103,14 +711,15 @@ function specRows(product) {
 }
 
 function productCard(product) {
+  const displayModel = productDisplayModel(product);
   return `
     <article class="product-card" data-category="${product.category}">
-      <button class="product-image product-image-button" type="button" data-open-specs="${product.slug}" aria-label="${text("viewParameters")} ${product.model}">
-        <img src="${studioImageSrc(product)}" alt="${product.model}" loading="lazy">
+      <button class="product-image product-image-button" type="button" data-open-specs="${product.slug}" aria-label="${text("viewParameters")} ${displayModel}">
+        <img src="${studioImageSrc(product)}" alt="${displayModel}" loading="lazy">
       </button>
       <div class="product-content">
         <p class="product-series">${productSeries(product)}</p>
-        <h3 id="${product.slug}">${product.model}</h3>
+        <h3 id="${product.slug}"><a class="product-detail-link" href="${productDetailHref(product)}" aria-label="${text("productDetails")} ${displayModel}">${displayModel}</a></h3>
         <p>${productIntro(product)}</p>
         <button class="parameters-button" type="button" data-open-specs="${product.slug}">
           <span aria-hidden="true">&#9656;</span>${text("viewParameters")}
@@ -123,7 +732,7 @@ function productCard(product) {
 function renderProducts(category = "all") {
   if (!productGrid) return;
   const products = category === "all"
-    ? data.products
+    ? allProductsInDisplayOrder()
     : data.products.filter((product) => product.category === category);
 
   productGrid.innerHTML = products.map(productCard).join("");
@@ -144,7 +753,7 @@ function renderFeatured() {
     .filter((product) => ["s300", "f29r", "es11"].includes(product.slug))
     .map((product) => `
       <button type="button" data-open-specs="${product.slug}">
-        <span>${product.model}</span>
+        <span>${productDisplayModel(product)}</span>
         <strong>${product.highlights.slice(0, 2).join(" / ")}</strong>
       </button>
     `).join("");
@@ -268,14 +877,15 @@ function updateHeroVideoProgress() {
 
 function openSpecModal(product) {
   if (!modal || !modalBody || !modalClose) return;
+  const displayModel = productDisplayModel(product);
   modalBody.innerHTML = `
     <div class="modal-product">
       <div class="modal-product-image">
-        <img src="${imageSrc(product)}" alt="${product.model}">
+        <img src="${imageSrc(product)}" alt="${displayModel}">
       </div>
       <div>
         <p class="product-series">${productSeries(product)}</p>
-        <h3>${product.model}</h3>
+        <h3>${displayModel}</h3>
         <p>${productIntro(product)}</p>
         <ul class="quick-specs">
           ${product.highlights.map((item) => `<li>${item}</li>`).join("")}
@@ -490,6 +1100,10 @@ window.addEventListener("apex:languagechange", () => {
   const activeButton = filters ? filters.querySelector(".is-active") : null;
   const active = activeButton ? activeButton.dataset.category : "all";
   syncCurrentLang();
+  syncContactInquiryLinks();
+  refreshProductWorldLinks();
+  refreshProductWorldLabels();
+  renderProductWorldCategoryPages();
   render(active);
   loadNews();
 });
@@ -508,6 +1122,7 @@ document.addEventListener("keydown", (event) => {
 if (menuButton && nav) {
   menuButton.addEventListener("click", () => {
     const expanded = menuButton.getAttribute("aria-expanded") === "true";
+    closeProductWorldMenus();
     menuButton.setAttribute("aria-expanded", String(!expanded));
     nav.classList.toggle("is-open", !expanded);
   });

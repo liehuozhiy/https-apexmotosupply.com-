@@ -9,11 +9,11 @@
 | 1. 未跟踪文件分类清单 | `git status` 中 909 个路径（含本轮 3 份交接文档） | 无 | 分成有效源码、正式资产、候选/证据、缓存、明显命令碎片；仅报告，不删除 | 已完成（2026-08-01；见 `CODEX_HANDOFF.md` 第 6 节） | 否 | 全部业务文件、Git 历史 |
 | 2. 独立工作树成果差异与接收决策 | 当前 4 个工作树：F29R、SJ300、Babey、F4；ET 仅核对主项目遗留资产 | 任务 1（已满足） | A01 逐文件差异；A02 对每个历史预览候选给出进入复验/历史保留/已被取代决策 | A01、A02 均已完成（2026-08-01；见 `docs/audits/historical-*.md`） | 可低负载并行 | 共享 CSS/JS、其他车型、Git |
 | 3. 官网/Excel P1 决策 | `source-audit-index.json`、两份核对工作簿、相关车型 JSON | 任务 1 | SY300、H300、HS85、SJ250、S300R 每项差异有采用值、来源和审批结论；原始 Excel 不被覆盖 | 已完成（B01–B08，2026-08-01；集中决策及四车型生成验证均通过） | 可按车型并行 | 图片生成、共享布局、原始 Excel |
-| 4. 双数据源一致性审计 | `frontend/assets/js/site-data.js`、`frontend/product-detail/data/*.json` | 任务 3 | 同型号公开参数无冲突；只生成报告，得到批准后再改单一来源 | 待开始 | 否 | 自动覆盖任一数据源、页面布局 |
-| 5. 产品世界剩余预览 | 见下表 | 任务 2 已完成；车型身份资料明确 | 每款通过独立资产门禁并由负责人集中接入 | 5/27 正式通过 | 最多 2 个图片槽 | 详情页数据、共享 CSS/JS由车型任务直接改 |
-| 6. 全站集中浏览器验收 | `frontend/pages/**`、共享 CSS/JS、全部有效资产 | 任务 3–5 | HTTP/file、375/768/1440、1920/2560抽查、七语言/RTL、无404/横滚/裁切/重叠、控制台0错误 | 未完成 | 仅 1 个集中验证槽 | 功能整改需另立最小任务，不能边验边大改 |
-| 7. API/询盘回归 | `frontend/pages/inquiry.html`、`frontend/assets/js/main.js`、`api/worker.js` | 任务 6 公共页面稳定 | Excel 下载、请求字段/API响应兼容；测试环境验证，不发送真实客户邮件 | 未完成 | 否 | D1 schema、SMTP密钥、后台认证 |
-| 8. 审查产物清理提案 | 根截图、`_photo_review/`、`__pycache__/`、命令碎片 | 任务 1、6 | 提交精确删除清单并获得用户批准；有效证据/正式资产不删 | 待开始 | 否 | 未确认文件、产品资产、根 `CODEX.md` |
+| 4. 双数据源一致性审计 | `frontend/assets/js/site-data.js`、`frontend/product-detail/data/*.json` | 任务 3 | 覆盖 27 款并将共享语义字段分为一致、格式差异、真实冲突、仅单侧存在；经证据决策后仅同步明确字段 | 已完成（C01–C03，2026-08-01；6 项几何参数已按 Excel 同步，HS85 保留双语义，ET 经范围核对继续仅详情页） | 否 | 自动覆盖任一数据源、页面布局 |
+| 5. 产品世界预览构图统一 | `docs/audits/p35-product-world-preview-f4-remediation.md` | P34 已按 1440px 实际 F4 卡片重开视觉门禁 | 每款与 F4 的标题安全区、车把、脚踏、前轮底边、正面角度和灯光一致后才能通过 | 已完成（2026-08-02）：P35 将 26 款整改为独立版本化底图，移除临时批量缩放规则；27/27 实际卡片、映射与 HTTP 资源复验通过 | 图片生成最多 1 个并串行 | 不修改车型数据；不得用共享 CSS 批量缩放掩盖构图问题 |
+| 6. 全站集中浏览器验收 | `frontend/pages/**`、共享 CSS/JS、全部有效资产 | 任务 3–5 | HTTP/file、375/768/1440、1920/2560抽查、七语言/RTL、无404/横滚/裁切/重叠、控制台0错误 | 已完成（阶段 E，2026-08-02）：HTTP 全站矩阵、27/27 Panel 资源路径与代表性桌面/平板渲染通过；用户已完成本机 `file:///` 最终视觉验收 | 仅 1 个集中验证槽 | 功能整改需另立最小任务，不能边验边大改 |
+| 7. API/询盘回归 | `frontend/pages/inquiry.html`、`frontend/assets/js/main.js`、`api/worker.js` | 任务 6 公共页面稳定 | Excel 下载、请求字段/API响应兼容；测试环境验证，不发送真实客户邮件 | 已完成（阶段 F，2026-08-02）：F01–F04 已通过，包含真实浏览器的下载、双语 SMTP 未配置与 API 失败保底下载验证 | 否 | D1 schema、SMTP密钥、后台认证 |
+| 8. 审查产物清理提案 | 根截图、`_photo_review/`、`__pycache__/`、命令碎片 | 任务 1、6 | 提交精确删除清单并获得用户批准；有效证据/正式资产不删 | 已完成（G01，2026-08-02）：用户批准后删除 9 个命令碎片和 1 个 Python 缓存文件（41,057 bytes），空 `__pycache__/` 同步移除；有效证据与正式资产均保留 | 否 | 未确认文件、产品资产、根 `CODEX.md` |
 | 9. 重建 deploy | `scripts/prepare-deploy.mjs`、`deploy/**` | 任务 6–8 完成且用户明确要求 | `deploy` 与 `frontend/admin` 源一致，路由抽测通过 | 当前不同步 | 否 | 不得手改 deploy，不得自动部署/Git |
 
 ## 阶段 B：P1 资料审计、决策与生成验证状态
@@ -31,34 +31,103 @@ B01–B06 只生成独立报告；B07 依据六份报告集中决策，只更新
 | B07 P1 集中决策与数据更新 | `docs/audits/p1-consolidated-decisions.md` | 已完成（2026-08-01） | 58 行决策矩阵；12 行立即更新、对应 20 个业务字段和 126 个七语言映射项；46 行保留 Pending；索引新增 6 个车型级 `p1Decision`；原始 Excel、图片、共享 CSS/JS 未改 |
 | B08 P1 车型生成验证 | `docs/audits/p1-model-build-validation.md` | 已完成（2026-08-01） | SY300、HS85、SJ250、S300R 两次定向构建成功且幂等；七语言、B07 参数、40/40 图片引用、模板结构通过；其他 23 个车型页哈希不变 |
 
+## 阶段 C：双数据源一致性
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| C01 双数据源一致性报告 | `docs/audits/c01-dual-source-consistency.md` | 已完成（2026-08-01） | 27 份 JSON 全覆盖；`site-data.js` 覆盖 26 款；582 项闭合为一致 109、格式差异 267、真实冲突 7、仅单侧 199；ET 仅 JSON 侧存在；后续决策由 C02 完成 |
+| C02 双数据源冲突决策与同步 | `docs/audits/c02-dual-source-conflict-decision.md` | 已完成（2026-08-01） | Excel `Time-F!C3/C4/C6`、`D3/D4/D6` 明确支持 F29/F29R 六项几何参数；仅更新两份 JSON、七语言映射及两页生成 HTML；HS85 Purpose/series 保留双语义，`site-data.js` 未改 |
+| C03 ET 目录数据最小修订 | `docs/audits/c03-et-directory-decision.md` | 已完成（2026-08-01） | ET 详情 JSON 与目录卡片为异构结构，且 ET 不在 Excel 权威车型清单；不新增 `site-data.js` 产品记录，不改任何车型数据 |
+
+## 阶段 D：车型预览资产（第一批）
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| D14 F29R 历史候选复验 | `docs/audits/d14-f29r-historical-candidate-revalidation.md` | 已完成（2026-08-01） | 旧 worktree 的 v1 身份、整车完整性和预览构图通过；仅获候选资产资格，未复制或接入 |
+| D20 SJ300 历史候选复验 | `docs/audits/d20-sj300-historical-candidate-revalidation.md` | 已完成（2026-08-01） | 旧 worktree 的 v1、v2 均因关键前部结构与身份锚点不一致而判退；未复制或接入 |
+| D16 HS85 候选复验 | `docs/audits/d16-hs85-candidate-revalidation.md` | 已完成（2026-08-01） | v1、v2 均将身份锚点的无灯前号牌虚构为发光头灯，属于关键前部结构冲突，均判退 |
+| D17 S300 预览制作 | `docs/audits/d17-s300-preview-creation.md` | 已完成（2026-08-02） | 新单次生成授权后 v1 正面候选通过身份与预览门禁；未接入，图片来源仍 Pending |
+| D15 H300 预览制作 | `docs/audits/d15-h300-preview-creation.md` | 已完成（2026-08-02） | v2 正面候选通过身份与预览门禁；v1 左前 3/4 版本保留但不采用，未接入 |
+| D18 S300R 预览制作 | `docs/audits/d18-s300r-preview-creation.md` | 已完成（2026-08-02） | 新单次生成 v1 正面候选通过身份与预览门禁；未接入，图片来源仍 Pending |
+
 ## 产品世界预览独立任务
 
 统一验收：约 1:2 竖版无字底图；顶部 HTML 文字安全区；完整真实车型正面，车把/轮胎/脚踏不裁切；车灯按车型能力开启；黑色工业长廊、局部红灯和湿地反射；无人物、Logo、水印、CTA；1440 悬停实际加载、标题/八字宣传语不重叠、无横滚。车型任务只写本车型版本化资产；`main.js` 映射由前端负责人集中修改。
 
 | 任务名称 | 涉及文件 | 前置依赖 | 当前状态 | 可并行 | 禁止修改范围 |
 | --- | --- | --- | --- | --- | --- |
-| ER3 预览整改 | `product-world-previews/er3-*`、ER3 身份图 | 废弃 v2，重新锁定 bbox | v2 已判退 | 是，图片槽 | 共享文件、其他车型 |
-| ER5 预览制作 | `product-world-previews/er5-*`、`er5-detail/**` | 身份图确认 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| ER7 预览制作 | `product-world-previews/er7-*`、ER7 正面图 | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| ES11 预览制作 | `product-world-previews/es11-*`、ES11 正面图 | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| ET 候选独立复验 | 主项目 `et-preview-headlight-v1.png`、ET 身份图 | A02 已完成 | v1 进入复验；`rejected-42pct` 历史保留；均未接入 | 是，验证 | 不虚构已消失 worktree；不直接接入或修改共享文件 |
-| ET 2024 预览制作 | `product-world-previews/et-2024-*` | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| ET3 预览制作 | `product-world-previews/et3-*` | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| ET5 候选复验 | `et5-preview-headlight-v1.png` | 身份比对 | 候选存在，未验收/接入 | 是，验证 | 不重新出图直到判定 v1 |
-| ET7 候选复验 | `et7-preview-headlight-v2.png` | 身份比对 | 候选存在，未验收/接入 | 是，验证 | 不重新出图直到判定 v2 |
-| ET9 预览制作 | `product-world-previews/et9-*` | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| F4+ 预览制作 | `product-world-previews/f4-plus-*` | 准备已完成 | 未落盘 | 是，图片槽 | JSON参数、共享文件 |
-| F9 候选复验 | `f9-preview-headlight-v1.png` | 身份比对 | 候选存在，未验收/接入 | 是，验证 | 不重新出图直到判定 v1 |
-| F29 候选复验 | `f29-preview-headlight-v2.png` | 身份比对 | 候选存在，未验收/接入 | 是，验证 | 不改中性化 JSON |
-| F29R 工作树候选独立复验 | 工作树 `f29r-preview-headlight-v1.png` | A02 已完成 | A02 决定进入复验；主项目仍缺失、未接入 | 否 | 禁止复制或整目录接收；不修改共享文件 |
-| H300 预览制作 | `product-world-previews/h300-*`、H300 身份图 | H300 来源 P1 决策 | 未落盘 | 是，图片槽 | 参数/亮点未批准前不改 |
-| HS85 候选复验 | `hs85-preview-headlight-v2.png` | HS85 来源 P1 决策 | 候选存在，未验收/接入 | 是，验证 | 不改 JSON 参数 |
-| S300 预览制作 | `product-world-previews/s300-*` | S300 图片来源确认 | 未落盘 | 是，图片槽 | 已修正文案、共享文件 |
-| S300R 预览制作 | `product-world-previews/s300r-*` | S300R 来源 P1 决策 | 未落盘 | 是，图片槽 | 参数/共享文件 |
-| SJ250 预览制作 | `product-world-previews/sj250-*` | SJ250 图片身份闭环 | 未落盘 | 是，图片槽 | 参数/共享文件 |
-| SJ300 工作树候选独立复验 | 工作树 `sj300-preview-headlight-v2.png` | A02 已完成 | v2 进入复验；v1 历史保留；主项目仍缺失、未接入 | 否 | 禁止复制或整目录接收；不修改共享文件 |
-| SN300 候选复验 | `sn300-preview-headlight-v3.png` | 身份比对 | 候选存在，未验收/接入 | 是，验证 | JSON参数、共享文件 |
-| SY300 候选复验 | `sy300-preview-headlight-v2.png` | SY300 来源 P1 决策 | 候选存在，未验收/接入 | 是，验证 | 参数/共享文件 |
+| ER3 预览整改 | `product-world-previews/er3-preview-headlight-v3.png`、ER3 身份图 | 废弃 v2，重新锁定 bbox | 已完成（2026-08-02）；v3 通过身份与构图门禁，未接入 | 是，图片槽 | 共享文件、其他车型 |
+| ER5 预览制作 | `product-world-previews/er5-preview-headlight-v1.png`、`er5-detail/**` | 身份图确认 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| ER7 预览制作 | `product-world-previews/er7-preview-headlight-v1.png`、ER7 正面图 | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| ES11 预览制作 | `product-world-previews/es11-preview-headlight-v1.png`、ES11 正面图 | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| ET 候选独立复验 | 主项目 `et-preview-headlight-v1.png`、ET 身份图 | A02 已完成 | 已完成（2026-08-02）；v1 通过候选资格，`rejected-42pct` 历史保留，均未接入 | 是，验证 | 不虚构已消失 worktree；不直接接入或修改共享文件 |
+| ET 2024 预览制作 | `product-world-previews/et-2024-preview-headlight-v1.png` | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| ET3 预览制作 | `product-world-previews/et3-preview-headlight-v1.png` | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| ET5 候选复验 | `et5-preview-headlight-v1.png` | 身份比对 | 已完成（2026-08-02）；v1 通过候选资格，未接入 | 是，验证 | 不重新出图直到判定 v1 |
+| ET7 候选复验 | `et7-preview-headlight-v2.png` | 身份比对 | 已完成（2026-08-02）；v2 通过候选资格，未接入 | 是，验证 | 不重新出图直到判定 v2 |
+| ET9 预览制作 | `product-world-previews/et9-preview-headlight-v1.png` | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| F4+ 预览制作 | `product-world-previews/f4-plus-preview-headlight-v1.png` | 准备已完成 | 已完成（2026-08-02）；v1 通过门禁，未接入 | 是，图片槽 | JSON参数、共享文件 |
+| F9 候选复验 | `f9-preview-headlight-v1.png` | 身份比对 | 已完成（2026-08-02）；v1 通过候选资格，未接入 | 是，验证 | 不重新出图直到判定 v1 |
+| F29 候选复验 | `f29-preview-headlight-v1.png`、`f29-preview-headlight-v2.png` | 身份比对 | 已完成（2026-08-02）；v1/v2 均因关键前部结构和涂装与 F29 身份锚点冲突而判退，未接入 | 是，验证 | 不改中性化 JSON |
+| F29R 工作树候选独立复验 | 工作树 `f29r-preview-headlight-v1.png` | A02 已完成 | D14 复验通过；仅资产资格，主项目仍缺失、未接入 | 否 | 禁止复制或整目录接收；不修改共享文件 |
+| H300 预览制作 | `product-world-previews/h300-preview-headlight-v2.png`、H300 身份图 | H300 来源 P1 决策 | D15 v2 正面候选已通过门禁；未接入，来源仍 Pending | 是，图片槽 | 参数/亮点未批准前不改 |
+| HS85 候选复验 | `hs85-preview-headlight-v1.png`、`hs85-preview-headlight-v2.png` | HS85 来源 P1 决策 | 已完成（D16，2026-08-01）；v1/v2 均因虚构前灯与无灯前号牌身份锚点冲突而判退，未接入 | 是，验证 | 不改 JSON 参数 |
+| S300 预览制作 | `product-world-previews/s300-preview-headlight-v1.png` | S300 图片来源确认 | D17 v1 正面候选通过门禁；未接入，来源仍 Pending | 是，图片槽 | 已修正文案、共享文件 |
+| S300R 预览制作 | `product-world-previews/s300r-preview-headlight-v1.png` | S300R 来源 P1 决策 | D18 v1 正面候选通过门禁；未接入，来源仍 Pending | 是，图片槽 | 参数/共享文件 |
+| SJ250 预览制作 | `product-world-previews/sj250-preview-headlight-v1.png`、`docs/audits/sj250-preview-creation.md` | 新授权的车型身份参照决策 | 已完成（2026-08-02）；v1 通过身份与统一门禁，未接入；现有五图/Panel/亮点图片来源仍 Pending | 是，图片槽 | 参数/共享文件 |
+| SJ300 工作树候选独立复验 | `docs/audits/d20-sj300-historical-candidate-revalidation.md` | A02 已完成 | 已完成（D20，2026-08-01）；v1/v2 均因关键前部结构与身份锚点冲突而判退，未复制或接入 | 否 | 禁止复制或整目录接收；不修改共享文件 |
+| SN300 候选复验 | `sn300-preview-headlight-v3.png` | 身份比对 | 已完成（2026-08-02）；v3 通过候选资格，未接入 | 是，验证 | JSON参数、共享文件 |
+| SY300 候选复验 | `sy300-preview-headlight-v2.png` | SY300 来源 P1 决策 | 已完成（2026-08-02）；v2 通过候选资格，未接入；图片来源仍 Pending | 是，验证 | 参数/共享文件 |
+
+## 阶段 E：集中浏览器验收
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| E01 HTTP 基线浏览器验收 | `docs/audits/e01-browser-baseline-validation.md` | 已完成（2026-08-02） | 首页、SJ250 和询盘页的 HTTP 基线在 375/768/1440/1920/2560、七语言/RTL、图库/页签、图片与控制台检查均通过；`file:///` 被当前浏览器安全策略阻断，完整矩阵仍待继续 |
+| E02 公共页面浏览器验收 | `docs/audits/e02-public-pages-browser-validation.md` | 已完成（2026-08-02） | 产品目录、三类产品页、新闻、视频和联系页在 HTTP 375/768/1440 下均无文档横向溢出、图片失败或控制台告警；完整产品详情与 `file:///` 矩阵仍待继续 |
+| E03 产品详情全量浏览器矩阵 | `docs/audits/e03-product-detail-browser-matrix.md` | 已完成（2026-08-02） | 27 个生成详情页在 HTTP 375/768/1440 下均通过 H1、图片、模板占位符、文档横向溢出和控制台检查；`file:///` 与剩余公共/新闻详情矩阵仍待继续 |
+| E04 剩余公共与新闻详情页矩阵 | `docs/audits/e04-remaining-pages-browser-validation.md` | 已完成（2026-08-02） | 批发、Pit Bikes、三个预览页和五篇新闻详情在 HTTP 375/768/1440 下均无图片失败、模板占位符、文档横向溢出或控制台告警；HTTP 全站矩阵闭合，`file:///` 仍被工具策略阻断 |
+| E05–E10 SJ250 Panel 修复链 | `docs/audits/e05-*.md` 至 `e10-*.md` | 已完成（2026-08-02）；由 E11 统一闭环，用户本机视觉验收通过 | 相对路径、断点构图、最终指定 `v11-master.png` 与缓存更新均已纳入全车型方案 |
+| E11 全车型 Panel 路径与可见性修复 | `docs/audits/e11-all-model-panel-path-and-visibility.md` | 已完成（2026-08-02）；用户本机 `file:///` 最终视觉验收通过 | 27/27 页均使用 `product-detail.css` 可解析的 `../img/...`，缓存版本 v31；代表性桌面/平板渲染通过 |
+
+## 阶段 F：API / 询盘回归
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| F01 API / 询盘静态契约与运行条件核对 | `docs/audits/f01-inquiry-api-contract-readiness.md` | 已完成（2026-08-02） | 表单字段、`sourceUrl` 兼容、`emailStatus` 返回/前端分支及两份 JS 语法检查均通过；核对时无全局 Wrangler、`package.json` 或 `package-lock.json`，后续 F02 已通过不写入项目依赖的 `npx.cmd` 完成运行时回归 |
+| F02 隔离 Worker / D1 询盘 API 回归 | `docs/audits/f02-local-worker-inquiry-regression.md` | 已完成（2026-08-02） | Wrangler 4.118.0 的本地 HTTPS Worker/D1 通过 OPTIONS、必填/邮箱校验、蜜罐、保存后 SMTP 未配置降级和 5 次/小时限流；仅使用 `example.invalid` 数据，Worker 已停止；临时 D1 清理受执行环境删除策略阻断，路径已记录 |
+| F03 询盘前端 Excel / 提示交互验收 | `docs/audits/f03-inquiry-browser-interaction-limitation.md` | 已完成（2026-08-02） | 隔离本地 Worker/D1 的真实浏览器验收通过：英文/中文 `not_configured` 提示、XLSX 下载及 API 不可达时下载继续和失败提示均正确；浏览器和 Worker 已停止 |
+| F04 询盘 Excel 模板静态完整性核对 | `docs/audits/f04-inquiry-xlsx-template-integrity.md` | 已完成（2026-08-02） | 内嵌 XLSX 可解码，ZIP 结构、14 个目标单元格、14 个替换映射和 JSZip Blob 生成链完整；未发现外部链接 |
+
+## 阶段 G：审查产物治理
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| G01 审查产物清理提案 | `docs/audits/g01-cleanup-proposal.md` | 已完成（2026-08-02） | 用户批准后，10 个已复核候选（41,057 bytes）已删除，空 `__pycache__/` 已移除；所有截图、候选资产、审计证据、`deploy/`、控制文档和源码均保留 |
+
+## 阶段 H：产品世界正式接入
+
+| 子任务 | 报告 | 当前状态 | 核心结论 |
+| --- | --- | --- | --- |
+| H01 已通过候选预览集中接入 | `docs/audits/h01-product-world-preview-integration.md` | 已完成（2026-08-02） | `main.js` 新增 18 个当前主项目候选映射，正式预览覆盖 23/27；F29R 历史 worktree 文件未复制，F29/HS85/SJ300 维持判退 |
+| H02 F29R 历史候选接收与接入 | `docs/audits/h02-f29r-historical-preview-reception.md` | 已完成（2026-08-02） | 用户明确授权后，单一历史 PNG 已以哈希一致方式接收、登记并在 1440 菜单悬停通过；正式预览覆盖 24/27 |
+| H03 F29 候选整改与接入 | `docs/audits/h03-f29-preview-remediation.md` | 已完成（2026-08-02） | 一次受官方身份图约束的 v3 生成通过门禁并接入；正式预览覆盖 25/27 |
+
+| P04 Babey+ 预览构图统一 | `docs/audits/p04-babey-plus-preview-composition.md` | 已完成（2026-08-02） | v5 保留真实竖向前灯，按 F4 四位置锚点重新构图并接入；旧 v4 保留 |
+| P05 公共页顶部菜单统一 | `docs/audits/p05-public-header-unification.md` | 已完成（2026-08-02） | 首页改用产品世界标准顶部菜单；视频、新闻、询盘复核为同一模板；语言切换保持相对询盘链接 |
+| P06 产品世界默认入口与图库首图 | `docs/audits/p06-product-world-default-and-gallery-02.md` | 已完成（2026-08-02） | 点击产品世界进入 SY300；27 个生成车型页默认显示左侧第 02 张图库预览 |
+| P24 公共页面顶部导航一致性复核 | `docs/audits/p24-public-header-consistency.md` | 已完成（2026-08-02） | 首页、产品世界、视频、新闻和联系／询盘均使用同一 `site-header / nav / header-actions` 模块；补齐新闻与联系当前项高亮 |
+| P25 当前产品世界入口更正 | `docs/audits/p25-current-product-world-entry-correction.md` | 已完成（2026-08-02） | 旧 `products.html` 已取消；公共页和车型详情模板的产品世界备用入口统一为 `sy300.html`，全量车型页已重建 |
+| P26 SY300 公共页头模板化 | `docs/audits/p26-sy300-public-header-template.md` | 已完成（2026-08-02） | 首页、视频、新闻和联系／询盘采用与 `sy300.html` 一致的共享页头规格，并完成桌面、768 和 375 宽度验收 |
+| P27 车型图库缩略图路径修复 | `docs/audits/p27-gallery-thumbnail-source-fix.md` | 已完成（2026-08-02） | 修正详情页生成器将 alt 文本写入缩略图 `src` 的问题；全量车型页已重建，SY300 移动端五图验证通过 |
+| P28 产品世界预览图复验 | `docs/audits/p28-product-world-preview-reacceptance.md` | 已完成（2026-08-02） | 以 F4 为构图门禁复验 27 张下拉预览：15 张通过、12 张判退；仅生成审计，不改映射或资产 |
+| P29 ER5 下拉预览整改 | `docs/audits/p29-er5-preview-replacement.md` | 已完成（2026-08-02） | 使用保留 ER5 身份的新版本点亮前灯并对齐 F4 构图；原图保留，新版本映射已接入 |
+| P30 ER7 下拉预览整改 | `docs/audits/p30-er7-preview-replacement.md` | 已完成（2026-08-02） | 保留 ER7 圆形多 LED 灯组与车型外形，提升车身尺度及前灯可读性；原图保留，新版本映射已接入 |
+| P31 ES11 下拉预览整改 | `docs/audits/p31-es11-preview-replacement.md` | 已完成（2026-08-02） | 保留 ES11 黑色几何前脸与完整正面结构，新增嵌入式灯光并提升暗色车型可读性；原图保留，新版本映射已接入 |
+| P32 产品世界预览整改第二批 | `docs/audits/p32-product-world-preview-replacement-batch-2.md` | 已完成（2026-08-02） | ET 2024、ET3、ET7、ET9、F4+、F29、H300、S300、SN300 已逐张按 F4 门禁整改并接入版本化新图；原图均保留，F4+ 因无已证实灯位不伪造头灯 |
+| P34 产品世界下拉预览严格 F4 复验 | `docs/audits/p34-product-world-preview-strict-f4-reacceptance.md` | 已完成（2026-08-02） | 以 1440px 实际卡片及 F4 专用 1.15 倍渲染为唯一基准重新检查 27 款：F4 通过，其余 26 款因安全区、锚点、占比、角度或灯光至少一项不符而判退；只更新审计，不改业务资产 |
+| P35 产品世界预览 F4 整改收口 | `docs/audits/p35-product-world-preview-f4-remediation.md` | 已完成（2026-08-02） | P34 的 26 款判退项均已用独立版本化 PNG 固化构图；最终映射 27/27、HTTP 27/27 通过，实际燃油/电动菜单逐款触发成功；除 F4 基准规则外不保留车型缩放 CSS，不虚构 F4+、SJ300、S300R 灯具 |
+| P36 首页视频与产品菜单层级修复 | `docs/audits/p36-home-video-product-menu-layering.md` | 已完成（2026-08-02） | 修正首页通用子元素层级覆盖页头的问题；产品下拉菜单稳定显示在视频/首屏上方，1440/768/375 无横向溢出，视频播放与重播不受影响 |
 
 ## 已完成且不要重复的任务
 

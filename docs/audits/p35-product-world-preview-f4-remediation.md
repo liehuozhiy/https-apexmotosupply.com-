@@ -1,0 +1,64 @@
+# P35 产品世界预览 F4 整改收口
+
+日期：2026-08-02
+
+## 目标与边界
+
+- 依据 P34 的严格复验结果，整改除 F4 外的 26 款下拉预览。
+- 以 1440px 实际 F4 卡片为基准：顶部文字安全区、完整正面车型、车把/脚踏/前轮底边锚点、车型占比和已证实灯具状态保持一致。
+- 不修改车型 JSON、`site-data.js`、`source-audit-index.json` 或图片之外的业务数据。
+- 旧候选全部保留；新图使用新版本文件名。
+
+## 整改方式
+
+1. S300、SN300、F29、ER5、ER7、ET9、H300、ET7、F9、SJ250 使用各自真实身份锚点完成单车型候选修订。
+2. 其余车型基于已核验候选做确定性画布重构；所有校准参数最终固化进独立 PNG。
+3. 用于校准的车型级 CSS `scale/translate/filter` 已全部移除。最终共享 CSS 仅保留既有 F4 基准规则，没有以批量缩放掩盖图片构图缺陷。
+4. F4+、SJ300、S300R 没有足够证据证明存在可点亮灯具，保持真实结构，不新增虚构灯光。
+5. ER3 正式映射为新衍生资产 `er3-preview-headlight-v4.png`，未直接继续使用历史判退的 v2。
+
+## 最终资产 SHA-256
+
+| 文件 | SHA-256 |
+| --- | --- |
+| `babey-preview-headlight-v4.png` | `09B459216E34CDAD5226F95D686C59382665C65D41D10FCC36F156C9831D77FD` |
+| `babey-plus-preview-headlight-v6.png` | `2DA42D8374BA183BCB13F16D672E3B37ED95DBDA731A0CBD51752ABFCC47D060` |
+| `bumblebee-preview-headlight-v6.png` | `DC6738792B054709AE4502E8C5D2EEB5CAAF83DE443E02321E2204D6D93CB843` |
+| `er3-preview-headlight-v4.png` | `E1529AB400E3F6A37FF0CBAF9AE56BD2F87784A5256699F85536D564EA86B887` |
+| `er5-preview-headlight-v5.png` | `5B2C8D5C7406739BF5AEEB585E01B7196E0ABC4113D7E3F8C9CB5669E9379C64` |
+| `er7-preview-headlight-v4.png` | `89884D8699B98008D62E373D848FC564C06ABC9F04BB13A63E58EC19D140981F` |
+| `es11-preview-headlight-v3.png` | `54A7BBE2D4DB0F924F8771A3E2C030D2A3609354E36BD60B17DA16975F265C6D` |
+| `et-preview-headlight-v2.png` | `D4903A8C59061F4DD248550C738CB2A5CF2E9846A1EF8562A0978B4AF88F4F01` |
+| `et-2022-preview-headlight-v4.png` | `01F4748BC2CEE95F7B0FE7A98D63B1204EBB3225F524DC132EBB4AB02606DDD8` |
+| `et-2024-preview-headlight-v3.png` | `E8FB76044088521FB29149DFA9E996FB5C9C22766DCA9288D60DC5865069A2C0` |
+| `et3-preview-headlight-v3.png` | `9F2E0C1C9851EAA2889713C02725C64AE05180FBB2C34C9129CAF9005C87077A` |
+| `et5-preview-headlight-v2.png` | `ADB461837B8234B2909A92F3E373617CB4CD5A9140F2F7C2B29855FF83E25FA4` |
+| `et7-preview-headlight-v5.png` | `BCB64B409CD09217D6A5ED9AA2B5E2AAD0AFE910B21CD2A583E1496242174F78` |
+| `et9-preview-headlight-v4.png` | `80A73062F17D13BEA72F09CA0BE108E5D6A34727A4BCA177452F83B9C4DE5EA2` |
+| `f4-plus-preview-headlight-v3.png` | `BDFF28DB1AB5629CE7FFA8F23E922FBA276E584044F2DF6E73E888DB3579855E` |
+| `f9-preview-headlight-v3.png` | `173048D6A147EE429B9CB3EBBF04BF14375EFD77A6D5CD8CC10268194A578C38` |
+| `f29-preview-headlight-v6.png` | `7880A841BD4104E0D3086D4167D6F02B41B434E6BA268D98DAD7B7DB52BFBF79` |
+| `f29r-preview-headlight-v2.png` | `8749363014CFF4755F0A2F77D3F221D31E78F7A32C15AB922CFC6098F1CF4682` |
+| `h300-preview-headlight-v5.png` | `703EC6FBCEE583FA7DE4AD2D11DF21F375E7409ABB9A7A8247D783BA5C52D5C2` |
+| `hs85-preview-headlight-v4.png` | `699AD40EE9B63B96F00D1B26EC48DF34D1AF374DA21CA730E5B83DCC1530F402` |
+| `s300-preview-headlight-v5.png` | `BDA4B2997916F30D42A212CD9D35BAB98CF11ADBA035B639157D57B0ACF4040C` |
+| `s300r-preview-headlight-v3.png` | `0572378EBECD692A3D3A9D9950DDFB884E5C9D28332D6BFD3E432E63B891B91A` |
+| `sj250-preview-headlight-v3.png` | `5A94167DC6E73FE6BAB4F02220051D23B2C78135B75DC618636BB386E6E89F48` |
+| `sj300-preview-headlight-v4.png` | `CD35E1DD820EBCE5677843FBC0F28572CB7D8FEC3224D754156F1B1118A67580` |
+| `sn300-preview-headlight-v7.png` | `5D0875A111D1C03A34856838F2431D4AC426D2663936127D9F160D5AEC5568B0` |
+| `sy300-preview-headlight-v3.png` | `8757E81034940729DF4F8995B1023B9AC3DFEBEA7CE16AB3AB17E90D73AC6692` |
+
+F4 基准继续使用 `f4-preview-headlight-centered-v6.png`，SHA-256 为 `32F5D104F7D7DD4ACA7CAE37BEAC18AB95072725BA5C8B5497C7191316FEC672`。
+
+## 验收结果
+
+- `main.js` 映射数：27；本地文件存在：27/27；HTTP HEAD：27/27 返回 200。
+- 实际菜单逐款触发：燃油 8/8、电动 19/19，预览 `data-product-world-preview-file` 与图片路径全部匹配。
+- 1440px 实际卡片目视：27/27 通过；代表性 S300、ET9 的标题安全区、中心线、车把、脚踏和前轮底边与 F4 基准一致。
+- `node --check frontend/assets/js/main.js`：通过。
+- `node --check frontend/assets/js/home-preview.js`：通过。
+- `git diff --check`：通过（仅现有 LF/CRLF 提示）。
+
+## 结论
+
+P34 的“1 通过、26 判退”由本次版本化整改收口取代。产品世界预览当前为 27/27 通过；未重建 `deploy/`，未部署、暂存、提交或推送。

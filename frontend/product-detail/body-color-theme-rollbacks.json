@@ -1,0 +1,168 @@
+{
+  "version": "2026-08-03-body-color-v34",
+  "note": "Body-color theme rollout. Previous red-theme panel and banner assets are retained in place for rollback; SJ300 remains the unchanged standard.",
+  "models": {
+    "babey-plus": {
+      "palette": "lime",
+      "active": "../assets/img/panel-red-studio-v1/babey-plus-panel-body-lime-light-v3.png",
+      "previousPanel": "../assets/img/panel-red-studio-v1/babey-plus-panel-red-v2.png",
+      "previousBanner": "../assets/img/babey-plus-gallery-dark-v1/babey-plus-angle-02-left-front-dark-v2-sample.png"
+    },
+    "babey": {
+      "palette": "graphite",
+      "active": "../assets/img/generated/babey-panel-v11/babey-panel-body-graphite-light-v5.png",
+      "previousPanel": "../assets/img/generated/babey-panel-v11/babey-panel-v11-left-front-red-curtain-v4.webp",
+      "previousBanner": "../assets/img/generated/babey-gallery-wide-v3/babey-angle-02-left-front-three-quarter-wide-dark-v3.png"
+    },
+    "bumblebee": {
+      "palette": "ice-white",
+      "active": "../assets/img/panel-red-studio-v1/bumblebee-panel-body-ice-blue-light-v6.png",
+      "previousPanel": "../assets/img/panel-red-studio-v1/bumblebee-panel-left-front-sj300-style-v4.png",
+      "previousBanner": "../assets/img/bumblebee-detail/bumblebee-gallery-02-left-front-v1.png"
+    },
+    "er3": {
+      "palette": "gold",
+      "active": "../assets/img/catalog-dark-studio/er3-panel-body-gold-light-v13.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/er3-dark-studio-v12.webp",
+      "previousBanner": "../assets/img/catalog-dark-studio/er3-dark-studio-v2.png"
+    },
+    "er5": {
+      "palette": "green",
+      "active": "../assets/img/catalog-dark-studio/er5-panel-body-green-light-v12.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/er5-v11-panel-16x9-v2.webp",
+      "previousBanner": "../assets/img/catalog-dark-studio/er5-03-left-side-v1.png"
+    },
+    "er7": {
+      "palette": "olive",
+      "active": "../assets/img/catalog-dark-studio/er7-panel-body-olive-light-v12.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/er7-panel-left-front-v11-r4.webp",
+      "previousBanner": "../assets/img/catalog-dark-studio/er7-support-banner-left-front.png"
+    },
+    "es11": {
+      "palette": "steel-blue",
+      "active": "../assets/img/catalog-dark-studio/es11-panel-body-steel-blue-light-v13.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/es11-panel-v12-left-front-16x9.webp",
+      "previousBanner": "../assets/img/catalog-dark-studio/es11-banner-elevated-left-front-v1.png"
+    },
+    "et-2022": {
+      "palette": "blue",
+      "active": "../assets/img/et-2022-gallery-dark-v1/et-2022-panel-body-blue-light-v4.png",
+      "previousPanel": "../assets/img/et-2022-gallery-dark-v1/et-2022-panel-sj300-style-v3.png",
+      "previousBanner": "../assets/img/et-2022-gallery-dark-v1/et-2022-panel-left-front-red-smoke-dark-v2.png"
+    },
+    "et-2024": {
+      "palette": "blue",
+      "active": "../assets/img/et-2024-detail/et-2024-panel-body-blue-light-v4.png",
+      "previousPanel": "../assets/img/et-2024-detail/et-2024-panel-sj300-style-v3.png",
+      "previousBanner": "../assets/img/et-2024-gallery-dark-v1/et-2024-angle-02-left-front-dark-v2.png"
+    },
+    "et": {
+      "palette": "blue",
+      "active": "../assets/img/et-gallery-dark-metal/et-panel-left-front-body-blue-light-preview-v16.png",
+      "previousPanel": "../assets/img/et-gallery-dark-metal/et-panel-left-front-sj300-style-v15.png",
+      "previousBanner": "../assets/img/et-gallery-dark-metal/et-panel-left-front-red-curtain-v13.webp"
+    },
+    "et3": {
+      "palette": "red",
+      "active": "../assets/img/catalog-dark-studio/et3-panel-sj300-style-v2.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/et3-panel-sj300-style-v2.png",
+      "previousBanner": "../assets/img/catalog-dark-studio/et3-angle-02-left-front.png"
+    },
+    "et5": {
+      "palette": "blue",
+      "active": "../assets/img/catalog-dark-studio/et5-panel-body-blue-light-v4.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/et5-panel-left-front-sj300-style-v3.png",
+      "previousBanner": "../assets/img/catalog-dark-studio/et5-panel-left-front-v1.png"
+    },
+    "et7": {
+      "palette": "graphite",
+      "active": "../assets/img/catalog-dark-studio/et7-panel-body-graphite-light-v3.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/et7-panel-sj300-style-v2.png",
+      "previousBanner": "../assets/img/catalog-dark-studio/et7-banner-left-profile-v1.png"
+    },
+    "et9": {
+      "palette": "red",
+      "active": "../assets/img/catalog-dark-studio/et9-panel-left-front-red-smoke-v1.png",
+      "previousPanel": "../assets/img/catalog-dark-studio/et9-panel-left-front-red-smoke-v1.png",
+      "previousBanner": "../assets/img/catalog-dark-studio/et9-04-left-rear-dark-industrial-v1.png"
+    },
+    "f29": {
+      "palette": "orange",
+      "active": "../assets/img/f29-detail/f29-panel-body-orange-light-v2.png",
+      "previousPanel": "../assets/img/f29-detail/f29-panel-dark-industrial-official-identity-ai-v1-optimized.webp",
+      "previousBanner": "../assets/img/f29-detail/f29-gallery-02-left-front-dark-industrial-official-identity-ai-v1.png"
+    },
+    "f29r": {
+      "palette": "gold",
+      "active": "../assets/img/f29r-gallery/f29r-panel-body-gold-light-preview-v2.png",
+      "previousPanel": "../assets/img/f29r-gallery/f29r-hero-panel-industrial-red-v11-candidate-v1.webp",
+      "previousBanner": "../assets/img/f29r-gallery/f29r-angle-02-left-front-half-dark-wide-ai-v3.png"
+    },
+    "f4-plus": {
+      "palette": "lime",
+      "active": "../assets/img/f4-plus-detail/f4-plus-panel-body-lime-light-v5.png",
+      "previousPanel": "../assets/img/f4-plus-detail/f4-plus-panel-sj300-style-v4.png",
+      "previousBanner": "../assets/img/f4-plus-detail/f4-plus-gallery-02-left-front-v2.png"
+    },
+    "f4": {
+      "palette": "lime",
+      "active": "../assets/img/f4-official/f4-panel-body-lime-light-v6.png",
+      "previousPanel": "../assets/img/f4-official/f4-panel-v11-left-front-red-curtain-v5-web.webp",
+      "previousBanner": "../assets/img/f4-official/f4-angle-02-left-front-half-dark-industrial-panorama-v3.png"
+    },
+    "f9": {
+      "palette": "orange",
+      "active": "../assets/img/f9-detail/f9-panel-body-orange-light-v4.png",
+      "previousPanel": "../assets/img/f9-detail/f9-panel-sj300-style-v3.png",
+      "previousBanner": "../assets/img/f9-detail/f9-panel-v2.png"
+    },
+    "h300": {
+      "palette": "yellow",
+      "active": "../assets/img/h300-detail/h300-panel-body-yellow-light-v3.png",
+      "previousPanel": "../assets/img/h300-detail/h300-panel-sj300-style-v2.png",
+      "previousBanner": "../assets/img/h300-detail/h300-gallery-02-left-front-34-dark-v1.png"
+    },
+    "hs85": {
+      "palette": "yellow",
+      "active": "../assets/img/hs85-panel-candidates/hs85-panel-body-yellow-light-v9.png",
+      "previousPanel": "../assets/img/hs85-panel-candidates/hs85-panel-sj300-style-v8.png",
+      "previousBanner": "../assets/img/hs85-official-gallery/02-left-front-half-ai-dark-wide-v2.png"
+    },
+    "s300": {
+      "palette": "blue",
+      "active": "../assets/img/products/s300-detail/s300-panel-body-blue-light-v13.png",
+      "previousPanel": "../assets/img/products/s300-detail/s300-hero-panel-sj300-style-v12.png",
+      "previousBanner": "../assets/img/products/s300-detail/s300-ai-angle-03-left-side-v2-dark.png"
+    },
+    "s300r": {
+      "palette": "blue",
+      "active": "../assets/img/products/s300r/s300r-panel-body-blue-light-v4.png",
+      "previousPanel": "../assets/img/products/s300r/s300r-panel-sj300-style-v3.png",
+      "previousBanner": "../assets/img/products/s300r/s300r-left-front-dark-industrial-v2.png"
+    },
+    "sj250": {
+      "palette": "red",
+      "active": "../assets/img/sj250-gallery/sj250-hero-panel-industrial-red-v11-master.png",
+      "previousPanel": "../assets/img/sj250-gallery/sj250-hero-panel-industrial-red-v11-master.png",
+      "previousBanner": "../assets/img/sj250-gallery/sj250-angle-02-left-front-half-dark-ultrawide-v4.png"
+    },
+    "sj300": {
+      "palette": "red-standard",
+      "active": "../assets/img/sj300-hero-panel-industrial-red-v11-v9plus-red-16x9.webp",
+      "previousPanel": "../assets/img/sj300-hero-panel-industrial-red-v11-v9plus-red-16x9.webp",
+      "previousBanner": "../assets/img/sj300-dark-studio-gallery/02-left-front-3q-v3-ultrawide.png"
+    },
+    "sn300": {
+      "palette": "blue",
+      "active": "../assets/img/sn300/sn300-panel-body-blue-light-v13.png",
+      "previousPanel": "../assets/img/sn300/sn300-hero-panel-sj300-style-v12.png",
+      "previousBanner": "../assets/img/sn300/sn300-ai-angle-02-left-front-half-wide-dark-v3.png"
+    },
+    "sy300": {
+      "palette": "blue",
+      "active": "../assets/img/generated/sy300-panel-candidates/sy300-panel-body-blue-light-v6.png",
+      "previousPanel": "../assets/img/generated/sy300-panel-candidates/sy300-panel-sj300-style-v5.png",
+      "previousBanner": "../assets/img/generated/sy300-terrain-banner-v1.png"
+    }
+  }
+}

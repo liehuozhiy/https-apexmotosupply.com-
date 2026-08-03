@@ -3,3 +3,12 @@ node_modules/
 dist/
 build/
 *.log
+deploy/
+
+# Local browser and visual QA artifacts
+.playwright-cli/
+tmp/
+output/
+_photo_review/
+f4-product-world-*.png
+er7-1440.png

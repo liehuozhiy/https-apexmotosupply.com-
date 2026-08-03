@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "id": "sj300",
+  "name": "SJ300",
+  "series": "SJ 系列",
+  "powerType": "gasoline-two-stroke",
+  "panelImage": "../assets/img/sj300-hero-panel-industrial-red-v11-v9plus-red-16x9.webp",
+  "page": {
+    "title": "SJ300 | Apex Moto Supply",
+    "description": "SJ300 two-stroke gas dirt bike specifications, official five-angle gallery, and wholesale inquiry support."
+  },
+  "intro": "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。",
+  "category": "SJ 系列 / 两冲程燃油越野",
+  "gallery": [
+    {
+      "src": "../assets/img/sj300-dark-studio-gallery/01-front-v3-ultrawide.png",
+      "alt": "SJ300 head-on front dark industrial studio view",
+      "angle": "front"
+    },
+    {
+      "src": "../assets/img/sj300-dark-studio-gallery/02-left-front-3q-v3-ultrawide.png",
+      "alt": "SJ300 left-front three-quarter dark industrial studio view",
+      "angle": "left-front"
+    },
+    {
+      "src": "../assets/img/sj300-dark-studio-gallery/03-left-side-v3-ultrawide.png",
+      "alt": "SJ300 left-side dark industrial studio view",
+      "angle": "left-side"
+    },
+    {
+      "src": "../assets/img/sj300-dark-studio-gallery/04-left-rear-3q-v3-ultrawide.png",
+      "alt": "SJ300 left-rear three-quarter dark industrial studio view",
+      "angle": "left-rear"
+    },
+    {
+      "src": "../assets/img/sj300-dark-studio-gallery/05-rear-v3-ultrawide.png",
+      "alt": "SJ300 straight rear dark industrial studio view",
+      "angle": "rear"
+    }
+  ],
+  "stats": [
+    {
+      "label": "排量",
+      "value": "300",
+      "unit": "cc"
+    },
+    {
+      "label": "两冲程",
+      "value": "2T",
+      "unit": ""
+    },
+    {
+      "label": "油箱容量",
+      "value": "5.3",
+      "unit": "L"
+    },
+    {
+      "label": "整备质量",
+      "value": "105",
+      "unit": "kg"
+    }
+  ],
+  "sellingPoints": [
+    {
+      "title": "赛道实测动力",
+      "description": "XFH300 两冲程发动机",
+      "icon": "power"
+    },
+    {
+      "title": "轻盈车身",
+      "description": "整备质量 105 kg",
+      "icon": "feather"
+    },
+    {
+      "title": "燃油配置",
+      "description": "5.3 L 油箱",
+      "icon": "fuel"
+    },
+    {
+      "title": "专业越野减震",
+      "description": "前减 838 mm / 后减 509 mm",
+      "icon": "shock"
+    }
+  ],
+  "quote": {
+    "label": "询盘报价",
+    "description": "根据数量与目的地确认"
+  },
+  "inquiry": {
+    "href": "inquiry.html",
+    "primaryLabel": "立即发起询盘",
+    "secondaryLabel": "开始询盘"
+  },
+  "overview": {
+    "title": "产品概述",
+    "body": "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。",
+    "miniSpecs": [
+      {
+        "title": "XFH300 两冲程发动机",
+        "description": "最大功率 35 kW，最大扭矩 38 N·m。",
+        "icon": "engine"
+      },
+      {
+        "title": "轻盈操控",
+        "description": "整备质量 105 kg，人体工学车身强调灵敏骑行表现。",
+        "icon": "chassis"
+      },
+      {
+        "title": "专业越野减震",
+        "description": "前减长度 838 mm，后减长度 509 mm。",
+        "icon": "suspension"
+      },
+      {
+        "title": "前后碟式刹车",
+        "description": "官方参数配置前后碟式制动。",
+        "icon": "brakes"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "title": "300发动机",
+      "description": "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。",
+      "image": "../assets/img/sj300-official-highlights/01-xfh300-engine.jpg",
+      "alt": "SJ300 official 300 engine detail"
+    },
+    {
+      "title": "专业越野减震",
+      "description": "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。",
+      "image": "../assets/img/sj300-official-highlights/02-off-road-suspension-official-v2.jpg",
+      "alt": "SJ official professional off-road suspension detail"
+    },
+    {
+      "title": "后轮总成",
+      "description": "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。",
+      "image": "../assets/img/sj300-official-highlights/03-rear-wheel-assembly.jpg",
+      "alt": "SJ series official rear wheel assembly"
+    },
+    {
+      "title": "精工仪器",
+      "description": "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。",
+      "image": "../assets/img/sj300-official-highlights/04-instrument.jpg",
+      "alt": "SJ series official instrument assembly"
+    }
+  ],
+  "banner": {
+    "image": "../assets/img/sj300-dark-studio-gallery/02-left-front-3q-v3-ultrawide.png",
+    "alt": "SJ300 left-front three-quarter dark industrial studio view"
+  },
+  "technical": {
+    "title": "SJ300 技术参数",
+    "subtitle": "专业性能参数一览",
+    "groups": [
+      {
+        "title": "整车参数",
+        "items": [
+          {
+            "label": "长 × 宽 × 高",
+            "value": "2120 × 800 × 1235 mm"
+          },
+          {
+            "label": "轴距",
+            "value": "1440 mm"
+          },
+          {
+            "label": "离地间隙",
+            "value": "340 mm"
+          },
+          {
+            "label": "座高",
+            "value": "910 mm"
+          },
+          {
+            "label": "整备质量",
+            "value": "105 kg"
+          },
+          {
+            "label": "最大负载",
+            "value": "150 kg"
+          },
+          {
+            "label": "前轮尺寸",
+            "value": "90/90-21"
+          },
+          {
+            "label": "后轮尺寸",
+            "value": "140/80-18"
+          }
+        ]
+      },
+      {
+        "title": "底盘配置",
+        "items": [
+          {
+            "label": "前后制动模式",
+            "value": "前后碟式刹车"
+          },
+          {
+            "label": "前减",
+            "value": "长度 838 mm"
+          },
+          {
+            "label": "后减",
+            "value": "长度 509 mm"
+          },
+          {
+            "label": "传动方式",
+            "value": "链条传动 520 / 110 节 / 42 齿"
+          },
+          {
+            "label": "链盘材质",
+            "value": "铝合金"
+          },
+          {
+            "label": "灯光",
+            "value": "LED"
+          },
+          {
+            "label": "油箱大小",
+            "value": "5.3 L"
+          },
+          {
+            "label": "最大里程数",
+            "value": "100 km（以 50 km/h 行驶条件计算）"
+          }
+        ]
+      },
+      {
+        "title": "动力系统",
+        "items": [
+          {
+            "label": "车型",
+            "value": "SJ300"
+          },
+          {
+            "label": "最大速度",
+            "value": "120 km/h"
+          },
+          {
+            "label": "最大爬行坡度",
+            "value": "＞70°"
+          },
+          {
+            "label": "发动机类型",
+            "value": "XFH300 两冲程"
+          },
+          {
+            "label": "最大扭矩",
+            "value": "38 N·m"
+          },
+          {
+            "label": "最大功率",
+            "value": "35 kW"
+          },
+          {
+            "label": "启动电池",
+            "value": "2 A 锂电池"
+          }
+        ]
+      }
+    ]
+  },
+  "languages": [
+    "en",
+    "zh-CN",
+    "zh-TW",
+    "ru",
+    "ar",
+    "es",
+    "pt"
+  ],
+  "translations": {
+    "en": {
+      "300发动机": "300 engine",
+      "SJ 系列 / 两冲程燃油越野": "SJ Series / two-stroke petrol off-road",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "Independently tooled throughout, with a track-tested XFH300 two-stroke engine, light chassis and agile handling.",
+      "排量": "Displacement",
+      "两冲程": "Two-stroke",
+      "油箱容量": "Fuel capacity",
+      "整备质量": "Kerb weight",
+      "赛道实测动力": "Track-tested power",
+      "XFH300 两冲程发动机": "XFH300 two-stroke engine",
+      "轻盈车身": "Light chassis",
+      "整备质量 105 kg": "105 kg kerb weight",
+      "燃油配置": "Fuel system",
+      "5.3 L 油箱": "5.3 L fuel tank",
+      "专业越野减震": "Off-road suspension",
+      "前减 838 mm / 后减 509 mm": "838 mm front / 509 mm rear",
+      "询盘报价": "Inquiry quote",
+      "根据数量与目的地确认": "Confirmed by quantity and destination",
+      "立即发起询盘": "Start an inquiry",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "The SJ300 is a two-stroke petrol off-road motorcycle in the SJ Series, powered by the track-tested XFH300 engine. Its ergonomic, lightweight chassis is designed for agile trail, woodland, track and recreational riding.",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "35 kW maximum power and 38 N·m maximum torque.",
+      "轻盈操控": "Agile handling",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "105 kg kerb weight and an ergonomic chassis for responsive handling.",
+      "前减长度 838 mm，后减长度 509 mm。": "838 mm front and 509 mm rear shock length.",
+      "前后碟式刹车": "Front and rear disc brakes",
+      "官方参数配置前后碟式制动。": "Official specification: front and rear disc brakes.",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "Track-tested engine: 35 kW, 38 N·m.",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "838 mm front / 509 mm rear; order-confirmed.",
+      "后轮总成": "Rear wheel assembly",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "140/80-18 tire; alloy sprocket; 520 / 110L / 42T drive.",
+      "精工仪器": "Instrument assembly",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "Official SJ instruments; functions per order.",
+      "开始询盘": "Start inquiry",
+      "SJ300 技术参数": "SJ300 specifications",
+      "专业性能参数一览": "Professional performance data",
+      "长 × 宽 × 高": "L × W × H",
+      "轴距": "Wheelbase",
+      "离地间隙": "Ground clearance",
+      "座高": "Seat height",
+      "最大负载": "Maximum load",
+      "前轮尺寸": "Front tire",
+      "后轮尺寸": "Rear tire",
+      "前后制动模式": "Brake system",
+      "前减": "Front shock",
+      "长度 838 mm": "Length: 838 mm",
+      "后减": "Rear shock",
+      "长度 509 mm": "Length: 509 mm",
+      "传动方式": "Transmission",
+      "链条传动 520 / 110 节 / 42 齿": "Chain drive 520 / 110L / 42T",
+      "链盘材质": "Sprocket",
+      "铝合金": "Alloy",
+      "灯光": "Light",
+      "油箱大小": "Fuel tank",
+      "最大里程数": "Range",
+      "100 km（以 50 km/h 行驶条件计算）": "100 km (at ≤50 km/h)",
+      "最大速度": "Top speed",
+      "最大爬行坡度": "Maximum climbing angle",
+      "发动机类型": "Engine type",
+      "XFH300 两冲程": "XFH300 two-stroke",
+      "最大扭矩": "Maximum torque",
+      "最大功率": "Maximum power",
+      "启动电池": "Starter battery",
+      "2 A 锂电池": "2 A Li-ion battery"
+    },
+    "zh-TW": {
+      "300发动机": "300 引擎",
+      "SJ 系列 / 两冲程燃油越野": "SJ 系列 / 二行程燃油越野",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "全流程自主獨立開模，採用賽道實測的 XFH300 二行程引擎，車身輕盈、操控靈敏。",
+      "排量": "排氣量",
+      "两冲程": "二行程",
+      "油箱容量": "油箱容量",
+      "整备质量": "整備質量",
+      "赛道实测动力": "賽道實測動力",
+      "XFH300 两冲程发动机": "XFH300 二行程引擎",
+      "轻盈车身": "輕盈車身",
+      "整备质量 105 kg": "整備質量 105 kg",
+      "燃油配置": "燃油配置",
+      "5.3 L 油箱": "5.3 L 油箱",
+      "专业越野减震": "專業越野減震",
+      "前减 838 mm / 后减 509 mm": "前減 838 mm / 後減 509 mm",
+      "询盘报价": "詢盤報價",
+      "根据数量与目的地确认": "依數量與目的地確認",
+      "立即发起询盘": "立即發起詢盤",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "SJ300 屬於 SJ 系列二行程燃油越野摩托車，採用賽道實測的 XFH300 引擎。人體工學車身兼顧輕盈與靈敏操控，適合戶外越野、山林穿行、場地騎乘與休閒娛樂。",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "最大功率 35 kW，最大扭矩 38 N·m。",
+      "轻盈操控": "輕盈操控",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "整備質量 105 kg，人體工學車身強調靈敏騎乘表現。",
+      "前减长度 838 mm，后减长度 509 mm。": "前減長度 838 mm，後減長度 509 mm。",
+      "前后碟式刹车": "前後碟式煞車",
+      "官方参数配置前后碟式制动。": "官方參數配置前後碟式制動。",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "採用賽道實測引擎，官方參數為最大功率 35 kW、最大扭矩 38 N·m。",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "前減長度 838 mm，後減長度 509 mm，具體配置以訂單確認為準。",
+      "后轮总成": "後輪總成",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "配備 140/80-18 後輪、鋁合金鏈盤及 520 / 110 節 / 42 齒鏈條傳動。",
+      "精工仪器": "精工儀表",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "SJ 系列官方儀表總成，具體顯示功能與訂單配置保持一致。",
+      "开始询盘": "開始詢盤",
+      "SJ300 技术参数": "SJ300 技術參數",
+      "专业性能参数一览": "專業性能參數一覽",
+      "长 × 宽 × 高": "長 × 寬 × 高",
+      "轴距": "軸距",
+      "离地间隙": "離地間隙",
+      "座高": "座高",
+      "最大负载": "最大負載",
+      "前轮尺寸": "前輪尺寸",
+      "后轮尺寸": "後輪尺寸",
+      "前后制动模式": "前後制動模式",
+      "前减": "前減",
+      "长度 838 mm": "長度 838 mm",
+      "后减": "後減",
+      "长度 509 mm": "長度 509 mm",
+      "传动方式": "傳動方式",
+      "链条传动 520 / 110 节 / 42 齿": "鏈條傳動 520 / 110 節 / 42 齒",
+      "链盘材质": "鏈盤材質",
+      "铝合金": "鋁合金",
+      "灯光": "燈光",
+      "油箱大小": "油箱大小",
+      "最大里程数": "最大里程數",
+      "100 km（以 50 km/h 行驶条件计算）": "100 km（以 50 km/h 行駛條件計算）",
+      "最大速度": "最大速度",
+      "最大爬行坡度": "最大爬坡角度",
+      "发动机类型": "引擎類型",
+      "XFH300 两冲程": "XFH300 二行程",
+      "最大扭矩": "最大扭矩",
+      "最大功率": "最大功率",
+      "启动电池": "啟動電池",
+      "2 A 锂电池": "2 A 鋰電池"
+    },
+    "ru": {
+      "300发动机": "Двигатель 300",
+      "SJ 系列 / 两冲程燃油越野": "Серия SJ / бензиновый 2-тактный эндуро",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "Полностью самостоятельная оснастка, проверенный на трассе двухтактный XFH300, лёгкое шасси и точное управление.",
+      "排量": "Объём",
+      "两冲程": "2-тактный",
+      "油箱容量": "Объём бака",
+      "整备质量": "Снаряжённая масса",
+      "赛道实测动力": "Проверенная мощность",
+      "XFH300 两冲程发动机": "Двухтактный XFH300",
+      "轻盈车身": "Лёгкое шасси",
+      "整备质量 105 kg": "Снаряжённая масса 105 кг",
+      "燃油配置": "Топливная система",
+      "5.3 L 油箱": "Бак 5,3 л",
+      "专业越野减震": "Внедорожная подвеска",
+      "前减 838 mm / 后减 509 mm": "Передняя 838 мм / задняя 509 мм",
+      "询盘报价": "Запрос цены",
+      "根据数量与目的地确认": "Зависит от количества и назначения",
+      "立即发起询盘": "Отправить запрос",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "SJ300 — двухтактный бензиновый внедорожный мотоцикл серии SJ с проверенным на трассе двигателем XFH300. Лёгкое эргономичное шасси подходит для троп, леса, трассы и отдыха.",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "Макс. мощность 35 кВт, момент 38 Н·м.",
+      "轻盈操控": "Манёвренность",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "Снаряжённая масса 105 кг и эргономичное шасси.",
+      "前减长度 838 mm，后减长度 509 mm。": "Передняя 838 мм, задняя 509 мм.",
+      "前后碟式刹车": "Дисковые тормоза спереди и сзади",
+      "官方参数配置前后碟式制动。": "По спецификации: дисковые тормоза спереди и сзади.",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "Проверенный двигатель: 35 кВт, 38 Н·м.",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "Передняя 838 мм / задняя 509 мм; по заказу.",
+      "后轮总成": "Заднее колесо",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "Шина 140/80-18; сплав; цепь 520 / 110L / 42T.",
+      "精工仪器": "Панель приборов",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "Штатные приборы SJ; функции по заказу.",
+      "开始询盘": "Начать запрос",
+      "SJ300 技术参数": "Характеристики SJ300",
+      "专业性能参数一览": "Параметры модели",
+      "长 × 宽 × 高": "Д × Ш × В",
+      "轴距": "Колёсная база",
+      "离地间隙": "Клиренс",
+      "座高": "Высота сиденья",
+      "最大负载": "Макс. нагрузка",
+      "前轮尺寸": "Передняя шина",
+      "后轮尺寸": "Задняя шина",
+      "前后制动模式": "Тормоза",
+      "前减": "Передний амортизатор",
+      "长度 838 mm": "Длина: 838 мм",
+      "后减": "Задний амортизатор",
+      "长度 509 mm": "Длина: 509 мм",
+      "传动方式": "Привод",
+      "链条传动 520 / 110 节 / 42 齿": "Цепь 520 / 110L / 42T",
+      "链盘材质": "Звезда",
+      "铝合金": "Сплав",
+      "灯光": "Свет",
+      "油箱大小": "Топливный бак",
+      "最大里程数": "Запас хода",
+      "100 km（以 50 km/h 行驶条件计算）": "100 км (при ≤50 км/ч)",
+      "最大速度": "Макс. скорость",
+      "最大爬行坡度": "Макс. угол подъёма",
+      "发动机类型": "Тип двигателя",
+      "XFH300 两冲程": "XFH300, 2-тактный",
+      "最大扭矩": "Макс. момент",
+      "最大功率": "Макс. мощность",
+      "启动电池": "Стартерная батарея",
+      "2 A 锂电池": "Литиевая батарея 2 А"
+    },
+    "ar": {
+      "300发动机": "محرك 300",
+      "SJ 系列 / 两冲程燃油越野": "سلسلة SJ / بنزين ثنائي الأشواط للطرق الوعرة",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "قوالب مستقلة بالكامل ومحرك XFH300 ثنائي الأشواط مجرّب على الحلبة وهيكل خفيف وتحكم رشيق.",
+      "排量": "السعة",
+      "两冲程": "ثنائي الأشواط",
+      "油箱容量": "سعة الوقود",
+      "整备质量": "الوزن التشغيلي",
+      "赛道实测动力": "قوة مجرّبة",
+      "XFH300 两冲程发动机": "محرك XFH300 ثنائي الأشواط",
+      "轻盈车身": "هيكل خفيف",
+      "整备质量 105 kg": "وزن تشغيلي 105 كجم",
+      "燃油配置": "نظام الوقود",
+      "5.3 L 油箱": "خزان 5.3 لتر",
+      "专业越野减震": "تعليق للطرق الوعرة",
+      "前减 838 mm / 后减 509 mm": "أمامي 838 مم / خلفي 509 مم",
+      "询盘报价": "طلب سعر",
+      "根据数量与目的地确认": "بحسب الكمية والوجهة",
+      "立即发起询盘": "ابدأ الاستفسار",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "SJ300 دراجة بنزين ثنائية الأشواط للطرق الوعرة من سلسلة SJ بمحرك XFH300 مجرّب على الحلبة. هيكلها الخفيف والمريح مناسب للمسارات والغابات والحلبات والترفيه.",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "قدرة قصوى 35 كيلوواط وعزم 38 نيوتن·م.",
+      "轻盈操控": "تحكم رشيق",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "وزن تشغيلي 105 كجم وهيكل مريح سريع الاستجابة.",
+      "前减长度 838 mm，后减长度 509 mm。": "طول أمامي 838 مم وخلفي 509 مم.",
+      "前后碟式刹车": "فرامل قرصية أمامية وخلفية",
+      "官方参数配置前后碟式制动。": "المواصفة الرسمية: فرامل قرصية أمامية وخلفية.",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "محرك مجرّب بقدرة 35 كيلوواط وعزم 38 نيوتن·م.",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "أمامي 838 مم وخلفي 509 مم؛ التكوين حسب الطلب.",
+      "后轮总成": "مجموعة العجلة الخلفية",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "إطار 140/80-18 وترس سبيكة وسلسلة 520 / 110L / 42T.",
+      "精工仪器": "مجموعة العدادات",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "عدادات SJ الرسمية؛ الوظائف حسب تكوين الطلب.",
+      "开始询盘": "ابدأ الاستفسار",
+      "SJ300 技术参数": "مواصفات SJ300",
+      "专业性能参数一览": "بيانات الأداء",
+      "长 × 宽 × 高": "الطول × العرض × الارتفاع",
+      "轴距": "قاعدة العجلات",
+      "离地间隙": "الخلوص الأرضي",
+      "座高": "ارتفاع المقعد",
+      "最大负载": "الحمولة القصوى",
+      "前轮尺寸": "الإطار الأمامي",
+      "后轮尺寸": "الإطار الخلفي",
+      "前后制动模式": "الفرامل",
+      "前减": "الممتص الأمامي",
+      "长度 838 mm": "الطول: 838 مم",
+      "后减": "الممتص الخلفي",
+      "长度 509 mm": "الطول: 509 مم",
+      "传动方式": "نقل الحركة",
+      "链条传动 520 / 110 节 / 42 齿": "سلسلة 520 / 110L / 42T",
+      "链盘材质": "الترس",
+      "铝合金": "سبيكة",
+      "灯光": "الإضاءة",
+      "油箱大小": "خزان الوقود",
+      "最大里程数": "المدى",
+      "100 km（以 50 km/h 行驶条件计算）": "100 كم (عند ≤50 كم/س)",
+      "最大速度": "السرعة القصوى",
+      "最大爬行坡度": "أقصى زاوية صعود",
+      "发动机类型": "نوع المحرك",
+      "XFH300 两冲程": "XFH300 ثنائي الأشواط",
+      "最大扭矩": "العزم الأقصى",
+      "最大功率": "القدرة القصوى",
+      "启动电池": "بطارية التشغيل",
+      "2 A 锂电池": "بطارية ليثيوم 2 أمبير"
+    },
+    "es": {
+      "300发动机": "Motor 300",
+      "SJ 系列 / 两冲程燃油越野": "Serie SJ / todoterreno de gasolina 2T",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "Utillaje propio, motor XFH300 de dos tiempos probado en pista, chasis ligero y manejo ágil.",
+      "排量": "Cilindrada",
+      "两冲程": "Dos tiempos",
+      "油箱容量": "Capacidad de combustible",
+      "整备质量": "Peso en orden de marcha",
+      "赛道实测动力": "Potencia probada",
+      "XFH300 两冲程发动机": "Motor XFH300 de dos tiempos",
+      "轻盈车身": "Chasis ligero",
+      "整备质量 105 kg": "105 kg en orden de marcha",
+      "燃油配置": "Sistema de combustible",
+      "5.3 L 油箱": "Depósito de 5,3 L",
+      "专业越野减震": "Suspensión todoterreno",
+      "前减 838 mm / 后减 509 mm": "Delantera 838 mm / trasera 509 mm",
+      "询盘报价": "Cotización",
+      "根据数量与目的地确认": "Según cantidad y destino",
+      "立即发起询盘": "Enviar consulta",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "La SJ300 es una moto todoterreno de gasolina y dos tiempos de la Serie SJ, con motor XFH300 probado en pista. Su chasis ergonómico y ligero está pensado para senderos, bosque, circuito y ocio.",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "35 kW de potencia máxima y 38 N·m de par.",
+      "轻盈操控": "Manejo ágil",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "105 kg en orden de marcha y chasis ergonómico.",
+      "前减长度 838 mm，后减长度 509 mm。": "838 mm delante y 509 mm detrás.",
+      "前后碟式刹车": "Discos delante y detrás",
+      "官方参数配置前后碟式制动。": "Especificación oficial: frenos de disco delanteros y traseros.",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "Motor probado: 35 kW, 38 N·m.",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "838 mm delante / 509 mm detrás; según pedido.",
+      "后轮总成": "Conjunto de rueda trasera",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "140/80-18; corona de aleación; 520 / 110L / 42T.",
+      "精工仪器": "Conjunto de instrumentos",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "Instrumentos SJ; funciones según pedido.",
+      "开始询盘": "Iniciar consulta",
+      "SJ300 技术参数": "Especificaciones SJ300",
+      "专业性能参数一览": "Datos de rendimiento",
+      "长 × 宽 × 高": "L × An × Al",
+      "轴距": "Distancia entre ejes",
+      "离地间隙": "Altura libre",
+      "座高": "Altura del asiento",
+      "最大负载": "Carga máxima",
+      "前轮尺寸": "Neumático delantero",
+      "后轮尺寸": "Neumático trasero",
+      "前后制动模式": "Frenos",
+      "前减": "Amortiguador delantero",
+      "长度 838 mm": "Longitud: 838 mm",
+      "后减": "Amortiguador trasero",
+      "长度 509 mm": "Longitud: 509 mm",
+      "传动方式": "Transmisión",
+      "链条传动 520 / 110 节 / 42 齿": "Cadena 520 / 110L / 42T",
+      "链盘材质": "Corona",
+      "铝合金": "Aleación",
+      "灯光": "Luz",
+      "油箱大小": "Depósito",
+      "最大里程数": "Autonomía",
+      "100 km（以 50 km/h 行驶条件计算）": "100 km (a ≤50 km/h)",
+      "最大速度": "Velocidad máxima",
+      "最大爬行坡度": "Ángulo máximo de subida",
+      "发动机类型": "Tipo de motor",
+      "XFH300 两冲程": "XFH300 de dos tiempos",
+      "最大扭矩": "Par máximo",
+      "最大功率": "Potencia máxima",
+      "启动电池": "Batería de arranque",
+      "2 A 锂电池": "Batería de litio de 2 A"
+    },
+    "pt": {
+      "300发动机": "Motor 300",
+      "SJ 系列 / 两冲程燃油越野": "Série SJ / off-road a gasolina 2T",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "Ferramental próprio, motor XFH300 dois tempos testado em pista, chassi leve e pilotagem ágil.",
+      "排量": "Cilindrada",
+      "两冲程": "Dois tempos",
+      "油箱容量": "Capacidade de combustível",
+      "整备质量": "Peso em ordem de marcha",
+      "赛道实测动力": "Potência testada",
+      "XFH300 两冲程发动机": "Motor XFH300 dois tempos",
+      "轻盈车身": "Chassi leve",
+      "整备质量 105 kg": "105 kg em ordem de marcha",
+      "燃油配置": "Sistema de combustível",
+      "5.3 L 油箱": "Tanque de 5,3 L",
+      "专业越野减震": "Suspensão off-road",
+      "前减 838 mm / 后减 509 mm": "Dianteira 838 mm / traseira 509 mm",
+      "询盘报价": "Cotação",
+      "根据数量与目的地确认": "Conforme quantidade e destino",
+      "立即发起询盘": "Enviar consulta",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "A SJ300 é uma moto off-road a gasolina e dois tempos da Série SJ, com motor XFH300 testado em pista. O chassi ergonômico e leve foi pensado para trilhas, mata, pista e lazer.",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "35 kW de potência máxima e 38 N·m de torque.",
+      "轻盈操控": "Pilotagem ágil",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "105 kg em ordem de marcha e chassi ergonômico.",
+      "前减长度 838 mm，后减长度 509 mm。": "838 mm na dianteira e 509 mm na traseira.",
+      "前后碟式刹车": "Discos dianteiro e traseiro",
+      "官方参数配置前后碟式制动。": "Especificação oficial: freios a disco dianteiro e traseiro.",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "Motor testado: 35 kW, 38 N·m.",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "838 mm dianteira / 509 mm traseira; conforme pedido.",
+      "后轮总成": "Conjunto da roda traseira",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "140/80-18; coroa de liga; 520 / 110L / 42T.",
+      "精工仪器": "Conjunto de instrumentos",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "Instrumentos SJ; funções conforme pedido.",
+      "开始询盘": "Iniciar consulta",
+      "SJ300 技术参数": "Especificações SJ300",
+      "专业性能参数一览": "Dados de desempenho",
+      "长 × 宽 × 高": "C × L × A",
+      "轴距": "Distância entre eixos",
+      "离地间隙": "Distância do solo",
+      "座高": "Altura do assento",
+      "最大负载": "Carga máxima",
+      "前轮尺寸": "Pneu dianteiro",
+      "后轮尺寸": "Pneu traseiro",
+      "前后制动模式": "Freios",
+      "前减": "Amortecedor dianteiro",
+      "长度 838 mm": "Comprimento: 838 mm",
+      "后减": "Amortecedor traseiro",
+      "长度 509 mm": "Comprimento: 509 mm",
+      "传动方式": "Transmissão",
+      "链条传动 520 / 110 节 / 42 齿": "Corrente 520 / 110L / 42T",
+      "链盘材质": "Coroa",
+      "铝合金": "Liga",
+      "灯光": "Luz",
+      "油箱大小": "Tanque",
+      "最大里程数": "Autonomia",
+      "100 km（以 50 km/h 行驶条件计算）": "100 km (a ≤50 km/h)",
+      "最大速度": "Velocidade máxima",
+      "最大爬行坡度": "Ângulo máximo de subida",
+      "发动机类型": "Tipo de motor",
+      "XFH300 两冲程": "XFH300 dois tempos",
+      "最大扭矩": "Torque máximo",
+      "最大功率": "Potência máxima",
+      "启动电池": "Bateria de partida",
+      "2 A 锂电池": "Bateria de lítio de 2 A"
+    },
+    "zh-CN": {
+      "300发动机": "300发动机",
+      "SJ 系列 / 两冲程燃油越野": "SJ 系列 / 两冲程燃油越野",
+      "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。": "全流程自主独立开模，采用赛道实测的 XFH300 两冲程发动机，车身轻盈、操控灵敏。",
+      "排量": "排量",
+      "两冲程": "两冲程",
+      "油箱容量": "油箱容量",
+      "整备质量": "整备质量",
+      "赛道实测动力": "赛道实测动力",
+      "XFH300 两冲程发动机": "XFH300 两冲程发动机",
+      "轻盈车身": "轻盈车身",
+      "整备质量 105 kg": "整备质量 105 kg",
+      "燃油配置": "燃油配置",
+      "5.3 L 油箱": "5.3 L 油箱",
+      "专业越野减震": "专业越野减震",
+      "前减 838 mm / 后减 509 mm": "前减 838 mm / 后减 509 mm",
+      "询盘报价": "询盘报价",
+      "根据数量与目的地确认": "根据数量与目的地确认",
+      "立即发起询盘": "立即发起询盘",
+      "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。": "SJ300 属于 SJ 系列两冲程燃油越野摩托车，采用赛道实测的 XFH300 发动机。人体工学车身兼顾轻盈体态与灵敏操控，适合户外越野、山林穿行、场地骑行和休闲玩乐。",
+      "最大功率 35 kW，最大扭矩 38 N·m。": "最大功率 35 kW，最大扭矩 38 N·m。",
+      "轻盈操控": "轻盈操控",
+      "整备质量 105 kg，人体工学车身强调灵敏骑行表现。": "整备质量 105 kg，人体工学车身强调灵敏骑行表现。",
+      "前减长度 838 mm，后减长度 509 mm。": "前减长度 838 mm，后减长度 509 mm。",
+      "前后碟式刹车": "前后碟式刹车",
+      "官方参数配置前后碟式制动。": "官方参数配置前后碟式制动。",
+      "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。": "采用赛道实测发动机，官方参数为最大功率 35 kW、最大扭矩 38 N·m。",
+      "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。": "前减长度 838 mm，后减长度 509 mm，具体配置以订单确认为准。",
+      "后轮总成": "后轮总成",
+      "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。": "配备 140/80-18 后轮、铝合金链盘及 520 / 110 节 / 42 齿链条传动。",
+      "精工仪器": "精工仪器",
+      "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。": "SJ 系列官方仪器总成，具体显示功能与订单配置保持一致。",
+      "开始询盘": "开始询盘",
+      "SJ300 技术参数": "SJ300 技术参数",
+      "专业性能参数一览": "专业性能参数一览",
+      "长 × 宽 × 高": "长 × 宽 × 高",
+      "轴距": "轴距",
+      "离地间隙": "离地间隙",
+      "座高": "座高",
+      "最大负载": "最大负载",
+      "前轮尺寸": "前轮尺寸",
+      "后轮尺寸": "后轮尺寸",
+      "前后制动模式": "前后制动模式",
+      "前减": "前减",
+      "长度 838 mm": "长度 838 mm",
+      "后减": "后减",
+      "长度 509 mm": "长度 509 mm",
+      "传动方式": "传动方式",
+      "链条传动 520 / 110 节 / 42 齿": "链条传动 520 / 110 节 / 42 齿",
+      "链盘材质": "链盘材质",
+      "铝合金": "铝合金",
+      "灯光": "灯光",
+      "油箱大小": "油箱大小",
+      "最大里程数": "最大里程数",
+      "100 km（以 50 km/h 行驶条件计算）": "100 km（以 50 km/h 行驶条件计算）",
+      "最大速度": "最大速度",
+      "最大爬行坡度": "最大爬行坡度",
+      "发动机类型": "发动机类型",
+      "XFH300 两冲程": "XFH300 两冲程",
+      "最大扭矩": "最大扭矩",
+      "最大功率": "最大功率",
+      "启动电池": "启动电池",
+      "2 A 锂电池": "2 A 锂电池"
+    }
+  }
+}

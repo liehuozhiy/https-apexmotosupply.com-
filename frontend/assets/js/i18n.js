@@ -90,6 +90,12 @@
     document.querySelectorAll("[data-i18n]").forEach((node) => {
       node.textContent = t(node.dataset.i18n);
     });
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
+      node.setAttribute("aria-label", t(node.dataset.i18nAriaLabel));
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
+      node.setAttribute("alt", t(node.dataset.i18nAlt));
+    });
   }
 
   function renderLanguageSwitchers() {
@@ -99,14 +105,14 @@
         switcher.className = "language-switcher";
         switcher.setAttribute("data-lang-toggle", "");
         switcher.setAttribute("role", "group");
-        switcher.setAttribute("aria-label", "Language selector");
         node.replaceWith(switcher);
         node = switcher;
       }
 
+      node.setAttribute("aria-label", t("languageSelector"));
       const isOpen = node.classList.contains("is-open");
       node.innerHTML = `
-        <button class="language-current" type="button" data-lang-menu-button aria-expanded="${isOpen}" aria-label="Select language">
+        <button class="language-current" type="button" data-lang-menu-button aria-expanded="${isOpen}" aria-label="${t("selectLanguage")}">
           <span>${labels[currentLang]}</span>
           <span aria-hidden="true">&#9662;</span>
         </button>
@@ -125,6 +131,18 @@
     applyDocumentLanguage();
     applyStaticText();
     renderLanguageSwitchers();
+  }
+
+  function isNestedNewsPage() {
+    return /(?:^|\/)news\/[^/]+\.html$/i.test(window.location.pathname);
+  }
+
+  function syncContactInquiryLinks() {
+    const path = isNestedNewsPage() ? "../inquiry.html" : "inquiry.html";
+    const href = `${path}?lang=${encodeURIComponent(currentLang)}`;
+    document.querySelectorAll('a[data-i18n="navContact"]').forEach((link) => {
+      link.setAttribute("href", href);
+    });
   }
 
   function setLang(lang, updateUrl = true) {
@@ -182,6 +200,11 @@
     isChinese,
     applyAll
   };
+
+  window.addEventListener("load", syncContactInquiryLinks);
+  window.addEventListener("apex:languagechange", () => {
+    window.setTimeout(syncContactInquiryLinks, 0);
+  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", applyAll);

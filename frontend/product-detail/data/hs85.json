@@ -4,7 +4,7 @@
   "name": "HS85",
   "series": "HS85 系列",
   "powerType": "gasoline-two-stroke",
-  "panelImage": "../assets/img/hs85-panel-candidates/hs85-panel-sj300-v11-center-red-v7-web.webp",
+  "panelImage": "../assets/img/hs85-panel-candidates/hs85-panel-body-yellow-light-v9.png",
   "page": {
     "title": "HS85 | Apex Moto Supply",
     "description": "HS85 84.9 cc two-stroke off-road motorcycle specifications, five-angle gallery and wholesale support."
@@ -144,7 +144,7 @@
     }
   ],
   "banner": {
-    "image": "../assets/img/hs85-official-gallery/02-left-front-half-ai-dark-wide-v2.png",
+    "image": "../assets/img/hs85-panel-candidates/hs85-panel-body-yellow-light-v9.png",
     "alt": "HS85 left-front dark industrial studio view"
   },
   "technical": {

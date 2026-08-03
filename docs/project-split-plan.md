@@ -2,6 +2,12 @@
 
 This project has been split into smaller maintenance modules to reduce context size and make future Codex work more focused. Frontend, admin, and API files have been moved into their module directories; `deploy/` is generated from those source modules for Cloudflare assets.
 
+## Control Layer
+
+The repository root is the maintenance control entry point. `CODEX.md` routes each request to the smallest responsible module before source is read or edited. `control/ROUTING.md` defines the routing table, cross-module order, and task intake checklist. `ops/` isolates deployment and environment-variable rules from business code.
+
+This is a modular monorepo, not a set of separately deployed repositories. It keeps Cloudflare deployment and API contracts coordinated while reducing the context read for everyday frontend, admin, or API tasks.
+
 ## Target Modules
 
 - `frontend`: public website pages, public assets, SEO files, product display, News, Contact, and the public inquiry entry.
@@ -21,6 +27,8 @@ This project has been split into smaller maintenance modules to reduce context s
 - `api/cloudflare-d1-schema.sql`: D1 schema.
 - `api/functions`: archived or future Pages Functions API files.
 - `shared`: future shared types, constants, schemas, validators, and pure utilities.
+- `control`: task routing, cross-module sequencing, and maintenance templates.
+- `ops`: deployment and environment-variable boundaries.
 - `docs`: migration plans, runbooks, deployment notes, and maintenance documentation.
 
 ## Cloudflare Deployment

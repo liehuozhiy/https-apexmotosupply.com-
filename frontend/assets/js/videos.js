@@ -4,7 +4,7 @@ const videosPerPage = 8;
 const videos = [
   {
     id: 1,
-    src: "/assets/video/1.mp4#t=0.1",
+    src: "../assets/video/1.mp4#t=0.1",
     enTitle: "Dirt Bike Detail Walkaround",
     enDescription: "A close look at the front suspension, frame, engine, exhaust, and body details of the dirt bike.",
     zhCNTitle: "越野摩托细节展示",
@@ -18,7 +18,7 @@ const videos = [
   },
   {
     id: 2,
-    src: "/assets/video/2.mp4#t=0.1",
+    src: "../assets/video/2.mp4#t=0.1",
     enTitle: "Factory Assembly and Inspection",
     enDescription: "A view of the assembly, inspection, and handling process inside the factory production area.",
     zhCNTitle: "工厂装配与检测流程",
@@ -32,7 +32,7 @@ const videos = [
   },
   {
     id: 3,
-    src: "/assets/video/3.mp4#t=0.1",
+    src: "../assets/video/3.mp4#t=0.1",
     enTitle: "Showroom Model Display",
     enDescription: "Multiple dirt bike models displayed in the showroom, showing product variety and presentation quality.",
     zhCNTitle: "展厅车型陈列",
@@ -46,7 +46,7 @@ const videos = [
   },
   {
     id: 4,
-    src: "/assets/video/4.mp4#t=0.1",
+    src: "../assets/video/4.mp4#t=0.1",
     enTitle: "Electric Dirt Bike Showcase",
     enDescription: "A closer view of the electric dirt bike design, body structure, and key exterior details.",
     zhCNTitle: "电动越野车展示",
@@ -60,7 +60,7 @@ const videos = [
   },
   {
     id: 5,
-    src: "/assets/video/5.mp4#t=0.1",
+    src: "../assets/video/5.mp4#t=0.1",
     enTitle: "White Dirt Bike Detail View",
     enDescription: "A detailed view of the white dirt bike, including handlebar, suspension, footrest, and powertrain areas.",
     zhCNTitle: "白色越野车型细节",
@@ -74,7 +74,7 @@ const videos = [
   },
   {
     id: 6,
-    src: "/assets/video/6.mp4#t=0.1",
+    src: "../assets/video/6.mp4#t=0.1",
     enTitle: "Factory Showroom Introduction",
     enDescription: "A staff introduction inside the factory showroom, showing the product display area and vehicle lineup.",
     zhCNTitle: "工厂展厅讲解",
@@ -88,7 +88,7 @@ const videos = [
   },
   {
     id: 7,
-    src: "/assets/video/7.mp4#t=0.1",
+    src: "../assets/video/7.mp4#t=0.1",
     enTitle: "Warehouse and Shipping Area",
     enDescription: "A look at the warehouse, storage area, and pallet preparation for bulk supply and shipping.",
     zhCNTitle: "仓储与发货区域展示",
@@ -102,7 +102,7 @@ const videos = [
   },
   {
     id: 8,
-    src: "/assets/video/8.mp4#t=0.1",
+    src: "../assets/video/8.mp4#t=0.1",
     enTitle: "Exhibition Bike Showcase",
     enDescription: "Dirt bike models displayed at an exhibition, showing product presentation and customer interaction.",
     zhCNTitle: "展会现场车型展示",
@@ -116,7 +116,7 @@ const videos = [
   },
   {
     id: 9,
-    src: "/assets/video/9.mp4#t=0.1",
+    src: "../assets/video/9.mp4#t=0.1",
     enTitle: "Blue Dirt Bike Assembly View",
     enDescription: "A close view of the blue dirt bike during assembly, including frame, wheels, power unit, and workshop handling.",
     zhCNTitle: "蓝色越野车装配展示",
@@ -130,7 +130,7 @@ const videos = [
   },
   {
     id: 10,
-    src: "/assets/video/10.mp4#t=0.1",
+    src: "../assets/video/10.mp4#t=0.1",
     enTitle: "Factory Bike and On-site Introduction",
     enDescription: "A factory floor view with bike display and on-site explanation, helping customers understand the production environment.",
     zhCNTitle: "工厂车辆与现场讲解",
@@ -144,7 +144,7 @@ const videos = [
   },
   {
     id: 11,
-    src: "/assets/video/11.mp4#t=0.1",
+    src: "../assets/video/11.mp4#t=0.1",
     enTitle: "Showroom Display and Factory Handling",
     enDescription: "Multiple dirt bikes displayed in the showroom and factory area, showing vehicle presentation and handling before delivery.",
     zhCNTitle: "展厅车辆陈列与出入库展示",
@@ -158,7 +158,7 @@ const videos = [
   },
   {
     id: 12,
-    src: "/assets/video/12.mp4#t=0.1",
+    src: "../assets/video/12.mp4#t=0.1",
     enTitle: "Assembly Line Production Area",
     enDescription: "A view of the assembly line, workstation layout, and production environment for dirt bike manufacturing.",
     zhCNTitle: "生产线装配区域展示",
@@ -172,7 +172,7 @@ const videos = [
   },
   {
     id: 13,
-    src: "/assets/video/13.mp4#t=0.1",
+    src: "../assets/video/13.mp4#t=0.1",
     enTitle: "Bulk Bike Inspection and Detail View",
     enDescription: "Multiple dirt bikes shown together with staff inspection and close-up details, highlighting bulk supply and pre-delivery checking.",
     zhCNTitle: "批量车辆检查与细节展示",
@@ -186,7 +186,7 @@ const videos = [
   },
   {
     id: 14,
-    src: "/assets/video/14.mp4#t=0.1",
+    src: "../assets/video/14.mp4#t=0.1",
     enTitle: "Red Electric Dirt Bike Display",
     enDescription: "Red electric dirt bike models displayed in the showroom, showing product lineup and exterior details.",
     zhCNTitle: "红色电动越野车陈列",

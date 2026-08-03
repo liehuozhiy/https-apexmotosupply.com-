@@ -4,7 +4,7 @@
   "name": "SY300",
   "series": "S300 系列",
   "powerType": "gasoline-four-stroke",
-  "panelImage": "../assets/img/generated/sy300-panel-candidates/sy300-panel-center-red-dark-v4-web.webp",
+  "panelImage": "../assets/img/generated/sy300-panel-candidates/sy300-panel-body-blue-light-v6.png",
   "page": {
     "title": "SY300 | Apex Moto Supply",
     "description": "SY300 YBS300 four-stroke off-road motorcycle specifications, five-angle gallery and wholesale support."
@@ -144,7 +144,7 @@
     }
   ],
   "banner": {
-    "image": "../assets/img/generated/sy300-terrain-banner-v1.png",
+    "image": "../assets/img/generated/sy300-panel-candidates/sy300-panel-body-blue-light-v6.png",
     "alt": "SY300 off-road rider on dark terrain"
   },
   "technical": {

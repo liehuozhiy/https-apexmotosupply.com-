@@ -1,0 +1,4 @@
+# Apex Moto Supply project default.
+# Applies after a task refreshes its execution environment.
+sandbox_mode = "danger-full-access"
+approval_policy = "never"

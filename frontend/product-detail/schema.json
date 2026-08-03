@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://apexmotosupply.com/schemas/product-detail.schema.json",
+  "title": "Apex Moto Supply product detail",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "series",
+    "powerType",
+    "page",
+    "intro",
+    "category",
+    "gallery",
+    "stats",
+    "sellingPoints",
+    "quote",
+    "inquiry",
+    "overview",
+    "highlights",
+    "banner",
+    "technical",
+    "languages",
+    "translations"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "enum": [1] },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "series": { "type": "string", "minLength": 1 },
+    "powerType": {
+      "type": "string",
+      "enum": ["gasoline-two-stroke", "gasoline-four-stroke", "electric"]
+    },
+    "panelImage": { "type": "string", "minLength": 1 },
+    "page": { "$ref": "#/$defs/page" },
+    "intro": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "gallery": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/galleryImage" }
+    },
+    "stats": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/stat" }
+    },
+    "sellingPoints": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/sellingPoint" }
+    },
+    "quote": { "$ref": "#/$defs/quote" },
+    "inquiry": { "$ref": "#/$defs/inquiry" },
+    "overview": { "$ref": "#/$defs/overview" },
+    "highlights": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/highlight" }
+    },
+    "banner": { "$ref": "#/$defs/banner" },
+    "technical": { "$ref": "#/$defs/technical" },
+    "languages": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "string",
+        "enum": ["en", "zh-CN", "zh-TW", "ru", "ar", "es", "pt"]
+      }
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["en", "zh-CN", "zh-TW", "ru", "ar", "es", "pt"],
+      "properties": {
+        "en": { "$ref": "#/$defs/translationMap" },
+        "zh-CN": { "$ref": "#/$defs/translationMap" },
+        "zh-TW": { "$ref": "#/$defs/translationMap" },
+        "ru": { "$ref": "#/$defs/translationMap" },
+        "ar": { "$ref": "#/$defs/translationMap" },
+        "es": { "$ref": "#/$defs/translationMap" },
+        "pt": { "$ref": "#/$defs/translationMap" }
+      }
+    }
+  },
+  "$defs": {
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": ["src", "alt"],
+      "properties": {
+        "src": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string", "minLength": 1 }
+      }
+    },
+    "galleryImage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "alt", "angle"],
+      "properties": {
+        "src": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string", "minLength": 1 },
+        "angle": {
+          "type": "string",
+          "enum": ["front", "left-front", "left-side", "left-rear", "rear"]
+        }
+      }
+    },
+    "stat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value", "unit"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string" }
+      }
+    },
+    "sellingPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "icon"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "icon": {
+          "type": "string",
+          "enum": ["power", "feather", "fuel", "shock"]
+        }
+      }
+    },
+    "quote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "description"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "inquiry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["href", "primaryLabel", "secondaryLabel"],
+      "properties": {
+        "href": { "type": "string", "pattern": "^inquiry\\.html(?:[?#].*)?$" },
+        "primaryLabel": { "type": "string", "minLength": 1 },
+        "secondaryLabel": { "type": "string", "minLength": 1 }
+      }
+    },
+    "miniSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "icon"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "icon": {
+          "type": "string",
+          "enum": ["engine", "chassis", "suspension", "brakes"]
+        }
+      }
+    },
+    "overview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "body", "miniSpecs"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "body": { "type": "string", "minLength": 1 },
+        "miniSpecs": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/miniSpec" }
+        }
+      }
+    },
+    "highlight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "image", "alt"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "image": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string", "minLength": 1 }
+      }
+    },
+    "banner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["image", "alt"],
+      "properties": {
+        "image": { "type": "string", "minLength": 1 },
+        "alt": { "type": "string", "minLength": 1 }
+      }
+    },
+    "specItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }
+      }
+    },
+    "specGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "items"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/specItem" }
+        }
+      }
+    },
+    "technical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "subtitle", "groups"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string", "minLength": 1 },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/specGroup" }
+        }
+      }
+    },
+    "translationMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

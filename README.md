@@ -26,13 +26,15 @@ This static site has been updated from the supplied `2026H&T产品参数（英�
 - `api/cloudflare-d1-schema.sql`: D1 database schema.
 - `frontend/assets/img/products/`: real product images extracted from the provided workbook.
 
-## Planned Module Split
+## Control Layer And Module Split
 
-The project is split into five maintenance modules: `frontend`, `admin`, `api`, `shared`, and `docs`. Cloudflare Worker uses `api/worker.js` as the entry point. Static assets are generated into `deploy/` by `node scripts/prepare-deploy.mjs`; do not maintain `deploy/` by hand. See `docs/project-split-plan.md` for the migration notes and route mapping.
+The repository root is the control layer for maintenance requests. It classifies each request and sends work to the smallest relevant module, so routine work does not require reading the entire codebase. The `control/` directory contains the routing table and task intake template; `ops/` owns deployment and environment-variable rules.
+
+The business code is split into `frontend`, `admin`, `api`, and `shared`; `docs` owns project documentation. Cloudflare Worker uses `api/worker.js` as the entry point. Static assets are generated into the Git-ignored `deploy/` directory by `node scripts/prepare-deploy.mjs`; do not maintain or commit `deploy/` by hand. The deployment builder copies all runtime code and only the images referenced by the generated site, while historical source assets remain in `frontend/`. See `control/ROUTING.md` and `docs/project-split-plan.md` for route mapping and maintenance boundaries.
 
 ## Daily Maintenance
 
-1. Edit product specs in `frontend/assets/js/site-data.js`.
+1. Edit product-detail data in `frontend/product-detail/data/` and catalog data in `frontend/assets/js/site-data.js`.
 2. Replace a product image using the same filename in `frontend/assets/img/products/`; keep the 1400x950 centered canvas style for consistent previews.
 3. Open the local preview and check desktop/mobile widths.
 4. Run `node scripts/prepare-deploy.mjs`.
@@ -67,10 +69,10 @@ Cloudflare setup:
 
 ## Cloudflare Routing
 
-- `/` and `/index.html` map to `deploy/frontend/pages/index.html`.
-- `/products.html`, `/news.html`, `/contact.html`, and `/inquiry.html` map to matching files in `deploy/frontend/pages/`.
-- `/assets/*` maps to `deploy/frontend/assets/*`.
-- `/admin` and `/admin/` map to `deploy/admin/pages/admin.html`.
+- `/` and `/index.html` map to `deploy/index.html`.
+- Public `.html` routes map to matching files at the root of `deploy/`.
+- `/assets/*` maps to `deploy/assets/*`.
+- `/admin` and `/admin/` map to `deploy/admin/index.html`.
 - `/admin/assets/*` maps to `deploy/admin/assets/*`.
 - `/robots.txt` and `/sitemap.xml` map to `deploy/frontend/public/`.
 - `/api/*` routes are handled by `api/worker.js` and keep their public paths unchanged.

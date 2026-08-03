@@ -7,6 +7,36 @@ const corsHeaders = {
   "Content-Type": "application/json; charset=utf-8"
 };
 
+const productPagePaths = new Set([
+  "/babey.html",
+  "/babey-plus.html",
+  "/bumblebee.html",
+  "/er3.html",
+  "/er5.html",
+  "/er7.html",
+  "/es11.html",
+  "/et.html",
+  "/et-2022.html",
+  "/et-2024.html",
+  "/et3.html",
+  "/et5.html",
+  "/et7.html",
+  "/et9.html",
+  "/f29.html",
+  "/f29r.html",
+  "/f4.html",
+  "/f4-plus.html",
+  "/f9.html",
+  "/h300.html",
+  "/hs85.html",
+  "/s300.html",
+  "/s300r.html",
+  "/sj250.html",
+  "/sj300.html",
+  "/sn300.html",
+  "/sy300.html"
+]);
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), { status, headers: corsHeaders });
 }
@@ -516,6 +546,7 @@ export default {
       "/frontend/pages/mini-dirt-bikes.html": "/mini-dirt-bikes.html",
       "/frontend/pages/pit-bikes.html": "/pit-bikes.html",
       "/frontend/pages/videos.html": "/videos.html",
+      "/frontend/pages/home-preview.html": "/home-preview.html",
       "/frontend/pages/news.html": "/news.html",
       "/frontend/pages/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
       "/frontend/pages/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
@@ -548,6 +579,7 @@ export default {
       "/mini-dirt-bikes.html": "/mini-dirt-bikes.html",
       "/pit-bikes.html": "/pit-bikes.html",
       "/videos.html": "/videos.html",
+      "/home-preview.html": "/home-preview.html",
       "/news.html": "/news.html",
       "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
       "/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
@@ -564,6 +596,10 @@ export default {
 
     if (pageRoutes[url.pathname]) {
       return assetRequest(request, env, pageRoutes[url.pathname]);
+    }
+
+    if (productPagePaths.has(url.pathname)) {
+      return assetRequest(request, env, url.pathname);
     }
 
     if (url.pathname.startsWith("/admin/assets/")) {
