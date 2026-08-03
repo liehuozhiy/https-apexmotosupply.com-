@@ -43,9 +43,19 @@ async function copyReferencedImages() {
       if (!textExtensions.has(path.extname(filePath).toLowerCase())) continue;
       const contents = await readFile(filePath, "utf8");
       for (const match of contents.matchAll(imageReferencePattern)) {
-        const basePath = path.relative(deployDir, filePath).split(path.sep).join("/");
-        const pathname = new URL(match[0], `https://deploy.local/${basePath}`).pathname;
-        const relativeAsset = decodeURIComponent(pathname).replace(/^\/+/, "");
+        const rawReference = match[0].split(/[?#]/, 1)[0];
+        if (rawReference.includes("${")) continue;
+        const assetMarker = "assets/img/";
+        const assetIndex = rawReference.indexOf(assetMarker);
+        let relativeAsset;
+        if (assetIndex >= 0) {
+          // Runtime JS strings are resolved against the document, not the JS file.
+          relativeAsset = rawReference.slice(assetIndex);
+        } else {
+          const basePath = path.relative(deployDir, filePath).split(path.sep).join("/");
+          const pathname = new URL(rawReference, `https://deploy.local/${basePath}`).pathname;
+          relativeAsset = decodeURIComponent(pathname).replace(/^\/+/, "");
+        }
         if (!relativeAsset.startsWith("assets/img/") || copied.has(relativeAsset)) continue;
 
         const source = path.join(root, "frontend", relativeAsset);
