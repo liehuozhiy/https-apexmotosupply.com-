@@ -650,6 +650,7 @@ html[lang="ar"] .product-world-preview.has-card .product-world-preview__copy p {
 @media (max-width: 900px) {
   .nav,
   .concept-nav {
+    justify-content: flex-start;
     max-height: calc(100svh - 78px);
     overflow-y: auto;
   }

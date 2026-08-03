@@ -540,6 +540,15 @@ function createProductWorldMenu(productLink, index) {
   };
 
   const desktopProductWorld = window.matchMedia("(min-width: 901px)");
+  const mobileNav = trigger.closest("[data-nav], .concept-nav");
+  if (mobileNav) mobileNav.style.overflowAnchor = "none";
+
+  const revealMobileProductWorldTop = () => {
+    if (!mobileNav) return;
+    window.requestAnimationFrame(() => {
+      mobileNav.scrollTop = Math.max(0, trigger.offsetTop - 10);
+    });
+  };
 
   trigger.addEventListener("pointerenter", () => {
     if (desktopProductWorld.matches) open();
@@ -550,6 +559,7 @@ function createProductWorldMenu(productLink, index) {
     event.preventDefault();
     if (menu.hidden) {
       open();
+      revealMobileProductWorldTop();
     } else {
       close();
     }
