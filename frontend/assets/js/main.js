@@ -539,7 +539,23 @@ function createProductWorldMenu(productLink, index) {
     trigger.setAttribute("aria-expanded", "true");
   };
 
-  trigger.addEventListener("pointerenter", open);
+  const desktopProductWorld = window.matchMedia("(min-width: 901px)");
+
+  trigger.addEventListener("pointerenter", () => {
+    if (desktopProductWorld.matches) open();
+  });
+
+  trigger.addEventListener("click", (event) => {
+    if (desktopProductWorld.matches) return;
+    event.preventDefault();
+    if (menu.hidden) {
+      open();
+    } else {
+      close();
+    }
+  });
+
+  desktopProductWorld.addEventListener("change", () => close());
 
   trigger.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowDown") return;
@@ -1128,7 +1144,8 @@ if (menuButton && nav) {
   });
 
   nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) {
+    const link = event.target.closest("a");
+    if (link && !link.classList.contains("product-world-trigger")) {
       menuButton.setAttribute("aria-expanded", "false");
       nav.classList.remove("is-open");
     }
