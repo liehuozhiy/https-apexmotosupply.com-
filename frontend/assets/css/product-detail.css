@@ -312,6 +312,14 @@ body.sy300-preview.product-detail-page .sy300-preview-still {
   background:#080c0f;
 }
 
+/* Mobile gallery: fill the 4:3 stage and crop only the wide studio backdrop. */
+@media (max-width: 48rem) {
+  body.sy300-preview.product-detail-page .sy300-preview-main-frame img {
+    object-fit:cover !important;
+    object-position:center !important;
+  }
+}
+
 /* SJ300 core highlights: four independent, consistently sized component cards. */
 body.sy300-preview.product-detail-page .sy300-preview-tech-cards {
   gap:12px;
