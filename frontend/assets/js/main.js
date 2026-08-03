@@ -606,7 +606,8 @@ function createProductWorldMenu(productLink, index) {
   });
 
   document.addEventListener("pointerdown", (event) => {
-    if (!menu.hidden && !menu.contains(event.target) && !trigger.contains(event.target)) close();
+    const isMobileNavGesture = !desktopProductWorld.matches && mobileNav?.contains(event.target);
+    if (!menu.hidden && !menu.contains(event.target) && !trigger.contains(event.target) && !isMobileNavGesture) close();
   });
 
   document.addEventListener("keydown", (event) => {
