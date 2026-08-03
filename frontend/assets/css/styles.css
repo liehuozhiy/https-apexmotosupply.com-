@@ -665,9 +665,11 @@ html[lang="ar"] .product-world-preview.has-card .product-world-preview__copy p {
 
   .product-world-menu {
     position: static;
+    flex: 0 0 auto;
     width: 100%;
     max-height: none;
     margin: 3px 0 8px;
+    overflow: visible;
     padding: 12px;
     transform: none;
     border-radius: 5px;
@@ -675,8 +677,19 @@ html[lang="ar"] .product-world-preview.has-card .product-world-preview__copy p {
   }
 
   .product-world-menu__header {
+    display: block;
     margin-bottom: 12px;
     padding-bottom: 10px;
+  }
+
+  .product-world-menu__eyebrow,
+  .product-world-menu__header strong {
+    display: block;
+  }
+
+  .product-world-menu__eyebrow {
+    margin-bottom: 7px;
+    font-size: 13px;
   }
 
   .product-world-menu__categories {
@@ -3360,7 +3373,7 @@ body.sy300-preview .sy300-preview-feature-icon::after { position:absolute; inset
     height: 36px;
   }
 
-  body.home-page .site-header.current-product-header .nav {
+  :is(body.home-page, body.inner-page) .site-header.current-product-header .nav {
     position: absolute;
   }
 }
