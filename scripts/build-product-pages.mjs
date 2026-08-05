@@ -222,6 +222,31 @@ function toPublicSiteUrl(source) {
   return `https://apexmotosupply.com/${frontendRelativePath}${suffix}`;
 }
 
+function renderBreadcrumbStructuredData(data) {
+  const isElectric = data.powerType === "electric";
+  const categoryName = isElectric ? "Electric Dirt Bikes" : "Gas Dirt Bikes";
+  const categoryUrl = isElectric
+    ? "https://apexmotosupply.com/electric-dirt-bikes.html"
+    : "https://apexmotosupply.com/gas-dirt-bikes.html";
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: categoryName,
+        item: categoryUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: data.name,
+      },
+    ],
+  }).replaceAll("<", "\\u003c");
+}
+
 async function validateAssets(data) {
   const sources = new Set([
     ...(data.panelImage ? [data.panelImage] : []),
@@ -483,6 +508,7 @@ function renderPage(data) {
     "{{PAGE_DESCRIPTION}}": escapeHtml(data.page.description),
     "{{PAGE_CANONICAL_URL}}": escapeHtml(canonicalUrl),
     "{{PAGE_SOCIAL_IMAGE_URL}}": escapeHtml(toPublicSiteUrl(data.gallery[1].src)),
+    "{{BREADCRUMB_JSON_LD}}": renderBreadcrumbStructuredData(data),
     "{{MODEL_ID}}": escapeHtml(data.id),
     "{{MODEL_NAME}}": escapeHtml(data.name),
     "{{HERO_HTML}}": renderHero(data),
@@ -544,6 +570,20 @@ function validateHtml(html, data) {
   }
   if (!html.includes(`property="og:image" content="${escapeHtml(toPublicSiteUrl(data.gallery[1].src))}"`)) {
     throw new Error("Generated social image URL missing or invalid.");
+  }
+  const breadcrumbMatch = html.match(
+    /<script type="application\/ld\+json" id="product-detail-breadcrumb-jsonld">([\s\S]*?)<\/script>/u,
+  );
+  if (!breadcrumbMatch) throw new Error("Generated breadcrumb structured data missing.");
+  const breadcrumb = JSON.parse(breadcrumbMatch[1]);
+  if (
+    breadcrumb["@context"] !== "https://schema.org" ||
+    breadcrumb["@type"] !== "BreadcrumbList" ||
+    breadcrumb.itemListElement?.length !== 2 ||
+    breadcrumb.itemListElement[1]?.name !== data.name ||
+    breadcrumb.itemListElement[1]?.position !== 2
+  ) {
+    throw new Error("Generated breadcrumb structured data is invalid.");
   }
   if ((html.match(/<a href="#sy300-main-image" class="sy300-preview-still(?: is-active)?"/g) || []).length !== 5) {
     throw new Error("Generated HTML must contain exactly five gallery controls.");
