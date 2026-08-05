@@ -24,6 +24,7 @@ const securityHeaders = {
 
 const ANALYTICS_MAX_BODY_BYTES = 16 * 1024;
 const ANALYTICS_DEFAULT_HOURLY_LIMIT = 120;
+const INQUIRY_MAX_BODY_BYTES = 32 * 1024;
 const trustedAnalyticsOrigins = new Set([
   "https://apexmotosupply.com",
   "https://www.apexmotosupply.com"
@@ -129,9 +130,9 @@ function isTrustedAnalyticsOrigin(request) {
   return Boolean(origin) && isTrustedSiteOrigin(origin);
 }
 
-function requestBodyTooLarge(request) {
+function requestBodyTooLarge(request, maxBytes = ANALYTICS_MAX_BODY_BYTES) {
   const contentLength = Number(request.headers.get("Content-Length") || 0);
-  return Number.isFinite(contentLength) && contentLength > ANALYTICS_MAX_BODY_BYTES;
+  return Number.isFinite(contentLength) && contentLength > maxBytes;
 }
 
 function analyticsHourlyLimit(env) {
@@ -510,10 +511,29 @@ async function handleInquiries(request, env) {
   const idMatch = url.pathname.match(/^\/api\/inquiries\/(\d+)$/);
 
   if (request.method === "POST" && isCollectionPath) {
+    if (!String(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
+      return json({ error: "Content-Type must be application/json" }, 415);
+    }
+    if (requestBodyTooLarge(request, INQUIRY_MAX_BODY_BYTES)) {
+      return json({ error: "Request body too large" }, 413);
+    }
+    const rawBody = await request.text().catch(() => null);
+    if (rawBody === null) return json({ error: "Invalid JSON body" }, 400);
+    if (new TextEncoder().encode(rawBody).byteLength > INQUIRY_MAX_BODY_BYTES) {
+      return json({ error: "Request body too large" }, 413);
+    }
+    let body;
+    try {
+      body = JSON.parse(rawBody);
+    } catch (error) {
+      return json({ error: "Invalid JSON body" }, 400);
+    }
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return json({ error: "Invalid JSON body" }, 400);
+    }
+    if (body.website) return json({ ok: true });
     if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
     await ensureSchema(env);
-    const body = await request.json().catch(() => ({}));
-    if (body.website) return json({ ok: true });
 
     const name = cleanText(body.name, 120);
     const email = cleanText(body.email, 180);
