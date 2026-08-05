@@ -14,7 +14,7 @@
 | 6. 全站集中浏览器验收 | `frontend/pages/**`、共享 CSS/JS、全部有效资产 | 任务 3–5 | HTTP/file、375/768/1440、1920/2560抽查、七语言/RTL、无404/横滚/裁切/重叠、控制台0错误 | 已完成（阶段 E，2026-08-02）：HTTP 全站矩阵、27/27 Panel 资源路径与代表性桌面/平板渲染通过；用户已完成本机 `file:///` 最终视觉验收 | 仅 1 个集中验证槽 | 功能整改需另立最小任务，不能边验边大改 |
 | 7. API/询盘回归 | `frontend/pages/inquiry.html`、`frontend/assets/js/main.js`、`api/worker.js` | 任务 6 公共页面稳定 | Excel 下载、请求字段/API响应兼容；测试环境验证，不发送真实客户邮件 | 已完成（阶段 F，2026-08-02）：F01–F04 已通过，包含真实浏览器的下载、双语 SMTP 未配置与 API 失败保底下载验证 | 否 | D1 schema、SMTP密钥、后台认证 |
 | 8. 审查产物清理提案 | 根截图、`_photo_review/`、`__pycache__/`、命令碎片 | 任务 1、6 | 提交精确删除清单并获得用户批准；有效证据/正式资产不删 | 已完成（G01，2026-08-02）：用户批准后删除 9 个命令碎片和 1 个 Python 缓存文件（41,057 bytes），空 `__pycache__/` 同步移除；有效证据与正式资产均保留 | 否 | 未确认文件、产品资产、根 `CODEX.md` |
-| 9. 重建 deploy | `scripts/prepare-deploy.mjs`、`deploy/**` | 任务 6–8 完成且用户明确要求 | `deploy` 与 `frontend/admin` 源一致，路由抽测通过 | 当前不同步 | 否 | 不得手改 deploy，不得自动部署/Git |
+| 9. 重建 deploy | `scripts/prepare-deploy.mjs`、`deploy/**` | 任务 6–8 完成且用户明确要求 | `deploy` 与 `frontend/admin` 源一致，路由抽测通过 | 已完成（2026-08-05）：27 个车型页按共享模板全量重建，发布目录由源码生成；Cloudflare 版本 `cc7c302a-bf32-4d7d-995f-aaae82de1d1e` 已上线 | 否 | 不得手改 deploy，不得自动部署/Git |
 
 ## 阶段 B：P1 资料审计、决策与生成验证状态
 
