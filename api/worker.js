@@ -1,7 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type,x-admin-key",
   "Content-Type": "application/json; charset=utf-8",
@@ -64,6 +63,39 @@ function json(data, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(data), { status, headers: { ...corsHeaders, ...extraHeaders } });
 }
 
+function isTrustedSiteOrigin(origin) {
+  if (trustedAnalyticsOrigins.has(origin)) return true;
+  try {
+    const url = new URL(origin);
+    return ["127.0.0.1", "localhost"].includes(url.hostname) && ["http:", "https:"].includes(url.protocol);
+  } catch (error) {
+    return false;
+  }
+}
+
+function isTrustedAdminOrigin(request) {
+  const origin = String(request.headers.get("Origin") || "").trim();
+  return !origin || isTrustedSiteOrigin(origin);
+}
+
+function withCors(response, request, policy) {
+  const headers = new Headers(response.headers);
+  const origin = String(request.headers.get("Origin") || "").trim();
+  if (policy === "public") {
+    headers.set("Access-Control-Allow-Origin", "*");
+  } else if (policy === "trusted" && isTrustedSiteOrigin(origin)) {
+    headers.set("Access-Control-Allow-Origin", origin);
+    const vary = String(headers.get("Vary") || "").split(",").map((value) => value.trim()).filter(Boolean);
+    if (!vary.some((value) => value.toLowerCase() === "origin")) vary.push("Origin");
+    headers.set("Vary", vary.join(", "));
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
 function methodNotAllowed(allowedMethods) {
   return json({ error: "Method not allowed" }, 405, { Allow: allowedMethods.join(", ") });
 }
@@ -94,13 +126,7 @@ function requestIp(request) {
 
 function isTrustedAnalyticsOrigin(request) {
   const origin = String(request.headers.get("Origin") || "").trim();
-  if (trustedAnalyticsOrigins.has(origin)) return true;
-  try {
-    const url = new URL(origin);
-    return ["127.0.0.1", "localhost"].includes(url.hostname) && ["http:", "https:"].includes(url.protocol);
-  } catch (error) {
-    return false;
-  }
+  return Boolean(origin) && isTrustedSiteOrigin(origin);
 }
 
 function requestBodyTooLarge(request) {
@@ -369,7 +395,10 @@ async function handleNews(request) {
 }
 
 async function handleAnalytics(request, env) {
-  if (request.method === "OPTIONS") return json({ ok: true });
+  if (request.method === "OPTIONS") {
+    if (!isTrustedAdminOrigin(request)) return json({ error: "Forbidden origin" }, 403);
+    return json({ ok: true });
+  }
 
   if (request.method === "POST") {
     if (!isTrustedAnalyticsOrigin(request)) return json({ error: "Forbidden origin" }, 403);
@@ -418,6 +447,7 @@ async function handleAnalytics(request, env) {
   }
 
   if (request.method !== "GET") return methodNotAllowed(["GET", "POST", "OPTIONS"]);
+  if (!isTrustedAdminOrigin(request)) return json({ error: "Forbidden origin" }, 403);
   const auth = requireAdmin(request, env);
   if (auth.error) return auth.error;
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
@@ -467,7 +497,13 @@ async function handleAnalytics(request, env) {
 }
 
 async function handleInquiries(request, env) {
-  if (request.method === "OPTIONS") return json({ ok: true });
+  if (request.method === "OPTIONS") {
+    const requestedMethod = String(request.headers.get("Access-Control-Request-Method") || "").toUpperCase();
+    if (requestedMethod && requestedMethod !== "POST" && !isTrustedAdminOrigin(request)) {
+      return json({ error: "Forbidden origin" }, 403);
+    }
+    return json({ ok: true });
+  }
 
   const url = new URL(request.url);
   const isCollectionPath = url.pathname === "/api/inquiries";
@@ -532,6 +568,7 @@ async function handleInquiries(request, env) {
   }
 
   if (!isCollectionPath && !idMatch) return json({ error: "API route not found" }, 404);
+  if (!isTrustedAdminOrigin(request)) return json({ error: "Forbidden origin" }, 403);
   const auth = requireAdmin(request, env);
   if (auth.error) return auth.error;
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
@@ -603,25 +640,28 @@ export default {
     }
 
     if (url.pathname === "/api/analytics") {
-      return handleAnalytics(request, env);
+      return withCors(await handleAnalytics(request, env), request, "trusted");
     }
 
     if (url.pathname === "/api/inquiries" || url.pathname.startsWith("/api/inquiries/")) {
-      return handleInquiries(request, env);
+      const requestedMethod = String(request.headers.get("Access-Control-Request-Method") || "").toUpperCase();
+      const publicInquiry = request.method === "POST" || (request.method === "OPTIONS" && requestedMethod === "POST");
+      return withCors(await handleInquiries(request, env), request, publicInquiry ? "public" : "trusted");
     }
 
     if (url.pathname === "/api/smtp-status") {
-      if (request.method === "OPTIONS") return json({ ok: true });
-      if (request.method !== "GET") return methodNotAllowed(["GET", "OPTIONS"]);
+      if (!isTrustedAdminOrigin(request)) return withCors(json({ error: "Forbidden origin" }, 403), request, "trusted");
+      if (request.method === "OPTIONS") return withCors(json({ ok: true }), request, "trusted");
+      if (request.method !== "GET") return withCors(methodNotAllowed(["GET", "OPTIONS"]), request, "trusted");
       const auth = requireAdmin(request, env);
-      if (auth.error) return auth.error;
-      return json(smtpStatus(env));
+      if (auth.error) return withCors(auth.error, request, "trusted");
+      return withCors(json(smtpStatus(env)), request, "trusted");
     }
 
     if (url.pathname === "/api/news") {
-      if (request.method === "OPTIONS") return json({ ok: true });
-      if (request.method !== "GET") return methodNotAllowed(["GET", "OPTIONS"]);
-      return handleNews(request);
+      if (request.method === "OPTIONS") return withCors(json({ ok: true }), request, "public");
+      if (request.method !== "GET") return withCors(methodNotAllowed(["GET", "OPTIONS"]), request, "public");
+      return withCors(await handleNews(request), request, "public");
     }
 
     if (url.pathname === "/api" || url.pathname.startsWith("/api/")) {

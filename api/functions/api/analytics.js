@@ -1,5 +1,4 @@
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type,x-admin-key",
   "Content-Type": "application/json; charset=utf-8",
@@ -19,10 +18,16 @@ const trustedAnalyticsOrigins = new Set([
   "https://www.apexmotosupply.com"
 ]);
 
-function json(data, status = 200) {
+function json(data, status = 200, request = null) {
+  const headers = { ...corsHeaders };
+  const origin = String(request?.headers.get("Origin") || "").trim();
+  if (isTrustedSiteOrigin(origin)) {
+    headers["Access-Control-Allow-Origin"] = origin;
+    headers.Vary = "Origin";
+  }
   return new Response(JSON.stringify(data), {
     status,
-    headers: corsHeaders
+    headers
   });
 }
 
@@ -36,6 +41,10 @@ function oneHourAgoIso() {
 
 function isTrustedAnalyticsOrigin(request) {
   const origin = String(request.headers.get("Origin") || "").trim();
+  return Boolean(origin) && isTrustedSiteOrigin(origin);
+}
+
+function isTrustedSiteOrigin(origin) {
   if (trustedAnalyticsOrigins.has(origin)) return true;
   try {
     const url = new URL(origin);
@@ -45,6 +54,11 @@ function isTrustedAnalyticsOrigin(request) {
   }
 }
 
+function isTrustedAdminOrigin(request) {
+  const origin = String(request.headers.get("Origin") || "").trim();
+  return !origin || isTrustedSiteOrigin(origin);
+}
+
 function analyticsHourlyLimit(env) {
   const configured = Number(env.ANALYTICS_HOURLY_LIMIT || ANALYTICS_DEFAULT_HOURLY_LIMIT);
   return Number.isFinite(configured) && configured > 0 ? Math.floor(configured) : ANALYTICS_DEFAULT_HOURLY_LIMIT;
@@ -52,25 +66,27 @@ function analyticsHourlyLimit(env) {
 
 export async function onRequest(context) {
   const { request, env } = context;
+  const respond = (data, status = 200) => json(data, status, request);
 
   if (request.method === "OPTIONS") {
-    return json({ ok: true });
+    if (!isTrustedAdminOrigin(request)) return respond({ error: "Forbidden origin" }, 403);
+    return respond({ ok: true });
   }
 
   if (request.method === "POST") {
-    if (!isTrustedAnalyticsOrigin(request)) return json({ error: "Forbidden origin" }, 403);
+    if (!isTrustedAnalyticsOrigin(request)) return respond({ error: "Forbidden origin" }, 403);
     if (!String(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
-      return json({ error: "Content-Type must be application/json" }, 415);
+      return respond({ error: "Content-Type must be application/json" }, 415);
     }
     const contentLength = Number(request.headers.get("Content-Length") || 0);
     if (Number.isFinite(contentLength) && contentLength > ANALYTICS_MAX_BODY_BYTES) {
-      return json({ error: "Request body too large" }, 413);
+      return respond({ error: "Request body too large" }, 413);
     }
-    if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+    if (!env.DB) return respond({ error: "D1 binding DB is missing" }, 500);
     const body = await request.json().catch(() => null);
-    if (!body || typeof body !== "object" || Array.isArray(body)) return json({ error: "Invalid JSON body" }, 400);
+    if (!body || typeof body !== "object" || Array.isArray(body)) return respond({ error: "Invalid JSON body" }, 400);
     if (new TextEncoder().encode(JSON.stringify(body)).byteLength > ANALYTICS_MAX_BODY_BYTES) {
-      return json({ error: "Request body too large" }, 413);
+      return respond({ error: "Request body too large" }, 413);
     }
     const headers = request.headers;
     const ip = headers.get("CF-Connecting-IP") || headers.get("X-Forwarded-For") || "";
@@ -80,7 +96,7 @@ export async function onRequest(context) {
       .bind(ip, oneHourAgoIso())
       .first();
     if ((recent?.count || 0) >= analyticsHourlyLimit(env)) {
-      return json({ error: "Too many analytics events" }, 429);
+      return respond({ error: "Too many analytics events" }, 429);
     }
 
     await env.DB.prepare(`
@@ -100,23 +116,25 @@ export async function onRequest(context) {
       String(body.timezone || "").slice(0, 120)
     ).run();
 
-    return json({ ok: true });
+    return respond({ ok: true });
   }
 
   if (request.method !== "GET") {
-    return json({ error: "Method not allowed" }, 405);
+    return respond({ error: "Method not allowed" }, 405);
   }
+
+  if (!isTrustedAdminOrigin(request)) return respond({ error: "Forbidden origin" }, 403);
 
   const adminKey = String(env.ADMIN_KEY || "").trim();
   if (!adminKey) {
-    return json({ error: "Admin access is not configured" }, 503);
+    return respond({ error: "Admin access is not configured" }, 503);
   }
 
   const inputKey = request.headers.get("x-admin-key") || "";
   if (inputKey !== adminKey) {
-    return json({ error: "Unauthorized" }, 401);
+    return respond({ error: "Unauthorized" }, 401);
   }
-  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  if (!env.DB) return respond({ error: "D1 binding DB is missing" }, 500);
 
   const total = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits").first();
   const today = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE created_at >= ?").bind(todayPrefix()).first();
@@ -134,7 +152,7 @@ export async function onRequest(context) {
     countries[row.country || "Unknown"] = row.count;
   });
 
-  return json({
+  return respond({
     total: total?.count || 0,
     today: today?.count || 0,
     uniqueIps: uniqueIps?.count || 0,
