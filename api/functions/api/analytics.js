@@ -2,7 +2,14 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type,x-admin-key",
-  "Content-Type": "application/json; charset=utf-8"
+  "Content-Type": "application/json; charset=utf-8",
+  "Cache-Control": "no-store",
+  "Content-Security-Policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN"
 };
 
 function json(data, status = 200) {
@@ -23,11 +30,8 @@ export async function onRequest(context) {
     return json({ ok: true });
   }
 
-  if (!env.DB) {
-    return json({ error: "D1 binding DB is missing" }, 500);
-  }
-
   if (request.method === "POST") {
+    if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
     const body = await request.json().catch(() => ({}));
     const headers = request.headers;
     const ip = headers.get("CF-Connecting-IP") || headers.get("X-Forwarded-For") || "";
@@ -53,15 +57,20 @@ export async function onRequest(context) {
     return json({ ok: true });
   }
 
-  const adminKey = env.ADMIN_KEY || "";
-  if (!adminKey) {
-    return json({ error: "ADMIN_KEY is missing" }, 500);
+  if (request.method !== "GET") {
+    return json({ error: "Method not allowed" }, 405);
   }
 
-  const inputKey = request.headers.get("x-admin-key") || new URL(request.url).searchParams.get("key") || "";
-  if (!adminKey || inputKey !== adminKey) {
+  const adminKey = String(env.ADMIN_KEY || "").trim();
+  if (!adminKey) {
+    return json({ error: "Admin access is not configured" }, 503);
+  }
+
+  const inputKey = request.headers.get("x-admin-key") || "";
+  if (inputKey !== adminKey) {
     return json({ error: "Unauthorized" }, 401);
   }
+  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
 
   const total = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits").first();
   const today = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE created_at >= ?").bind(todayPrefix()).first();

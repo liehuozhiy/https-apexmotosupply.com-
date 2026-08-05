@@ -4,7 +4,23 @@ const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type,x-admin-key",
-  "Content-Type": "application/json; charset=utf-8"
+  "Content-Type": "application/json; charset=utf-8",
+  "Cache-Control": "no-store",
+  "Content-Security-Policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN"
+};
+
+const securityHeaders = {
+  "Content-Security-Policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Strict-Transport-Security": "max-age=31536000",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN"
 };
 
 const productPagePaths = new Set([
@@ -37,8 +53,12 @@ const productPagePaths = new Set([
   "/sy300.html"
 ]);
 
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { status, headers: corsHeaders });
+function json(data, status = 200, extraHeaders = {}) {
+  return new Response(JSON.stringify(data), { status, headers: { ...corsHeaders, ...extraHeaders } });
+}
+
+function methodNotAllowed(allowedMethods) {
+  return json({ error: "Method not allowed" }, 405, { Allow: allowedMethods.join(", ") });
 }
 
 function todayPrefix() {
@@ -112,9 +132,10 @@ async function ensureSchema(env) {
 }
 
 function requireAdmin(request, env) {
-  const adminKey = env.ADMIN_KEY || "ht2026admin";
+  const adminKey = String(env.ADMIN_KEY || "").trim();
+  if (!adminKey) return { error: json({ error: "Admin access is not configured" }, 503) };
 
-  const inputKey = request.headers.get("x-admin-key") || new URL(request.url).searchParams.get("key") || "";
+  const inputKey = request.headers.get("x-admin-key") || "";
   if (inputKey !== adminKey) return { error: json({ error: "Unauthorized" }, 401) };
 
   return { ok: true };
@@ -240,16 +261,31 @@ function smtpStatus(env) {
   };
 }
 
-function assetRequest(request, env, internalPath) {
+function secureResponse(response, { noStore = false } = {}) {
+  const headers = new Headers(response.headers);
+  Object.entries(securityHeaders).forEach(([name, value]) => headers.set(name, value));
+  if (noStore) headers.set("Cache-Control", "no-store");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
+async function assetRequest(request, env, internalPath, options = {}) {
   const assetUrl = new URL(request.url);
   assetUrl.pathname = internalPath;
-  return env.ASSETS.fetch(new Request(assetUrl, request));
+  const response = await env.ASSETS.fetch(new Request(assetUrl, request));
+  return secureResponse(response, options);
 }
 
 function redirectToPublicPath(url, pathname) {
   const target = new URL(url);
   target.pathname = pathname;
-  return Response.redirect(target.toString(), 301);
+  return new Response(null, {
+    status: 301,
+    headers: { ...securityHeaders, Location: target.toString() }
+  });
 }
 
 function decodeXml(text) {
@@ -306,12 +342,9 @@ async function handleNews(request) {
 async function handleAnalytics(request, env) {
   if (request.method === "OPTIONS") return json({ ok: true });
 
-  if (!env.DB) {
-    return json({ error: "D1 binding DB is missing" }, 500);
-  }
-  await ensureSchema(env);
-
   if (request.method === "POST") {
+    if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+    await ensureSchema(env);
     const body = await request.json().catch(() => ({}));
     const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
     const country = request.cf?.country || request.headers.get("CF-IPCountry") || "Unknown";
@@ -339,12 +372,11 @@ async function handleAnalytics(request, env) {
     return json({ ok: true });
   }
 
-  const adminKey = env.ADMIN_KEY || "ht2026admin";
-
-  const inputKey = request.headers.get("x-admin-key") || new URL(request.url).searchParams.get("key") || "";
-  if (inputKey !== adminKey) {
-    return json({ error: "Unauthorized" }, 401);
-  }
+  if (request.method !== "GET") return methodNotAllowed(["GET", "POST", "OPTIONS"]);
+  const auth = requireAdmin(request, env);
+  if (auth.error) return auth.error;
+  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  await ensureSchema(env);
 
   const url = new URL(request.url);
   const country = cleanText(url.searchParams.get("country"), 80);
@@ -391,13 +423,14 @@ async function handleAnalytics(request, env) {
 
 async function handleInquiries(request, env) {
   if (request.method === "OPTIONS") return json({ ok: true });
-  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
-  await ensureSchema(env);
 
   const url = new URL(request.url);
+  const isCollectionPath = url.pathname === "/api/inquiries";
   const idMatch = url.pathname.match(/^\/api\/inquiries\/(\d+)$/);
 
-  if (request.method === "POST" && !idMatch) {
+  if (request.method === "POST" && isCollectionPath) {
+    if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+    await ensureSchema(env);
     const body = await request.json().catch(() => ({}));
     if (body.website) return json({ ok: true });
 
@@ -453,10 +486,13 @@ async function handleInquiries(request, env) {
     return json({ ok: true, id: result.meta?.last_row_id, emailStatus: emailResult.status, emailError: emailResult.error || "" });
   }
 
+  if (!isCollectionPath && !idMatch) return json({ error: "API route not found" }, 404);
   const auth = requireAdmin(request, env);
   if (auth.error) return auth.error;
+  if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
+  await ensureSchema(env);
 
-  if (request.method === "GET" && !idMatch) {
+  if (request.method === "GET" && isCollectionPath) {
     const page = Math.max(1, Number(url.searchParams.get("page") || 1));
     const limit = 20;
     const offset = (page - 1) * limit;
@@ -507,7 +543,7 @@ async function handleInquiries(request, env) {
     return json({ ok: true });
   }
 
-  return json({ error: "Method not allowed" }, 405);
+  return methodNotAllowed(["GET", "POST", "PATCH", "DELETE", "OPTIONS"]);
 }
 
 export default {
@@ -515,7 +551,10 @@ export default {
     const url = new URL(request.url);
     if (url.protocol === "http:") {
       url.protocol = "https:";
-      return Response.redirect(url.toString(), 301);
+      return new Response(null, {
+        status: 301,
+        headers: { ...securityHeaders, Location: url.toString() }
+      });
     }
 
     if (url.pathname === "/api/analytics") {
@@ -527,13 +566,21 @@ export default {
     }
 
     if (url.pathname === "/api/smtp-status") {
+      if (request.method === "OPTIONS") return json({ ok: true });
+      if (request.method !== "GET") return methodNotAllowed(["GET", "OPTIONS"]);
       const auth = requireAdmin(request, env);
       if (auth.error) return auth.error;
       return json(smtpStatus(env));
     }
 
     if (url.pathname === "/api/news") {
+      if (request.method === "OPTIONS") return json({ ok: true });
+      if (request.method !== "GET") return methodNotAllowed(["GET", "OPTIONS"]);
       return handleNews(request);
+    }
+
+    if (url.pathname === "/api" || url.pathname.startsWith("/api/")) {
+      return json({ error: "API route not found" }, 404);
     }
 
     const frontendPageRedirects = {
@@ -595,7 +642,7 @@ export default {
     };
 
     if (pageRoutes[url.pathname]) {
-      return assetRequest(request, env, pageRoutes[url.pathname]);
+      return assetRequest(request, env, pageRoutes[url.pathname], { noStore: url.pathname === "/admin" || url.pathname === "/admin/" });
     }
 
     if (productPagePaths.has(url.pathname)) {
