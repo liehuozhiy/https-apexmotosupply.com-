@@ -45,6 +45,7 @@ const securityHeaders = {
 const ANALYTICS_MAX_BODY_BYTES = 16 * 1024;
 const ANALYTICS_DEFAULT_HOURLY_LIMIT = 120;
 const INQUIRY_MAX_BODY_BYTES = 32 * 1024;
+const IMMUTABLE_ASSET_CACHE_CONTROL = "public, max-age=31536000, immutable";
 const trustedAnalyticsOrigins = new Set([
   "https://apexmotosupply.com",
   "https://www.apexmotosupply.com"
@@ -337,10 +338,11 @@ function smtpStatus(env) {
   };
 }
 
-function secureResponse(response, { noStore = false } = {}) {
+function secureResponse(response, { noStore = false, cacheControl = "" } = {}) {
   const headers = new Headers(response.headers);
   Object.entries(securityHeaders).forEach(([name, value]) => headers.set(name, value));
   if (noStore) headers.set("Cache-Control", "no-store");
+  else if (cacheControl) headers.set("Cache-Control", cacheControl);
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -348,11 +350,24 @@ function secureResponse(response, { noStore = false } = {}) {
   });
 }
 
+function isImmutableAssetRequest(request, internalPath) {
+  if (!internalPath.startsWith("/assets/") && !internalPath.startsWith("/admin/assets/")) return false;
+  const url = new URL(request.url);
+  if (url.searchParams.has("v")) return true;
+  const filename = internalPath.split("/").pop() || "";
+  return /(?:^|[-_.])v\d+(?:[-_.]|$)/i.test(filename);
+}
+
 async function assetRequest(request, env, internalPath, options = {}) {
   const assetUrl = new URL(request.url);
   assetUrl.pathname = internalPath;
   const response = await env.ASSETS.fetch(new Request(assetUrl, request));
-  return secureResponse(response, options);
+  const cacheControl = !response.ok
+    ? "no-store"
+    : isImmutableAssetRequest(request, internalPath)
+      ? IMMUTABLE_ASSET_CACHE_CONTROL
+      : options.cacheControl;
+  return secureResponse(response, { ...options, cacheControl });
 }
 
 function redirectToPublicPath(url, pathname) {
