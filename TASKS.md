@@ -139,6 +139,7 @@ B01–B06 只生成独立报告；B07 依据六份报告集中决策，只更新
 | P45 询盘写入请求边界 | `docs/audits/p45-inquiry-request-boundary.md` | 已发布（2026-08-05） | 询盘 POST 在访问 D1 前强制 JSON、32 KB 原始字节上限和对象根值；Cloudflare 版本 `8d2d99e4-f935-4618-8244-09784f08d446`，生产固定页面、询盘预检、安全头、sitemap 43/43 与 F29 五图通过，未发送生产 POST 或接触 D1 |
 | P46 CSP 报告模式基线 | `docs/audits/p46-csp-report-only-baseline.md` | 已发布（2026-08-05） | 保留现有强制 CSP，新增包含 GA、GTM 与 Cloudflare Insights 的完整报告模式策略；Cloudflare 版本 `1341501d-2d7a-4293-89cd-40350975d074`，生产 43/43 sitemap 页面、F29 五图和最终 Chrome 零 CSP 报告通过 |
 | P47 版本化静态资源缓存策略 | `docs/audits/p47-versioned-asset-cache-policy.md` | 已发布（2026-08-05） | 276 个明确版本化引用获得一年 immutable，42 个未版本化引用继续重新验证；Cloudflare 版本 `a71b5107-650d-47c7-8589-c928d1594870`，生产 9 项缓存边界、sitemap 43/43 与 F29 五图通过 |
+| P48 公共路由真实 404 边界 | `docs/audits/p48-public-route-real-404-boundary.md` | 已发布（2026-08-05） | 取消未知路径首页假 200并补齐预览/后台入口；Cloudflare 版本 `624fcf79-6294-4af1-a0a3-a2c44bf81c30`，生产 52 个合法入口、四类真实 404、304 缓存、sitemap 43/43 与 F29 五图通过 |
 
 ## 已完成且不要重复的任务
 

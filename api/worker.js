@@ -343,6 +343,7 @@ function secureResponse(response, { noStore = false, cacheControl = "" } = {}) {
   Object.entries(securityHeaders).forEach(([name, value]) => headers.set(name, value));
   if (noStore) headers.set("Cache-Control", "no-store");
   else if (cacheControl) headers.set("Cache-Control", cacheControl);
+  if (response.status >= 400) headers.set("X-Robots-Tag", "noindex");
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -362,7 +363,7 @@ async function assetRequest(request, env, internalPath, options = {}) {
   const assetUrl = new URL(request.url);
   assetUrl.pathname = internalPath;
   const response = await env.ASSETS.fetch(new Request(assetUrl, request));
-  const cacheControl = !response.ok
+  const cacheControl = response.status >= 400
     ? "no-store"
     : isImmutableAssetRequest(request, internalPath)
       ? IMMUTABLE_ASSET_CACHE_CONTROL
@@ -767,6 +768,8 @@ export default {
       "/pit-bikes.html": "/pit-bikes.html",
       "/videos.html": "/videos.html",
       "/home-preview.html": "/home-preview.html",
+      "/hs85-preview.html": "/hs85-preview.html",
+      "/sy300-preview.html": "/sy300-preview.html",
       "/news.html": "/news.html",
       "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html": "/news/how-to-choose-wholesale-dirt-bike-supplier-china.html",
       "/news/gas-vs-electric-dirt-bikes-for-dealers.html": "/news/gas-vs-electric-dirt-bikes-for-dealers.html",
@@ -777,12 +780,14 @@ export default {
       "/inquiry.html": "/inquiry.html",
       "/admin": "/admin/index.html",
       "/admin/": "/admin/index.html",
+      "/admin/index.html": "/admin/index.html",
       "/robots.txt": "/robots.txt",
       "/sitemap.xml": "/sitemap.xml"
     };
 
     if (pageRoutes[url.pathname]) {
-      return assetRequest(request, env, pageRoutes[url.pathname], { noStore: url.pathname === "/admin" || url.pathname === "/admin/" });
+      const noStore = url.pathname === "/admin" || url.pathname === "/admin/" || url.pathname === "/admin/index.html";
+      return assetRequest(request, env, pageRoutes[url.pathname], { noStore });
     }
 
     if (productPagePaths.has(url.pathname)) {
@@ -797,6 +802,6 @@ export default {
       return assetRequest(request, env, url.pathname);
     }
 
-    return assetRequest(request, env, "/index.html");
+    return assetRequest(request, env, url.pathname);
   }
 };
