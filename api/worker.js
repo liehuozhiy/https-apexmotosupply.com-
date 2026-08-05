@@ -23,6 +23,13 @@ const securityHeaders = {
   "X-Frame-Options": "SAMEORIGIN"
 };
 
+const ANALYTICS_MAX_BODY_BYTES = 16 * 1024;
+const ANALYTICS_DEFAULT_HOURLY_LIMIT = 120;
+const trustedAnalyticsOrigins = new Set([
+  "https://apexmotosupply.com",
+  "https://www.apexmotosupply.com"
+]);
+
 const productPagePaths = new Set([
   "/babey.html",
   "/babey-plus.html",
@@ -85,6 +92,27 @@ function requestIp(request) {
   return request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
 }
 
+function isTrustedAnalyticsOrigin(request) {
+  const origin = String(request.headers.get("Origin") || "").trim();
+  if (trustedAnalyticsOrigins.has(origin)) return true;
+  try {
+    const url = new URL(origin);
+    return ["127.0.0.1", "localhost"].includes(url.hostname) && ["http:", "https:"].includes(url.protocol);
+  } catch (error) {
+    return false;
+  }
+}
+
+function requestBodyTooLarge(request) {
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  return Number.isFinite(contentLength) && contentLength > ANALYTICS_MAX_BODY_BYTES;
+}
+
+function analyticsHourlyLimit(env) {
+  const configured = Number(env.ANALYTICS_HOURLY_LIMIT || ANALYTICS_DEFAULT_HOURLY_LIMIT);
+  return Number.isFinite(configured) && configured > 0 ? Math.floor(configured) : ANALYTICS_DEFAULT_HOURLY_LIMIT;
+}
+
 async function ensureColumn(env, table, column, definition) {
   try {
     await env.DB.prepare(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`).run();
@@ -127,6 +155,7 @@ async function ensureSchema(env) {
   `).run();
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_site_visits_created_at ON site_visits (created_at)").run();
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_site_visits_country ON site_visits (country)").run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_site_visits_ip_created_at ON site_visits (ip, created_at)").run();
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON inquiries (created_at)").run();
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_inquiries_status ON inquiries (status)").run();
 }
@@ -343,11 +372,27 @@ async function handleAnalytics(request, env) {
   if (request.method === "OPTIONS") return json({ ok: true });
 
   if (request.method === "POST") {
+    if (!isTrustedAnalyticsOrigin(request)) return json({ error: "Forbidden origin" }, 403);
+    if (!String(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
+      return json({ error: "Content-Type must be application/json" }, 415);
+    }
+    if (requestBodyTooLarge(request)) return json({ error: "Request body too large" }, 413);
     if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
     await ensureSchema(env);
-    const body = await request.json().catch(() => ({}));
-    const ip = request.headers.get("CF-Connecting-IP") || request.headers.get("X-Forwarded-For") || "";
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object" || Array.isArray(body)) return json({ error: "Invalid JSON body" }, 400);
+    if (new TextEncoder().encode(JSON.stringify(body)).byteLength > ANALYTICS_MAX_BODY_BYTES) {
+      return json({ error: "Request body too large" }, 413);
+    }
+    const ip = requestIp(request);
     const country = request.cf?.country || request.headers.get("CF-IPCountry") || "Unknown";
+
+    const recent = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE ip = ? AND created_at >= ?")
+      .bind(ip, oneHourAgoIso())
+      .first();
+    if ((recent?.count || 0) >= analyticsHourlyLimit(env)) {
+      return json({ error: "Too many analytics events" }, 429, { "Retry-After": "3600" });
+    }
 
     const clientHints = body.clientHints ? JSON.stringify(body.clientHints).slice(0, 500) : "";
 

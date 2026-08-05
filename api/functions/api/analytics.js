@@ -12,6 +12,13 @@ const corsHeaders = {
   "X-Frame-Options": "SAMEORIGIN"
 };
 
+const ANALYTICS_MAX_BODY_BYTES = 16 * 1024;
+const ANALYTICS_DEFAULT_HOURLY_LIMIT = 120;
+const trustedAnalyticsOrigins = new Set([
+  "https://apexmotosupply.com",
+  "https://www.apexmotosupply.com"
+]);
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -23,6 +30,26 @@ function todayPrefix() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function oneHourAgoIso() {
+  return new Date(Date.now() - 60 * 60 * 1000).toISOString();
+}
+
+function isTrustedAnalyticsOrigin(request) {
+  const origin = String(request.headers.get("Origin") || "").trim();
+  if (trustedAnalyticsOrigins.has(origin)) return true;
+  try {
+    const url = new URL(origin);
+    return ["127.0.0.1", "localhost"].includes(url.hostname) && ["http:", "https:"].includes(url.protocol);
+  } catch (error) {
+    return false;
+  }
+}
+
+function analyticsHourlyLimit(env) {
+  const configured = Number(env.ANALYTICS_HOURLY_LIMIT || ANALYTICS_DEFAULT_HOURLY_LIMIT);
+  return Number.isFinite(configured) && configured > 0 ? Math.floor(configured) : ANALYTICS_DEFAULT_HOURLY_LIMIT;
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
 
@@ -31,11 +58,30 @@ export async function onRequest(context) {
   }
 
   if (request.method === "POST") {
+    if (!isTrustedAnalyticsOrigin(request)) return json({ error: "Forbidden origin" }, 403);
+    if (!String(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
+      return json({ error: "Content-Type must be application/json" }, 415);
+    }
+    const contentLength = Number(request.headers.get("Content-Length") || 0);
+    if (Number.isFinite(contentLength) && contentLength > ANALYTICS_MAX_BODY_BYTES) {
+      return json({ error: "Request body too large" }, 413);
+    }
     if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
-    const body = await request.json().catch(() => ({}));
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object" || Array.isArray(body)) return json({ error: "Invalid JSON body" }, 400);
+    if (new TextEncoder().encode(JSON.stringify(body)).byteLength > ANALYTICS_MAX_BODY_BYTES) {
+      return json({ error: "Request body too large" }, 413);
+    }
     const headers = request.headers;
     const ip = headers.get("CF-Connecting-IP") || headers.get("X-Forwarded-For") || "";
     const country = request.cf?.country || headers.get("CF-IPCountry") || "Unknown";
+
+    const recent = await env.DB.prepare("SELECT COUNT(*) AS count FROM site_visits WHERE ip = ? AND created_at >= ?")
+      .bind(ip, oneHourAgoIso())
+      .first();
+    if ((recent?.count || 0) >= analyticsHourlyLimit(env)) {
+      return json({ error: "Too many analytics events" }, 429);
+    }
 
     await env.DB.prepare(`
       INSERT INTO site_visits

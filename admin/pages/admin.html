@@ -117,7 +117,12 @@
       let inquiriesHasNext = false;
       let selectedCountry = "";
       endpointInput.value = window.APEX_ANALYTICS_ENDPOINT || "/api/analytics";
-      keyInput.value = localStorage.getItem("apex-admin-key") || "";
+      try {
+        keyInput.value = sessionStorage.getItem("apex-admin-key") || "";
+        localStorage.removeItem("apex-admin-key");
+      } catch (error) {
+        keyInput.value = "";
+      }
       const labels = {
         allCountries: "\u5168\u90e8\u56fd\u5bb6/\u5730\u533a",
         noData: "\u6682\u65e0\u6570\u636e",
@@ -259,7 +264,10 @@
         const url = new URL(endpoint, location.origin);
         url.searchParams.set("page", String(visitsPage));
         if (selectedCountry) url.searchParams.set("country", selectedCountry);
-        localStorage.setItem("apex-admin-key", key);
+        try {
+          sessionStorage.setItem("apex-admin-key", key);
+          localStorage.removeItem("apex-admin-key");
+        } catch (error) {}
         statusNode.textContent = labels.loading;
         const response = await fetch(url.pathname + url.search, { headers: { "x-admin-key": key } });
         if (!response.ok) throw new Error(await errorText(response));
