@@ -130,6 +130,7 @@ B01–B06 只生成独立报告；B07 依据六份报告集中决策，只更新
 | P36 首页视频与产品菜单层级修复 | `docs/audits/p36-home-video-product-menu-layering.md` | 已完成（2026-08-02） | 修正首页通用子元素层级覆盖页头的问题；产品下拉菜单稳定显示在视频/首屏上方，1440/768/375 无横向溢出，视频播放与重播不受影响 |
 | P37 生产 SEO 与转化监测准备 | `docs/audits/p37-production-seo-conversion-readiness.md` | 已发布（2026-08-05） | sitemap 覆盖从 16 扩展至 43 个公开 URL；27 个车型页统一 canonical 和分享卡片；公共页补齐绝对分享图；询盘成功新增无个人信息的 GA4 `generate_lead` 事件；Cloudflare 版本 `9c5aec9e-4348-40b2-84e6-8d0b7073f082` |
 | P38 结构化数据准备 | `docs/audits/p38-structured-data-readiness.md` | 已发布（2026-08-05） | 首页加入真实 Organization/WebSite JSON-LD；27 个车型页加入燃油/电动分类 BreadcrumbList；询价制缺少真实价格与评价，因此不虚构 Product/Offer 富结果数据；Cloudflare 版本 `a8d7421d-936f-40fc-8db3-a0673a113288` |
+| P39 生产性能与加载体验准备 | `docs/audits/p39-production-performance-readiness.md` | 已发布（2026-08-05） | 移除首页 15.4 MB 视频的独立 preload，延后首屏后车型图；27 个车型页统一主图高优先级、缩略图低优先级和亮点图懒加载；Cloudflare 版本 `c932eb60-51a8-43f6-8c31-cb5cd46b499c`，生产 27/27 车型页及 F29 五图验证通过 |
 
 ## 已完成且不要重复的任务
 

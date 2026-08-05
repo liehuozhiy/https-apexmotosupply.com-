@@ -313,7 +313,7 @@ function renderHero(data) {
   const galleryButtons = data.gallery
     .map(
       (image, index) =>
-        `<a href="#sy300-main-image" class="sy300-preview-still${index === defaultGalleryIndex ? " is-active" : ""}" data-main-src="${escapeHtml(image.src)}"><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}"><small>${String(index + 1).padStart(2, "0")}</small></a>`,
+        `<a href="#sy300-main-image" class="sy300-preview-still${index === defaultGalleryIndex ? " is-active" : ""}" data-main-src="${escapeHtml(image.src)}"><img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.alt)}" loading="lazy" decoding="async" fetchpriority="low"><small>${String(index + 1).padStart(2, "0")}</small></a>`,
     )
     .join("\n              ");
   const stats = data.stats
@@ -339,7 +339,7 @@ function renderHero(data) {
             </div>
             <div class="sy300-preview-main-frame" id="sy300-main-image">
               <span class="sy300-preview-frame-code">STILL IMAGE / 02</span>
-              <img src="${escapeHtml(data.gallery[defaultGalleryIndex].src)}" alt="${escapeHtml(data.gallery[defaultGalleryIndex].alt)}">
+              <img src="${escapeHtml(data.gallery[defaultGalleryIndex].src)}" alt="${escapeHtml(data.gallery[defaultGalleryIndex].alt)}" decoding="async" fetchpriority="high">
             </div>
           </section>
           <aside class="sy300-preview-spec-panel" style="--product-panel-image:url('${escapeHtml(panelImage)}')" aria-label="${escapeHtml(`${data.name} performance specification`)}">
@@ -388,7 +388,7 @@ function renderHighlights(data) {
   const cards = data.highlights
     .map(
       (item) =>
-        `<article><button class="sy300-preview-tech-crop" type="button" data-product-detail-highlight-open><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt)}"></button><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></div></article>`,
+        `<article><button class="sy300-preview-tech-crop" type="button" data-product-detail-highlight-open><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt)}" loading="lazy" decoding="async"></button><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></div></article>`,
     )
     .join("\n              ");
   return `<section class="sy300-preview-tech-block" id="core-highlights" aria-labelledby="sy300-preview-tech-title">
@@ -397,7 +397,7 @@ function renderHighlights(data) {
               ${cards}
             </div>
             <section class="sy300-preview-banner" id="support" aria-label="批发询盘入口">
-              <img src="${escapeHtml(data.banner.image)}" alt="${escapeHtml(data.banner.alt)}">
+              <img src="${escapeHtml(data.banner.image)}" alt="${escapeHtml(data.banner.alt)}" loading="lazy" decoding="async">
               <div class="sy300-preview-banner-copy"><a href="${escapeHtml(data.inquiry.href)}"><span>${escapeHtml(data.inquiry.secondaryLabel)}</span><b>→</b></a></div>
             </section>
           </section>`;
