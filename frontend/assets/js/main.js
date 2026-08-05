@@ -1011,6 +1011,15 @@ async function saveInquiry(fields = {}) {
   }
 }
 
+function trackInquiryConversion(fields = {}, inquiryResult = {}) {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", "generate_lead", {
+    method: "website_inquiry_form",
+    model: String(fields.model || "").trim() || "unspecified",
+    email_status: inquiryResult.emailStatus || "unknown"
+  });
+}
+
 async function createInquirySheet(fields = {}) {
   try {
     if (!window.JSZip) {
@@ -1178,6 +1187,7 @@ if (form) {
     const inquiryResult = await saveInquiry(fields);
     await createInquirySheet(fields);
     if (inquiryResult.ok) {
+      trackInquiryConversion(fields, inquiryResult);
       const mailSent = inquiryResult.emailStatus === "sent";
       alert(isChineseLang()
         ? (mailSent ? "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u90ae\u4ef6\u5df2\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u7b49\u5f85\u56de\u590d\u3002" : "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u4f46\u90ae\u4ef6\u672a\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u68c0\u67e5\u540e\u53f0 SMTP \u914d\u7f6e\u3002")

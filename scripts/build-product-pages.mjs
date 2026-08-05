@@ -209,6 +209,19 @@ function toPanelSiteAssetUrl(source) {
   return `${cssRelativePath}${suffix}`;
 }
 
+function toPublicSiteUrl(source) {
+  const [, cleanSource, suffix] = String(source).match(/^([^?#]*)(.*)$/u);
+  const absoluteAsset = path.resolve(outputDirectory, cleanSource);
+  const frontendRelativePath = path
+    .relative(frontendDirectory, absoluteAsset)
+    .split(path.sep)
+    .join("/");
+  if (frontendRelativePath.startsWith("../") || path.isAbsolute(frontendRelativePath)) {
+    throw new Error(`Product asset is outside frontend: ${source}`);
+  }
+  return `https://apexmotosupply.com/${frontendRelativePath}${suffix}`;
+}
+
 async function validateAssets(data) {
   const sources = new Set([
     ...(data.panelImage ? [data.panelImage] : []),
@@ -458,6 +471,7 @@ function completeTranslations(data) {
 }
 
 function renderPage(data) {
+  const canonicalUrl = `https://apexmotosupply.com/${data.id}.html`;
   const payload = JSON.stringify({
     modelId: data.id,
     defaultLanguage: "en",
@@ -467,6 +481,8 @@ function renderPage(data) {
     "{{GENERATED_MARKER}}": generatedMarker,
     "{{PAGE_TITLE}}": escapeHtml(data.page.title),
     "{{PAGE_DESCRIPTION}}": escapeHtml(data.page.description),
+    "{{PAGE_CANONICAL_URL}}": escapeHtml(canonicalUrl),
+    "{{PAGE_SOCIAL_IMAGE_URL}}": escapeHtml(toPublicSiteUrl(data.gallery[1].src)),
     "{{MODEL_ID}}": escapeHtml(data.id),
     "{{MODEL_NAME}}": escapeHtml(data.name),
     "{{HERO_HTML}}": renderHero(data),
@@ -523,6 +539,12 @@ function validateHtml(html, data) {
   }
   if (stack.length) throw new Error(`Malformed HTML: unclosed <${stack.at(-1)}>.`);
   if (!html.includes(`<!-- ${generatedMarker} -->`)) throw new Error("Generated marker missing.");
+  if (!html.includes(`<link rel="canonical" href="https://apexmotosupply.com/${data.id}.html">`)) {
+    throw new Error("Generated canonical URL missing or invalid.");
+  }
+  if (!html.includes(`property="og:image" content="${escapeHtml(toPublicSiteUrl(data.gallery[1].src))}"`)) {
+    throw new Error("Generated social image URL missing or invalid.");
+  }
   if ((html.match(/<a href="#sy300-main-image" class="sy300-preview-still(?: is-active)?"/g) || []).length !== 5) {
     throw new Error("Generated HTML must contain exactly five gallery controls.");
   }

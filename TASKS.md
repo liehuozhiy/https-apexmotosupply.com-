@@ -128,6 +128,7 @@ B01–B06 只生成独立报告；B07 依据六份报告集中决策，只更新
 | P34 产品世界下拉预览严格 F4 复验 | `docs/audits/p34-product-world-preview-strict-f4-reacceptance.md` | 已完成（2026-08-02） | 以 1440px 实际卡片及 F4 专用 1.15 倍渲染为唯一基准重新检查 27 款：F4 通过，其余 26 款因安全区、锚点、占比、角度或灯光至少一项不符而判退；只更新审计，不改业务资产 |
 | P35 产品世界预览 F4 整改收口 | `docs/audits/p35-product-world-preview-f4-remediation.md` | 已完成（2026-08-02） | P34 的 26 款判退项均已用独立版本化 PNG 固化构图；最终映射 27/27、HTTP 27/27 通过，实际燃油/电动菜单逐款触发成功；除 F4 基准规则外不保留车型缩放 CSS，不虚构 F4+、SJ300、S300R 灯具 |
 | P36 首页视频与产品菜单层级修复 | `docs/audits/p36-home-video-product-menu-layering.md` | 已完成（2026-08-02） | 修正首页通用子元素层级覆盖页头的问题；产品下拉菜单稳定显示在视频/首屏上方，1440/768/375 无横向溢出，视频播放与重播不受影响 |
+| P37 生产 SEO 与转化监测准备 | `docs/audits/p37-production-seo-conversion-readiness.md` | 已发布（2026-08-05） | sitemap 覆盖从 16 扩展至 43 个公开 URL；27 个车型页统一 canonical 和分享卡片；公共页补齐绝对分享图；询盘成功新增无个人信息的 GA4 `generate_lead` 事件；Cloudflare 版本 `9c5aec9e-4348-40b2-84e6-8d0b7073f082` |
 
 ## 已完成且不要重复的任务
 
