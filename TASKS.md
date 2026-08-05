@@ -137,6 +137,7 @@ B01–B06 只生成独立报告；B07 依据六份报告集中决策，只更新
 | P43 后台凭据会话与分析写入防滥用 | `docs/audits/p43-admin-session-analytics-abuse-protection.md` | 已发布（2026-08-05） | 管理 Key 改为标签页会话存储并清除旧持久值；分析 POST 限定可信 Origin、JSON 对象、16 KB 与每 IP 每小时 120 次，新增查询索引；Cloudflare 版本 `3b456207-4c77-4b86-bc22-ae9d6654262f`，生产固定 URL、后台会话脚本、安全头、sitemap 43/43 与 F29 五图通过，未发送生产 POST 或主动写 D1 |
 | P44 管理接口跨域边界 | `docs/audits/p44-admin-api-cors-boundary.md` | 已发布（2026-08-05） | 新闻与询盘 POST 保持公开 CORS；分析及后台读取／修改仅回显可信站点 Origin，外部管理 Origin 在认证前 403；Cloudflare 版本 `4633152a-726e-45b2-a3d8-6feba0a07c0f`，生产 13 项 CORS、固定页面、sitemap 43/43 与 F29 五图通过，未发送 POST |
 | P45 询盘写入请求边界 | `docs/audits/p45-inquiry-request-boundary.md` | 已发布（2026-08-05） | 询盘 POST 在访问 D1 前强制 JSON、32 KB 原始字节上限和对象根值；Cloudflare 版本 `8d2d99e4-f935-4618-8244-09784f08d446`，生产固定页面、询盘预检、安全头、sitemap 43/43 与 F29 五图通过，未发送生产 POST 或接触 D1 |
+| P46 CSP 报告模式基线 | `docs/audits/p46-csp-report-only-baseline.md` | 已发布（2026-08-05） | 保留现有强制 CSP，新增包含 GA、GTM 与 Cloudflare Insights 的完整报告模式策略；Cloudflare 版本 `1341501d-2d7a-4293-89cd-40350975d074`，生产 43/43 sitemap 页面、F29 五图和最终 Chrome 零 CSP 报告通过 |
 
 ## 已完成且不要重复的任务
 

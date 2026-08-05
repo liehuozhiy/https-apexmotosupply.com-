@@ -1,11 +1,30 @@
 import { connect } from "cloudflare:sockets";
 
+const enforcedContentSecurityPolicy = "frame-ancestors 'self'; base-uri 'self'; object-src 'none'";
+const reportOnlyContentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "img-src 'self' data:",
+  "media-src 'self'",
+  "font-src 'self' data:",
+  "style-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com",
+  "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com",
+  "frame-src 'none'",
+  "worker-src 'self'",
+  "manifest-src 'self'"
+].join("; ");
+
 const corsHeaders = {
   "Access-Control-Allow-Methods": "GET,POST,PATCH,DELETE,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type,x-admin-key",
   "Content-Type": "application/json; charset=utf-8",
   "Cache-Control": "no-store",
-  "Content-Security-Policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+  "Content-Security-Policy": enforcedContentSecurityPolicy,
+  "Content-Security-Policy-Report-Only": reportOnlyContentSecurityPolicy,
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Strict-Transport-Security": "max-age=31536000",
@@ -14,7 +33,8 @@ const corsHeaders = {
 };
 
 const securityHeaders = {
-  "Content-Security-Policy": "frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+  "Content-Security-Policy": enforcedContentSecurityPolicy,
+  "Content-Security-Policy-Report-Only": reportOnlyContentSecurityPolicy,
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Strict-Transport-Security": "max-age=31536000",
