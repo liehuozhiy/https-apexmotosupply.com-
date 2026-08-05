@@ -997,10 +997,14 @@ function validateInquiry(fields) {
 }
 
 async function saveInquiry(fields = {}) {
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  const timeoutId = controller ? window.setTimeout(() => controller.abort(), 12000) : null;
+
   try {
     const response = await fetch("/api/inquiries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      signal: controller?.signal,
       body: JSON.stringify({
         name: fields.name || "",
         email: fields.email || "",
@@ -1014,7 +1018,13 @@ async function saveInquiry(fields = {}) {
     return await response.json();
   } catch (error) {
     console.error("Inquiry save failed", error);
-    return { ok: false, error: error.message };
+    return {
+      ok: false,
+      error: error.message,
+      reason: error?.name === "AbortError" ? "timeout" : "request_failed"
+    };
+  } finally {
+    if (timeoutId) window.clearTimeout(timeoutId);
   }
 }
 
@@ -1027,7 +1037,7 @@ function trackInquiryConversion(fields = {}, inquiryResult = {}) {
   });
 }
 
-async function createInquirySheet(fields = {}) {
+async function createInquirySheet(fields = {}, { announceFailure = true } = {}) {
   try {
     if (!window.JSZip) {
       throw new Error("JSZip is not loaded");
@@ -1085,11 +1095,15 @@ async function createInquirySheet(fields = {}) {
     const blob = await zip.generateAsync({ type: "blob", mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
     const timestamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
     downloadBlob(blob, `${reportText.filenamePrefix}-${timestamp}.xlsx`);
+    return true;
   } catch (error) {
     console.error(error);
-    alert(isChineseLang()
-      ? `\u8be2\u76d8\u8868\u751f\u6210\u5931\u8d25\uff1a${error.message}`
-      : `Inquiry form generation failed: ${error.message}`);
+    if (announceFailure) {
+      alert(isChineseLang()
+        ? `\u8be2\u76d8\u8868\u751f\u6210\u5931\u8d25\uff1a${error.message}`
+        : `Inquiry form generation failed: ${error.message}`);
+    }
+    return false;
   }
 }
 
@@ -1194,6 +1208,8 @@ if (form) {
   });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (form.dataset.submitting === "true") return;
+
     const fields = readInquiryFields(form);
     if (!validateInquiry(fields)) {
       const invalidField = !String(fields.name || "").trim()
@@ -1204,18 +1220,40 @@ if (form) {
       alert(isChineseLang() ? "\u8bf7\u586b\u5199\u59d3\u540d\u548c\u6709\u6548\u90ae\u7bb1\u3002" : "Please enter name and a valid email.");
       return;
     }
-    const inquiryResult = await saveInquiry(fields);
-    await createInquirySheet(fields);
-    if (inquiryResult.ok) {
-      trackInquiryConversion(fields, inquiryResult);
-      const mailSent = inquiryResult.emailStatus === "sent";
-      alert(isChineseLang()
-        ? (mailSent ? "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u90ae\u4ef6\u5df2\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u7b49\u5f85\u56de\u590d\u3002" : "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u4f46\u90ae\u4ef6\u672a\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u68c0\u67e5\u540e\u53f0 SMTP \u914d\u7f6e\u3002")
-        : `Inquiry submitted and the form was downloaded. ${mailSent ? "Email sent successfully." : "Check the admin page for email status."}`);
-    } else {
-      alert(isChineseLang()
-        ? "\u8868\u5355\u5df2\u4e0b\u8f7d\uff0c\u4f46\u540e\u53f0\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u6216\u76f4\u63a5\u8054\u7cfb\u90ae\u7bb1\u3002"
-        : "The form was downloaded, but backend saving failed. Please try again later or contact us by email.");
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    form.dataset.submitting = "true";
+    form.setAttribute("aria-busy", "true");
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const inquiryResult = await saveInquiry(fields);
+      const sheetDownloaded = await createInquirySheet(fields, { announceFailure: false });
+
+      if (inquiryResult.ok) trackInquiryConversion(fields, inquiryResult);
+
+      if (inquiryResult.ok && sheetDownloaded) {
+        const mailSent = inquiryResult.emailStatus === "sent";
+        alert(isChineseLang()
+          ? (mailSent ? "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u90ae\u4ef6\u5df2\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u7b49\u5f85\u56de\u590d\u3002" : "\u8be2\u76d8\u8868\u5355\u5df2\u63d0\u4ea4\u5e76\u4e0b\u8f7d\uff0c\u4f46\u90ae\u4ef6\u672a\u53d1\u9001\u6210\u529f\uff0c\u8bf7\u68c0\u67e5\u540e\u53f0 SMTP \u914d\u7f6e\u3002")
+          : `Inquiry submitted and the form was downloaded. ${mailSent ? "Email sent successfully." : "Check the admin page for email status."}`);
+      } else if (inquiryResult.ok) {
+        alert(isChineseLang()
+          ? "\u8be2\u76d8\u5df2\u63d0\u4ea4\uff0c\u4f46\u8868\u5355\u4e0b\u8f7d\u5931\u8d25\u3002\u8bf7\u76f4\u63a5\u8054\u90ae\u7bb1\u83b7\u53d6\u526f\u672c\u3002"
+          : "The inquiry was submitted, but the form download failed. Please contact us by email for a copy.");
+      } else if (sheetDownloaded) {
+        alert(isChineseLang()
+          ? "\u8868\u5355\u5df2\u4e0b\u8f7d\uff0c\u4f46\u540e\u53f0\u4fdd\u5b58\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u6216\u76f4\u63a5\u8054\u7cfb\u90ae\u7bb1\u3002"
+          : "The form was downloaded, but backend saving failed. Please try again later or contact us by email.");
+      } else {
+        alert(isChineseLang()
+          ? "\u8be2\u76d8\u63d0\u4ea4\u548c\u8868\u5355\u4e0b\u8f7d\u5747\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u6216\u76f4\u63a5\u8054\u7cfb\u90ae\u7bb1\u3002"
+          : "The inquiry could not be submitted or downloaded. Please try again later or contact us by email.");
+      }
+    } finally {
+      delete form.dataset.submitting;
+      form.removeAttribute("aria-busy");
+      if (submitButton) submitButton.disabled = false;
     }
   });
 }
