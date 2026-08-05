@@ -163,6 +163,11 @@
     if (event.target === lightbox) closeLightbox();
   });
   document.addEventListener("keydown", (event) => {
+    if (event.key === "Tab" && lightbox && !lightbox.hidden) {
+      event.preventDefault();
+      lightboxClose?.focus();
+      return;
+    }
     if (event.key === "Escape") closeLightbox();
   });
 

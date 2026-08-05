@@ -10,6 +10,7 @@ const quickInquiry = document.querySelector("[data-quick-inquiry]");
 const modal = document.querySelector("[data-spec-modal]");
 const modalBody = document.querySelector("[data-spec-modal-body]");
 const modalClose = document.querySelector("[data-spec-modal-close]");
+let modalOpener = null;
 const hero = document.querySelector("[data-hero]");
 const heroVideo = document.querySelector("[data-hero-video]");
 const heroPlay = document.querySelector("[data-hero-play]");
@@ -902,8 +903,9 @@ function updateHeroVideoProgress() {
   }
 }
 
-function openSpecModal(product) {
+function openSpecModal(product, opener = null) {
   if (!modal || !modalBody || !modalClose) return;
+  modalOpener = opener;
   const displayModel = productDisplayModel(product);
   modalBody.innerHTML = `
     <div class="modal-product">
@@ -924,6 +926,7 @@ function openSpecModal(product) {
     <dl class="spec-table">${specRows(product)}</dl>
   `;
   modal.hidden = false;
+  modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   modalClose.focus();
 }
@@ -931,8 +934,12 @@ function openSpecModal(product) {
 function closeSpecModal() {
   if (!modal || !modalBody) return;
   modal.hidden = true;
+  modal.setAttribute("aria-hidden", "true");
   modalBody.innerHTML = "";
   document.body.classList.remove("modal-open");
+  const opener = modalOpener;
+  modalOpener = null;
+  opener?.focus({ preventScroll: true });
 }
 
 function escapeXml(value) {
@@ -1091,7 +1098,7 @@ function handleOpenSpecs(event) {
   if (!button) return;
 
   const product = data.products.find((item) => item.slug === button.dataset.openSpecs);
-  if (product) openSpecModal(product);
+  if (product) openSpecModal(product, button);
 }
 
 render();
@@ -1152,6 +1159,11 @@ if (modal) {
 }
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Tab" && modal && !modal.hidden) {
+    event.preventDefault();
+    modalClose?.focus();
+    return;
+  }
   if (event.key === "Escape" && modal && !modal.hidden) closeSpecModal();
 });
 
@@ -1177,10 +1189,18 @@ if (quickInquiry) {
 }
 
 if (form) {
+  form.addEventListener("input", (event) => {
+    event.target.removeAttribute("aria-invalid");
+  });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const fields = readInquiryFields(form);
     if (!validateInquiry(fields)) {
+      const invalidField = !String(fields.name || "").trim()
+        ? form.elements.namedItem("name")
+        : form.elements.namedItem("email");
+      invalidField?.setAttribute("aria-invalid", "true");
+      invalidField?.focus();
       alert(isChineseLang() ? "\u8bf7\u586b\u5199\u59d3\u540d\u548c\u6709\u6548\u90ae\u7bb1\u3002" : "Please enter name and a valid email.");
       return;
     }
