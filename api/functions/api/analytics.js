@@ -150,7 +150,7 @@ export async function onRequest(context) {
   }
 
   const inputKey = request.headers.get("x-admin-key") || "";
-  if (inputKey !== adminKey) {
+  if (!(await adminKeysMatch(inputKey, adminKey))) {
     return respond({ error: "Unauthorized" }, 401);
   }
   if (!env.DB) return respond({ error: "D1 binding DB is missing" }, 500);
@@ -178,4 +178,21 @@ export async function onRequest(context) {
     countries,
     visits: visits.results || []
   });
+}
+
+async function adminKeysMatch(inputKey, adminKey) {
+  const encoder = new TextEncoder();
+  const inputBytes = encoder.encode(inputKey);
+  const adminBytes = encoder.encode(adminKey);
+  const [inputDigest, adminDigest] = await Promise.all([
+    crypto.subtle.digest("SHA-256", inputBytes),
+    crypto.subtle.digest("SHA-256", adminBytes)
+  ]);
+  const inputView = new Uint8Array(inputDigest);
+  const adminView = new Uint8Array(adminDigest);
+  let difference = inputBytes.byteLength ^ adminBytes.byteLength;
+  for (let index = 0; index < inputView.byteLength; index += 1) {
+    difference |= inputView[index] ^ adminView[index];
+  }
+  return difference === 0;
 }

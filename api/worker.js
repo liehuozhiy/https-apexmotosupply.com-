@@ -208,12 +208,29 @@ async function ensureSchema(env) {
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS idx_inquiries_status ON inquiries (status)").run();
 }
 
-function requireAdmin(request, env) {
+async function adminKeysMatch(inputKey, adminKey) {
+  const encoder = new TextEncoder();
+  const inputBytes = encoder.encode(inputKey);
+  const adminBytes = encoder.encode(adminKey);
+  const [inputDigest, adminDigest] = await Promise.all([
+    crypto.subtle.digest("SHA-256", inputBytes),
+    crypto.subtle.digest("SHA-256", adminBytes)
+  ]);
+  const inputView = new Uint8Array(inputDigest);
+  const adminView = new Uint8Array(adminDigest);
+  let difference = inputBytes.byteLength ^ adminBytes.byteLength;
+  for (let index = 0; index < inputView.byteLength; index += 1) {
+    difference |= inputView[index] ^ adminView[index];
+  }
+  return difference === 0;
+}
+
+async function requireAdmin(request, env) {
   const adminKey = String(env.ADMIN_KEY || "").trim();
   if (!adminKey) return { error: json({ error: "Admin access is not configured" }, 503) };
 
   const inputKey = request.headers.get("x-admin-key") || "";
-  if (inputKey !== adminKey) return { error: json({ error: "Unauthorized" }, 401) };
+  if (!(await adminKeysMatch(inputKey, adminKey))) return { error: json({ error: "Unauthorized" }, 401) };
 
   return { ok: true };
 }
@@ -485,7 +502,7 @@ async function handleAnalytics(request, env) {
 
   if (request.method !== "GET") return methodNotAllowed(["GET", "POST", "OPTIONS"]);
   if (!isTrustedAdminOrigin(request)) return json({ error: "Forbidden origin" }, 403);
-  const auth = requireAdmin(request, env);
+  const auth = await requireAdmin(request, env);
   if (auth.error) return auth.error;
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
   await ensureSchema(env);
@@ -625,7 +642,7 @@ async function handleInquiries(request, env) {
 
   if (!isCollectionPath && !idMatch) return json({ error: "API route not found" }, 404);
   if (!isTrustedAdminOrigin(request)) return json({ error: "Forbidden origin" }, 403);
-  const auth = requireAdmin(request, env);
+  const auth = await requireAdmin(request, env);
   if (auth.error) return auth.error;
   if (!env.DB) return json({ error: "D1 binding DB is missing" }, 500);
   await ensureSchema(env);
@@ -709,7 +726,7 @@ export default {
       if (!isTrustedAdminOrigin(request)) return withCors(json({ error: "Forbidden origin" }, 403), request, "trusted");
       if (request.method === "OPTIONS") return withCors(json({ ok: true }), request, "trusted");
       if (request.method !== "GET") return withCors(methodNotAllowed(["GET", "OPTIONS"]), request, "trusted");
-      const auth = requireAdmin(request, env);
+      const auth = await requireAdmin(request, env);
       if (auth.error) return withCors(auth.error, request, "trusted");
       return withCors(json(smtpStatus(env)), request, "trusted");
     }
