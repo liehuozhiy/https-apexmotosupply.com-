@@ -47,6 +47,7 @@
 - P47 已于 2026-08-05 发布：仅对成功的 `/assets/` 与 `/admin/assets/` 版本化 URL 返回一年 immutable；47 个 HTML 的 318 个唯一资源引用中，276 个具备 `?v=` 或文件名 `v数字` 标记，42 个未版本化引用继续重新验证。HTML 不长期缓存，后台/API 与静态错误保持 no-store。Cloudflare 版本为 `a71b5107-650d-47c7-8589-c928d1594870`；生产 9 项缓存边界、固定页面、sitemap 43/43、SY300/F29 身份及 F29 五图通过，只使用 GET 和询盘 OPTIONS，未启动生产浏览器、发送业务 POST 或接触 D1。详见 `docs/audits/p47-versioned-asset-cache-policy.md`。
 - P48 已于 2026-08-05 发布：取消未匹配公共 URL 回退首页的假 200，按原 pathname 返回真实静态 404，并为静态 4xx/5xx 增加 no-store/noindex；补齐 HS85/SY300 预览页和直接后台文件的明确路由。Cloudflare 版本为 `624fcf79-6294-4af1-a0a3-a2c44bf81c30`；生产 52 个合法入口保持 200，四类未知路径均为 404/no-store/noindex，版本化与未版本化资源的 304 缓存头、sitemap 43/43、F29 统一布局及五图通过。部署后曾短暂观察到主域上一版边缘结果，workers.dev 先确认新版本，随后主域传播完成；没有重复部署，只使用 GET 和询盘 OPTIONS，未接触 D1。详见 `docs/audits/p48-public-route-real-404-boundary.md`。
 - P49 已于 2026-08-08 发布：主 Worker 和兼容 Pages Functions 的管理 Key 从直接字符串比较改为 SHA-256 固定长度摘要累积比较，认证顺序仍先于 D1。Cloudflare 版本为 `b1db7dfe-eec7-45e3-8be8-d029f82cbe8d`；生产 11 个固定入口、sitemap 43/43、SY300/F29 身份、F29 五图、未授权 401 和外部 Origin 403 均通过。没有读取生产 Key、管理数据或修改 D1。详见 `docs/audits/p49-admin-key-digest-comparison.md`。
+- P50 已于 2026-08-08 完成并同步：新增 `scripts/verify-production-readonly.mjs`，把固定入口、管理拒绝、真实 404、sitemap、车型身份与 F29 五图固化为只允许同源 GET 的发布后门禁。生产实测共 69 个请求、0 个失败；脚本不接受或读取管理 Key，没有写请求或 D1/SMTP 入口。本阶段无需部署。详见 `docs/audits/p50-production-readonly-verification-script.md`。
 - 主控任务：阶段 A、阶段 B（B01–B08）、阶段 C（C01–C03）和阶段 D 的资产资格核验均已完成（2026-08-02）。通过候选资格但未接入的包括 F29R、ER3、ER5、ER7、ES11、ET、ET 2024、ET3、ET5、ET7、ET9、F4+、F9、H300、S300、S300R、SJ250、SN300、SY300；F29、HS85、SJ300 候选均判退。正式产品世界接入仍为 5/27。
 - Apex 前端工程师：已停止本轮服务、浏览器、构建和车型派发；确认 2840、8010 无监听。
 - 当前状态：阶段 E、F、G、H01 与 H02 均已于 2026-08-02 完成。HTTP 全站矩阵、27/27 Panel 资源路径和代表性桌面/平板渲染均通过；用户已完成本机 `file:///` 最终视觉验收。SJ250 使用用户最终指定的 `sj250-hero-panel-industrial-red-v11-master.png`；全车型生成页均使用相对于 `assets/css/product-detail.css` 的 `../img/...`，样式缓存为 v31。F03 已在隔离本地 Worker/D1 和浏览器中验证英文/中文 SMTP 未配置降级、XLSX 下载与 API 失败保底下载；H01/H02 已把 19 个合格候选登记到产品世界，正式预览覆盖 24/27。临时浏览器和服务均已停止。
@@ -425,10 +426,10 @@ node scripts/prepare-deploy.mjs
 5. D 阶段资产资格核验及 P35 集中接入/严格 F4 构图复验已闭合；当前产品世界预览为 27/27 通过。SJ250 现有五图/Panel/亮点来源链仍 Pending，但不影响已通过的产品世界预览。
 6. 阶段 E 的全站浏览器矩阵和 P36 首页视频/产品菜单层级复验均已完成。
 7. 阶段 G 的批准清理已完成；其余候选与审计证据继续保留，不得无清单删除。
-8. P49 已完成发布与生产只读验收；后续新任务继续选择单一、可回退的质量或安全边界，静态源文件未变化时不要重建或手工修改 `deploy/`。
+8. P50 已完成脚本、真实生产只读验证和版本库同步；后续发布统一先完成目标变更，再运行该脚本作为生产只读收口门禁。
 
 ## 15. Git 状态摘要
 
-- 当前分支为 `main`；P49 发布同步完成后应与 `origin/main` 保持一致。
-- P49 仅涉及 `api/worker.js`、`api/functions/api/analytics.js`、`TASKS.md`、`CODEX_HANDOFF.md` 和新增审计报告。
-- 没有回退、自动清理或修改 `deploy/`；生产发布也没有上传静态资产。
+- 当前分支为 `main`；P50 同步完成后应与 `origin/main` 保持一致。
+- P50 仅包含新增只读验收脚本、审计报告及 `TASKS.md`、`CODEX_HANDOFF.md` 更新。
+- 没有回退、自动清理、修改 `deploy/` 或部署 Cloudflare。
